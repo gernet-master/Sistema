@@ -1,43 +1,70 @@
 ﻿<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Meu Aplicativo ASP.NET</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-</head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Nome do aplicativo", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Início", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Sobre", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contato", "Contact", "Home")</li>
-                </ul>
+
+<html lang="pt-br">
+
+    <!-- Head -->
+    <head>
+        <meta charset="utf-8" />
+        <title>Metronic | Dashboard</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700" />
+
+        <!-- Styles -->
+        @Styles.Render("~/css")
+
+        <!-- Icon -->
+        <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+    </head>
+
+    <!-- Body -->
+    <body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--fixed kt-subheader--solid kt-aside--enabled kt-aside--static kt-aside--minimize kt-footer--fixed kt-page--loading">
+
+        <!-- Header Mobil -->
+        @Html.Action("HeaderMobile", "Partials")
+
+        <div class="kt-grid kt-grid--hor kt-grid--root">
+
+            <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
+
+                <!-- Menu -->
+                @Html.Action("Menu", "Partials")
+
+                <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
+
+                    <!-- Header -->
+                    @Html.Action("Header", "Partials")
+
+                    <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+
+                        <!-- SubHeader-->
+                        @Html.Action("SubHeader", "Partials")
+
+                        <!-- Content -->
+                        <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+                            @RenderBody()
+                        </div>
+
+                    </div>
+
+                    <!-- Footer -->
+                    @Html.Action("Footer", "Partials")
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Meu Aplicativo ASP.NET</p>
-        </footer>
-    </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-</body>
+        <!-- Quick Panel -->
+        @Html.Action("QuickPanelInfo", "Partials")
+
+        <!-- Scroll Top -->
+        @Html.Action("ScrollTop", "Partials")
+
+    </body>
+
 </html>
+
+<!-- Scripts -->
+@Scripts.Render("~/scripts")
+
+@RenderSection("scripts", required: false)
