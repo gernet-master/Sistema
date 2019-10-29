@@ -1,11 +1,18 @@
-﻿<!DOCTYPE html>
+﻿@*
+Descrição: Página inicial, definição do layout
+Data: 01/01/2020 - v.1.0
+*@
+
+@using Functions;
+
+<!DOCTYPE html>
 
 <html lang="pt-br">
 
     <!-- Head -->
     <head>
         <meta charset="utf-8" />
-        <title>Metronic | Dashboard</title>
+        <title>@Language.XmlLang(1, 1).Text</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
         <!-- Fonts -->
@@ -21,7 +28,7 @@
     <!-- Body -->
     <body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--fixed kt-subheader--solid kt-aside--enabled kt-aside--static kt-aside--minimize kt-footer--fixed kt-page--loading">
 
-        <!-- Header Mobil -->
+        <!-- Header Mobile -->
         @Html.Action("HeaderMobile", "Partials")
 
         <div class="kt-grid kt-grid--hor kt-grid--root">
@@ -66,5 +73,7 @@
 
 <!-- Scripts -->
 @Scripts.Render("~/scripts")
+@Scripts.Render("~/timer")
+@Scripts.Render("~/footer")
 
 @RenderSection("scripts", required: false)

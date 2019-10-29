@@ -1,0 +1,29 @@
+﻿.kt-footer {
+    padding: 8px 0px 6px 0px !important;
+}
+
+.kt-footer .kt-footer__menu .kt-footer__menu-link {
+    margin: 0px !important;
+}
+
+.kt-footer .kt-footer__menu a:first-child {
+    margin: 0 0 0 0 !important;
+}
+
+.kt-footer .kt-footer__menu a {
+    height: 44px !important;
+    min-width: 44px !important;
+    text-align: center !important;
+    line-height: 44px !important;
+    border-radius: 4px !important;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.kt-footer .kt-footer__menu a:hover {
+    background-color: #ececec;
+}
+
+.kt-footer .kt-footer__menu a:hover:hover:after {
+    border-bottom: unset !important;
+}

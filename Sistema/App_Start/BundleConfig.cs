@@ -121,6 +121,12 @@ namespace Sistema
                 //"~/Assets/plugins/custom/tinymce/themes/mobile/theme.js"
             ));
 
+            bundles.Add(new ScriptBundle("~/timer").Include(
+                "~/Assets/js/timer.js"));
+
+            bundles.Add(new ScriptBundle("~/footer").Include(
+               "~/Assets/js/footer.js"));
+
             bundles.Add(new StyleBundle("~/css").Include(
                 "~/Assets/plugins/general/perfect-scrollbar/css/perfect-scrollbar.css",
                 //"~/Assets/plugins/general/tether/dist/css/tether.css",
@@ -175,7 +181,8 @@ namespace Sistema
                 "~/Assets/css/skins/header/base/light.css",
                 "~/Assets/css/skins/header/menu/light.css",
                 "~/Assets/css/skins/brand/dark.css",
-                "~/Assets/css/skins/aside/dark.css"
+                "~/Assets/css/skins/aside/dark.css",
+                 "~/Assets/css/custom.css"
             ));
         }
     }
