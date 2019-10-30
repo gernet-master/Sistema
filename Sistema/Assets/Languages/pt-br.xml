@@ -6,22 +6,22 @@
   <string id="3" text="calculadora" />
   <string id="4" text="pesquisa de cep" />
   <string id="5" text="de" />
-  <string id="6" text="" />
-  <string id="7" text="" />
-  <string id="8" text="" />
-  <string id="9" text="" />
-  <string id="10" text="" />
-  <string id="11" text="" />
-  <string id="12" text="" />
-  <string id="13" text="" />
-  <string id="14" text="" />
-  <string id="15" text="" />
-  <string id="16" text="" />
-  <string id="17" text="" />
-  <string id="18" text="" />
-  <string id="19" text="" />
-  <string id="20" text="" />
-  <string id="21" text="" />
+  <string id="6" text="desenvolvido por" />
+  <string id="7" text="dashboard" />
+  <string id="8" text="administrativo" />
+  <string id="9" text="perfis de acesso" />
+  <string id="10" text="usuários" />
+  <string id="11" text="selecione o idioma" />
+  <string id="12" text="português" />
+  <string id="13" text="english" />
+  <string id="14" text="español" />
+  <string id="15" text="foto" />
+  <string id="16" text="altere a sua imagem no sistema" />
+  <string id="17" text="alterar senha" />
+  <string id="18" text="redefina uma nova senha para seu usuário" />
+  <string id="19" text="personalizar" />
+  <string id="20" text="configure o ambiente do sistema" />
+  <string id="21" text="sair do sistema" />
   <string id="22" text="" />
   <string id="23" text="" />
   <string id="24" text="" />
@@ -31,4 +31,34 @@
   <string id="28" text="" />
   <string id="29" text="" />
   <string id="30" text="" />
+  <string id="31" text="" />
+  <string id="32" text="" />
+  <string id="33" text="" />
+  <string id="34" text="" />
+  <string id="35" text="" />
+  <string id="36" text="" />
+  <string id="37" text="" />
+  <string id="38" text="" />
+  <string id="39" text="" />
+  <string id="40" text="" />
+  <string id="41" text="" />
+  <string id="42" text="" />
+  <string id="43" text="" />
+  <string id="44" text="" />
+  <string id="45" text="" />
+  <string id="46" text="" />
+  <string id="47" text="" />
+  <string id="48" text="" />
+  <string id="49" text="" />
+  <string id="50" text="" />
+  <string id="51" text="" />
+  <string id="52" text="" />
+  <string id="53" text="" />
+  <string id="54" text="" />
+  <string id="55" text="" />
+  <string id="56" text="" />
+  <string id="57" text="" />
+  <string id="58" text="" />
+  <string id="59" text="" />
+  <string id="60" text="" />
 </lang>

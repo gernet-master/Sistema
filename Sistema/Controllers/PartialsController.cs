@@ -40,6 +40,16 @@ namespace Sistema.Controllers
             return PartialView();
         }
 
+        public ActionResult Email()
+        {
+            return PartialView();
+        }
+
+        public ActionResult Whatsapp()
+        {
+            return PartialView();
+        }
+
         public ActionResult ScrollTop()
         {
             return PartialView();

@@ -1,29 +1,38 @@
-﻿@* Lista de idiomas do sistema *@
+﻿@*
+Descrição: Lista de idiomas disponíveis
+Data: 01/01/2020 - v.1.0
+*@
+
+@using Functions;
 
 <div class="kt-header__topbar-item kt-header__topbar-item--langs">
+
+    <!-- Icone -->
     <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px,0px">
-        <span class="kt-header__topbar-icon">
-            <img class="" src="assets/media/flags/brazil.svg" alt="" />
+        <span class="kt-header__topbar-icon" data-toggle="kt-tooltip" title="@Language.XmlLang(11, 2).Text" data-placement="bottom">
+            <img class="" src="~/assets/media/flags/brazil.svg" alt="" />
         </span>
     </div>
+
+    <!-- Idiomas -->
     <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround">
         <ul class="kt-nav kt-margin-t-10 kt-margin-b-10">
             <li class="kt-nav__item kt-nav__item--active">
                 <a href="#" class="kt-nav__link">
                     <span class="kt-nav__link-icon"><img src="~/assets/media/flags/brazil.svg" alt="" /></span>
-                    <span class="kt-nav__link-text">Português</span>
+                    <span class="kt-nav__link-text">@Language.XmlLang(12, 2).Text</span>
                 </a>
             </li>
             <li class="kt-nav__item">
                 <a href="#" class="kt-nav__link">
                     <span class="kt-nav__link-icon"><img src="~/assets/media/flags/usa.svg" alt="" /></span>
-                    <span class="kt-nav__link-text">English</span>
+                    <span class="kt-nav__link-text">@Language.XmlLang(13, 2).Text</span>
                 </a>
             </li>
             <li class="kt-nav__item">
                 <a href="#" class="kt-nav__link">
                     <span class="kt-nav__link-icon"><img src="~/assets/media/flags/spain.svg" alt="" /></span>
-                    <span class="kt-nav__link-text">Español</span>
+                    <span class="kt-nav__link-text">@Language.XmlLang(14, 2).Text</span>
                 </a>
             </li>
         </ul>

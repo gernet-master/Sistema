@@ -27,3 +27,16 @@
 .kt-footer .kt-footer__menu a:hover:hover:after {
     border-bottom: unset !important;
 }
+
+
+@media (min-width: 1025px) {
+    .kt-aside__brand {
+        background-color: #A6D2FF;
+    }
+}
+
+@media (max-width: 1024px) {
+    .kt-header-mobile {
+        background-color: #4fa3e0;
+    }
+}

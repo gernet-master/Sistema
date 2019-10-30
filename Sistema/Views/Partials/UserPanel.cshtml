@@ -1,71 +1,85 @@
-﻿@* Menu ~com opções para controle do usuário *@
+﻿@*
+Descrição: Menu com opções para controle do usuário
+Data: 01/01/2020 - v.1.0
+*@
+
+@using Functions;
 
 <div class="kt-header__topbar-item kt-header__topbar-item--user">
 
     <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="0px,0px">
+
+        <!-- Nome e imagem -->
         <div class="kt-header__topbar-user">
             <span class="kt-header__topbar-username kt-hidden-mobile">Diogo de Barros Corrêa</span>
             <img class="" alt="Pic" src="~/assets/media/users/default.jpg" />
         </div>
+
     </div>
 
+    <!-- Menu -->
     <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl">
 
-        <!--begin: Head -->
+        <!-- Header -->
         <div class="kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x" style="background-image: url(assets/media/misc/bg-1.jpg)">
             <div class="kt-user-card__avatar">
-                <img class="" alt="Pic" src="assets/media/users/default.jpg" />
+                <img class="" alt="Pic" src="~/assets/media/users/default.jpg" />
             </div>
             <div class="kt-user-card__name">
                 Diogo de Barros Corrêa
-                <span class="btn btn-success btn-sm btn-bold btn-font-md">0 mensagens</span>
             </div>
         </div>
-        <!--end: Head -->
 
-        <!--begin: Navigation -->
         <div class="kt-notification">
+
+            <!-- Alterar imagem do perfil -->
             <a href="#" class="kt-notification__item">
                 <div class="kt-notification__item-icon">
                     <i class="flaticon2-calendar-3 kt-font-success"></i>
                 </div>
                 <div class="kt-notification__item-details">
                     <div class="kt-notification__item-title kt-font-bold">
-                        Foto
+                        @Language.XmlLang(15, 2).Text
                     </div>
                     <div class="kt-notification__item-time">
-                        Altera a sua imagem no sistema
+                        @Language.XmlLang(16, 2).Text
                     </div>
                 </div>
             </a>
+
+            <!-- Alterar senha -->
             <a href="#" class="kt-notification__item">
                 <div class="kt-notification__item-icon">
                     <i class="flaticon2-mail kt-font-warning"></i>
                 </div>
                 <div class="kt-notification__item-details">
                     <div class="kt-notification__item-title kt-font-bold">
-                        Alterar senha
+                        @Language.XmlLang(17, 2).Text
                     </div>
                     <div class="kt-notification__item-time">
-                        Redefina uma nova senha para seu usuário
+                        @Language.XmlLang(18, 2).Text
                     </div>
                 </div>
             </a>
+
+            <!-- Personalizar sistema -->
             <a href="#" class="kt-notification__item">
                 <div class="kt-notification__item-icon">
                     <i class="flaticon2-rocket-1 kt-font-danger"></i>
                 </div>
                 <div class="kt-notification__item-details">
                     <div class="kt-notification__item-title kt-font-bold">
-                        Personalizar
+                        @Language.XmlLang(19, 2).Text
                     </div>
                     <div class="kt-notification__item-time">
-                        Personalize o ambiente do sistema
+                        @Language.XmlLang(20, 2).Text
                     </div>
                 </div>
             </a>
+
+            <!-- Logout -->
             <div class="kt-notification__custom kt-space-between text-center">
-                <a href="#" target="_blank" class="btn btn-clean btn-sm btn-bold">Sair do sistema</a>
+                <a href="#" target="_blank" class="btn btn-clean btn-sm btn-bold">@Language.XmlLang(21, 2).Text</a>
             </div>
         </div>
     </div>

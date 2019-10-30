@@ -641,6 +641,7 @@
     <Content Include="Assets\Media\icons\svg\Code\Time-schedule.svg" />
     <Content Include="Assets\Media\icons\svg\Code\Warning-1-circle.svg" />
     <Content Include="Assets\Media\icons\svg\Code\Warning-2.svg" />
+    <Content Include="Assets\Media\icons\svg\Communication\Whatsapp.svg" />
     <Content Include="Assets\Media\icons\svg\Communication\Active-call.svg" />
     <Content Include="Assets\Media\icons\svg\Communication\Add-user.svg" />
     <Content Include="Assets\Media\icons\svg\Communication\Address-card.svg" />
@@ -938,7 +939,7 @@
     <Content Include="Assets\Media\icons\svg\General\Hidden.svg" />
     <Content Include="Assets\Media\icons\svg\General\Like.svg" />
     <Content Include="Assets\Media\icons\svg\General\Lock.svg" />
-    <Content Include="Assets\Media\icons\svg\General\Notification#2.svg" />
+    <Content Include="Assets\Media\icons\svg\General\Notification.svg" />
     <Content Include="Assets\Media\icons\svg\General\Notifications#1.svg" />
     <Content Include="Assets\Media\icons\svg\General\Other#1.svg" />
     <Content Include="Assets\Media\icons\svg\General\Other#2.svg" />
@@ -1035,7 +1036,7 @@
     <Content Include="Assets\Media\icons\svg\Map\Direction#1.svg" />
     <Content Include="Assets\Media\icons\svg\Map\Direction#2.svg" />
     <Content Include="Assets\Media\icons\svg\Map\Location-arrow.svg" />
-    <Content Include="Assets\Media\icons\svg\Map\Marker#1.svg" />
+    <Content Include="Assets\Media\icons\svg\Map\Marker.svg" />
     <Content Include="Assets\Media\icons\svg\Map\Marker#2.svg" />
     <Content Include="Assets\Media\icons\svg\Map\Position.svg" />
     <Content Include="Assets\Media\icons\svg\Media\Add-music.svg" />
@@ -1264,6 +1265,8 @@
     <Content Include="Assets\Media\logos\logo-mini-lg.png" />
     <Content Include="Assets\Media\logos\logo-mini-md.png" />
     <Content Include="Assets\Media\logos\logo-mini-sm.png" />
+    <Content Include="Assets\Media\misc\bg-1.jpg" />
+    <Content Include="Assets\Media\misc\bg-2.jpg" />
     <Content Include="Assets\Media\users\default.jpg" />
     <Content Include="Assets\Plugins\custom\ckeditor\ckeditor5-build-balloon-block\build\ckeditor.js" />
     <Content Include="Assets\Plugins\custom\ckeditor\ckeditor5-build-balloon\build\ckeditor.js" />
@@ -1647,6 +1650,8 @@
     <Content Include="Views\Partials\QuickActions.cshtml" />
     <Content Include="Views\Partials\Notifications.cshtml" />
     <Content Include="Views\Partials\Search.cshtml" />
+    <Content Include="Views\Partials\Email.cshtml" />
+    <Content Include="Views\Partials\Whatsapp.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
