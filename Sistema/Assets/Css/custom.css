@@ -28,6 +28,13 @@
     border-bottom: unset !important;
 }
 
+.kt-aside-menu .kt-menu__nav > .kt-menu__item > .kt-menu__heading .kt-menu__link-icon svg g [fill], .kt-aside-menu .kt-menu__nav > .kt-menu__item > .kt-menu__link .kt-menu__link-icon svg g [fill] {
+    fill: #FFFFFF !important;
+}
+
+.separator-arrow {
+    margin: 0 0.5rem 0 0.2rem !important;
+}
 
 @media (min-width: 1025px) {
     .kt-aside__brand {

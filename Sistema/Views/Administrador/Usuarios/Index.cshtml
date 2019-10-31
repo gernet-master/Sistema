@@ -1,9 +1,9 @@
 ﻿@*
-    Descrição: Dashboard principal do sistema
+    Descrição: Cadastro de perfis de acesso ao sistema
     Data: 01/01/2020 - v.1.0
 *@
 
-@Html.Action("SubHeader", "Partials")
+@Html.Action("SubHeader", "Partials", new { app = "Administrativo/Usuários", id = 0, id2 = 0 })
 
 @using Functions;
 
@@ -14,7 +14,7 @@
             <div class="kt-portlet__head">
                 <div class="kt-portlet__head-label">
                     <h3 class="kt-portlet__head-title">
-                        teste
+                        Usuários<br />
                     </h3>
                 </div>
             </div>

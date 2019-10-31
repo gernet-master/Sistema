@@ -1,13 +1,25 @@
-﻿<div id="kt_header" class="kt-header kt-grid__item kt-header--fixed ">
+﻿@*
+    Descrição: Cabeçalho do sistema com as opções de pesquisa e botões de notificação
+    Data: 01/01/2020 - v.1.0
+*@
+
+@using Functions;
+
+<div id="kt_header" class="kt-header kt-grid__item kt-header--fixed ">
+
     <div></div>
+
     <div class="kt-header__topbar">
-        @Html.Action("Search", "Partials")
-        @Html.Action("Email", "Partials")
-        @Html.Action("Whatsapp", "Partials")
-        @Html.Action("Notifications", "Partials")
-        @Html.Action("QuickActions", "Partials")
-        @Html.Action("QuickPanel", "Partials")
-        @Html.Action("Languages", "Partials")
+
+        @*@Html.Action("Search", "Partials")
+            @Html.Action("Email", "Partials")
+            @Html.Action("Whatsapp", "Partials")
+            @Html.Action("Notifications", "Partials")
+            @Html.Action("QuickActions", "Partials")
+            @Html.Action("QuickPanel", "Partials")
+            @Html.Action("Languages", "Partials")*@
+
+        <!-- Menu do usuário -->
         @Html.Action("UserPanel", "Partials")
     </div>
 </div>

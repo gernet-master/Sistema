@@ -1,85 +1,105 @@
 ﻿using Functions;
+using Sistema.Models;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Sistema.Controllers
 {
     public class PartialsController : Controller
     {
+        // Cabeçalho para mobile
+        [Autentication]
         public ActionResult HeaderMobile()
         {
             return PartialView();
         }
 
-        public ActionResult Menu()
-        {
-            return PartialView();
-        }
-
+        // Cabeçalho
+        [Autentication]
         public ActionResult Header()
         {
             return PartialView();
         }
 
-        public ActionResult SubHeader()
+        // Menu
+        [Autentication]
+        public ActionResult Menu()
         {
             return PartialView();
         }
 
+        // Breadcrumb
+        [Autentication]
+        public ActionResult SubHeader(string app = "", int id = 0, int id2 = 0)
+        {
+            return PartialView(new PartialsView_Subheader(app, id, id2));
+        }
+
+        // Rodapé
+        [Autentication]
         public ActionResult Footer()
         {
             return PartialView();
         }
 
+        [Autentication]
         public ActionResult QuickPanel()
         {
             return PartialView();
         }
 
+        [Autentication]
         public ActionResult Email()
         {
             return PartialView();
         }
 
+        [Autentication]
         public ActionResult Whatsapp()
         {
             return PartialView();
         }
 
+        [Autentication]
         public ActionResult ScrollTop()
         {
             return PartialView();
         }
 
+        [Autentication]
         public ActionResult Search()
         {
             return PartialView();
         }
 
+        [Autentication]
         public ActionResult Notifications()
         {
             return PartialView();
         }
 
+        [Autentication]
         public ActionResult QuickActions()
         {
             return PartialView();
         }
 
+        [Autentication]
         public ActionResult QuickPanelInfo()
         {
             return PartialView();
         }
 
+        // Lista de idiomas do sistema
+        [Autentication]
         public ActionResult Languages()
         {
             return PartialView();
         }
 
+        // Menu de ações do usuário
+        [Autentication]
         public ActionResult UserPanel()
         {
             return PartialView();

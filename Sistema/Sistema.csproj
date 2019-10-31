@@ -133,12 +133,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Assets\Functions\Connection.cs" />
     <Compile Include="Assets\Functions\String.cs" />
+    <Compile Include="Assets\Functions\Autentication.cs" />
     <Compile Include="Assets\Functions\Language.cs" />
+    <Compile Include="Controllers\Administrador\UsuariosController.cs" />
+    <Compile Include="Controllers\Administrador\PerfisAcessoController.cs" />
     <Compile Include="Controllers\PartialsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\HomeView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1603,7 +1607,6 @@
     <Folder Include="Assets\DB\" />
     <Folder Include="Assets\Entities\" />
     <Folder Include="Assets\Plugins\general\ion-rangeslider\img\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Plugins\general\fortawesome\fontawesome-free\webfonts\fa-brands-400.eot" />
@@ -1635,6 +1638,7 @@
     <Content Include="Assets\Plugins\general\summernote\dist\font\summernote.eot" />
     <Content Include="Assets\Plugins\general\summernote\dist\font\summernote.ttf" />
     <Content Include="Assets\Plugins\general\summernote\dist\font\summernote.woff" />
+    <Compile Include="Models\Administrador\PartialsView.cs" />
     <None Include="packages.config" />
     <Content Include="Views\Partials\HeaderMobile.cshtml" />
     <Content Include="Views\Partials\Menu.cshtml" />
@@ -1652,6 +1656,9 @@
     <Content Include="Views\Partials\Search.cshtml" />
     <Content Include="Views\Partials\Email.cshtml" />
     <Content Include="Views\Partials\Whatsapp.cshtml" />
+    <Content Include="Views\Administrador\Usuarios\Index.cshtml" />
+    <Content Include="Views\Administrador\PerfisAcesso\Index.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
