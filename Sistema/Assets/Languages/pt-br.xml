@@ -22,10 +22,10 @@
   <string id="19" text="personalizar" />
   <string id="20" text="configure o ambiente do sistema" />
   <string id="21" text="sair do sistema" />
-  <string id="22" text="" />
-  <string id="23" text="" />
-  <string id="24" text="" />
-  <string id="25" text="" />
+  <string id="22" text="cadastro de usuários" />
+  <string id="23" text="personalizar dashboard" />
+  <string id="24" text="novo registro" />
+  <string id="25" text="cadastre um novo usúario para ter acesso ao sistema" />
   <string id="26" text="" />
   <string id="27" text="" />
   <string id="28" text="" />

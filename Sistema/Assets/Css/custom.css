@@ -36,6 +36,10 @@
     margin: 0 0.5rem 0 0.2rem !important;
 }
 
+.kt-menu__submenu, .kt-menu__subnav {
+    z-index: 999999999999999999990999999999999999999999999999999999999999999999999999999999999999999999999999999999999999 !important;
+}
+
 @media (min-width: 1025px) {
     .kt-aside__brand {
         background-color: #A6D2FF;

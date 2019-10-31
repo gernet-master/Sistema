@@ -8,17 +8,125 @@
 @using Functions;
 
 <div class="row">
-    <div class="col-xl-12 col-lg-12 order-lg-3 order-xl-1">
-
-        <div class="kt-portlet kt-portlet--height-fluid">
-            <div class="kt-portlet__head">
-                <div class="kt-portlet__head-label">
-                    <h3 class="kt-portlet__head-title">
-                        Usuários<br />
-                    </h3>
+    <div class="col-lg-3">
+        <div class="kt-portlet kt-iconbox kt-iconbox--brand kt-iconbox--animate-slower">
+            <div class="kt-portlet__body">
+                <div class="kt-iconbox__body">
+                    <div class="kt-iconbox__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <rect x="0" y="0" width="24" height="24" />
+                                <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                <path d="M11,11 L11,7 C11,6.44771525 11.4477153,6 12,6 C12.5522847,6 13,6.44771525 13,7 L13,11 L17,11 C17.5522847,11 18,11.4477153 18,12 C18,12.5522847 17.5522847,13 17,13 L13,13 L13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 L11,13 L7,13 C6.44771525,13 6,12.5522847 6,12 C6,11.4477153 6.44771525,11 7,11 L11,11 Z" fill="#000000" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="kt-iconbox__desc">
+                        <h3 class="kt-iconbox__title">
+                            <a class="kt-link" href="#">@Language.XmlLang(24, 2).Text</a>
+                        </h3>
+                        <div class="kt-iconbox__content">
+                            @Language.XmlLang(25, 2).Text
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
+    </div>
+    <div class="col-lg-3">
+        <div class="kt-portlet" data-ktportlet="true">
+            <div class="kt-portlet__head">
+                <div class="kt-portlet__head-label">
+                    <h3 class="kt-portlet__head-title">
+                        Pesquisa Rápida
+                    </h3>
+                </div>
+                <div class="kt-portlet__head-toolbar">
+                    <div class="kt-portlet__head-group">
+                        <a href="#" data-ktportlet-tool="toggle" class="btn btn-sm btn-icon btn-default btn-pill btn-icon-md" aria-describedby="tooltip_k0dnujarp1"><i class="la la-angle-down"></i></a>
+                        <a href="#" data-ktportlet-tool="remove" class="btn btn-sm btn-icon btn-default btn-pill  btn-icon-md" aria-describedby="tooltip_23ocm6cd28"><i class="la la-close"></i></a>
+                        <div class="tooltip tooltip-portlet tooltip bs-tooltip-top" role="tooltip" id="tooltip_k0dnujarp1" aria-hidden="true" x-placement="top" style="position: absolute; will-change: transform; visibility: hidden; top: 0px; left: 0px; transform: translate3d(351px, -39px, 0px);">                            <div class="tooltip-arrow arrow" style="left: 34px;"></div>                            <div class="tooltip-inner">Collapse</div>                        </div><div class="tooltip tooltip-portlet tooltip bs-tooltip-top" role="tooltip" id="tooltip_eufifrmr5r" aria-hidden="true" x-placement="top" style="position: absolute; will-change: transform; visibility: hidden; top: 0px; left: 0px; transform: translate3d(393px, -39px, 0px);">                            <div class="tooltip-arrow arrow" style="left: 28px;"></div>                            <div class="tooltip-inner">Reload</div>                        </div><div class="tooltip tooltip-portlet tooltip bs-tooltip-top" role="tooltip" id="tooltip_23ocm6cd28" aria-hidden="true" x-placement="top" style="position: absolute; will-change: transform; visibility: hidden; top: 0px; left: 0px; transform: translate3d(425px, -39px, 0px);">                            <div class="tooltip-arrow arrow" style="left: 32px;"></div>                            <div class="tooltip-inner">Remove</div>                        </div>
+                    </div>
+                </div>
+            </div>
+            <form class="kt-form kt-form--label-right">
+                <div class="kt-portlet__body">
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Nome, razão social, cpf, cnpj ou e-mail">
+                    </div>
+                    <div class="">
+                        <button type="button" class="btn btn-brand btn-elevate btn-circle btn-icon"><i class="flaticon2-magnifier-tool"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="kt-portlet" data-ktportlet="true">
+            <div class="kt-portlet__head">
+                <div class="kt-portlet__head-label">
+                    <h3 class="kt-portlet__head-title">
+                        Usuários por perfil de acesso
+                    </h3>
+                </div>
+                <div class="kt-portlet__head-toolbar">
+                    <div class="kt-portlet__head-group">
+                        <a href="#" data-ktportlet-tool="toggle" class="btn btn-sm btn-icon btn-default btn-pill btn-icon-md" aria-describedby="tooltip_k0dnujarp1"><i class="la la-angle-down"></i></a>
+                        <a href="#" data-ktportlet-tool="remove" class="btn btn-sm btn-icon btn-default btn-pill  btn-icon-md" aria-describedby="tooltip_23ocm6cd28"><i class="la la-close"></i></a>
+                        <div class="tooltip tooltip-portlet tooltip bs-tooltip-top" role="tooltip" id="tooltip_k0dnujarp1" aria-hidden="true" x-placement="top" style="position: absolute; will-change: transform; visibility: hidden; top: 0px; left: 0px; transform: translate3d(351px, -39px, 0px);">                            <div class="tooltip-arrow arrow" style="left: 34px;"></div>                            <div class="tooltip-inner">Collapse</div>                        </div><div class="tooltip tooltip-portlet tooltip bs-tooltip-top" role="tooltip" id="tooltip_eufifrmr5r" aria-hidden="true" x-placement="top" style="position: absolute; will-change: transform; visibility: hidden; top: 0px; left: 0px; transform: translate3d(393px, -39px, 0px);">                            <div class="tooltip-arrow arrow" style="left: 28px;"></div>                            <div class="tooltip-inner">Reload</div>                        </div><div class="tooltip tooltip-portlet tooltip bs-tooltip-top" role="tooltip" id="tooltip_23ocm6cd28" aria-hidden="true" x-placement="top" style="position: absolute; will-change: transform; visibility: hidden; top: 0px; left: 0px; transform: translate3d(425px, -39px, 0px);">                            <div class="tooltip-arrow arrow" style="left: 32px;"></div>                            <div class="tooltip-inner">Remove</div>                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="kt-portlet__body kt-padding-0" style="">
+                <div class="kt-widget1">
+                    <div class="kt-widget1__item">
+                        <div class="kt-widget1__info">
+                            <h3 class="kt-widget1__title">Ativos</h3>
+                        </div>
+                        <span class="kt-widget1__number kt-font-brand">5</span>
+                    </div>
+                    <div class="kt-widget1__item">
+                        <div class="kt-widget1__info">
+                            <h3 class="kt-widget1__title">Inativos</h3>
+                        </div>
+                        <span class="kt-widget1__number kt-font-danger">10</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="kt-portlet" data-ktportlet="true" id="kt_portlet_tools_5">
+            <div class="kt-portlet__head">
+                <div class="kt-portlet__head-label">
+                    <h3 class="kt-portlet__head-title">
+                        Estatísticas
+                    </h3>
+                </div>
+                @*<div class="kt-portlet__head-toolbar">
+                    <div class="kt-portlet__head-group">
+                        <a href="#" data-ktportlet-tool="toggle" class="btn btn-sm btn-icon btn-default btn-pill btn-icon-md" aria-describedby="tooltip_k0dnujarp1"><i class="la la-angle-down"></i></a>
+                        <a href="#" data-ktportlet-tool="remove" class="btn btn-sm btn-icon btn-default btn-pill  btn-icon-md" aria-describedby="tooltip_23ocm6cd28"><i class="la la-close"></i></a>
+                        <div class="tooltip tooltip-portlet tooltip bs-tooltip-top" role="tooltip" id="tooltip_k0dnujarp1" aria-hidden="true" x-placement="top" style="position: absolute; will-change: transform; visibility: hidden; top: 0px; left: 0px; transform: translate3d(351px, -39px, 0px);">                            <div class="tooltip-arrow arrow" style="left: 34px;"></div>                            <div class="tooltip-inner">Collapse</div>                        </div><div class="tooltip tooltip-portlet tooltip bs-tooltip-top" role="tooltip" id="tooltip_eufifrmr5r" aria-hidden="true" x-placement="top" style="position: absolute; will-change: transform; visibility: hidden; top: 0px; left: 0px; transform: translate3d(393px, -39px, 0px);">                            <div class="tooltip-arrow arrow" style="left: 28px;"></div>                            <div class="tooltip-inner">Reload</div>                        </div><div class="tooltip tooltip-portlet tooltip bs-tooltip-top" role="tooltip" id="tooltip_23ocm6cd28" aria-hidden="true" x-placement="top" style="position: absolute; will-change: transform; visibility: hidden; top: 0px; left: 0px; transform: translate3d(425px, -39px, 0px);">                            <div class="tooltip-arrow arrow" style="left: 32px;"></div>                            <div class="tooltip-inner">Remove</div>                        </div>
+                    </div>
+                </div>*@
+            </div>
+            <div class="kt-portlet__body kt-padding-0" style="">
+                <div class="kt-widget1">
+                    <div class="kt-widget1__item">
+                        <div class="kt-widget1__info">
+                            <h3 class="kt-widget1__title">Ativos</h3>
+                        </div>
+                        <span class="kt-widget1__number kt-font-brand">5</span>
+                    </div>
+                    <div class="kt-widget1__item">
+                        <div class="kt-widget1__info">
+                            <h3 class="kt-widget1__title">Inativos</h3>
+                        </div>
+                        <span class="kt-widget1__number kt-font-danger">10</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
