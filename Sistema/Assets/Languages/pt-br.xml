@@ -26,16 +26,16 @@
   <string id="23" text="personalizar dashboard" />
   <string id="24" text="novo registro" />
   <string id="25" text="cadastre um novo usúario para ter acesso ao sistema" />
-  <string id="26" text="" />
-  <string id="27" text="" />
-  <string id="28" text="" />
-  <string id="29" text="" />
-  <string id="30" text="" />
-  <string id="31" text="" />
-  <string id="32" text="" />
-  <string id="33" text="" />
-  <string id="34" text="" />
-  <string id="35" text="" />
+  <string id="26" text="código usuário" />
+  <string id="27" text="código gernet" />
+  <string id="28" text="nome" />
+  <string id="29" text="usuário" />
+  <string id="30" text="senha" />
+  <string id="31" text="e-mail" />
+  <string id="32" text="perfil de acesso" />
+  <string id="33" text="ativo" />
+  <string id="34" text="master" />
+  <string id="35" text="altera senha no próximo acesso" />
   <string id="36" text="" />
   <string id="37" text="" />
   <string id="38" text="" />

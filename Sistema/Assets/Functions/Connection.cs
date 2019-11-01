@@ -17,7 +17,7 @@ namespace Functions
         public Connection()
         {
             // Variaveis
-            string server = "NOTEBOOK\\SQLEXPRESS";
+            string server = "DIOGO\\SQLEXPRESS";
             string database = "sistema";
             string user = "teste";
             string password = "teste";

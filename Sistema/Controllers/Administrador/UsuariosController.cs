@@ -1,4 +1,5 @@
 ﻿using Functions;
+using Sistema.Models;
 using System.Web.Mvc;
 using System.Web.Routing;
 
@@ -11,7 +12,7 @@ namespace Sistema.Controllers
         [Route("Administrador/Usuarios")]
         public ActionResult Index()
         {
-            return View("~/Views/Administrador/Usuarios/Index.cshtml");
+            return View("~/Views/Administrador/Usuarios/Index.cshtml", new UsuariosView());
         }
     }
 }

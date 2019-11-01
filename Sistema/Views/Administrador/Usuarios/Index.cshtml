@@ -3,130 +3,347 @@
     Data: 01/01/2020 - v.1.0
 *@
 
+@model Sistema.Models.UsuariosView
+
 @Html.Action("SubHeader", "Partials", new { app = "Administrativo/Usuários", id = 0, id2 = 0 })
 
 @using Functions;
 
-<div class="row">
-    <div class="col-lg-3">
-        <div class="kt-portlet kt-iconbox kt-iconbox--brand kt-iconbox--animate-slower">
-            <div class="kt-portlet__body">
-                <div class="kt-iconbox__body">
-                    <div class="kt-iconbox__icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
-                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <rect x="0" y="0" width="24" height="24" />
-                                <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                <path d="M11,11 L11,7 C11,6.44771525 11.4477153,6 12,6 C12.5522847,6 13,6.44771525 13,7 L13,11 L17,11 C17.5522847,11 18,11.4477153 18,12 C18,12.5522847 17.5522847,13 17,13 L13,13 L13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 L11,13 L7,13 C6.44771525,13 6,12.5522847 6,12 C6,11.4477153 6.44771525,11 7,11 L11,11 Z" fill="#000000" />
-                            </g>
-                        </svg>
-                    </div>
-                    <div class="kt-iconbox__desc">
-                        <h3 class="kt-iconbox__title">
-                            <a class="kt-link" href="#">@Language.XmlLang(24, 2).Text</a>
-                        </h3>
-                        <div class="kt-iconbox__content">
-                            @Language.XmlLang(25, 2).Text
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3">
-        <div class="kt-portlet" data-ktportlet="true">
-            <div class="kt-portlet__head">
-                <div class="kt-portlet__head-label">
-                    <h3 class="kt-portlet__head-title">
-                        Pesquisa Rápida
-                    </h3>
-                </div>
-                <div class="kt-portlet__head-toolbar">
-                    <div class="kt-portlet__head-group">
-                        <a href="#" data-ktportlet-tool="toggle" class="btn btn-sm btn-icon btn-default btn-pill btn-icon-md" aria-describedby="tooltip_k0dnujarp1"><i class="la la-angle-down"></i></a>
-                        <a href="#" data-ktportlet-tool="remove" class="btn btn-sm btn-icon btn-default btn-pill  btn-icon-md" aria-describedby="tooltip_23ocm6cd28"><i class="la la-close"></i></a>
-                        <div class="tooltip tooltip-portlet tooltip bs-tooltip-top" role="tooltip" id="tooltip_k0dnujarp1" aria-hidden="true" x-placement="top" style="position: absolute; will-change: transform; visibility: hidden; top: 0px; left: 0px; transform: translate3d(351px, -39px, 0px);">                            <div class="tooltip-arrow arrow" style="left: 34px;"></div>                            <div class="tooltip-inner">Collapse</div>                        </div><div class="tooltip tooltip-portlet tooltip bs-tooltip-top" role="tooltip" id="tooltip_eufifrmr5r" aria-hidden="true" x-placement="top" style="position: absolute; will-change: transform; visibility: hidden; top: 0px; left: 0px; transform: translate3d(393px, -39px, 0px);">                            <div class="tooltip-arrow arrow" style="left: 28px;"></div>                            <div class="tooltip-inner">Reload</div>                        </div><div class="tooltip tooltip-portlet tooltip bs-tooltip-top" role="tooltip" id="tooltip_23ocm6cd28" aria-hidden="true" x-placement="top" style="position: absolute; will-change: transform; visibility: hidden; top: 0px; left: 0px; transform: translate3d(425px, -39px, 0px);">                            <div class="tooltip-arrow arrow" style="left: 32px;"></div>                            <div class="tooltip-inner">Remove</div>                        </div>
-                    </div>
-                </div>
-            </div>
-            <form class="kt-form kt-form--label-right">
+<div class="grid-stack">
+
+    <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="4" data-gs-id="">
+        <div class="grid-stack-item-content">
+            <div class="kt-portlet kt-iconbox kt-iconbox--brand kt-iconbox--animate-slower kt-portlet--sortable">
                 <div class="kt-portlet__body">
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Nome, razão social, cpf, cnpj ou e-mail">
-                    </div>
-                    <div class="">
-                        <button type="button" class="btn btn-brand btn-elevate btn-circle btn-icon"><i class="flaticon2-magnifier-tool"></i></button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class="col-lg-3">
-        <div class="kt-portlet" data-ktportlet="true">
-            <div class="kt-portlet__head">
-                <div class="kt-portlet__head-label">
-                    <h3 class="kt-portlet__head-title">
-                        Usuários por perfil de acesso
-                    </h3>
-                </div>
-                <div class="kt-portlet__head-toolbar">
-                    <div class="kt-portlet__head-group">
-                        <a href="#" data-ktportlet-tool="toggle" class="btn btn-sm btn-icon btn-default btn-pill btn-icon-md" aria-describedby="tooltip_k0dnujarp1"><i class="la la-angle-down"></i></a>
-                        <a href="#" data-ktportlet-tool="remove" class="btn btn-sm btn-icon btn-default btn-pill  btn-icon-md" aria-describedby="tooltip_23ocm6cd28"><i class="la la-close"></i></a>
-                        <div class="tooltip tooltip-portlet tooltip bs-tooltip-top" role="tooltip" id="tooltip_k0dnujarp1" aria-hidden="true" x-placement="top" style="position: absolute; will-change: transform; visibility: hidden; top: 0px; left: 0px; transform: translate3d(351px, -39px, 0px);">                            <div class="tooltip-arrow arrow" style="left: 34px;"></div>                            <div class="tooltip-inner">Collapse</div>                        </div><div class="tooltip tooltip-portlet tooltip bs-tooltip-top" role="tooltip" id="tooltip_eufifrmr5r" aria-hidden="true" x-placement="top" style="position: absolute; will-change: transform; visibility: hidden; top: 0px; left: 0px; transform: translate3d(393px, -39px, 0px);">                            <div class="tooltip-arrow arrow" style="left: 28px;"></div>                            <div class="tooltip-inner">Reload</div>                        </div><div class="tooltip tooltip-portlet tooltip bs-tooltip-top" role="tooltip" id="tooltip_23ocm6cd28" aria-hidden="true" x-placement="top" style="position: absolute; will-change: transform; visibility: hidden; top: 0px; left: 0px; transform: translate3d(425px, -39px, 0px);">                            <div class="tooltip-arrow arrow" style="left: 32px;"></div>                            <div class="tooltip-inner">Remove</div>                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="kt-portlet__body kt-padding-0" style="">
-                <div class="kt-widget1">
-                    <div class="kt-widget1__item">
-                        <div class="kt-widget1__info">
-                            <h3 class="kt-widget1__title">Ativos</h3>
+                    <div class="kt-iconbox__body">
+                        <div class="kt-iconbox__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24" />
+                                    <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                    <path d="M11,11 L11,7 C11,6.44771525 11.4477153,6 12,6 C12.5522847,6 13,6.44771525 13,7 L13,11 L17,11 C17.5522847,11 18,11.4477153 18,12 C18,12.5522847 17.5522847,13 17,13 L13,13 L13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 L11,13 L7,13 C6.44771525,13 6,12.5522847 6,12 C6,11.4477153 6.44771525,11 7,11 L11,11 Z" fill="#000000" />
+                                </g>
+                            </svg>
                         </div>
-                        <span class="kt-widget1__number kt-font-brand">5</span>
-                    </div>
-                    <div class="kt-widget1__item">
-                        <div class="kt-widget1__info">
-                            <h3 class="kt-widget1__title">Inativos</h3>
+                        <div class="kt-iconbox__desc">
+                            <h3 class="kt-iconbox__title">
+                                <a class="kt-link" href="#">@Language.XmlLang(24, 2).Text</a>
+                            </h3>
+                            <div class="kt-iconbox__content">
+                                @Language.XmlLang(25, 2).Text
+                            </div>
                         </div>
-                        <span class="kt-widget1__number kt-font-danger">10</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-lg-3">
-        <div class="kt-portlet" data-ktportlet="true" id="kt_portlet_tools_5">
-            <div class="kt-portlet__head">
-                <div class="kt-portlet__head-label">
-                    <h3 class="kt-portlet__head-title">
-                        Estatísticas
-                    </h3>
+
+    <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="4" data-gs-id="">
+        <div class="grid-stack-item-content">
+            <div class="kt-portlet kt-portlet--sortable" data-ktportlet="true">
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title">
+                            Pesquisa Rápida
+                        </h3>
+                    </div>
+                    <div class="kt-portlet__head-toolbar">
+                        <div class="kt-portlet__head-group">
+                            <a href="#" data-ktportlet-tool="toggle" class="btn btn-sm btn-icon btn-default btn-pill btn-icon-md"><i class="la la-angle-down"></i></a>
+                            <label>
+                                <a href="#" data-ktportlet-tool="options" class="btn btn-sm btn-icon btn-default btn-pill btn-icon-md" dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="la la-bars"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <ul class="kt-nav">
+                                        <li class="kt-nav__section kt-nav__section--first">
+                                            <span class="kt-nav__section-text">Choose an option</span>
+                                        </li>
+                                        <li class="kt-nav__item">
+                                            <a href="#" class="kt-nav__link">
+                                                <i class="kt-nav__link-icon la la-print"></i>
+                                                <span class="kt-nav__link-text">Print</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </label>
+                            <a href="#" data-ktportlet-tool="remove" class="btn btn-sm btn-icon btn-default btn-pill  btn-icon-md"><i class="la la-close"></i></a>
+                        </div>
+                    </div>
                 </div>
-                @*<div class="kt-portlet__head-toolbar">
-                    <div class="kt-portlet__head-group">
-                        <a href="#" data-ktportlet-tool="toggle" class="btn btn-sm btn-icon btn-default btn-pill btn-icon-md" aria-describedby="tooltip_k0dnujarp1"><i class="la la-angle-down"></i></a>
-                        <a href="#" data-ktportlet-tool="remove" class="btn btn-sm btn-icon btn-default btn-pill  btn-icon-md" aria-describedby="tooltip_23ocm6cd28"><i class="la la-close"></i></a>
-                        <div class="tooltip tooltip-portlet tooltip bs-tooltip-top" role="tooltip" id="tooltip_k0dnujarp1" aria-hidden="true" x-placement="top" style="position: absolute; will-change: transform; visibility: hidden; top: 0px; left: 0px; transform: translate3d(351px, -39px, 0px);">                            <div class="tooltip-arrow arrow" style="left: 34px;"></div>                            <div class="tooltip-inner">Collapse</div>                        </div><div class="tooltip tooltip-portlet tooltip bs-tooltip-top" role="tooltip" id="tooltip_eufifrmr5r" aria-hidden="true" x-placement="top" style="position: absolute; will-change: transform; visibility: hidden; top: 0px; left: 0px; transform: translate3d(393px, -39px, 0px);">                            <div class="tooltip-arrow arrow" style="left: 28px;"></div>                            <div class="tooltip-inner">Reload</div>                        </div><div class="tooltip tooltip-portlet tooltip bs-tooltip-top" role="tooltip" id="tooltip_23ocm6cd28" aria-hidden="true" x-placement="top" style="position: absolute; will-change: transform; visibility: hidden; top: 0px; left: 0px; transform: translate3d(425px, -39px, 0px);">                            <div class="tooltip-arrow arrow" style="left: 32px;"></div>                            <div class="tooltip-inner">Remove</div>                        </div>
+                <form class="kt-form kt-form--label-right">
+                    <div class="kt-portlet__body">
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Nome, razão social, cpf, cnpj ou e-mail">
+                        </div>
+                        <div class="">
+                            <button type="button" class="btn btn-brand btn-elevate btn-circle btn-icon"><i class="flaticon2-magnifier-tool"></i></button>
+                        </div>
                     </div>
-                </div>*@
+                </form>
             </div>
-            <div class="kt-portlet__body kt-padding-0" style="">
-                <div class="kt-widget1">
-                    <div class="kt-widget1__item">
-                        <div class="kt-widget1__info">
-                            <h3 class="kt-widget1__title">Ativos</h3>
-                        </div>
-                        <span class="kt-widget1__number kt-font-brand">5</span>
+        </div>
+    </div>
+
+    <div class="grid-stack-item" data-gs-x="4" data-gs-y="4" data-gs-width="4" data-gs-height="4" data-gs-id="">
+        <div class="grid-stack-item-content">
+            <div class="kt-portlet kt-portlet--sortable" data-ktportlet="true">
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title">
+                            Usuários por perfil de acesso
+                        </h3>
                     </div>
-                    <div class="kt-widget1__item">
-                        <div class="kt-widget1__info">
-                            <h3 class="kt-widget1__title">Inativos</h3>
+                    <div class="kt-portlet__head-toolbar">
+                        <div class="kt-portlet__head-group">
+                            <a href="#" data-ktportlet-tool="toggle" class="btn btn-sm btn-icon btn-default btn-pill btn-icon-md"><i class="la la-angle-down"></i></a>
+                            <label>
+                                <a href="#" data-ktportlet-tool="options" class="btn btn-sm btn-icon btn-default btn-pill btn-icon-md" dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="la la-bars"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <ul class="kt-nav">
+                                        <li class="kt-nav__section kt-nav__section--first">
+                                            <span class="kt-nav__section-text">Choose an option</span>
+                                        </li>
+                                        <li class="kt-nav__item">
+                                            <a href="#" class="kt-nav__link">
+                                                <i class="kt-nav__link-icon la la-print"></i>
+                                                <span class="kt-nav__link-text">Print</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </label>
+                            <a href="#" data-ktportlet-tool="remove" class="btn btn-sm btn-icon btn-default btn-pill  btn-icon-md"><i class="la la-close"></i></a>
                         </div>
-                        <span class="kt-widget1__number kt-font-danger">10</span>
                     </div>
+                </div>
+                <div class="kt-portlet__body kt-padding-0" style="">
+                    <div class="kt-widget1">
+                        <div class="kt-widget1__item">
+                            <div class="kt-widget1__info">
+                                <h3 class="kt-widget1__title">Ativos</h3>
+                            </div>
+                            <span class="kt-widget1__number kt-font-brand">5</span>
+                        </div>
+                        <div class="kt-widget1__item">
+                            <div class="kt-widget1__info">
+                                <h3 class="kt-widget1__title">Inativos</h3>
+                            </div>
+                            <span class="kt-widget1__number kt-font-danger">10</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid-stack-item" data-gs-x="4" data-gs-y="4" data-gs-width="4" data-gs-height="4" data-gs-id="">
+        <div class="grid-stack-item-content">
+            <div class="row grid-stack-item-content-header">
+                <div class="col-lg-10 col-md-10">
+                    teste
+                </div>
+                <div class="col-lg-2 col-md-2 text-right">
+                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-cog f18 grid-stack-item-icon"></i>
+                    </a>
+                    <ul class="dropdown-menu menu-widget">
+                        <li>kfdgndifngifd</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row grid-stack-item-content-page">
+                regregregregregreger
+            </div>
+        </div>
+    </div>
+
+    <div class="grid-stack-item" data-gs-x="4" data-gs-y="4" data-gs-width="4" data-gs-height="4" data-gs-id="">
+        <div class="grid-stack-item-content">
+            <div class="kt-portlet kt-portlet--sortable" data-ktportlet="true" id="kt_portlet_tools_5">
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title">
+                            Estatísticas
+                        </h3>
+                    </div>
+                    <div class="kt-portlet__head-toolbar">
+                        <div class="kt-portlet__head-group">
+                            <a href="#" data-ktportlet-tool="toggle" class="btn btn-sm btn-icon btn-default btn-pill btn-icon-md"><i class="la la-angle-down"></i></a>
+                            <label>
+                                <a href="#" data-ktportlet-tool="options" class="btn btn-sm btn-icon btn-default btn-pill btn-icon-md" dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="la la-bars"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <ul class="kt-nav">
+                                        <li class="kt-nav__section kt-nav__section--first">
+                                            <span class="kt-nav__section-text">Choose an option</span>
+                                        </li>
+                                        <li class="kt-nav__item">
+                                            <a href="#" class="kt-nav__link">
+                                                <i class="kt-nav__link-icon la la-print"></i>
+                                                <span class="kt-nav__link-text">Print</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </label>
+                            <a href="#" data-ktportlet-tool="remove" class="btn btn-sm btn-icon btn-default btn-pill  btn-icon-md"><i class="la la-close"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="kt-portlet__body kt-padding-0" style="">
+                    <div class="kt-widget1">
+                        <div class="kt-widget1__item">
+                            <div class="kt-widget1__info">
+                                <h3 class="kt-widget1__title">Ativos</h3>
+                            </div>
+                            <span class="kt-widget1__number kt-font-brand">5</span>
+                        </div>
+                        <div class="kt-widget1__item">
+                            <div class="kt-widget1__info">
+                                <h3 class="kt-widget1__title">Inativos</h3>
+                            </div>
+                            <span class="kt-widget1__number kt-font-danger">10</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid-stack-item" data-gs-x="4" data-gs-y="4" data-gs-width="4" data-gs-height="4" data-gs-id="">
+        <div class="grid-stack-item-content">
+            <div class="kt-portlet kt-portlet--mobile kt-portlet--sortable">
+                <div class="kt-portlet__head kt-portlet__head--lg">
+                    <div class="kt-portlet__head-label">
+                        <span class="kt-portlet__head-icon">
+                            <i class="kt-font-brand flaticon2-list"></i>
+                        </span>
+                        <h3 class="kt-portlet__head-title">
+                            Lista de registros
+                        </h3>
+                    </div>
+                    <div class="kt-portlet__head-toolbar">
+                        <div class="kt-portlet__head-wrapper">
+                            <div class="kt-portlet__head-actions">
+                                <div class="dropdown dropdown-inline">
+                                    <button type="button" class="btn btn-default btn-icon-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="la la-download"></i> Export
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <ul class="kt-nav">
+                                            <li class="kt-nav__section kt-nav__section--first">
+                                                <span class="kt-nav__section-text">Choose an option</span>
+                                            </li>
+                                            <li class="kt-nav__item">
+                                                <a href="#" class="kt-nav__link">
+                                                    <i class="kt-nav__link-icon la la-print"></i>
+                                                    <span class="kt-nav__link-text">Print</span>
+                                                </a>
+                                            </li>
+                                            <li class="kt-nav__item">
+                                                <a href="#" class="kt-nav__link">
+                                                    <i class="kt-nav__link-icon la la-copy"></i>
+                                                    <span class="kt-nav__link-text">Copy</span>
+                                                </a>
+                                            </li>
+                                            <li class="kt-nav__item">
+                                                <a href="#" class="kt-nav__link">
+                                                    <i class="kt-nav__link-icon la la-file-excel-o"></i>
+                                                    <span class="kt-nav__link-text">Excel</span>
+                                                </a>
+                                            </li>
+                                            <li class="kt-nav__item">
+                                                <a href="#" class="kt-nav__link">
+                                                    <i class="kt-nav__link-icon la la-file-text-o"></i>
+                                                    <span class="kt-nav__link-text">CSV</span>
+                                                </a>
+                                            </li>
+                                            <li class="kt-nav__item">
+                                                <a href="#" class="kt-nav__link">
+                                                    <i class="kt-nav__link-icon la la-file-pdf-o"></i>
+                                                    <span class="kt-nav__link-text">PDF</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="kt-portlet__head-group kt-margin-l-20">
+                            <a href="#" data-ktportlet-tool="toggle" class="btn btn-sm btn-icon btn-default btn-pill btn-icon-md"><i class="la la-angle-down"></i></a>
+                            <label>
+                                <a href="#" data-ktportlet-tool="options" class="btn btn-sm btn-icon btn-default btn-pill btn-icon-md" dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="la la-bars"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <ul class="kt-nav">
+                                        <li class="kt-nav__section kt-nav__section--first">
+                                            <span class="kt-nav__section-text">Choose an option</span>
+                                        </li>
+                                        <li class="kt-nav__item">
+                                            <a href="#" class="kt-nav__link">
+                                                <i class="kt-nav__link-icon la la-print"></i>
+                                                <span class="kt-nav__link-text">Print</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </label>
+                            <a href="#" data-ktportlet-tool="remove" class="btn btn-sm btn-icon btn-default btn-pill  btn-icon-md"><i class="la la-close"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="kt-portlet__body">
+                    <div class="dataTables_wrapper dt-bootstrap4">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table table-striped- table-bordered table-hover table-checkable dataTable dtr-inline" role="grid">
+                                    <tfoot>
+                                        <tr>
+                                            <th rowspan="1" colspan="1" style="">Country</th>
+                                            <th rowspan="1" colspan="1" style="">Ship City</th>
+                                            <th rowspan="1" colspan="1" style="">Company Agent</th>
+                                            <th rowspan="1" colspan="1" style="">Ship Date</th>
+                                            <th rowspan="1" colspan="1" style="">Status</th>
+                                            <th rowspan="1" colspan="1" style="">Type</th>
+                                            <th rowspan="1" colspan="1">Actions</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        @{
+                                            foreach (var m in Model.usuarios)
+                                            {
+                                                <tr role="row">
+                                                    <td>@m.txnome.value</td>
+                                                    <td>@m.txusuario.value</td>
+                                                    <td>@m.txemail.value</td>
+                                                    <td>@m.idperfil.value</td>
+                                                    <td>@m.flativo.value</td>
+                                                    <td></td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View">
+                                                            <i class="la la-edit"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View">
+                                                            <i class="la la-trash"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+
+                                    </tbody>
+                                </table><div id="kt_table_1_processing" class="dataTables_processing card" style="display: none;">Processing...</div>
+                            </div>
+                        </div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="kt_table_1_info" role="status" aria-live="polite">Showing 1 to 10 of 40 entries</div></div><div class="col-sm-12 col-md-7 dataTables_pager"><div class="dataTables_length" id="kt_table_1_length"><label>Display <select name="kt_table_1_length" aria-controls="kt_table_1" class="custom-select custom-select-sm form-control form-control-sm"><option value="5">5</option><option value="10">10</option><option value="25">25</option><option value="50">50</option></select></label></div><div class="dataTables_paginate paging_simple_numbers" id="kt_table_1_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="kt_table_1_previous"><a href="#" aria-controls="kt_table_1" data-dt-idx="0" tabindex="0" class="page-link"><i class="la la-angle-left"></i></a></li><li class="paginate_button page-item active"><a href="#" aria-controls="kt_table_1" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="kt_table_1" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="kt_table_1" data-dt-idx="3" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="kt_table_1" data-dt-idx="4" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item next" id="kt_table_1_next"><a href="#" aria-controls="kt_table_1" data-dt-idx="5" tabindex="0" class="page-link"><i class="la la-angle-right"></i></a></li></ul></div></div></div>
+                    </div>
+
+                    <!--end: Datatable -->
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Scripts -->
+@section scripts {
+    @Scripts.Render("~/gridstack")
+}

@@ -118,7 +118,7 @@ namespace Sistema
                 //"~/Assets/plugins/custom/uppy/dist/uppy.min.js",
                 //"~/Assets/plugins/custom/tinymce/tinymce.min.js",
                 //"~/Assets/plugins/custom/tinymce/themes/silver/theme.js",
-                //"~/Assets/plugins/custom/tinymce/themes/mobile/theme.js"
+                //"~/Assets/plugins/custom/tinymce/themes/mobile/theme.js",
             ));
 
             bundles.Add(new ScriptBundle("~/timer").Include(
@@ -126,6 +126,11 @@ namespace Sistema
 
             bundles.Add(new ScriptBundle("~/footer").Include(
                "~/Assets/js/footer.js"));
+
+            bundles.Add(new ScriptBundle("~/gridstack").Include(               
+               "~/assets/js/pages/components/gridstack/gridstack.js",
+               "~/assets/js/pages/components/gridstack/gridstack.jQueryUI.js",
+               "~/assets/js/pages/components/gridstack/custom.js"));
 
             bundles.Add(new StyleBundle("~/css").Include(
                 "~/Assets/plugins/general/perfect-scrollbar/css/perfect-scrollbar.css",
@@ -182,6 +187,7 @@ namespace Sistema
                 "~/Assets/css/skins/header/menu/light.css",
                 "~/Assets/css/skins/brand/dark.css",
                 "~/Assets/css/skins/aside/dark.css",
+                "~/Assets/plugins/custom/gridstack/gridstack.css",
                  "~/Assets/css/custom.css"
             ));
         }
