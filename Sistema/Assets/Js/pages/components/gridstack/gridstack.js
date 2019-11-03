@@ -754,11 +754,17 @@
 
         this.opts.isNested = isNested;
 
+
         isAutoCellHeight = this.opts.cellHeight === 'auto';
+        isDynamicCellHeight = this.opts.cellHeight === 'dynamic';
         if (isAutoCellHeight) {
             self.cellHeight(self.cellWidth(), true);
         } else {
-            this.cellHeight(this.opts.cellHeight, true);
+            if (isDynamicCellHeight) {
+                this.cellHeight(100, true);
+            } else {
+                this.cellHeight(this.opts.cellHeight, true);
+            };
         }
         this.verticalMargin(this.opts.verticalMargin, true);
 
@@ -1065,7 +1071,8 @@
         }
     };
 
-    GridStack.prototype._updateStyles = function(maxHeight) {
+    GridStack.prototype._updateStyles = function (maxHeight) {
+
         if (this._styles === null || typeof this._styles === 'undefined') {
             return;
         }
@@ -1105,7 +1112,7 @@
         if (this._styles._max === 0) {
             Utils.insertCSSRule(this._styles, prefix, 'min-height: ' + getHeight(1, 0) + ';', 0);
         }
-
+        
         if (maxHeight > this._styles._max) {
             for (var i = this._styles._max; i < maxHeight; ++i) {
                 Utils.insertCSSRule(this._styles,
@@ -1129,6 +1136,7 @@
                     i
                 );
             }
+
             this._styles._max = maxHeight;
         }
     };
@@ -1387,6 +1395,7 @@
         el = $(el);
 
         el.addClass(this.opts.itemClass);
+
         var node = self.grid.addNode({
             x: parseInt(el.attr('data-gs-x'), 10),
             y: parseInt(el.attr('data-gs-y'), 10),
