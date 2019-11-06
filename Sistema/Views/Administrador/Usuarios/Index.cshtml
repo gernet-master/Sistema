@@ -11,73 +11,85 @@
 
 <div class="grid-stack">
 
-    <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="3" data-gs-height="3">
-        <div class="grid-stack-item-content ">
-            <div class="kt-portlet kt-iconbox kt-iconbox--brand kt-iconbox--animate-slower kt-margin-b-0">
-            <div class="kt-portlet__body">
-                <div class="kt-iconbox__body">
-                    <div class="kt-iconbox__icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
-                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <rect x="0" y="0" width="24" height="24" />
-                                <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                <path d="M11,11 L11,7 C11,6.44771525 11.4477153,6 12,6 C12.5522847,6 13,6.44771525 13,7 L13,11 L17,11 C17.5522847,11 18,11.4477153 18,12 C18,12.5522847 17.5522847,13 17,13 L13,13 L13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 L11,13 L7,13 C6.44771525,13 6,12.5522847 6,12 C6,11.4477153 6.44771525,11 7,11 L11,11 Z" fill="#000000" />
-                            </g>
-                        </svg>
-                    </div>
-                    <div class="kt-iconbox__desc">
-                        <h3 class="kt-iconbox__title">
-                            <a class="kt-link" href="#">@Language.XmlLang(24, 2).Text</a>
-                        </h3>
-                        <div class="kt-iconbox__content">
-                            @Language.XmlLang(25, 2).Text
+    <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="3" data-gs-height="2" data-gs-no-resize="true">
+        <div class="grid-stack-item-content bg-light-blue kt-radius-4">
+            <div class="kt-portlet kt-iconbox kt-iconbox--brand kt-iconbox--animate-slower kt-margin-b-0 kt-padding-8 shadow-none">
+                <div class="kt-portlet__body">
+                    <div class="kt-iconbox__body">
+                        <div class="kt-iconbox__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24" />
+                                    <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                    <path d="M11,11 L11,7 C11,6.44771525 11.4477153,6 12,6 C12.5522847,6 13,6.44771525 13,7 L13,11 L17,11 C17.5522847,11 18,11.4477153 18,12 C18,12.5522847 17.5522847,13 17,13 L13,13 L13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 L11,13 L7,13 C6.44771525,13 6,12.5522847 6,12 C6,11.4477153 6.44771525,11 7,11 L11,11 Z" fill="#000000" />
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="kt-iconbox__desc">
+                            <h3 class="kt-iconbox__title">
+                                <a class="kt-link" href="#">@Language.XmlLang(24, 2).Text</a>
+                            </h3>
+                            <div class="kt-iconbox__content">
+                                @Language.XmlLang(25, 2).Text
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
     </div>
 
-    <div class="grid-stack-item" data-gs-x="0" data-gs-y="3" data-gs-width="3" data-gs-height="3">
-        <div class="grid-stack-item-content">
-            <div class="kt-portlet kt-portlet--sortable" data-ktportlet="true">
+    <!-- Pesquisa rápida -->
+    <div class="grid-stack-item" data-gs-x="0" data-gs-y="2" data-gs-width="3" data-gs-height="3" data-gs-min-height="3" data-gs-min-width="3">
+        <div class="grid-stack-item-content bg-white kt-radius-4">
+            <div class="kt-portlet kt-portlet--sortable shadow-none kt-margin-b-0" data-ktportlet="true">
                 <div class="kt-portlet__head">
+
                     <div class="kt-portlet__head-label">
                         <h3 class="kt-portlet__head-title">
                             Pesquisa Rápida
                         </h3>
                     </div>
+
                     <div class="kt-portlet__head-toolbar">
                         <div class="kt-portlet__head-group">
-                            <a href="#" data-ktportlet-tool="toggle" class="btn btn-sm btn-icon btn-default btn-pill btn-icon-md"><i class="la la-angle-down"></i></a>
-                            <label>
-                                <a href="#" data-ktportlet-tool="options" class="btn btn-sm btn-icon btn-default btn-pill btn-icon-md" dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="la la-bars"></i></a>
+
+                            <!-- Opções -->
+                            <label data-toggle="kt-tooltip" title="Opções" data-placement="left">
+                                <a href="#" class="btn btn-sm btn-icon btn-default btn-pill btn-icon-md" dropdown-toggle data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="la la-bars"></i>
+                                </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <ul class="kt-nav">
-                                        <li class="kt-nav__section kt-nav__section--first">
-                                            <span class="kt-nav__section-text">Choose an option</span>
+                                        <li class="kt-nav__item">
+                                            <a href="#" class="kt-nav__link" data-ktportlet-tool="toggle">
+                                                <i class="kt-nav__link-icon la la-angle-down"></i>
+                                                <span class="kt-nav__link-text">Minimizar</span>
+                                            </a>
                                         </li>
                                         <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link">
-                                                <i class="kt-nav__link-icon la la-print"></i>
-                                                <span class="kt-nav__link-text">Print</span>
+                                            <a href="#" class="kt-nav__link" data-ktportlet-tool="remove">
+                                                <i class="kt-nav__link-icon la la-close"></i>
+                                                <span class="kt-nav__link-text">Remover</span>
                                             </a>
                                         </li>
                                     </ul>
                                 </div>
                             </label>
-                            <a href="#" data-ktportlet-tool="remove" class="btn btn-sm btn-icon btn-default btn-pill  btn-icon-md"><i class="la la-close"></i></a>
+
                         </div>
                     </div>
+
                 </div>
                 <form class="kt-form kt-form--label-right">
                     <div class="kt-portlet__body">
-                        <div class="form-group">
-                            <input type="email" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Nome, razão social, cpf, cnpj ou e-mail">
-                        </div>
-                        <div class="">
-                            <button type="button" class="btn btn-brand btn-elevate btn-circle btn-icon"><i class="flaticon2-magnifier-tool"></i></button>
+                        <div class="form-group ">
+                            <div class="input-group">
+                                <input type="email" class="form-control" id="" aria-describedby="" placeholder="Nome, razão social, cpf, cnpj ou e-mail">
+                                <div class="input-group-append">
+                                    <button class="btn btn-brand btn-elevate btn-icon"><i class="flaticon2-magnifier-tool"></i></button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -85,9 +97,10 @@
         </div>
     </div>
 
-    <div class="grid-stack-item" data-gs-x="0" data-gs-y="6" data-gs-width="3" data-gs-height="3">
-        <div class="grid-stack-item-content">
-            <div class="kt-portlet kt-portlet--sortable" data-ktportlet="true">
+    <!-- Usuários por perfil de acesso -->
+    <div class="grid-stack-item" data-gs-x="0" data-gs-y="5" data-gs-width="3" data-gs-height="3" data-gs-no-resize="true" data-gs-original-height="3">
+        <div class="grid-stack-item-content bg-white kt-radius-4">
+            <div class="kt-portlet kt-portlet--sortable shadow-none kt-margin-b-0" data-ktportlet="true">
                 <div class="kt-portlet__head">
                     <div class="kt-portlet__head-label">
                         <h3 class="kt-portlet__head-title">
@@ -96,24 +109,30 @@
                     </div>
                     <div class="kt-portlet__head-toolbar">
                         <div class="kt-portlet__head-group">
-                            <a href="#" data-ktportlet-tool="toggle" class="btn btn-sm btn-icon btn-default btn-pill btn-icon-md"><i class="la la-angle-down"></i></a>
-                            <label>
-                                <a href="#" data-ktportlet-tool="options" class="btn btn-sm btn-icon btn-default btn-pill btn-icon-md" dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="la la-bars"></i></a>
+
+                            <!-- Opções -->
+                            <label data-toggle="kt-tooltip" title="Opções" data-placement="left">
+                                <a href="#" class="btn btn-sm btn-icon btn-default btn-pill btn-icon-md" dropdown-toggle data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="la la-bars"></i>
+                                </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <ul class="kt-nav">
-                                        <li class="kt-nav__section kt-nav__section--first">
-                                            <span class="kt-nav__section-text">Choose an option</span>
+                                        <li class="kt-nav__item">
+                                            <a href="#" class="kt-nav__link" data-ktportlet-tool="toggle">
+                                                <i class="kt-nav__link-icon la la-angle-down"></i>
+                                                <span class="kt-nav__link-text">Minimizar</span>
+                                            </a>
                                         </li>
                                         <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link">
-                                                <i class="kt-nav__link-icon la la-print"></i>
-                                                <span class="kt-nav__link-text">Print</span>
+                                            <a href="#" class="kt-nav__link" data-ktportlet-tool="remove">
+                                                <i class="kt-nav__link-icon la la-close"></i>
+                                                <span class="kt-nav__link-text">Remover</span>
                                             </a>
                                         </li>
                                     </ul>
                                 </div>
                             </label>
-                            <a href="#" data-ktportlet-tool="remove" class="btn btn-sm btn-icon btn-default btn-pill  btn-icon-md"><i class="la la-close"></i></a>
+
                         </div>
                     </div>
                 </div>
@@ -137,9 +156,10 @@
         </div>
     </div>
 
-    <div class="grid-stack-item" data-gs-x="0" data-gs-y="9" data-gs-width="3" data-gs-height="3">
-        <div class="grid-stack-item-content">
-            <div class="kt-portlet kt-portlet--sortable" data-ktportlet="true" id="kt_portlet_tools_5">
+    <!-- Estatísticas -->
+    <div class="grid-stack-item" data-gs-x="0" data-gs-y="8" data-gs-width="3" data-gs-height="3" data-gs-no-resize="true" data-gs-original-height="3">
+        <div class="grid-stack-item-content bg-white kt-radius-4">
+            <div class="kt-portlet kt-portlet--sortable shadow-none kt-margin-b-0" data-ktportlet="true" id="kt_portlet_tools_5">
                 <div class="kt-portlet__head">
                     <div class="kt-portlet__head-label">
                         <h3 class="kt-portlet__head-title">
@@ -148,24 +168,30 @@
                     </div>
                     <div class="kt-portlet__head-toolbar">
                         <div class="kt-portlet__head-group">
-                            <a href="#" data-ktportlet-tool="toggle" class="btn btn-sm btn-icon btn-default btn-pill btn-icon-md"><i class="la la-angle-down"></i></a>
-                            <label>
-                                <a href="#" data-ktportlet-tool="options" class="btn btn-sm btn-icon btn-default btn-pill btn-icon-md" dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="la la-bars"></i></a>
+
+                            <!-- Opções -->
+                            <label data-toggle="kt-tooltip" title="Opções" data-placement="left">
+                                <a href="#" class="btn btn-sm btn-icon btn-default btn-pill btn-icon-md" dropdown-toggle data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="la la-bars"></i>
+                                </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <ul class="kt-nav">
-                                        <li class="kt-nav__section kt-nav__section--first">
-                                            <span class="kt-nav__section-text">Choose an option</span>
+                                        <li class="kt-nav__item">
+                                            <a href="#" class="kt-nav__link" data-ktportlet-tool="toggle">
+                                                <i class="kt-nav__link-icon la la-angle-down"></i>
+                                                <span class="kt-nav__link-text">Minimizar</span>
+                                            </a>
                                         </li>
                                         <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link">
-                                                <i class="kt-nav__link-icon la la-print"></i>
-                                                <span class="kt-nav__link-text">Print</span>
+                                            <a href="#" class="kt-nav__link" data-ktportlet-tool="remove">
+                                                <i class="kt-nav__link-icon la la-close"></i>
+                                                <span class="kt-nav__link-text">Remover</span>
                                             </a>
                                         </li>
                                     </ul>
                                 </div>
                             </label>
-                            <a href="#" data-ktportlet-tool="remove" class="btn btn-sm btn-icon btn-default btn-pill  btn-icon-md"><i class="la la-close"></i></a>
+
                         </div>
                     </div>
                 </div>
@@ -189,73 +215,28 @@
         </div>
     </div>
 
-    <div class="grid-stack-item" data-gs-x="4" data-gs-y="0" data-gs-width="9" data-gs-height="9">
-        <div class="grid-stack-item-content">
-            <div class="kt-portlet kt-portlet--mobile kt-portlet--sortable">
-                <div class="kt-portlet__head kt-portlet__head--lg">
+    <!-- Listagem -->
+    <div class="grid-stack-item" data-gs-x="4" data-gs-y="0" data-gs-width="9" data-gs-height="9" data-gs-no-resize="true" data-gs-original-height="9">
+        <div class="grid-stack-item-content bg-white kt-radius-4">
+            <div class="kt-portlet kt-portlet--sortable shadow-none kt-margin-b-0" data-ktportlet="true" id="kt_portlet_tools_5">
+                <div class="kt-portlet__head">
                     <div class="kt-portlet__head-label">
-                        <span class="kt-portlet__head-icon">
-                            <i class="kt-font-brand flaticon2-list"></i>
-                        </span>
                         <h3 class="kt-portlet__head-title">
                             Lista de registros
                         </h3>
                     </div>
                     <div class="kt-portlet__head-toolbar">
-                        <div class="kt-portlet__head-wrapper">
-                            <div class="kt-portlet__head-actions">
-                                <div class="dropdown dropdown-inline">
-                                    <button type="button" class="btn btn-default btn-icon-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="la la-download"></i> Export
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <ul class="kt-nav">
-                                            <li class="kt-nav__section kt-nav__section--first">
-                                                <span class="kt-nav__section-text">Choose an option</span>
-                                            </li>
-                                            <li class="kt-nav__item">
-                                                <a href="#" class="kt-nav__link">
-                                                    <i class="kt-nav__link-icon la la-print"></i>
-                                                    <span class="kt-nav__link-text">Print</span>
-                                                </a>
-                                            </li>
-                                            <li class="kt-nav__item">
-                                                <a href="#" class="kt-nav__link">
-                                                    <i class="kt-nav__link-icon la la-copy"></i>
-                                                    <span class="kt-nav__link-text">Copy</span>
-                                                </a>
-                                            </li>
-                                            <li class="kt-nav__item">
-                                                <a href="#" class="kt-nav__link">
-                                                    <i class="kt-nav__link-icon la la-file-excel-o"></i>
-                                                    <span class="kt-nav__link-text">Excel</span>
-                                                </a>
-                                            </li>
-                                            <li class="kt-nav__item">
-                                                <a href="#" class="kt-nav__link">
-                                                    <i class="kt-nav__link-icon la la-file-text-o"></i>
-                                                    <span class="kt-nav__link-text">CSV</span>
-                                                </a>
-                                            </li>
-                                            <li class="kt-nav__item">
-                                                <a href="#" class="kt-nav__link">
-                                                    <i class="kt-nav__link-icon la la-file-pdf-o"></i>
-                                                    <span class="kt-nav__link-text">PDF</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="kt-portlet__head-group kt-margin-l-20">
-                            <a href="#" data-ktportlet-tool="toggle" class="btn btn-sm btn-icon btn-default btn-pill btn-icon-md"><i class="la la-angle-down"></i></a>
-                            <label>
-                                <a href="#" data-ktportlet-tool="options" class="btn btn-sm btn-icon btn-default btn-pill btn-icon-md" dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="la la-bars"></i></a>
+                        <div class="kt-portlet__head-group">                           
+
+                            <!-- Opções -->
+                            <label data-toggle="kt-tooltip" title="Opções" data-placement="left">
+                                <a href="#" class="btn btn-sm btn-icon btn-default btn-pill btn-icon-md" dropdown-toggle data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="la la-bars"></i>
+                                </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <ul class="kt-nav">
                                         <li class="kt-nav__section kt-nav__section--first">
-                                            <span class="kt-nav__section-text">Choose an option</span>
+                                            <span class="kt-nav__section-text">Exportar</span>
                                         </li>
                                         <li class="kt-nav__item">
                                             <a href="#" class="kt-nav__link">
@@ -263,14 +244,51 @@
                                                 <span class="kt-nav__link-text">Print</span>
                                             </a>
                                         </li>
+                                        <li class="kt-nav__item">
+                                            <a href="#" class="kt-nav__link">
+                                                <i class="kt-nav__link-icon la la-copy"></i>
+                                                <span class="kt-nav__link-text">Copy</span>
+                                            </a>
+                                        </li>
+                                        <li class="kt-nav__item">
+                                            <a href="#" class="kt-nav__link">
+                                                <i class="kt-nav__link-icon la la-file-excel-o"></i>
+                                                <span class="kt-nav__link-text">Excel</span>
+                                            </a>
+                                        </li>
+                                        <li class="kt-nav__item">
+                                            <a href="#" class="kt-nav__link">
+                                                <i class="kt-nav__link-icon la la-file-text-o"></i>
+                                                <span class="kt-nav__link-text">CSV</span>
+                                            </a>
+                                        </li>
+                                        <li class="kt-nav__item">
+                                            <a href="#" class="kt-nav__link">
+                                                <i class="kt-nav__link-icon la la-file-pdf-o"></i>
+                                                <span class="kt-nav__link-text">PDF</span>
+                                            </a>
+                                        </li>
+                                        <li class="kt-nav__item"><hr /></li>
+                                        <li class="kt-nav__item">
+                                            <a href="#" class="kt-nav__link" data-ktportlet-tool="toggle">
+                                                <i class="kt-nav__link-icon la la-angle-down"></i>
+                                                <span class="kt-nav__link-text">Minimizar</span>
+                                            </a>
+                                        </li>
+                                        <li class="kt-nav__item">
+                                            <a href="#" class="kt-nav__link" data-ktportlet-tool="remove">
+                                                <i class="kt-nav__link-icon la la-close"></i>
+                                                <span class="kt-nav__link-text">Remover</span>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </label>
-                            <a href="#" data-ktportlet-tool="remove" class="btn btn-sm btn-icon btn-default btn-pill  btn-icon-md"><i class="la la-close"></i></a>
+
                         </div>
                     </div>
                 </div>
-                <div class="kt-portlet__body">
+                <div class="kt-portlet__body" style="">
                     <div class="dataTables_wrapper dt-bootstrap4">
                         <div class="row">
                             <div class="col-sm-12">
@@ -314,12 +332,11 @@
                             </div>
                         </div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="kt_table_1_info" role="status" aria-live="polite">Showing 1 to 10 of 40 entries</div></div><div class="col-sm-12 col-md-7 dataTables_pager"><div class="dataTables_length" id="kt_table_1_length"><label>Display <select name="kt_table_1_length" aria-controls="kt_table_1" class="custom-select custom-select-sm form-control form-control-sm"><option value="5">5</option><option value="10">10</option><option value="25">25</option><option value="50">50</option></select></label></div><div class="dataTables_paginate paging_simple_numbers" id="kt_table_1_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="kt_table_1_previous"><a href="#" aria-controls="kt_table_1" data-dt-idx="0" tabindex="0" class="page-link"><i class="la la-angle-left"></i></a></li><li class="paginate_button page-item active"><a href="#" aria-controls="kt_table_1" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="kt_table_1" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="kt_table_1" data-dt-idx="3" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="kt_table_1" data-dt-idx="4" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item next" id="kt_table_1_next"><a href="#" aria-controls="kt_table_1" data-dt-idx="5" tabindex="0" class="page-link"><i class="la la-angle-right"></i></a></li></ul></div></div></div>
                     </div>
-
-                    <!--end: Datatable -->
                 </div>
             </div>
         </div>
     </div>
+    
 </div>
 
 <!-- Scripts -->

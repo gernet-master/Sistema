@@ -124,13 +124,16 @@ namespace Sistema
             bundles.Add(new ScriptBundle("~/timer").Include(
                 "~/Assets/js/timer.js"));
 
+            bundles.Add(new ScriptBundle("~/login").Include(
+                "~/Assets/js/pages/custom/login/login-general.js"));
+
             bundles.Add(new ScriptBundle("~/footer").Include(
                "~/Assets/js/footer.js"));
 
-            bundles.Add(new ScriptBundle("~/gridstack").Include(               
-               "~/assets/js/pages/components/gridstack/gridstack.js",
-               "~/assets/js/pages/components/gridstack/gridstack.jQueryUI.js",
-               "~/assets/js/pages/components/gridstack/custom.js"));
+            bundles.Add(new ScriptBundle("~/gridstack").Include(
+               "~/Assets/js/pages/components/gridstack/gridstack.js",
+               "~/Assets/js/pages/components/gridstack/gridstack.jQueryUI.js",
+               "~/Assets/js/pages/components/gridstack/custom.js"));
 
             bundles.Add(new StyleBundle("~/css").Include(
                 "~/Assets/plugins/general/perfect-scrollbar/css/perfect-scrollbar.css",
@@ -189,6 +192,10 @@ namespace Sistema
                 "~/Assets/css/skins/aside/dark.css",
                 "~/Assets/plugins/custom/gridstack/gridstack.css",
                  "~/Assets/css/custom.css"
+            ));
+
+            bundles.Add(new StyleBundle("~/login").Include(
+                "~/Assets/css/login/login.css"
             ));
         }
     }

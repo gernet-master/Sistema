@@ -140,6 +140,7 @@
     <Compile Include="Assets\Functions\Language.cs" />
     <Compile Include="Controllers\Administrador\UsuariosController.cs" />
     <Compile Include="Controllers\Administrador\PerfisAcessoController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PartialsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -150,7 +151,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Clients\1\logo.png" />
     <Content Include="Assets\Css\custom.css" />
+    <Content Include="Assets\Css\login\login.css" />
+    <Content Include="Assets\Css\login\login.min.css" />
+    <Content Include="Assets\Css\login\login.rtl.css" />
+    <Content Include="Assets\Css\login\login.rtl.min.css" />
     <Content Include="Assets\Css\skins\aside\dark.css" />
     <Content Include="Assets\Css\skins\aside\dark.min.css" />
     <Content Include="Assets\Css\skins\aside\dark.rtl.css" />
@@ -1530,9 +1536,10 @@
     <Content Include="Views\Partials\Search.cshtml" />
     <Content Include="Views\Partials\Email.cshtml" />
     <Content Include="Views\Partials\Whatsapp.cshtml" />
-    <Content Include="Views\Administrador\Usuarios\Index.cshtml" />
     <Content Include="Views\Administrador\PerfisAcesso\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Administrador\Usuarios\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

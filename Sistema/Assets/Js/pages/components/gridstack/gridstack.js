@@ -828,7 +828,7 @@
             self.cellHeight(self.cellWidth(), false);
         }, 100);
 
-        this.onResizeHandler = function() {
+        this.onResizeHandler = function () {            
             if (isAutoCellHeight) {
                 self._updateHeightsOnResize();
             }
@@ -909,7 +909,7 @@
         if (!self.opts.staticGrid && self.opts.acceptWidgets) {
             var draggingElement = null;
 
-            var onDrag = function(event, ui) {
+            var onDrag = function (event, ui) {               
                 var el = draggingElement;
                 var node = el.data('_gridstack_node');
                 var pos = self.getCellFromPixel({left: event.pageX, top: event.pageY}, true);
@@ -1280,7 +1280,8 @@
             }
         };
 
-        var onStartMoving = function(event, ui) {
+        var onStartMoving = function (event, ui) {
+            
             self.container.append(self.placeholder);
             var o = $(this);
             self.grid.cleanNodes();
@@ -1307,7 +1308,7 @@
             }
         };
 
-        var onEndMoving = function(event, ui) {
+        var onEndMoving = function (event, ui) {
             var o = $(this);
             if (!o.data('_gridstack_node')) {
                 return;

@@ -1,5 +1,17 @@
-﻿.kt-footer {
+﻿.kt-radius-4 {
+    border-radius:4px;
+}
+
+.kt-footer {
     padding: 8px 0px 6px 0px !important;
+}
+
+.kt-padding-8 {
+    padding:8px;
+}
+
+.bg-light-blue {
+    background-color: #F4F5FF;
 }
 
 .kt-footer .kt-footer__menu .kt-footer__menu-link {
@@ -34,6 +46,19 @@
 
 .separator-arrow {
     margin: 0 0.5rem 0 0.2rem !important;
+}
+
+.grid-stack-item-content {
+    -webkit-box-shadow: 1px 1px 10px 1px rgba(204,204,204,1);
+    -moz-box-shadow: 1px 1px 10px 1px rgba(204,204,204,1);
+    box-shadow: 1px 1px 10px 1px rgba(204,204,204,1);
+}
+
+.ui-resizable-handle {
+    background-color: #ececec !important;
+    border-radius: 20px;
+    height: 30px !important;
+    width: 30px !important;
 }
 
 @media (min-width: 1025px) {

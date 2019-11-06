@@ -12,11 +12,5 @@ namespace Sistema.Controllers
         { 
             return View();
         }
-
-        // Página de login
-        public ActionResult Login()
-        {
-            return View(new LoginView());
-        }
     }
 }

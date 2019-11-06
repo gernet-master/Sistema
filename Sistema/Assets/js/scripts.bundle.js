@@ -2026,7 +2026,7 @@ var KTPortlet = function(elementId, options) {
     // Default options
     var defaultOptions = {
         bodyToggleSpeed: 400,
-        tooltips: true,
+        tooltips: false,
         tools: {
             toggle: {
                 collapse: 'Collapse',
