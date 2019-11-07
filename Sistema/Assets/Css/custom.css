@@ -1,17 +1,36 @@
-﻿.kt-radius-4 {
+﻿/* Scrollbars */
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #A6D2FF;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Extras */
+.kt-radius-4 {
     border-radius:4px;
 }
 
-.kt-footer {
-    padding: 8px 0px 6px 0px !important;
-}
-
 .kt-padding-8 {
-    padding:8px;
+    padding: 8px;
 }
 
 .bg-light-blue {
     background-color: #F4F5FF;
+}
+
+/* Footer */
+.kt-footer {
+    padding: 8px 0px 6px 0px !important;
 }
 
 .kt-footer .kt-footer__menu .kt-footer__menu-link {
@@ -40,6 +59,8 @@
     border-bottom: unset !important;
 }
 
+/* Menu */
+
 .kt-aside-menu .kt-menu__nav > .kt-menu__item > .kt-menu__heading .kt-menu__link-icon svg g [fill], .kt-aside-menu .kt-menu__nav > .kt-menu__item > .kt-menu__link .kt-menu__link-icon svg g [fill] {
     fill: #FFFFFF !important;
 }
@@ -47,6 +68,8 @@
 .separator-arrow {
     margin: 0 0.5rem 0 0.2rem !important;
 }
+
+/* Gridstack */
 
 .grid-stack-item-content {
     -webkit-box-shadow: 1px 1px 10px 1px rgba(204,204,204,1);
@@ -61,6 +84,7 @@
     width: 30px !important;
 }
 
+/* Responsive */
 @media (min-width: 1025px) {
     .kt-aside__brand {
         background-color: #A6D2FF;

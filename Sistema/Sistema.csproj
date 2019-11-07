@@ -1537,9 +1537,8 @@
     <Content Include="Views\Partials\Email.cshtml" />
     <Content Include="Views\Partials\Whatsapp.cshtml" />
     <Content Include="Views\Administrador\PerfisAcesso\Index.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Administrador\Usuarios\Index.cshtml" />
-    <Content Include="Views\Login\Index.cshtml" />
+    <None Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

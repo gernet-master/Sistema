@@ -1,25 +1,48 @@
 ﻿$(function () {
+
+    // Inicia grid
     var grid = $('.grid-stack').gridstack();
 
+    // Função minimizar/maximizar
     $(".gernet-widget-toogle").click(function () {
-        if ($(this).closest('.kt-portlet').hasClass('kt-portlet--collapse')) {
-      //      $(this).attr('data-original-title', 'Reduzir');
-     //       $('.tooltip-inner').html('Reduzir');
-      //      $(this).closest('.kt-portlet__head').css('border-bottom', '1px solid #ebedf2');
-  //          $(this).closest('.grid-stack-item').animate({ height: ((($(this).closest('.grid-stack-item').attr('data-gs-original-height') - 1) * 80) + 60) }, 400, function () { $(this).closest('.grid-stack-item-content').css('overflow', 'auto'); });
-//            $(this).closest('.grid-stack-item').attr('data-gs-height', $(this).closest('.grid-stack-item').attr('data-gs-original-height'));
-        } else {
-     //       $(this).attr('data-original-title', 'Expandir');
-     //       $('.tooltip-inner').html('Expandir');
-     //       $(this).closest('.kt-portlet__head').css('border-bottom', 'unset');
-      //      $(this).closest('.grid-stack-item-content').css('overflow', 'hidden');
-          //  $(this).closest('.grid-stack-item').animate({ height: 60 }, 400);
-          //  $(this).closest('.grid-stack-item').attr('data-gs-height', 1);
 
-            
+        // Minimizar
+        if ($(this).closest('.kt-portlet').hasClass('kt-portlet--collapse')) {
+
+            // Seta o min height para 1
+            $(".grid-stack").data("gridstack").minHeight($(this).closest('.grid-stack-item'), 1);
+
+            // Remove a opção de redimensionar
+            $(".grid-stack").data("gridstack").resizable($(this).closest('.grid-stack-item'), false);
+
+            // Reduz o widget para 1 de altura
+            $(".grid-stack").data("gridstack").resize($(this).closest('.grid-stack-item'), null, 1);
+
+            // Altera o texto do botão
+            $(this).find('span').html('Maximizar');
+
+        // Maximizar
+        } else {
+
+            // Seta o min height para o tamanho original
+            $(".grid-stack").data("gridstack").minHeight($(this).closest('.grid-stack-item'), parseInt($(this).closest('.grid-stack-item').attr('data-gs-temp-height')));
+
+            // Insere a opção de redimensionar
+            $(".grid-stack").data("gridstack").resizable($(this).closest('.grid-stack-item'), true);
+
+            // Retorna o widget para o tamanho original
+            $(".grid-stack").data("gridstack").resize($(this).closest('.grid-stack-item'), null, parseInt($(this).closest('.grid-stack-item').attr('data-gs-original-height')));
+
+            // Altera o texto do botão
+            $(this).find('span').html('Minimizar');
+
         }
-       // $(this).closest('.grid-stack').css('height', 60)
-    })
+    });
+
+    // Seta o campo tamanho original ao redimensionar widget
+    $('.grid-stack').on('gsresizestop', function (event, elem) {
+        $(elem).attr('data-gs-original-height',  $(elem).attr('data-gs-height'));
+    });
 
     // Grava a nova configuração da grid sempre que houver ação
     $('.grid-stack').on('change', function (event, items) {
@@ -30,13 +53,9 @@
             var top = items[i].y;
             var left = items[i].x;
         }
-    });
-
-
-        
+    });        
 
 });
-
 
 
 

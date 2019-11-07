@@ -9,7 +9,7 @@ namespace Sistema
         public static void RegisterBundles(BundleCollection bundles)
         {
                  
-            bundles.Add(new ScriptBundle("~/scripts").Include(
+            bundles.Add(new ScriptBundle("~/system_scripts").Include(
                 "~/Assets/js/global.js",
                 "~/Assets/plugins/general/jquery/dist/jquery.js",
                 "~/Assets/plugins/general/popper.js/dist/umd/popper.js",
@@ -17,7 +17,7 @@ namespace Sistema
                 "~/Assets/plugins/general/js-cookie/src/js.cookie.js",
                 //"~/Assets/plugins/general/moment/min/moment.min.js",
                 "~/Assets/plugins/general/tooltip.js/dist/umd/tooltip.min.js",
-                "~/Assets/plugins/general/perfect-scrollbar/dist/perfect-scrollbar.js",
+                //"~/Assets/plugins/general/perfect-scrollbar/dist/perfect-scrollbar.js",
                 "~/Assets/plugins/general/sticky-js/dist/sticky.min.js",
                 //"~/Assets/plugins/general/wnumb/wNumb.js",
                 //"~/Assets/plugins/general/jquery-form/dist/jquery.form.min.js",
@@ -121,13 +121,13 @@ namespace Sistema
                 //"~/Assets/plugins/custom/tinymce/themes/mobile/theme.js",
             ));
 
-            bundles.Add(new ScriptBundle("~/timer").Include(
+            bundles.Add(new ScriptBundle("~/system_timer").Include(
                 "~/Assets/js/timer.js"));
 
-            bundles.Add(new ScriptBundle("~/login").Include(
+            bundles.Add(new ScriptBundle("~/system_login").Include(
                 "~/Assets/js/pages/custom/login/login-general.js"));
 
-            bundles.Add(new ScriptBundle("~/footer").Include(
+            bundles.Add(new ScriptBundle("~/system_footer").Include(
                "~/Assets/js/footer.js"));
 
             bundles.Add(new ScriptBundle("~/gridstack").Include(
@@ -135,8 +135,8 @@ namespace Sistema
                "~/Assets/js/pages/components/gridstack/gridstack.jQueryUI.js",
                "~/Assets/js/pages/components/gridstack/custom.js"));
 
-            bundles.Add(new StyleBundle("~/css").Include(
-                "~/Assets/plugins/general/perfect-scrollbar/css/perfect-scrollbar.css",
+            bundles.Add(new StyleBundle("~/system_css").Include(
+                //"~/Assets/plugins/general/perfect-scrollbar/css/perfect-scrollbar.css",
                 //"~/Assets/plugins/general/tether/dist/css/tether.css",
                 //"~/Assets/plugins/general/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css",
                 //"~/Assets/plugins/general/bootstrap-datetime-picker/css/bootstrap-datetimepicker.css",
@@ -191,10 +191,10 @@ namespace Sistema
                 "~/Assets/css/skins/brand/dark.css",
                 "~/Assets/css/skins/aside/dark.css",
                 "~/Assets/plugins/custom/gridstack/gridstack.css",
-                 "~/Assets/css/custom.css"
+                "~/Assets/css/custom.css"
             ));
 
-            bundles.Add(new StyleBundle("~/login").Include(
+            bundles.Add(new StyleBundle("~/login_css").Include(
                 "~/Assets/css/login/login.css"
             ));
         }

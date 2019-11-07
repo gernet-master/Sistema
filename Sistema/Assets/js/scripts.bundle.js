@@ -4497,97 +4497,97 @@ var KTUtil = function() {
 
         // Scroller
         scrollInit: function(element, options) {
-            if(!element) return;
-            // Define init function
-            function init() {
-                var ps;
-                var height;
+            //if(!element) return;
+            //// Define init function
+            //function init() {
+            //    var ps;
+            //    var height;
 
-                if (options.height instanceof Function) {
-                    height = parseInt(options.height.call());
-                } else {
-                    height = parseInt(options.height);
-                }
+            //    if (options.height instanceof Function) {
+            //        height = parseInt(options.height.call());
+            //    } else {
+            //        height = parseInt(options.height);
+            //    }
 
-                // Destroy scroll on table and mobile modes
-                if ((options.mobileNativeScroll || options.disableForMobile) && KTUtil.isInResponsiveRange('tablet-and-mobile')) {
-                    ps = KTUtil.data(element).get('ps');
-                    if (ps) {
-                        if (options.resetHeightOnDestroy) {
-                            KTUtil.css(element, 'height', 'auto');
-                        } else {
-                            KTUtil.css(element, 'overflow', 'auto');
-                            if (height > 0) {
-                                KTUtil.css(element, 'height', height + 'px');
-                            }
-                        }
+            //    // Destroy scroll on table and mobile modes
+            //    if ((options.mobileNativeScroll || options.disableForMobile) && KTUtil.isInResponsiveRange('tablet-and-mobile')) {
+            //        ps = KTUtil.data(element).get('ps');
+            //        if (ps) {
+            //            if (options.resetHeightOnDestroy) {
+            //                KTUtil.css(element, 'height', 'auto');
+            //            } else {
+            //                KTUtil.css(element, 'overflow', 'auto');
+            //                if (height > 0) {
+            //                    KTUtil.css(element, 'height', height + 'px');
+            //                }
+            //            }
 
-                        ps.destroy();
-                        ps = KTUtil.data(element).remove('ps');
-                    } else if (height > 0){
-                        KTUtil.css(element, 'overflow', 'auto');
-                        KTUtil.css(element, 'height', height + 'px');
-                    }
+            //            ps.destroy();
+            //            ps = KTUtil.data(element).remove('ps');
+            //        } else if (height > 0){
+            //            KTUtil.css(element, 'overflow', 'auto');
+            //            KTUtil.css(element, 'height', height + 'px');
+            //        }
 
-                    return;
-                }
+            //        return;
+            //    }
 
-                if (height > 0) {
-                    KTUtil.css(element, 'height', height + 'px');
-                }
+            //    if (height > 0) {
+            //        KTUtil.css(element, 'height', height + 'px');
+            //    }
 
-                if (options.desktopNativeScroll) {
-                    KTUtil.css(element, 'overflow', 'auto');
-                    return;
-                }
+            //    if (options.desktopNativeScroll) {
+            //        KTUtil.css(element, 'overflow', 'auto');
+            //        return;
+            //    }
 
-                // Init scroll
-                KTUtil.css(element, 'overflow', 'hidden');
+            //    // Init scroll
+            //    KTUtil.css(element, 'overflow', 'hidden');
 
-                ps = KTUtil.data(element).get('ps');
-                if (ps) {
-                    ps.update();
-                } else {
-                    KTUtil.addClass(element, 'kt-scroll');
-                    ps = new PerfectScrollbar(element, {
-                        wheelSpeed: 0.5,
-                        swipeEasing: true,
-                        wheelPropagation: (options.windowScroll === false ? false : true),
-                        minScrollbarLength: 40,
-                        maxScrollbarLength: 300,
-                        suppressScrollX: KTUtil.attr(element, 'data-scroll-x') != 'true' ? true : false
-                    });
+            //    ps = KTUtil.data(element).get('ps');
+            //    if (ps) {
+            //        ps.update();
+            //    } else {
+            //        KTUtil.addClass(element, 'kt-scroll');
+            //        ps = new PerfectScrollbar(element, {
+            //            wheelSpeed: 0.5,
+            //            swipeEasing: true,
+            //            wheelPropagation: (options.windowScroll === false ? false : true),
+            //            minScrollbarLength: 40,
+            //            maxScrollbarLength: 300,
+            //            suppressScrollX: KTUtil.attr(element, 'data-scroll-x') != 'true' ? true : false
+            //        });
 
-                    KTUtil.data(element).set('ps', ps);
-                }
+            //        KTUtil.data(element).set('ps', ps);
+            //    }
 
-                // Remember scroll position in cookie
-                var uid = KTUtil.attr(element, 'id');
+            //    // Remember scroll position in cookie
+            //    var uid = KTUtil.attr(element, 'id');
 
-                if (options.rememberPosition === true && Cookies && uid) {
-                    if (Cookies.get(uid)) {
-                        var pos = parseInt(Cookies.get(uid));
+            //    if (options.rememberPosition === true && Cookies && uid) {
+            //        if (Cookies.get(uid)) {
+            //            var pos = parseInt(Cookies.get(uid));
 
-                        if (pos > 0) {
-                            element.scrollTop = pos;
-                        }
-                    }
+            //            if (pos > 0) {
+            //                element.scrollTop = pos;
+            //            }
+            //        }
 
-                    element.addEventListener('ps-scroll-y', function() {
-                        Cookies.set(uid, element.scrollTop);
-                    });
-                }
-            }
+            //        element.addEventListener('ps-scroll-y', function() {
+            //            Cookies.set(uid, element.scrollTop);
+            //        });
+            //    }
+            //}
 
-            // Init
-            init();
+            //// Init
+            //init();
 
-            // Handle window resize
-            if (options.handleWindowResize) {
-                KTUtil.addResizeHandler(function() {
-                    init();
-                });
-            }
+            //// Handle window resize
+            //if (options.handleWindowResize) {
+            //    KTUtil.addResizeHandler(function() {
+            //        init();
+            //    });
+            //}
         },
 
         scrollUpdate: function(element) {

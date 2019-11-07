@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700" />
 
         <!-- Styles -->
-        @Styles.Render("~/css")
+        @Styles.Render("~/system_css")
 
         <!-- Icon -->
         <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
@@ -69,8 +69,8 @@
 </html>
 
 <!-- Scripts -->
-@Scripts.Render("~/scripts")
-@Scripts.Render("~/timer")
-@Scripts.Render("~/footer")
+@Scripts.Render("~/system_scripts")
+@Scripts.Render("~/system_timer")
+@Scripts.Render("~/system_footer")
 
 @RenderSection("scripts", required: false)
