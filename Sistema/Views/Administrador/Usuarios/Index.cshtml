@@ -9,6 +9,10 @@
 
 @using Functions;
 
+<label id="temp_portlet_dropdown" style="position:absolute; z-index:999">
+    <div class="dropdown-menu dropdown-menu-right"></div>
+</label>
+
 <div class="grid-stack">
 
     <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="3" data-gs-height="2" data-gs-no-resize="true">
@@ -52,24 +56,24 @@
                     </div>
 
                     <div class="kt-portlet__head-toolbar">
-
+                        
                         <div class="kt-portlet__head-group">
 
                             <!-- Opções -->
-                            <label data-toggle="kt-tooltip" title="Opções" data-placement="left">
+                            <label data-toggle="kt-tooltip" title="Opções" data-placement="left" class="kt-margin-l-10 gridstack-dropdown">
                                 <a href="#" class="btn btn-sm btn-icon btn-default btn-icon-md" dropdown-toggle data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-bars"></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <ul class="kt-nav">
                                         <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link gernet-widget-toogle" data-ktportlet-tool="toggle">
+                                            <a href="#" onclick="toggle(1, this)" class="kt-nav__link gernet-widget-toogle">
                                                 <i class="kt-nav__link-icon la la-angle-down"></i>
                                                 <span class="kt-nav__link-text">Minimizar</span>
                                             </a>
                                         </li>
                                         <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link" data-ktportlet-tool="remove">
+                                            <a href="#" onclick="remover(1)" class="kt-nav__link">
                                                 <i class="kt-nav__link-icon la la-close"></i>
                                                 <span class="kt-nav__link-text">Remover</span>
                                             </a>
@@ -83,7 +87,7 @@
 
                 </div>
                 <form class="kt-form kt-form--label-right">
-                    <div class="kt-portlet__body">
+                    <div class="kt-portlet__body" id="portlet1">
                         <div class="form-group ">
                             <div class="input-group">
                                 <input type="email" class="form-control" id="" aria-describedby="" placeholder="Nome, razão social, cpf, cnpj ou e-mail">
@@ -112,20 +116,20 @@
                         <div class="kt-portlet__head-group">
 
                             <!-- Opções -->
-                            <label data-toggle="kt-tooltip" title="Opções" data-placement="left">
+                            <label data-toggle="kt-tooltip" title="Opções" data-placement="left" class="kt-margin-l-10 gridstack-dropdown">
                                 <a href="#" class="btn btn-sm btn-icon btn-default btn-icon-md" dropdown-toggle data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-bars"></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <ul class="kt-nav">
                                         <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link gernet-widget-toogle" data-ktportlet-tool="toggle">
+                                            <a href="#" onclick="toggle(2, this)" class="kt-nav__link gernet-widget-toogle">
                                                 <i class="kt-nav__link-icon la la-angle-down"></i>
                                                 <span class="kt-nav__link-text">Minimizar</span>
                                             </a>
                                         </li>
                                         <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link" data-ktportlet-tool="remove">
+                                            <a href="#" onclick="remover(2)" class="kt-nav__link">
                                                 <i class="kt-nav__link-icon la la-close"></i>
                                                 <span class="kt-nav__link-text">Remover</span>
                                             </a>
@@ -137,7 +141,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="kt-portlet__body kt-padding-0" style="">
+                <div class="kt-portlet__body kt-padding-0" style="" id="portlet2">
                     <div class="kt-widget1">
                         <div class="kt-widget1__item">
                             <div class="kt-widget1__info">
@@ -171,20 +175,20 @@
                         <div class="kt-portlet__head-group">
 
                             <!-- Opções -->
-                            <label data-toggle="kt-tooltip" title="Opções" data-placement="left">
+                            <label data-toggle="kt-tooltip" title="Opções" data-placement="left" class="kt-margin-l-10 gridstack-dropdown">
                                 <a href="#" class="btn btn-sm btn-icon btn-default btn-icon-md" dropdown-toggle data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-bars"></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <ul class="kt-nav">
                                         <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link gernet-widget-toogle" data-ktportlet-tool="toggle">
+                                            <a href="#" onclick="toggle(3, this)" class="kt-nav__link gernet-widget-toogle">
                                                 <i class="kt-nav__link-icon la la-angle-down"></i>
                                                 <span class="kt-nav__link-text">Minimizar</span>
                                             </a>
                                         </li>
                                         <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link" data-ktportlet-tool="remove">
+                                            <a href="#" onclick="remover(3)" class="kt-nav__link">
                                                 <i class="kt-nav__link-icon la la-close"></i>
                                                 <span class="kt-nav__link-text">Remover</span>
                                             </a>
@@ -196,7 +200,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="kt-portlet__body kt-padding-0" style="">
+                <div class="kt-portlet__body kt-padding-0" style="" id="portlet3">
                     <div class="kt-widget1">
                         <div class="kt-widget1__item">
                             <div class="kt-widget1__info">
@@ -217,7 +221,7 @@
     </div>
 
     <!-- Listagem -->
-    <div class="grid-stack-item" data-gs-x="4" data-gs-y="0" data-gs-width="9" data-gs-height="3" data-gs-original-height="9" data-gs-min-height="3" data-gs-min-width="3" data-gs-temp-height="3">
+    <div class="grid-stack-item" data-gs-x="4" data-gs-y="0" data-gs-width="9" data-gs-height="3" data-gs-original-height="3" data-gs-min-height="3" data-gs-min-width="3" data-gs-temp-height="3">
         <div class="grid-stack-item-content bg-white kt-radius-4">
             <div class="kt-portlet kt-portlet--sortable shadow-none kt-margin-b-0" data-ktportlet="true">
                 <div class="kt-portlet__head">
@@ -326,13 +330,13 @@
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <ul class="kt-nav">                                        
                                         <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link gernet-widget-toogle" data-ktportlet-tool="toggle">
+                                            <a href="#" onclick="toggle(4, this)" class="kt-nav__link gernet-widget-toogle">
                                                 <i class="kt-nav__link-icon la la-angle-down"></i>
                                                 <span class="kt-nav__link-text">Minimizar</span>
                                             </a>
                                         </li>
                                         <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link" data-ktportlet-tool="remove">
+                                            <a href="#" onclick="remover(4)" class="kt-nav__link">
                                                 <i class="kt-nav__link-icon la la-close"></i>
                                                 <span class="kt-nav__link-text">Remover</span>
                                             </a>
@@ -344,7 +348,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="kt-portlet__body" style="">
+                <div class="kt-portlet__body" style="" id="portlet4">
                     <div class="dataTables_wrapper dt-bootstrap4">
                         <div class="row">
                             <div class="col-sm-12">

@@ -7,7 +7,7 @@ using System.Globalization;
 
 namespace Functions
 {
-    public class String
+    public class Utils
     {
         // Formata a string
         public static string FormatString(string text = "", int format = 0)

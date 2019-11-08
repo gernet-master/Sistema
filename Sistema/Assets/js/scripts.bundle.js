@@ -3842,7 +3842,7 @@ var KTUtil = function() {
 
             return {
                 set: function(name, data) {
-                    if (element === undefined) {
+                    if ((element === undefined) || (element === null)) {
                         return;
                     }
 
@@ -3870,8 +3870,9 @@ var KTUtil = function() {
                     return this.has(name) ? window.KTUtilElementDataStore[element.customDataTag][name] : null;
                 },
 
-                has: function(name) {
-                    if (element === undefined) {
+                has: function (name) {
+
+                    if ((element === undefined) || (element === null)) {
                         return false;
                     }
 

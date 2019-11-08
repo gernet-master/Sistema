@@ -11,7 +11,7 @@ namespace Sistema.Assets.DB
 {
     public class UsuariosDB
     {
-        // Gravar novo registro
+        // Gravar novo usuário
         public int Save(Usuarios rs)
         {
             try
@@ -32,7 +32,7 @@ namespace Sistema.Assets.DB
             }
         }
 
-        // Alterar
+        // Altera usuário
         public void Edit(Usuarios variavel)
         {
             try
@@ -48,6 +48,41 @@ namespace Sistema.Assets.DB
             }
         }
 
+        // Valida dados de acesso
+        public Usuarios Login(string user, string password)
+        {
+            try
+            {
+                Usuarios us = null;
+
+                Connection session = new Connection();
+                Query query = session.CreateQuery(@"SELECT * FROM usuarios WHERE txusuario = '" + user + "' AND txsenha = '" + password + "'");
+                IDataReader reader = query.ExecuteQuery();
+
+                if (reader.Read())
+                {
+                    us = new Usuarios()
+                    {
+                        idusuario = new Variable(value: Convert.ToInt32(reader["idusuario"])),
+                        txnome = new Variable(value: Convert.ToString(reader["txnome"])),
+                        idperfil = new Variable(value: Convert.ToInt32(reader["idperfil"])),
+                        flativo = new Variable(value: Convert.ToInt32(reader["flativo"])),
+                        flmaster = new Variable(value: Convert.ToInt32(reader["flmaster"])),
+                        flalterasenha = new Variable(value: Convert.ToInt32(reader["flalterasenha"]))
+                    };
+                }
+
+                reader.Close();
+                session.Close();
+
+                return us;
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+        }
+
         // Lista usuários
         public List<Usuarios> List()
         {
@@ -56,8 +91,8 @@ namespace Sistema.Assets.DB
                 List<Usuarios> us = new List<Usuarios>();
 
                 Connection session = new Connection();                
-                Query quey = session.CreateQuery(@"SELECT * FROM usuarios");
-                IDataReader reader = quey.ExecuteQuery();
+                Query query = session.CreateQuery(@"SELECT * FROM usuarios");
+                IDataReader reader = query.ExecuteQuery();
 
                 while (reader.Read())
                 {

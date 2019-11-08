@@ -37,14 +37,14 @@ namespace Functions
                 else
                 {
                     // Se não existe, redireciona para a tela de login.
-                   // filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login", action = "Index" }));
+                    filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login", action = "Index" }));
                 }
 
             }
             else
             {
                 // Se os cookies não existem, redireciona para a tela de login
-               // filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login", action = "Index" }));
+                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login", action = "Index" }));
             }
 
         }

@@ -22,7 +22,7 @@ namespace Functions
             Language x = readXML(ident);
 
             // Formata o texto
-            l.Text = String.FormatString(x.Text, format);
+            l.Text = Utils.FormatString(x.Text, format);
 
             // Accesskey
             l.AccessKey = x.AccessKey;

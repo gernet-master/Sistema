@@ -76,7 +76,7 @@ namespace Sistema
                 //"~/Assets/plugins/general/jquery.repeater/src/repeater.js",
                 //"~/Assets/plugins/general/dompurify/dist/purify.js",
                 "~/Assets/js/scripts.bundle.js",
-                "~/Assets/plugins/custom/plugins/jquery-ui/jquery-ui.min.js"
+                "~/Assets/plugins/custom/plugins/jquery-ui/jquery-ui.min.js",
                 //"~/Assets/plugins/custom/fullcalendar/core/main.js",
                 //"~/Assets/plugins/custom/fullcalendar/daygrid/main.js",
                 //"~/Assets/plugins/custom/fullcalendar/google-calendar/main.js",
@@ -119,21 +119,23 @@ namespace Sistema
                 //"~/Assets/plugins/custom/tinymce/tinymce.min.js",
                 //"~/Assets/plugins/custom/tinymce/themes/silver/theme.js",
                 //"~/Assets/plugins/custom/tinymce/themes/mobile/theme.js",
+                "~/Assets/plugins/custom/validation/jquery.validationEngine-pt_BR.js",
+                "~/Assets/plugins/custom/validation/jquery.validationEngine.js"
             ));
 
             bundles.Add(new ScriptBundle("~/system_timer").Include(
                 "~/Assets/js/timer.js"));
 
             bundles.Add(new ScriptBundle("~/system_login").Include(
-                "~/Assets/js/pages/custom/login/login-general.js"));
+                "~/Assets/js/login.js"));
 
             bundles.Add(new ScriptBundle("~/system_footer").Include(
                "~/Assets/js/footer.js"));
 
             bundles.Add(new ScriptBundle("~/gridstack").Include(
-               "~/Assets/js/pages/components/gridstack/gridstack.js",
-               "~/Assets/js/pages/components/gridstack/gridstack.jQueryUI.js",
-               "~/Assets/js/pages/components/gridstack/custom.js"));
+               "~/Assets/plugins/custom/gridstack/gridstack.js",
+               "~/Assets/plugins/custom/gridstack/gridstack.jQueryUI.js",
+               "~/Assets/js/widgets.js"));
 
             bundles.Add(new StyleBundle("~/system_css").Include(
                 //"~/Assets/plugins/general/perfect-scrollbar/css/perfect-scrollbar.css",
@@ -191,6 +193,7 @@ namespace Sistema
                 "~/Assets/css/skins/brand/dark.css",
                 "~/Assets/css/skins/aside/dark.css",
                 "~/Assets/plugins/custom/gridstack/gridstack.css",
+                "~/Assets/plugins/custom/validation/validationEngine.min.css",
                 "~/Assets/css/custom.css"
             ));
 
