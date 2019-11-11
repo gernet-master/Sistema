@@ -3,7 +3,9 @@ Descrição: Funções de formatação de dados
 Data: 01/01/2020 - v.1.0
 */
 
+using System;
 using System.Globalization;
+using System.Linq;
 
 namespace Functions
 {
@@ -37,6 +39,12 @@ namespace Functions
             return result;
         }
 
+        // Retorna somente os numeros
+        public static int Numbers(string text)
+        {
+            return Convert.ToInt32(new string(text.Where(char.IsNumber).ToArray()));
+        }
+
         // Tratamento de valor nulo
         public static string Null(string text = "", string value = "")
         {
@@ -55,14 +63,13 @@ namespace Functions
         // Substitui alguns caracteres do texto por códigos, para segurança ao gravar no banco de dados e limitar tamanho do texto
         public static string ClearText(string text = "", int limit = 0)
         {
-
             string result = "";
             result = text.Trim();
             result = result.Replace("'", "&apos;");
             result = result.Replace("<", "&lt;");
             result = result.Replace(">", "&gt;");
             result = result.Replace("\"", "&quot;");
-            if (limit > 0)
+            if ((limit > 0) && (text.Length > limit))
             {
                 result = result.Substring(0, limit);
             }

@@ -133,6 +133,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Assets\DB\UsuariosDB.cs" />
     <Compile Include="Assets\Entities\Usuarios.cs" />
+    <Compile Include="Assets\Functions\Session.cs" />
     <Compile Include="Assets\Functions\Audit.cs" />
     <Compile Include="Assets\Functions\Crypt.cs" />
     <Compile Include="Assets\Functions\Login.cs" />
@@ -175,6 +176,7 @@
     <Content Include="Assets\Css\skins\brand\light.min.css" />
     <Content Include="Assets\Css\skins\brand\light.rtl.css" />
     <Content Include="Assets\Css\skins\brand\light.rtl.min.css" />
+    <Content Include="Assets\Js\header.js" />
     <Content Include="Assets\Js\login.js" />
     <Content Include="Assets\Js\pages\components\validation\jquery.validationEngine-pt_BR.js" />
     <Content Include="Assets\Js\pages\components\validation\jquery.validationEngine.js" />
@@ -1518,6 +1520,7 @@
     <Content Include="Views\Partials\Whatsapp.cshtml" />
     <Content Include="Views\Administrador\PerfisAcesso\Index.cshtml" />
     <Content Include="Views\Administrador\Usuarios\Index.cshtml" />
+    <Content Include="Views\Login\ChangePassword.cshtml" />
     <None Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>

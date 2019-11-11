@@ -26,7 +26,7 @@
                 <img class="" alt="Pic" src="~/assets/media/users/default.jpg" />
             </div>
             <div class="kt-user-card__name">
-                Diogo de Barros Corrêa
+                @Session["txnome"]
             </div>
         </div>
 
@@ -78,8 +78,8 @@
             </a>
 
             <!-- Logout -->
-            <div class="kt-notification__custom kt-space-between text-center">
-                <a href="#" target="_blank" class="btn btn-clean btn-sm btn-bold">@Language.XmlLang(21, 2).Text</a>
+            <div class="kt-notification__custom kt-space-between text-center" id="gernet-logout">
+                <a href="javascript:void(0)" class="btn btn-clean btn-sm btn-bold">@Language.XmlLang(21, 2).Text</a>
             </div>
 
         </div>

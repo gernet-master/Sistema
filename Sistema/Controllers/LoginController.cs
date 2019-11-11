@@ -21,12 +21,19 @@ namespace Sistema.Controllers
             // Recebe as variáveis
             string user = Utils.ClearText(form["user"], 20);
             string password = Utils.ClearText(form["password"], 20);
+            int remember = Utils.Numbers(form["password"]);
 
             // Valida dados
-            string r = Login.LoginCheck(user, password);
+            string r = Login.LoginCheck(user, password, remember);
 
             // Retorno
             return Json(r);
+        }
+
+        // Alterar senha
+        public ActionResult ChangePassword()
+        {
+            return PartialView();
         }
 
     }

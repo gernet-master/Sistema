@@ -46,11 +46,11 @@
   <string id="43" text="sistema para controle interno de crm e processos" />
   <string id="44" text="intranet" />
   <string id="45" text="ir para o site" />
-  <string id="46" text="" />
-  <string id="47" text="" />
-  <string id="48" text="" />
-  <string id="49" text="" />
-  <string id="50" text="" />
+  <string id="46" text="dados incorretos" />
+  <string id="47" text="usuário inativo" />
+  <string id="48" text="deseja realmente sair do sistema" />
+  <string id="49" text="sim" />
+  <string id="50" text="não" />
   <string id="51" text="" />
   <string id="52" text="" />
   <string id="53" text="" />

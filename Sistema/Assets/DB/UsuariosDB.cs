@@ -9,7 +9,7 @@ using System.Web;
 
 namespace Sistema.Assets.DB
 {
-    public class UsuariosDB
+    public class UsuariosDB : Session
     {
         // Gravar novo usuário
         public int Save(Usuarios rs)
@@ -19,7 +19,7 @@ namespace Sistema.Assets.DB
                 int idusuario = 0;
                 Connection session = new Connection();
                 Query query = session.CreateQuery(@"
-                    INSERT INTO Usuarios (idgernet, txnome, txusuario, txsenha, txemail, idperfil, flativo, flmaster, flalterasenha, txfoto) output INSERTED.idusuario 
+                    INSERT INTO Usuarios (txnome, txusuario, txsenha, txemail, idperfil, flativo, flmaster, flalterasenha, txfoto) output INSERTED.idusuario 
                     VALUES (" + rs.idgernet.value + ", '" + rs.txnome.value + "', '" + rs.txusuario.value + "', '" + rs.txsenha.value + "', '" + rs.txemail.value + "', " + rs.idperfil.value + ", " + 
                         rs.flativo.value + ", " + rs.flmaster.value + ", " + rs.flalterasenha.value + ", '" + rs.txfoto.value + "')");
                 idusuario = query.ExecuteScalar();
@@ -56,7 +56,7 @@ namespace Sistema.Assets.DB
                 Usuarios us = null;
 
                 Connection session = new Connection();
-                Query query = session.CreateQuery(@"SELECT * FROM usuarios WHERE txusuario = '" + user + "' AND txsenha = '" + password + "'");
+                Query query = session.CreateQuery(@"SELECT * FROM usuarios WHERE txusuario = '" + user + "' AND txsenha = '" + password + "' AND idgernet = " + session_gernet);
                 IDataReader reader = query.ExecuteQuery();
 
                 if (reader.Read())
@@ -76,6 +76,31 @@ namespace Sistema.Assets.DB
                 session.Close();
 
                 return us;
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+        }
+
+        // Valida se o usuário pertence ao cliente
+        public Boolean ValidacaoUsuarioCliente(int idusuario)
+        {
+            try
+            {
+                Boolean ret = false;
+
+                Connection session = new Connection();
+                Query query = session.CreateQuery(@"SELECT * FROM usuarios WHERE idusuario = " + idusuario + " AND idgernet = " + session_gernet);
+                IDataReader reader = query.ExecuteQuery();
+                if (reader.Read())
+                {
+                    ret = true;
+                }
+                reader.Close();
+                session.Close();
+
+                return ret;
             }
             catch (Exception error)
             {

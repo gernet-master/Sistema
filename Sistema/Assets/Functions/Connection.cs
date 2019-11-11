@@ -6,13 +6,14 @@ Data: 01/01/2020 - v.1.0
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web;
 
 namespace Functions
 {
     // Conexão
     public class Connection
     {
-        private IDbConnection conn;
+        private IDbConnection conn;        
 
         public Connection()
         {

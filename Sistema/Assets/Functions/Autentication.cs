@@ -3,6 +3,7 @@ Descrição: Verifica se o usuário está autenticado no sistema
 Data: 01/01/2020 - v.1.0
 */
 
+using Sistema.Assets.DB;
 using System;
 using System.Globalization;
 using System.Web;
@@ -16,36 +17,63 @@ namespace Functions
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
 
-            // Pega o cookie
-            HttpCookie cookie = new HttpCookie("Gernet");
-            cookie = HttpContext.Current.Request.Cookies["Gernet"];
+            // Verifica se as variáveis de sessão existem
+            int idusuario = Convert.ToInt32(HttpContext.Current.Session["idusuario"]);
+            int idgernet = Convert.ToInt32(HttpContext.Current.Session["idgernet"]);
 
-            // Verifica se o cookie possui valor
-            if (cookie != null)
+            // Valida dados
+            if ((idusuario == 0) || (idgernet == 0))
             {
-                // Pega o valor do cookie
-                int codigo = Convert.ToInt32(cookie.Value);
+                // Redireciona para a tela de login.
+                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login", action = "Index" }));
+            }
+            else
+            {
+                // Valida na base de dados
+                Boolean usuario = new UsuariosDB().ValidacaoUsuarioCliente(idusuario);
 
-                // Busca o usuário no sistema
-                int user = 1;
-                
-                // Valida o usuário
-                if (user == 1)
+                if (usuario)
                 {
+                    // Autentica
                     base.OnActionExecuting(filterContext);
                 }
                 else
                 {
-                    // Se não existe, redireciona para a tela de login.
+                    // Redireciona para a tela de login.
                     filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login", action = "Index" }));
                 }
+            }
 
-            }
-            else
-            {
-                // Se os cookies não existem, redireciona para a tela de login
-                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login", action = "Index" }));
-            }
+            //// Pega o cookie
+            //HttpCookie cookie = new HttpCookie("Gernet");
+            //cookie = HttpContext.Current.Request.Cookies["Gernet"];
+
+            //// Verifica se o cookie possui valor
+            //if (cookie != null)
+            //{
+            //    // Pega o valor do cookie
+            //    int codigo = Convert.ToInt32(cookie.Value);
+
+            //    // Busca o usuário no sistema
+            //    int user = 1;
+                
+            //    // Valida o usuário
+            //    if (user == 1)
+            //    {
+            //        base.OnActionExecuting(filterContext);
+            //    }
+            //    else
+            //    {
+            //        // Se não existe, redireciona para a tela de login.
+            //        filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login", action = "Index" }));
+            //    }
+
+            //}
+            //else
+            //{
+            //    // Se os cookies não existem, redireciona para a tela de login
+            //    filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login", action = "Index" }));
+            //}
 
         }
 

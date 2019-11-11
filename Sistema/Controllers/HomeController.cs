@@ -1,6 +1,7 @@
 ﻿using Functions;
 using Sistema.Models;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace Sistema.Controllers
 {
@@ -11,6 +12,15 @@ namespace Sistema.Controllers
         public ActionResult Index()
         { 
             return View();
+        }
+
+        // Sai do sistema
+        [Autentication]
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            Session.Abandon();
+            return RedirectToAction("Index");
         }
     }
 }

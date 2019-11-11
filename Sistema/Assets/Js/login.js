@@ -66,7 +66,50 @@ var login_div = "";
 
                 // Envia o formulário para gravar
                 $.post('Login/Validation', $('#kt-form-login').serializeArray(), function (data) {
-                    alert(data)        
+
+                    // Retorno
+                    var arr = data.split("|");
+                    
+                    // Se retornou 0, exibe alerta de erro																										
+                    if (arr[0] == 0) {
+                        swal.fire({
+                            title: arr[1],
+                            type: 'error'
+                        });
+                    }
+
+                    // Se retornou 1, redireciona para página de alteração de senha
+                    if (arr[0] == 1) {
+                        $(location).attr('href', 'ChangePassword');
+                    }
+
+                    // Se retornou 2, carrega página inicial
+                    if (arr[0] == 2) {
+                        $(location).attr('href', 'Home');
+                    }
+
+                    // Se retornou 3, usuário já conectado																										
+                    if (arr[0] == 3) {
+                        swal({
+                            title: arr[1],
+                            text: xmlLang("si365", 2).Text + '?',
+                            type: 'question',
+                            showConfirmButton: true,
+                            showCancelButton: true,
+                            confirmButtonText: xmlLang('sc13', 2).Text
+                        }).then(function () {
+
+                            // Encerra a conxão atual
+                            $.post('assets/includes/', { inc: '/assets/includes/login', action: 'session' }).done(function (data) {
+
+                                // Chama função de validação de login novamente
+                                LOGIN.validateForm();
+
+                            });
+
+                        }).catch(swal.noop);
+                    }
+
                 });
             }
         },

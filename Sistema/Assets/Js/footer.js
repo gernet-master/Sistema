@@ -12,7 +12,7 @@ var FOOTER = {};
 
         // Init
         init: function () {
-            
+           
         },
     }
 

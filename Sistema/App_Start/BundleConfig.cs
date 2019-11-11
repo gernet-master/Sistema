@@ -69,8 +69,8 @@ namespace Sistema
                 //"~/Assets/plugins/general/waypoints/lib/jquery.waypoints.js",
                 //"~/Assets/plugins/general/counterup/jquery.counterup.js",
                 //"~/Assets/plugins/general/es6-promise-polyfill/promise.min.js",
-                //"~/Assets/plugins/general/sweetalert2/dist/sweetalert2.min.js",
-                //"~/Assets/plugins/general/js/global/integration/plugins/sweetalert2.init.js",
+                "~/Assets/plugins/general/sweetalert2/dist/sweetalert2.min.js",
+                "~/Assets/plugins/general/js/global/integration/plugins/sweetalert2.init.js",
                 //"~/Assets/plugins/general/jquery.repeater/src/lib.js",
                 //"~/Assets/plugins/general/jquery.repeater/src/jquery.input.js",
                 //"~/Assets/plugins/general/jquery.repeater/src/repeater.js",
@@ -129,6 +129,9 @@ namespace Sistema
             bundles.Add(new ScriptBundle("~/system_login").Include(
                 "~/Assets/js/login.js"));
 
+            bundles.Add(new ScriptBundle("~/system_header").Include(
+               "~/Assets/js/header.js"));
+
             bundles.Add(new ScriptBundle("~/system_footer").Include(
                "~/Assets/js/footer.js"));
 
@@ -161,7 +164,7 @@ namespace Sistema
                 //"~/Assets/plugins/general/toastr/build/toastr.css",
                 //"~/Assets/plugins/general/dual-listbox/dist/dual-listbox.css",
                 //"~/Assets/plugins/general/morris.js/morris.css",
-                //"~/Assets/plugins/general/sweetalert2/dist/sweetalert2.css",
+                "~/Assets/plugins/general/sweetalert2/dist/sweetalert2.css",
                 //"~/Assets/plugins/general/socicon/css/socicon.css",
                 "~/Assets/plugins/general/plugins/line-awesome/css/line-awesome.css",
                 "~/Assets/plugins/general/plugins/flaticon/flaticon.css",

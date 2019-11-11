@@ -17,5 +17,16 @@ namespace Sistema
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        protected void Session_Start(object sender, EventArgs e)
+        {
+            Session["idgernet"] = 1;
+        }
+
+        protected void Session_End(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+        }
     }
 }
