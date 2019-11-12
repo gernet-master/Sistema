@@ -1,0 +1,39 @@
+﻿using Functions;
+using Sistema.Assets.DB;
+using Sistema.Assets.Functions;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace Sistema.Assets.Entities
+{
+    // Log de acesso ao sistema
+    public class Log_Acesso : Audit
+    {
+
+        // Variáveis
+        public Variable idlog = new Variable(config: "0|0");
+        public Variable idusuario = new Variable(config: "0|0");
+        public Variable dtlog = new Variable(config: "0|0");
+        public Variable tplog = new Variable(config: "0|0");
+        public Variable txip = new Variable(config: "0|0");
+
+        // Inicial
+        public Log_Acesso()
+        {
+            this.idlog.value = 0;
+            this.idusuario.value = 0;
+            this.dtlog.value = DateTime.Now;
+            this.tplog.value = "";
+            this.txip.value = Utils.GetIPAddress(); 
+        }
+
+        // Gravar
+        public void Save()
+        {
+            new Log_AcessoDB().Save(this);
+        }
+
+    }
+}

@@ -30,7 +30,7 @@ namespace Functions
             else
             {
                 // Valida na base de dados
-                Boolean usuario = new UsuariosDB().ValidacaoUsuarioCliente(idusuario);
+                Boolean usuario = new UsuariosDB().ValidationUserClient(idusuario);
 
                 if (usuario)
                 {
@@ -43,41 +43,6 @@ namespace Functions
                     filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login", action = "Index" }));
                 }
             }
-
-            //// Pega o cookie
-            //HttpCookie cookie = new HttpCookie("Gernet");
-            //cookie = HttpContext.Current.Request.Cookies["Gernet"];
-
-            //// Verifica se o cookie possui valor
-            //if (cookie != null)
-            //{
-            //    // Pega o valor do cookie
-            //    int codigo = Convert.ToInt32(cookie.Value);
-
-            //    // Busca o usuário no sistema
-            //    int user = 1;
-                
-            //    // Valida o usuário
-            //    if (user == 1)
-            //    {
-            //        base.OnActionExecuting(filterContext);
-            //    }
-            //    else
-            //    {
-            //        // Se não existe, redireciona para a tela de login.
-            //        filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login", action = "Index" }));
-            //    }
-
-            //}
-            //else
-            //{
-            //    // Se os cookies não existem, redireciona para a tela de login
-            //    filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login", action = "Index" }));
-            //}
-
         }
-
-
-
     }
 }

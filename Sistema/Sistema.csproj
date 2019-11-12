@@ -131,7 +131,17 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Assets\DB\Usuarios_FramesDB.cs" />
+    <Compile Include="Assets\DB\Usuarios_PreferenciasDB.cs" />
+    <Compile Include="Assets\DB\Log_AcessoDB.cs" />
+    <Compile Include="Assets\DB\Usuarios_UnidadesDB.cs" />
+    <Compile Include="Assets\DB\Usuarios_SistemaDB.cs" />
     <Compile Include="Assets\DB\UsuariosDB.cs" />
+    <Compile Include="Assets\Entities\Usuarios_Preferencias.cs" />
+    <Compile Include="Assets\Entities\Usuarios_Frames.cs" />
+    <Compile Include="Assets\Entities\Log_Acesso.cs" />
+    <Compile Include="Assets\Entities\Usuarios_Unidades.cs" />
+    <Compile Include="Assets\Entities\Usuarios_Sistema .cs" />
     <Compile Include="Assets\Entities\Usuarios.cs" />
     <Compile Include="Assets\Functions\Session.cs" />
     <Compile Include="Assets\Functions\Audit.cs" />

@@ -84,7 +84,7 @@ namespace Sistema.Assets.DB
         }
 
         // Valida se o usuário pertence ao cliente
-        public Boolean ValidacaoUsuarioCliente(int idusuario)
+        public Boolean ValidationUserClient(int idusuario)
         {
             try
             {
