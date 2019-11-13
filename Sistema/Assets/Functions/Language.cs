@@ -3,7 +3,9 @@ Descrição: Funções para retornar o texto solicitado no idioma correto
 Data: 01/01/2020 - v.1.0
 */
 
+using System;
 using System.IO;
+using System.Web;
 using System.Xml;
 
 namespace Functions
@@ -35,8 +37,20 @@ namespace Functions
         {
             Language x = new Language();
 
+            // Seleção do arquivo
+            string file = HttpContext.Current.Session["language"] as string;
+
+            // Busca o idioma padrão do cliente
+            //////////////////////////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////////
+            if (String.IsNullOrEmpty(file))
+            {
+                file = "pt-br";
+            }
+
             // Definição do arquivo do idioma
-            string path = Path.Combine(System.AppContext.BaseDirectory + "Assets\\Languages\\", "pt-br.xml");
+            string path = Path.Combine(System.AppContext.BaseDirectory + "Assets\\Languages\\", file + ".xml");
 
             XmlDocument xml = new XmlDocument();
             xml.Load(path);

@@ -1,9 +1,10 @@
-﻿using Sistema.Assets.DB;
+﻿/*
+Descrição: Classe do controle de usuário no sistema
+Data: 01/01/2020 - v.1.0
+*/
+
+using Sistema.Assets.DB;
 using Sistema.Assets.Functions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Sistema.Assets.Entities
 {
@@ -42,15 +43,15 @@ namespace Sistema.Assets.Entities
         }
 
         // Gravar
-        public void Save()
+        public void Gravar()
         {
-            new Usuarios_SistemaDB().Save(this);
+            new Usuarios_SistemaDB().Gravar(this);
         }
 
         // Alterar
-        public void Edit()
+        public void Alterar()
         {
-            new Usuarios_SistemaDB().Edit(this);
+            new Usuarios_SistemaDB().Alterar(this);
         }
     }
 }

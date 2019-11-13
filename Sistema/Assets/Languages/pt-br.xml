@@ -52,13 +52,153 @@
   <string id="49" text="sim" />
   <string id="50" text="não" />
   <string id="51" text="unidade" />
-  <string id="52" text="" />
-  <string id="53" text="" />
-  <string id="54" text="" />
-  <string id="55" text="" />
-  <string id="56" text="" />
-  <string id="57" text="" />
-  <string id="58" text="" />
-  <string id="59" text="" />
-  <string id="60" text="" />
+  <string id="52" text="idioma" />
+  <string id="53" text="olá" />
+  <string id="54" text="para prosseguir no sistema, é necessário que altere sua senha" />
+  <string id="55" text="senha atual" />
+  <string id="56" text="nova senha" />
+  <string id="57" text="confirmar senha" />
+  <string id="58" text="a senha deverá possuir no mínimo 8 e no máximo 20 caracteres" />
+  <string id="59" text="letras maiúsculas e minúsculas não são iguais" />
+  <string id="60" text="não deverá conter palavras acentuadas" />
+  <string id="61" text="evite sequências númericas" />
+  <string id="62" text="evite utilizar o login do seu cadastro" />
+  <string id="63" text="para uma senha segura, utilize letras maiúsculas e minúsculas, números e caracteres" />
+  <string id="64" text="não deverá conter os caracteres ', &lt;, &gt;" />
+  <string id="65" text="a senha não pode ter espaços" />
+  <string id="66" text="observações" />
+  <string id="67" text="a nova senha deve ser diferente da anterior" />
+  <string id="68" text="" />
+  <string id="69" text="" />
+  <string id="70" text="" />
+  <string id="71" text="" />
+  <string id="72" text="" />
+  <string id="73" text="" />
+  <string id="74" text="" />
+  <string id="75" text="" />
+  <string id="76" text="" />
+  <string id="77" text="" />
+  <string id="78" text="" />
+  <string id="79" text="" />
+  <string id="80" text="" />
+  <string id="81" text="" />
+  <string id="82" text="" />
+  <string id="83" text="" />
+  <string id="84" text="" />
+  <string id="85" text="" />
+  <string id="86" text="" />
+  <string id="87" text="" />
+  <string id="88" text="" />
+  <string id="89" text="" />
+  <string id="90" text="" />
+  <string id="91" text="" />
+  <string id="92" text="" />
+  <string id="93" text="" />
+  <string id="94" text="" />
+  <string id="95" text="" />
+  <string id="96" text="" />
+  <string id="97" text="" />
+  <string id="98" text="" />
+  <string id="99" text="" />
+  <string id="100" text="" />
+  <string id="101" text="" />
+  <string id="102" text="" />
+  <string id="103" text="" />
+  <string id="104" text="" />
+  <string id="105" text="" />
+  <string id="106" text="" />
+  <string id="107" text="" />
+  <string id="108" text="" />
+  <string id="109" text="" />
+  <string id="110" text="" />
+  <string id="111" text="" />
+  <string id="112" text="" />
+  <string id="113" text="" />
+  <string id="114" text="" />
+  <string id="115" text="" />
+  <string id="116" text="" />
+  <string id="117" text="" />
+  <string id="118" text="" />
+  <string id="119" text="" />
+  <string id="120" text="" />
+  <string id="121" text="" />
+  <string id="122" text="" />
+  <string id="123" text="" />
+  <string id="124" text="" />
+  <string id="125" text="" />
+  <string id="126" text="" />
+  <string id="127" text="" />
+  <string id="128" text="" />
+  <string id="129" text="" />
+  <string id="130" text="" />
+  <string id="131" text="" />
+  <string id="132" text="" />
+  <string id="133" text="" />
+  <string id="134" text="" />
+  <string id="135" text="" />
+  <string id="136" text="" />
+  <string id="137" text="" />
+  <string id="138" text="" />
+  <string id="139" text="" />
+  <string id="140" text="" />
+  <string id="141" text="" />
+  <string id="142" text="" />
+  <string id="143" text="" />
+  <string id="144" text="" />
+  <string id="145" text="" />
+  <string id="146" text="" />
+  <string id="147" text="" />
+  <string id="148" text="" />
+  <string id="149" text="" />
+  <string id="150" text="" />
+  <string id="151" text="" />
+  <string id="152" text="" />
+  <string id="153" text="" />
+  <string id="154" text="" />
+  <string id="155" text="" />
+  <string id="156" text="" />
+  <string id="157" text="" />
+  <string id="158" text="" />
+  <string id="159" text="" />
+  <string id="160" text="" />
+  <string id="161" text="" />
+  <string id="162" text="" />
+  <string id="163" text="" />
+  <string id="164" text="" />
+  <string id="165" text="" />
+  <string id="166" text="" />
+  <string id="167" text="" />
+  <string id="168" text="" />
+  <string id="169" text="" />
+  <string id="170" text="" />
+  <string id="171" text="" />
+  <string id="172" text="" />
+  <string id="173" text="" />
+  <string id="174" text="" />
+  <string id="175" text="" />
+  <string id="176" text="" />
+  <string id="177" text="" />
+  <string id="178" text="" />
+  <string id="179" text="" />
+  <string id="180" text="" />
+  <string id="181" text="" />
+  <string id="182" text="" />
+  <string id="183" text="" />
+  <string id="184" text="" />
+  <string id="185" text="" />
+  <string id="186" text="" />
+  <string id="187" text="" />
+  <string id="188" text="" />
+  <string id="189" text="" />
+  <string id="190" text="" />
+  <string id="191" text="" />
+  <string id="192" text="" />
+  <string id="193" text="" />
+  <string id="194" text="" />
+  <string id="195" text="" />
+  <string id="196" text="" />
+  <string id="197" text="" />
+  <string id="198" text="" />
+  <string id="199" text="" />
+  <string id="200" text="" />
 </lang>

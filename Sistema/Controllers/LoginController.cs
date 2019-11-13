@@ -1,7 +1,5 @@
 ﻿using Functions;
-using Sistema.Models;
 using System;
-using System.Globalization;
 using System.Web.Mvc;
 
 namespace Sistema.Controllers
@@ -30,10 +28,25 @@ namespace Sistema.Controllers
             return Json(r);
         }
 
-        // Alterar senha
-        public ActionResult ChangePassword()
+        // Formulário para alterar senha
+        public ActionResult Password()
         {
             return PartialView();
+        }
+
+        // Validação dos dados para alterar a senha
+        [HttpPost]
+        public JsonResult ChangePassword(FormCollection form)
+        {
+            // Recebe as variáveis
+            string password_atual = Utils.ClearText(form["password_atual"], 20);
+            string password_novo = Utils.ClearText(form["password_novo"], 20);
+
+            // Valida dados
+            string r = Login.ChangePassword(password_atual, password_novo);
+
+            // Retorno
+            return Json(r);
         }
 
     }

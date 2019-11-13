@@ -1,9 +1,10 @@
-﻿using Sistema.Assets.DB;
+﻿/*
+Descrição: Classe das preferencias do usuário
+Data: 01/01/2020 - v.1.0
+*/
+
+using Sistema.Assets.DB;
 using Sistema.Assets.Functions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Sistema.Assets.Entities
 {
@@ -15,18 +16,20 @@ namespace Sistema.Assets.Entities
         // Variáveis
         public Variable idusuario = new Variable(config: "26|0");
         public Variable idunidade = new Variable(config: "51|1|unidades,idunidade,txunidade");
+        public Variable txidioma = new Variable(config: "52|1");
 
         // Inicial
         public Usuarios_Preferencias()
         {
             this.idusuario.value = 0;
             this.idunidade.value = 0;
+            this.txidioma.value = "";
         }
 
         // Gravar
-        public void Save()
+        public void Gravar()
         {
-            new Usuarios_PreferenciasDB().Save(this);
+            new Usuarios_PreferenciasDB().Gravar(this);
         }
     }
 }

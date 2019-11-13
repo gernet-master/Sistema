@@ -12,7 +12,7 @@ namespace Sistema.Assets.DB
     public class Usuarios_FramesDB : Session
     {
         // Exclui todos os registros de frames
-        public void Delete(int idusuario = 0)
+        public void Excluir(int idusuario = 0)
         {
             try
             {

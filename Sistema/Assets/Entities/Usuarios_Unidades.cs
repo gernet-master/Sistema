@@ -1,9 +1,10 @@
-﻿using Sistema.Assets.DB;
+﻿/*
+Descrição: Classe das unidades vinculadas ao usuário
+Data: 01/01/2020 - v.1.0
+*/
+
+using Sistema.Assets.DB;
 using Sistema.Assets.Functions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Sistema.Assets.Entities
 {
@@ -24,9 +25,9 @@ namespace Sistema.Assets.Entities
         }
 
         // Gravar
-        public void Save()
+        public void Gravar()
         {
-            new Usuarios_UnidadesDB().Save(this);
+            new Usuarios_UnidadesDB().Gravar(this);
         }
 
     }

@@ -1,9 +1,10 @@
-﻿using Sistema.Assets.DB;
+﻿/*
+Descrição: Classe de usuários
+Data: 01/01/2020 - v.1.0
+*/
+
+using Sistema.Assets.DB;
 using Sistema.Assets.Functions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Sistema.Assets.Entities
 {
@@ -42,15 +43,15 @@ namespace Sistema.Assets.Entities
         }
 
         // Gravar
-        public int Save()
+        public int Gravar()
         {
-            return new UsuariosDB().Save(this);
+            return new UsuariosDB().Gravar(this);
         }
 
         // Alterar
-        public void Edit()
+        public void Alterar()
         {
-            new UsuariosDB().Edit(this);
+            new UsuariosDB().Alterar(this);
         }
     }
 }

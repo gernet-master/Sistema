@@ -1,9 +1,9 @@
-﻿using Sistema.Assets.DB;
+﻿/*
+Descrição: Classe dos frames vinculados ao usuário
+Data: 01/01/2020 - v.1.0
+*/
+
 using Sistema.Assets.Functions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Sistema.Assets.Entities
 {

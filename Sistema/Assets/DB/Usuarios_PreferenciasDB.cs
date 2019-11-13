@@ -12,7 +12,7 @@ namespace Sistema.Assets.DB
     public class Usuarios_PreferenciasDB : Session
     {
         // Gravar as preferencias do usuário
-        public void Save(Usuarios_Preferencias rs)
+        public void Gravar(Usuarios_Preferencias rs)
         {
             try
             {
@@ -30,7 +30,7 @@ namespace Sistema.Assets.DB
         }
 
         // Pega as preferencias do usuário
-        public Usuarios_Preferencias GetUserPreferences(int idusuario)
+        public Usuarios_Preferencias PreferenciasUsuario(int idusuario)
         {
             try
             {
@@ -44,7 +44,8 @@ namespace Sistema.Assets.DB
                     up = new Usuarios_Preferencias()
                     {
                         idusuario = new Variable(value: Convert.ToInt32(reader["idusuario"])),
-                        idunidade = new Variable(value: Convert.ToInt32(reader["idunidade"]))
+                        idunidade = new Variable(value: Convert.ToInt32(reader["idunidade"])),
+                        txidioma = new Variable(value: Convert.ToString(reader["txidioma"]))
                     };
                 }
                 reader.Close();

@@ -10,6 +10,7 @@ namespace Sistema
 {
     public class MvcApplication : System.Web.HttpApplication
     {
+        // Aplicação iniciada
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
@@ -18,11 +19,19 @@ namespace Sistema
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
-        protected void Session_Start(object sender, EventArgs e)
+        // Aplicação encerrada
+        protected void Application_End()
         {
-            Session["idgernet"] = 1;
+            Application.Clear();
         }
 
+        // Sessão iniciada
+        protected void Session_Start(object sender, EventArgs e)
+        {
+            Session["gernet"] = 1;
+        }
+
+        // Sessão encerrada
         protected void Session_End(object sender, EventArgs e)
         {
             Session.Clear();

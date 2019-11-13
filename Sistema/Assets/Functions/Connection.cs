@@ -6,7 +6,6 @@ Data: 01/01/2020 - v.1.0
 using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Web;
 
 namespace Functions
 {
@@ -33,11 +32,13 @@ namespace Functions
             conn.Open();
         }
 
+        // Fecha a conexão
         public void Close()
         {
             conn.Close();
         }
 
+        // Executa a query
         public Query CreateQuery(string sql)
         {
             return new Query(sql, conn);
@@ -45,6 +46,7 @@ namespace Functions
 
     }
 
+    // Query
     public class Query
     {
         private IDbCommand comando;
@@ -56,16 +58,19 @@ namespace Functions
             comando.CommandText = sql;
         }
 
+        // Executa query sem retorno
         public void ExecuteUpdate()
         {
             comando.ExecuteNonQuery();
         }
 
+        // Executa query com retorno de dataReader
         public IDataReader ExecuteQuery()
         {
             return comando.ExecuteReader();
         }
 
+        // Executa a query com retorno de inteiro
         public int ExecuteScalar()
         {
             return Convert.ToInt32(comando.ExecuteScalar());

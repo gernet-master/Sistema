@@ -12,7 +12,7 @@ namespace Sistema.Assets.DB
     public class Log_AcessoDB : Session
     {
         // Gravar novo log de acesso
-        public void Save(Log_Acesso rs)
+        public void Gravar(Log_Acesso rs)
         {
             try
             {

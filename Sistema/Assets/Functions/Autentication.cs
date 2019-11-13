@@ -5,7 +5,6 @@ Data: 01/01/2020 - v.1.0
 
 using Sistema.Assets.DB;
 using System;
-using System.Globalization;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -18,8 +17,8 @@ namespace Functions
         {
 
             // Verifica se as variáveis de sessão existem
-            int idusuario = Convert.ToInt32(HttpContext.Current.Session["idusuario"]);
-            int idgernet = Convert.ToInt32(HttpContext.Current.Session["idgernet"]);
+            int idusuario = Convert.ToInt32(HttpContext.Current.Session["usuario"]);
+            int idgernet = Convert.ToInt32(HttpContext.Current.Session["gernet"]);
 
             // Valida dados
             if ((idusuario == 0) || (idgernet == 0))
@@ -30,7 +29,7 @@ namespace Functions
             else
             {
                 // Valida na base de dados
-                Boolean usuario = new UsuariosDB().ValidationUserClient(idusuario);
+                Boolean usuario = new UsuariosDB().ValidaUsuarioCliente(idusuario);
 
                 if (usuario)
                 {

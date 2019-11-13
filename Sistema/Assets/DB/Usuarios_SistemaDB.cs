@@ -12,7 +12,7 @@ namespace Sistema.Assets.DB
     public class Usuarios_SistemaDB : Session
     {
         // Gravar novo controle de usuário
-        public void Save(Usuarios_Sistema rs)
+        public void Gravar(Usuarios_Sistema rs)
         {
             try
             {
@@ -33,7 +33,7 @@ namespace Sistema.Assets.DB
         }
 
         // Altera controle de usuário
-        public void Edit(Usuarios_Sistema variavel)
+        public void Alterar(Usuarios_Sistema variavel)
         {
             try
             {
@@ -56,7 +56,7 @@ namespace Sistema.Assets.DB
         }
 
         // Pega os dados de controle do usuário
-        public Usuarios_Sistema GetUserControl(int idusuario)
+        public Usuarios_Sistema ControleUsuario(int idusuario)
         {
             try
             {

@@ -3,13 +3,8 @@ Descrição: Criptografia em MD5
 Data: 01/01/2020 - v.1.0
 */
 
-using System;
-using System.Globalization;
-using System.Text;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Routing;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace Functions
 {

@@ -19,18 +19,27 @@ namespace Functions
             {
                 switch (format)
                 {
+                    // Tudo minúsculo
                     case 0:
                         result = text.ToLower();
                         break;
+
+                    // Tudo maíusculo
                     case 1:
                         result = text.ToUpper();
                         break;
+
+                    // Primeira letra em maíusculo, resto em minúsculo
                     case 2:
                         result = char.ToUpper(text[0]) + text.Substring(1).ToLower();
                         break;
+
+                    // Sem formatação, padrão digitado
                     case 3:
                         result = text;
                         break;
+
+                    // Primeira letra de cada palavra em maíusculo, resto em minúsculo
                     case 4:
                         result = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(text.ToLower());
                         break;
@@ -60,7 +69,7 @@ namespace Functions
             return result;
         }
 
-        // Substitui alguns caracteres do texto por códigos, para segurança ao gravar no banco de dados e limitar tamanho do texto
+        // Substitui alguns caracteres do texto por códigos, para segurança ao gravar no banco de dados e limita o tamanho do texto
         public static string ClearText(string text = "", int limit = 0)
         {
             string result = "";
@@ -76,6 +85,7 @@ namespace Functions
             return result;
         }
 
+        // Pega o ip do cliente
         public static string GetIPAddress()
         {
             System.Web.HttpContext context = System.Web.HttpContext.Current;

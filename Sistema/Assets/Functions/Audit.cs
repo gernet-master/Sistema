@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿/*
+Descrição: Rotinas para gravar a auditoria do sistema
+Data: 01/01/2020 - v.1.0
+*/
 
 namespace Sistema.Assets.Functions
 {
+    // Armazena o valor e a configuração
     public class Variable
     {
         public dynamic value { get; set; }
@@ -18,6 +19,7 @@ namespace Sistema.Assets.Functions
 
     }
 
+    // Auditoria
     public class Audit
     {
         // Recebe os objetos e compara as alterações para gravar no banco de dados

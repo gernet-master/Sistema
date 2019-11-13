@@ -10,7 +10,7 @@ namespace Sistema.Models
 
         public UsuariosView()
         {
-            this.usuarios = new UsuariosDB().List();
+            this.usuarios = new UsuariosDB().Listar();
         }
     }
 }

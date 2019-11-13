@@ -1,10 +1,12 @@
-﻿using Functions;
+﻿/*
+Descrição: Classe do log de acesso ao sistema
+Data: 01/01/2020 - v.1.0
+*/
+
+using Functions;
 using Sistema.Assets.DB;
 using Sistema.Assets.Functions;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Sistema.Assets.Entities
 {
@@ -30,9 +32,9 @@ namespace Sistema.Assets.Entities
         }
 
         // Gravar
-        public void Save()
+        public void Gravar()
         {
-            new Log_AcessoDB().Save(this);
+            new Log_AcessoDB().Gravar(this);
         }
 
     }

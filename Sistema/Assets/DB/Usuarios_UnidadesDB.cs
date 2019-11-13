@@ -12,7 +12,7 @@ namespace Sistema.Assets.DB
     public class Usuarios_UnidadesDB : Session
     {
         // Gravar nova unidade para o usuário
-        public void Save(Usuarios_Unidades rs)
+        public void Gravar(Usuarios_Unidades rs)
         {
             try
             {
@@ -30,7 +30,7 @@ namespace Sistema.Assets.DB
         }
 
         // Lista unidades vinculadas ao usuário
-        public List<Usuarios_Unidades> List(int idusuario = 0)
+        public List<Usuarios_Unidades> Listar(int idusuario = 0)
         {
             try
             {

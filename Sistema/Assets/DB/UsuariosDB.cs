@@ -12,16 +12,19 @@ namespace Sistema.Assets.DB
     public class UsuariosDB : Session
     {
         // Gravar novo usuário
-        public int Save(Usuarios rs)
+        public int Gravar(Usuarios rs)
         {
             try
             {
                 int idusuario = 0;
+
+                string qry = "";
+                qry += "INSERT INSERT INTO Usuarios (idgernet, txnome, txusuario, txsenha, txemail, idperfil, flativo, flmaster, flalterasenha, txfoto) output INSERTED.idusuario ";
+                qry += "VALUES (" + rs.idgernet.value + ", '" + rs.txnome.value + "', '" + rs.txusuario.value + "', '" + rs.txsenha.value + "', '" + rs.txemail.value + "', " + rs.idperfil.value + ", ";
+                qry += rs.flativo.value + ", " + rs.flmaster.value + ", " + rs.flalterasenha.value + ", '" + rs.txfoto.value + "')";
+
                 Connection session = new Connection();
-                Query query = session.CreateQuery(@"
-                    INSERT INTO Usuarios (txnome, txusuario, txsenha, txemail, idperfil, flativo, flmaster, flalterasenha, txfoto) output INSERTED.idusuario 
-                    VALUES (" + rs.idgernet.value + ", '" + rs.txnome.value + "', '" + rs.txusuario.value + "', '" + rs.txsenha.value + "', '" + rs.txemail.value + "', " + rs.idperfil.value + ", " + 
-                        rs.flativo.value + ", " + rs.flmaster.value + ", " + rs.flalterasenha.value + ", '" + rs.txfoto.value + "')");
+                Query query = session.CreateQuery(qry);
                 idusuario = query.ExecuteScalar();
                 session.Close();
                 return idusuario;
@@ -33,12 +36,19 @@ namespace Sistema.Assets.DB
         }
 
         // Altera usuário
-        public void Edit(Usuarios variavel)
+        public void Alterar(Usuarios variavel)
         {
             try
             {
+                string qry = "";
+                qry += "UPDATE Usuarios ";
+                qry += "SET txnome = '" + variavel.txnome.value + "', txusuario = '" + variavel.txusuario.value + "', txsenha = '" + variavel.txsenha.value + "', ";
+                qry += "txemail = '" + variavel.txemail.value + "', idperfil = " + variavel.idperfil.value + ", flativo = " + variavel.flativo.value + ", ";
+                qry += "flalterasenha = " + variavel.flalterasenha.value + ", txfoto = '" + variavel.txfoto.value + "' ";
+                qry += "WHERE idusuario = " + variavel.idusuario.value + " AND idgernet = " + session_gernet;
+
                 Connection session = new Connection();
-                Query query = session.CreateQuery("UPDATE Banners SET idsite = @idsite, txfoto = @txfoto, txlink = @txlink, nrordem = @nrordem, flativo = @flativo, dtinicio = @dtinicio, dtfim = @dtfim WHERE idbanner = @idbanner");
+                Query query = session.CreateQuery(qry);
                 query.ExecuteUpdate();
                 session.Close();
             }
@@ -49,14 +59,26 @@ namespace Sistema.Assets.DB
         }
 
         // Valida dados de acesso
-        public Usuarios Login(string user, string password)
+        public Usuarios Login(string txusuario = "", string password = "", int idusuario = 0)
         {
             try
             {
                 Usuarios us = null;
 
+                string qry = "";
+                qry += "SELECT * FROM usuarios WHERE txsenha = '" + password + "' AND idgernet = " + session_gernet + " ";
+
+                if (idusuario > 0)
+                {
+                    qry += " AND idusuario = " + idusuario + " ";
+                }
+                else
+                {
+                    qry += " AND txusuario = '" + txusuario + "' ";
+                }
+                
                 Connection session = new Connection();
-                Query query = session.CreateQuery(@"SELECT * FROM usuarios WHERE txusuario = '" + user + "' AND txsenha = '" + password + "' AND idgernet = " + session_gernet);
+                Query query = session.CreateQuery(qry);
                 IDataReader reader = query.ExecuteQuery();
 
                 if (reader.Read())
@@ -64,11 +86,16 @@ namespace Sistema.Assets.DB
                     us = new Usuarios()
                     {
                         idusuario = new Variable(value: Convert.ToInt32(reader["idusuario"])),
+                        idgernet = new Variable(value: Convert.ToInt32(reader["idusuario"])),
                         txnome = new Variable(value: Convert.ToString(reader["txnome"])),
+                        txusuario = new Variable(value: Convert.ToString(reader["idusuario"])),
                         idperfil = new Variable(value: Convert.ToInt32(reader["idperfil"])),
+                        txsenha = new Variable(value: Convert.ToString(reader["idusuario"])),
+                        txemail = new Variable(value: Convert.ToString(reader["idusuario"])),
                         flativo = new Variable(value: Convert.ToInt32(reader["flativo"])),
                         flmaster = new Variable(value: Convert.ToInt32(reader["flmaster"])),
-                        flalterasenha = new Variable(value: Convert.ToInt32(reader["flalterasenha"]))
+                        flalterasenha = new Variable(value: Convert.ToInt32(reader["flalterasenha"])),
+                        txfoto = new Variable(value: Convert.ToString(reader["idusuario"])),
                     };
                 }
 
@@ -84,14 +111,17 @@ namespace Sistema.Assets.DB
         }
 
         // Valida se o usuário pertence ao cliente
-        public Boolean ValidationUserClient(int idusuario)
+        public Boolean ValidaUsuarioCliente(int idusuario)
         {
             try
             {
                 Boolean ret = false;
 
+                string qry = "";
+                qry += "SELECT * FROM usuarios WHERE idusuario = " + idusuario + " AND idgernet = " + session_gernet;
+
                 Connection session = new Connection();
-                Query query = session.CreateQuery(@"SELECT * FROM usuarios WHERE idusuario = " + idusuario + " AND idgernet = " + session_gernet);
+                Query query = session.CreateQuery(qry);
                 IDataReader reader = query.ExecuteQuery();
                 if (reader.Read())
                 {
@@ -109,14 +139,17 @@ namespace Sistema.Assets.DB
         }
 
         // Lista usuários
-        public List<Usuarios> List()
+        public List<Usuarios> Listar()
         {
             try
             {
                 List<Usuarios> us = new List<Usuarios>();
 
+                string qry = "";
+                qry += "SELECT * FROM usuarios WHERE idgernet = " + session_gernet;
+
                 Connection session = new Connection();                
-                Query query = session.CreateQuery(@"SELECT * FROM usuarios");
+                Query query = session.CreateQuery(qry);
                 IDataReader reader = query.ExecuteQuery();
 
                 while (reader.Read())
