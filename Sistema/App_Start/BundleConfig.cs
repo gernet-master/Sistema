@@ -19,6 +19,7 @@ namespace Sistema
                 "~/Assets/plugins/general/tooltip.js/dist/umd/tooltip.min.js",
                 //"~/Assets/plugins/general/perfect-scrollbar/dist/perfect-scrollbar.js",
                 "~/Assets/plugins/general/sticky-js/dist/sticky.min.js",
+                "~/Assets/js/utils.js",
                 //"~/Assets/plugins/general/wnumb/wNumb.js",
                 //"~/Assets/plugins/general/jquery-form/dist/jquery.form.min.js",
                 //"~/Assets/plugins/general/block-ui/jquery.blockUI.js",

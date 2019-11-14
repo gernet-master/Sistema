@@ -39,6 +39,65 @@ namespace Functions
             // Dados incorretos
             if (usuario == null)
             {
+
+                // Verifica se o usuário existe para o cliente no sistema
+                int idusuario = new UsuariosDB().Id(user);
+                if (idusuario > 0)
+                {
+                    // Total de vezes o usuário errou a senha nos últimos 5 minutos
+                    int erro = new Log_AcessoDB().ErrouSenha(idusuario);
+
+                    // Mais de 5 erros
+                    if (erro > 5)
+                    {
+                        // Exibe mensagem de usuário bloqueado e a data para desbloqueio
+                        return "0|" + Language.XmlLang(69, 2).Text + "<br><br>" + Language.XmlLang(70, 2).Text + ": " + DateTime.Now.AddMinutes(10);
+                    }
+
+                    // 5º erro
+                    else if (erro == 5)
+                    {
+                        // Grava log de acesso
+                        Log_Acesso log = new Log_Acesso();
+                        log.idusuario.value = idusuario;
+                        log.tplog.value = "R";
+                        log.Gravar();
+
+                        // Pega os dados de controle do usuário
+                        Usuarios_Sistema usuarios_sistema = new Usuarios_SistemaDB().ControleUsuario(idusuario);
+
+                        // Grava tempo de bloqueio
+                        if (usuarios_sistema == null)
+                        {
+                            usuarios_sistema = new Usuarios_Sistema();
+                            usuarios_sistema.txbloqueado.value = DateTime.Now;
+                            usuarios_sistema.Gravar();
+                        }
+                        else
+                        {
+                            usuarios_sistema.txbloqueado.value = DateTime.Now;
+                            usuarios_sistema.Alterar();
+                        }
+
+                        // Exibe mensagem de usuário bloqueado
+                        return "0|" + Language.XmlLang(71, 2).Text + ".<br><br>" + Language.XmlLang(72, 2).Text + " " + erro + " " + Language.XmlLang(5, 0).Text + " 5.<br><br>" + Language.XmlLang(73, 2).Text;
+                    }
+
+                    // 1º ao 4º erro
+                    else
+                    {
+                        // Grava log de acesso
+                        Log_Acesso log = new Log_Acesso();
+                        log.idusuario.value = idusuario;
+                        log.tplog.value = "R";
+                        log.Gravar();
+
+                        // Exibe aviso
+                        return "0|" + Language.XmlLang(71, 2).Text + ".<br><br>" + Language.XmlLang(72, 2).Text + " " + erro + " " + Language.XmlLang(5, 0).Text + " 5.<br><br>" + Language.XmlLang(74, 2).Text;
+                    }                      
+
+                }
+
                 return "0|" + Language.XmlLang(46, 2).Text;
             }
 
@@ -51,9 +110,15 @@ namespace Functions
                 {
                     if (usuarios_sistema != null)
                     {
-                        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        // Segundos entre a data atual e a data de bloqueio
                         var seconds = System.Math.Abs((Convert.ToDateTime(usuarios_sistema.txbloqueado.value) - DateTime.Now).TotalSeconds);
+
+                        // Tempo de bloqueio for maior que 600 segundos
+                        if (seconds > 600) {
+
+                            // Exibe mensagem de usuário bloqueado e a data para desbloqueio
+                            return "0|" + Language.XmlLang(69, 2).Text + "<br><br>" + Language.XmlLang(70, 2).Text + ": " + DateTime.Now.AddMinutes(10);
+                        }
                     }
                 }
 

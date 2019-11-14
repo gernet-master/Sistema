@@ -79,8 +79,15 @@ var login_div = "";
 
         // Envia o formulário de login
         submitLogin: function () {
+
             $('#kt-form-login').validationEngine('attach', { boxField: '' });
             if ($('#kt-form-login').validationEngine('validate')) {
+
+                // Processando
+                const Swal = swal.fire({
+                    title: UTILS.xmlLang(68, 2).Text,
+                    type: 'warning'
+                });
 
                 // Envia o formulário para gravar
                 $.post('/Login/Validation', $('#kt-form-login').serializeArray(), function (data) {
@@ -90,7 +97,7 @@ var login_div = "";
                     
                     // Se retornou 0, exibe alerta de erro																										
                     if (arr[0] == 0) {
-                        swal.fire({
+                        Swal.update({
                             title: arr[1],
                             type: 'error'
                         });

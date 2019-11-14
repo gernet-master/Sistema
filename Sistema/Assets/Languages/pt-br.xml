@@ -68,13 +68,13 @@
   <string id="65" text="a senha não pode ter espaços" />
   <string id="66" text="observações" />
   <string id="67" text="a nova senha deve ser diferente da anterior" />
-  <string id="68" text="" />
-  <string id="69" text="" />
-  <string id="70" text="" />
-  <string id="71" text="" />
-  <string id="72" text="" />
-  <string id="73" text="" />
-  <string id="74" text="" />
+  <string id="68" text="aguarde" />
+  <string id="69" text="seu acesso está bloqueado" />
+  <string id="70" text="será liberado em" />
+  <string id="71" text="senha incorreta" />
+  <string id="72" text="tentativa" />
+  <string id="73" text="o acesso está bloqueado por 10 minutos" />
+  <string id="74" text="após a quinta tentativa, o acesso será bloqueado por 10 minutos" />
   <string id="75" text="" />
   <string id="76" text="" />
   <string id="77" text="" />

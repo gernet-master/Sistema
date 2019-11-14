@@ -1,5 +1,5 @@
 ﻿/*
-Descrição: Funções de formatação de dados
+Descrição: Funções do sistema
 Data: 01/01/2020 - v.1.0
 */
 

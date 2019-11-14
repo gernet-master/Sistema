@@ -19,7 +19,7 @@ namespace Sistema.Controllers
             // Recebe as variáveis
             string user = Utils.ClearText(form["user"], 20);
             string password = Utils.ClearText(form["password"], 20);
-            int remember = Utils.Numbers(form["password"]);
+            int remember = Utils.Numbers(Utils.Null(form["password"], "0"));
 
             // Valida dados
             string r = Login.LoginCheck(user, password, remember);
@@ -31,6 +31,11 @@ namespace Sistema.Controllers
         // Formulário para alterar senha
         public ActionResult Password()
         {
+            // Se não possuir usuário na sessão, redireciona para login
+            if (Session["usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return PartialView();
         }
 

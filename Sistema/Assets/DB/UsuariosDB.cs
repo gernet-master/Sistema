@@ -86,16 +86,16 @@ namespace Sistema.Assets.DB
                     us = new Usuarios()
                     {
                         idusuario = new Variable(value: Convert.ToInt32(reader["idusuario"])),
-                        idgernet = new Variable(value: Convert.ToInt32(reader["idusuario"])),
+                        idgernet = new Variable(value: Convert.ToInt32(reader["idgernet"])),
                         txnome = new Variable(value: Convert.ToString(reader["txnome"])),
-                        txusuario = new Variable(value: Convert.ToString(reader["idusuario"])),
+                        txusuario = new Variable(value: Convert.ToString(reader["txusuario"])),
                         idperfil = new Variable(value: Convert.ToInt32(reader["idperfil"])),
-                        txsenha = new Variable(value: Convert.ToString(reader["idusuario"])),
-                        txemail = new Variable(value: Convert.ToString(reader["idusuario"])),
+                        txsenha = new Variable(value: Convert.ToString(reader["txsenha"])),
+                        txemail = new Variable(value: Convert.ToString(reader["txemail"])),
                         flativo = new Variable(value: Convert.ToInt32(reader["flativo"])),
                         flmaster = new Variable(value: Convert.ToInt32(reader["flmaster"])),
                         flalterasenha = new Variable(value: Convert.ToInt32(reader["flalterasenha"])),
-                        txfoto = new Variable(value: Convert.ToString(reader["idusuario"])),
+                        txfoto = new Variable(value: Convert.ToString(reader["txfoto"])),
                     };
                 }
 
@@ -111,14 +111,14 @@ namespace Sistema.Assets.DB
         }
 
         // Valida se o usuário pertence ao cliente
-        public Boolean ValidaUsuarioCliente(int idusuario)
+        public Boolean ValidaUsuarioCliente(int idusuario = 0)
         {
             try
             {
                 Boolean ret = false;
 
                 string qry = "";
-                qry += "SELECT * FROM usuarios WHERE idusuario = " + idusuario + " AND idgernet = " + session_gernet;
+                qry += "SELECT * FROM usuarios WHERE idgernet = " + session_gernet + " AND idusuario = " + idusuario;
 
                 Connection session = new Connection();
                 Query query = session.CreateQuery(qry);
@@ -126,6 +126,34 @@ namespace Sistema.Assets.DB
                 if (reader.Read())
                 {
                     ret = true;
+                }
+                reader.Close();
+                session.Close();
+
+                return ret;
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+        }
+
+        // Pega o id de acordo com o usuário
+        public int Id(string txusuario = "")
+        {
+            try
+            {
+                int ret = 0;
+
+                string qry = "";
+                qry += "SELECT idusuario FROM usuarios WHERE idgernet = " + session_gernet + " AND txusuario = '" + txusuario + "' ";
+
+                Connection session = new Connection();
+                Query query = session.CreateQuery(qry);
+                IDataReader reader = query.ExecuteQuery();
+                if (reader.Read())
+                {
+                    ret = Convert.ToInt32(reader["idusuario"]);
                 }
                 reader.Close();
                 session.Close();
