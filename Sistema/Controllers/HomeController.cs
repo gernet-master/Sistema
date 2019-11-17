@@ -18,6 +18,12 @@ namespace Sistema.Controllers
             return View();
         }
 
+        // Gera nova senha para o usuário
+        public ActionResult Password(string code = "")
+        {
+            return View();
+        }
+
         // Sai do sistema
         public ActionResult Logout()
         {

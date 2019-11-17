@@ -40,7 +40,17 @@ var UTILS = {};
             } else {
                 return "";
             }
-        }	
+        },
+
+        // Exibe alerta de processando
+        processing: function () {
+            swal.fire({
+                title: UTILS.xmlLang(68, 2).Text,
+                type: 'warning',
+                showConfirmButton: false,
+                allowOutsideClick: false
+            });
+        }
     };
 
 })(jQuery);

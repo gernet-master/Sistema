@@ -18,20 +18,23 @@ namespace Functions
 
             try
             {
-                MailMessage message = new MailMessage();
-                SmtpClient smtp = new SmtpClient();
-                message.From = new MailAddress("sender@gestaodental.com.br");
-                message.To.Add(new MailAddress(para));
-                message.Subject = titulo;
-                message.IsBodyHtml = true;
-                message.Body = mensagem;
-                smtp.Port = 465;
-                smtp.Host = "smtp.zoho.com";
-                smtp.EnableSsl = true;
-                smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential("sender@gestaodental.com.br", "tes12345");
-                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-                smtp.Send(message);
+                //SmtpClient smtp = new SmtpClient();
+                //NetworkCredential credenciais = new NetworkCredential("sender@gestaodental.com.br", "tes12345");
+                //MailMessage msg = new MailMessage();
+                //MailAddress from = new MailAddress("sender@gestaodental.com.br");
+                //smtp.Host = "smtp.zoho.com";
+                //smtp.EnableSsl = true;
+                //smtp.Port = 587;
+                //smtp.UseDefaultCredentials = false;
+                //smtp.Credentials = credenciais;
+                //msg.From = new MailAddress("sender@gestaodental.com.br"); 
+                //msg.Subject = titulo;
+                //msg.IsBodyHtml = true;
+                //msg.Body = mensagem;
+                //msg.To.Add(para);
+
+                //smtp.Send(msg);
+
                 ret = true;
             }
             catch (Exception) { }
@@ -41,3 +44,4 @@ namespace Functions
 
     }
 }
+

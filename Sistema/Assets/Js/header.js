@@ -27,7 +27,7 @@ var HEADER = {};
                     cancelButtonText: UTILS.xmlLang(50, 2).Text
                 }).then(function (result) {
                     if (result.value) {
-                        $(location).attr('href', 'Home/Logout');
+                        $(location).attr('href', '/Home/Logout');
                     }
                 });
             });

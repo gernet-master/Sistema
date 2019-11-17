@@ -64,7 +64,7 @@ namespace Sistema.Controllers
         public JsonResult RecoverPassword(FormCollection form)
         {
             // Recebe as variáveis
-            string user = Utils.ClearText(form["user"], 20);
+            string user = Utils.ClearText(form["user_r"], 20);
             string email = Utils.ClearText(form["email"], 20);
 
             // Valida dados

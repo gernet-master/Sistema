@@ -84,12 +84,7 @@ var login_div = "";
             if ($('#kt-form-login').validationEngine('validate')) {
 
                 // Processando
-                swal.fire({
-                    title: UTILS.xmlLang(68, 2).Text,
-                    type: 'warning',
-                    showConfirmButton: false,
-                    allowOutsideClick: false
-                });
+                UTILS.processing();
 
                 // Envia o formulário
                 $.post('/Login/Validation', $('#kt-form-login').serializeArray(), function (data) {
@@ -152,6 +147,9 @@ var login_div = "";
             $('#kt-form-recover').validationEngine('attach', { boxField: '' });
             if ($('#kt-form-recover').validationEngine('validate')) {
 
+                // Processando
+                UTILS.processing();
+
                 // Envia o formulário
                 $.post('/Login/RecoverPassword', $('#kt-form-recover').serializeArray(), function (data) {
 
@@ -168,7 +166,28 @@ var login_div = "";
 
                     // Se retornou 1, carrega página inicial
                     if (arr[0] == 1) {
-                        $(location).attr('href', '/Home');
+                        let timerInterval;
+                        Swal.fire({
+                            title: arr[1],
+                            html: UTILS.xmlLang(94, 2).Text + ' <b>5</b> ' + UTILS.xmlLang(95, 0).Text,
+                            type: 'success',
+                            timer: 5000,
+                            showConfirmButton: true,
+                            confirmButtonText: UTILS.xmlLang(93, 2).Text,
+                            onBeforeOpen: () => {
+                                timerInterval = setInterval(() => {
+                                    Swal.getContent().querySelector('b').textContent = Math.ceil(Swal.getTimerLeft() / 1000);
+                                }, 1000);
+                            },
+                            onClose: () => {
+                                clearInterval(timerInterval);
+                                $(location).attr('href', '/Home');
+                            }
+                        }).then((result) => {
+                            if (result.dismiss === Swal.DismissReason.timer) {
+                                $(location).attr('href', '/Home');
+                            }
+                        });
                     }
 
                 });
@@ -179,6 +198,9 @@ var login_div = "";
         submirChangePassword: function () {
             $('#kt-form-password').validationEngine('attach', { boxField: '' });
             if ($('#kt-form-password').validationEngine('validate')) {
+
+                // Processando
+                UTILS.processing();
 
                 // Envia o formulário
                 $.post('/Login/ChangePassword', $('#kt-form-password').serializeArray(), function (data) {

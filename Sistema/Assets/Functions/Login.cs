@@ -220,6 +220,10 @@ namespace Functions
                         if (Mail.EnviaEmail(email, title, message))
                         {
                             // Grava o link para controle de utilização
+                            Log_Link_Senha log_link_senha = new Log_Link_Senha();
+                            log_link_senha.idusuario.value = idusuario;
+                            log_link_senha.txchave.value = link_key;
+                            log_link_senha.Gravar();
 
                             return "1|" + Language.XmlLang(92, 2).Text;                            
                         }
