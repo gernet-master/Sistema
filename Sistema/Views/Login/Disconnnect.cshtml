@@ -1,0 +1,56 @@
+﻿@*
+Descrição: Página de aviso de desconexão do usuário
+Data: 01/01/2020 - v.1.0
+*@
+
+@using Functions;
+
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<!-- Head -->
+<head>
+    <meta charset="utf-8" />
+    <title>@Language.XmlLang(1, 1).Text</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700" />
+
+    <!-- Styles -->
+    @Styles.Render("~/system_css")
+    @Styles.Render("~/login_css")
+
+    <!-- Icon -->
+    <link rel="shortcut icon" href="../assets/media/logos/favicon.ico" />
+</head>
+
+<body style="background-image:url(../../Assets/Media/bg/bg-3.jpg)" class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--fixed kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
+
+    <div class="kt-margin-t-100" >
+        <center>
+            <h1 style="font-weight: 700; font-size: 12rem; color:#4800ff;">@Language.XmlLang(77, 1).Text</h1>
+            <p style="font-weight: 500; font-size: 3rem; color:#000000;">
+                @Language.XmlLang(79, 2).Text.
+            </p>
+            <p style="font-weight: 500; font-size: 2rem; color:#000000;">
+                @Language.XmlLang(78, 2).Text.
+            </p>
+            <div class="kt-margin-t-50">
+                <button onclick="location.href='/Login';" type="button" class="btn btn-brand btn-pill btn-elevate">@Language.XmlLang(80, 1).Text</button>
+            </div>
+            <div class="kt-margin-t-100">
+                <a href="http://www.gernet.com.br" target="_blank" data-toggle="kt-tooltip" title="@Language.XmlLang(45, 2).Text www.gernet.com.br" data-placement="top">
+                    <img src="~/Assets/Media/logos/gernet.png" />
+                </a>
+            </div>
+        </center>
+    </div>
+
+</body>
+
+</html>
+
+<!-- Scripts -->
+@Scripts.Render("~/system_scripts")

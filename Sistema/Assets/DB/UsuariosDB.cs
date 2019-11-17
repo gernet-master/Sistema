@@ -138,6 +138,34 @@ namespace Sistema.Assets.DB
             }
         }
 
+        // Valida se o email pertence ao usuário
+        public int ValidaUsuarioEmail(string txusuario = "", string txemail = "")
+        {
+            try
+            {
+                int ret = 0;
+
+                string qry = "";
+                qry += "SELECT * FROM usuarios WHERE idgernet = " + session_gernet + " AND txusuario = '" + txusuario + "' AND txemail = '" + txemail + "'";
+
+                Connection session = new Connection();
+                Query query = session.CreateQuery(qry);
+                IDataReader reader = query.ExecuteQuery();
+                if (reader.Read())
+                {
+                    ret = Convert.ToInt32(reader["idusuario"]);
+                }
+                reader.Close();
+                session.Close();
+
+                return ret;
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+        }
+
         // Pega o id de acordo com o usuário
         public int Id(string txusuario = "")
         {
@@ -201,6 +229,34 @@ namespace Sistema.Assets.DB
                 session.Close();
 
                 return us;
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+        }
+
+        // Valida se já foi enviado o link para recuperar senha
+        public Boolean LinkSenha(int idusuario = 0)
+        {
+            try
+            {
+                Boolean ret = false;
+
+                string qry = "";
+                qry += "SELECT * from log_link_senha WHERE idusuario = " + idusuario + " AND flutilizado = 0 AND DATEDIFF(HOUR, dtlink, getdate()) < 24";
+
+                Connection session = new Connection();
+                Query query = session.CreateQuery(qry);
+                IDataReader reader = query.ExecuteQuery();
+                if (reader.Read())
+                {
+                    ret = true;
+                }
+                reader.Close();
+                session.Close();
+
+                return ret;
             }
             catch (Exception error)
             {

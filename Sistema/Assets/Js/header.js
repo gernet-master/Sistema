@@ -20,11 +20,11 @@ var HEADER = {};
             $('.kt-header__topbar-item #gernet-logout').click(function () {
 
                 swal.fire({
-                    title: 'deseja realmente sair do sistema',
+                    title: UTILS.xmlLang(48, 2).Text,
                     type: 'question',
                     showCancelButton: true,
-                    confirmButtonText: 'sim',
-                    cancelButtonText: 'não'
+                    confirmButtonText: UTILS.xmlLang(49, 2).Text,
+                    cancelButtonText: UTILS.xmlLang(50, 2).Text
                 }).then(function (result) {
                     if (result.value) {
                         $(location).attr('href', 'Home/Logout');

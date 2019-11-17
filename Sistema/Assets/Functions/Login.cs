@@ -64,12 +64,13 @@ namespace Functions
                         log.Gravar();
 
                         // Pega os dados de controle do usuário
-                        Usuarios_Sistema usuarios_sistema = new Usuarios_SistemaDB().ControleUsuario(idusuario);
+                        Usuarios_Sistema usuarios_sistema = new Usuarios_SistemaDB().Buscar(idusuario);
 
                         // Grava tempo de bloqueio
                         if (usuarios_sistema == null)
                         {
                             usuarios_sistema = new Usuarios_Sistema();
+                            usuarios_sistema.idusuario.value = idusuario;
                             usuarios_sistema.txbloqueado.value = DateTime.Now;
                             usuarios_sistema.Gravar();
                         }
@@ -105,7 +106,7 @@ namespace Functions
             else
             {
                 // Pega a data de bloqueio se existir
-                Usuarios_Sistema usuarios_sistema = new Usuarios_SistemaDB().ControleUsuario(usuario.idusuario.value);
+                Usuarios_Sistema usuarios_sistema = new Usuarios_SistemaDB().Buscar(usuario.idusuario.value);
                 if (usuarios_sistema != null)
                 {
                     if (usuarios_sistema != null)
@@ -113,8 +114,8 @@ namespace Functions
                         // Segundos entre a data atual e a data de bloqueio
                         var seconds = System.Math.Abs((Convert.ToDateTime(usuarios_sistema.txbloqueado.value) - DateTime.Now).TotalSeconds);
 
-                        // Tempo de bloqueio for maior que 600 segundos
-                        if (seconds > 600) {
+                        // Tempo de bloqueio for menor que 10 minutos
+                        if (seconds < 600) {
 
                             // Exibe mensagem de usuário bloqueado e a data para desbloqueio
                             return "0|" + Language.XmlLang(69, 2).Text + "<br><br>" + Language.XmlLang(70, 2).Text + ": " + DateTime.Now.AddMinutes(10);
@@ -128,6 +129,20 @@ namespace Functions
                     return "0|" + Language.XmlLang(47, 2).Text;
                 }
 
+                // Pega a última sessionid
+                string session_id = new Usuarios_SistemaDB().SessionId(usuario.idusuario.value);
+
+                // Verifica se o usuário já está logado
+                if ((session_id != "") && (Convert.ToString(HttpContext.Current.Application["sessions"]).IndexOf(session_id) >= 0))
+                {
+
+                    // Armazena em variáveis de sessão
+                    HttpContext.Current.Session["usuario"] = usuario.idusuario.value;
+
+                    // Retorna mensagem de confirmação
+                    return "3|";
+                }
+
                 // Verifica se o usuário é forçado a alterar a senha
                 if (Convert.ToBoolean(usuario.flalterasenha.value))
                 {
@@ -138,7 +153,7 @@ namespace Functions
 
                     // Redireciona para tela de alteração
                     return "1|";
-                }
+                }                
 
                 // Executa as rotinas de login
                 RotinaLogin(usuario, usuarios_sistema, remember);
@@ -147,6 +162,79 @@ namespace Functions
                 return "2|";
             }
 
+        }
+
+        // Envia link para recuperação de senha
+        public static string RecoverPassword(string user = "", string email = "")
+        {
+            // Verifica se o usuário está dentro do padrão
+            if ((user == "") || (user.Length > 20))
+            {
+                return "0|" + Language.XmlLang(46, 2).Text;
+            }
+
+            // Verifica se o email está dentro do padrão
+            if ((email == "") || (email.Length > 100))
+            {
+                return "0|" + Language.XmlLang(46, 2).Text;
+            }
+
+            // Valida os dados
+            int idusuario = new UsuariosDB().ValidaUsuarioEmail(user, email);
+
+            if (idusuario == 0)
+            {
+                return "0|" + Language.XmlLang(46, 2).Text;
+            }
+            else
+            {
+                // Verifica se já foi enviado link no período de 24h
+                if (new UsuariosDB().LinkSenha(idusuario))
+                {
+                    return "0|" + Language.XmlLang(81, 2).Text;
+                }
+                else
+                {
+                    // Busca os dados do cliente
+                    Gernet_Controle gernet_controle = new Gernet_ControleDB().Buscar();
+
+                    if (gernet_controle == null)
+                    {
+                        return "0|" + Language.XmlLang(84, 2).Text;
+                    }
+                    else
+                    {
+                        // Monta titulo de email
+                        string title = Language.XmlLang(82, 1).Text + " " + Utils.FormatString(gernet_controle.txcliente.value, 1) + " - " + Language.XmlLang(83, 2).Text;
+
+                        // Monta mensagem
+                        string link_key = Crypt.CreateHash(DateTime.Now.ToLongDateString());
+                        string link_password = "https://" + gernet_controle.txlink.value + "/password?code=" + link_key;
+                        string message = "<strong>" + Language.XmlLang(85, 1).Text + "!</strong><Br><Br>";
+                        message += Language.XmlLang(86, 2).Text + ".<Br><br>";
+                        message += Language.XmlLang(87, 2).Text + ", <a href='" + link_password + "'>" + Language.XmlLang(88, 1).Text + "!</a> " + Language.XmlLang(89, 0).Text + ": " + link_password + "<Br>";
+                        message += Language.XmlLang(90, 2).Text + ".<Br><Br>";
+                        message += Language.XmlLang(91, 2).Text + ".";
+
+                        // Envia e-mail
+                        if (Mail.EnviaEmail(email, title, message))
+                        {
+                            // Grava o link para controle de utilização
+
+                            return "1|" + Language.XmlLang(92, 2).Text;                            
+                        }
+                        else
+                        {
+                            return "0|" + Language.XmlLang(84, 2).Text;
+                        }
+                        
+                    }
+
+                }
+            }
+
+            // Redireciona de volta para página de login
+            return "1|";
         }
 
         // Altera a senha do usuário
@@ -177,9 +265,6 @@ namespace Functions
             // Valida os dados
             Usuarios usuario = new UsuariosDB().Login("", password_atual, Convert.ToInt32(HttpContext.Current.Session["usuario"]));
 
-            // Pega os dados de controle do usuário
-            Usuarios_Sistema usuarios_sistema = new Usuarios_SistemaDB().ControleUsuario(usuario.idusuario.value);
-
             // Dados incorretos
             if (usuario == null)
             {
@@ -193,6 +278,9 @@ namespace Functions
                 usuario.txsenha.value = password_novo;
                 usuario.Alterar();
             }
+
+            // Pega os dados de controle do usuário
+            Usuarios_Sistema usuarios_sistema = new Usuarios_SistemaDB().Buscar(usuario.idusuario.value);
 
             // Executa as rotinas de login
             RotinaLogin(usuario, usuarios_sistema, Convert.ToInt32(HttpContext.Current.Session["cookie"]));
@@ -209,7 +297,8 @@ namespace Functions
 
             // Insere a sessão do usuário na aplicação se não existir
             HttpContext.Current.Application.Lock();
-            HttpContext.Current.Application["sessions"] = HttpContext.Current.Application["sessions"] + HttpContext.Current.Session.SessionID + ",";
+            HttpContext.Current.Application["contusr"] = Convert.ToInt32(HttpContext.Current.Application["contusr"]) + 1;
+            HttpContext.Current.Application["sessions"] = Convert.ToString(HttpContext.Current.Application["sessions"]) + HttpContext.Current.Session.SessionID + ",";
             HttpContext.Current.Application.UnLock();
 
             // Armazena em variáveis de sessão
@@ -292,6 +381,10 @@ namespace Functions
                 {
                     unidade = usuarios_unidades.FirstOrDefault().idunidade.value;
                 }
+            }
+            else
+            {
+                unidade = Convert.ToInt32(usuarios_preferencias.idunidade.value);
             }
 
             // Atualiza valores de controle

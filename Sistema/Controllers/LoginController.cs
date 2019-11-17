@@ -1,6 +1,11 @@
 ﻿using Functions;
-using System;
+using Sistema.Assets.DB;
+using Sistema.Assets.Entities;
+using Sistema.Models;
 using System.Web.Mvc;
+using System.Web.Routing;
+using System.Web;
+using System;
 
 namespace Sistema.Controllers
 {
@@ -52,6 +57,39 @@ namespace Sistema.Controllers
 
             // Retorno
             return Json(r);
+        }
+
+        // Validação dos dados para recuperar senha
+        [HttpPost]
+        public JsonResult RecoverPassword(FormCollection form)
+        {
+            // Recebe as variáveis
+            string user = Utils.ClearText(form["user"], 20);
+            string email = Utils.ClearText(form["email"], 20);
+
+            // Valida dados
+            string r = Login.RecoverPassword(user, email);
+
+            // Retorno
+            return Json(r);
+        }
+
+        // Usuário acessou de outro local
+        public ActionResult Disconnnect()
+        {
+
+            // Grava log de acesso
+            Log_Acesso log = new Log_Acesso();
+            log.idusuario.value = Convert.ToInt32(Session["usuario"]);
+            log.tplog.value = "D";
+            log.Gravar();
+
+            // Remove as variáveis de sessão
+            Session.Clear();
+            Session.Abandon();
+
+            // Redireciona para página de login
+            return PartialView();
         }
 
     }

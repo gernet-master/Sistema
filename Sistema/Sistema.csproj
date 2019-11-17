@@ -131,12 +131,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Assets\DB\Gernet_ControleDB.cs" />
     <Compile Include="Assets\DB\Usuarios_FramesDB.cs" />
     <Compile Include="Assets\DB\Usuarios_PreferenciasDB.cs" />
     <Compile Include="Assets\DB\Log_AcessoDB.cs" />
     <Compile Include="Assets\DB\Usuarios_UnidadesDB.cs" />
     <Compile Include="Assets\DB\Usuarios_SistemaDB.cs" />
     <Compile Include="Assets\DB\UsuariosDB.cs" />
+    <Compile Include="Assets\Entities\Gernet_Controle.cs" />
     <Compile Include="Assets\Entities\Usuarios_Preferencias.cs" />
     <Compile Include="Assets\Entities\Usuarios_Frames.cs" />
     <Compile Include="Assets\Entities\Log_Acesso.cs" />
@@ -148,6 +150,7 @@
     <Compile Include="Assets\Functions\Crypt.cs" />
     <Compile Include="Assets\Functions\Login.cs" />
     <Compile Include="Assets\Functions\Connection.cs" />
+    <Compile Include="Assets\Functions\Mail.cs" />
     <Compile Include="Assets\Functions\Utils.cs" />
     <Compile Include="Assets\Functions\Autentication.cs" />
     <Compile Include="Assets\Functions\Language.cs" />
@@ -1533,6 +1536,7 @@
     <Content Include="Views\Administrador\Usuarios\Index.cshtml" />
     <Content Include="Views\Login\Password.cshtml" />
     <Content Include="sistema" />
+    <Content Include="Views\Login\Disconnnect.cshtml" />
     <None Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>

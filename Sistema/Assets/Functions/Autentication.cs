@@ -4,6 +4,7 @@ Data: 01/01/2020 - v.1.0
 */
 
 using Sistema.Assets.DB;
+using Sistema.Assets.Functions;
 using System;
 using System.Web;
 using System.Web.Mvc;
@@ -33,6 +34,13 @@ namespace Functions
 
                 if (usuario)
                 {
+                    // Verifica se a sessionid é a mesma da base de dados
+                    if (HttpContext.Current.Session.SessionID != new Usuarios_SistemaDB().Buscar(idusuario).idsession.value)
+                    {
+                        // Redireciona para aviso de que o usuário acessou de outro local.
+                        filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login", action = "Disconnnect" }));
+                    }
+
                     // Autentica
                     base.OnActionExecuting(filterContext);
                 }

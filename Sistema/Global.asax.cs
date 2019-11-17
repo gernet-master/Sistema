@@ -17,6 +17,10 @@ namespace Sistema
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            // Variaveis de aplicação
+            Application["contusr"] = 0;
+            Application["sessions"] = "";
         }
 
         // Aplicação encerrada

@@ -75,24 +75,24 @@
   <string id="72" text="tentativa" />
   <string id="73" text="o acesso está bloqueado por 10 minutos" />
   <string id="74" text="após a quinta tentativa, o acesso será bloqueado por 10 minutos" />
-  <string id="75" text="" />
-  <string id="76" text="" />
-  <string id="77" text="" />
-  <string id="78" text="" />
-  <string id="79" text="" />
-  <string id="80" text="" />
-  <string id="81" text="" />
-  <string id="82" text="" />
-  <string id="83" text="" />
-  <string id="84" text="" />
-  <string id="85" text="" />
-  <string id="86" text="" />
-  <string id="87" text="" />
-  <string id="88" text="" />
-  <string id="89" text="" />
-  <string id="90" text="" />
-  <string id="91" text="" />
-  <string id="92" text="" />
+  <string id="75" text="o usuário já está conectado ao sistema" />
+  <string id="76" text="deseja encerrar a conexão ativa e entrar no sistema" />
+  <string id="77" text="erro" />
+  <string id="78" text="um novo acesso com o seu usuário foi realizado" />
+  <string id="79" text="você foi desconectado" />
+  <string id="80" text="voltar para a página de login" />
+  <string id="81" text="você já solicitou um link para nova senha nas últimas 24 horas, verifique sua caixa de e-mail e a caixa de spam" />
+  <string id="82" text="sistema" />
+  <string id="83" text="solicitação de nova senha" />
+  <string id="84" text="não foi possível enviar o e-mail com as instruções para criar uma nova senha, tente novamente mais tarde" />
+  <string id="85" text="atenção" />
+  <string id="86" text="se você não solicitou o envio de uma nova senha, desconsidere esta mensagem" />
+  <string id="87" text="se você esqueceu sua senha e solicitou o envio de uma nova" />
+  <string id="88" text="clique aqui para visualizar sua nova senha" />
+  <string id="89" text="ou copie e cole o endereço a seguir no seu navegador" />
+  <string id="90" text="este link é válido por 24 horas" />
+  <string id="91" text="caso ainda tenha alguma dúvida, procure o responsável pelo sistema" />
+  <string id="92" text="foi enviado um e-mail com instruções para gerar uma nova senha" />
   <string id="93" text="" />
   <string id="94" text="" />
   <string id="95" text="" />

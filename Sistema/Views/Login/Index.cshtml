@@ -44,7 +44,7 @@ Data: 01/01/2020 - v.1.0
 
                                 <div class="kt-login__logo">
                                     <a href="#">
-                                        @*<img src="~/Assets/Clients/@Session["idgernet"]/logo.png">*@
+                                        <img src="~/Assets/Clients/@Session["gernet"]/logo.png">
                                     </a>
                                 </div>
 
@@ -119,6 +119,24 @@ Data: 01/01/2020 - v.1.0
 
                                         <form class="kt-form" action="" id="kt-form-recover">
 
+                                            <div class="form-group">
+                                                <label for="user">@Language.XmlLang(29, 1).Text</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+                                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                    <polygon points="0 0 24 0 24 24 0 24" />
+                                                                    <path d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                                                                    <path d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z" fill="#000000" fill-rule="nonzero" />
+                                                                </g>
+                                                            </svg>
+                                                        </span>
+                                                    </div>
+                                                    <input class="form-control kt-margin-l-40 validate[required,minSize[3],maxSize[20]]" type="text" placeholder="" name="user" id="user" maxlength="20" value="gernet">
+                                                </div>
+                                            </div>
+
                                             <div class="form-group kt-margin-t-15">
                                                 <label for="email">@Language.XmlLang(31, 1).Text</label>
                                                 <div class="input-group">
@@ -157,8 +175,8 @@ Data: 01/01/2020 - v.1.0
                 <div class="kt-grid__item kt-grid__item--fluid kt-grid__item--center kt-grid kt-grid--ver kt-login__content" style="background-image: url(assets/media/bg/bg-5.jpg);">
                     <div class="kt-login__section">
                         <div class="kt-login__block">
-                            @*<h3 class="kt-login__title">@Language.XmlLang(44, 1).Text</h3>
-                            <div class="kt-login__desc">@Language.XmlLang(43, 1).Text</div>*@
+                            <h3 class="kt-login__title">@Language.XmlLang(44, 1).Text</h3>
+                            <div class="kt-login__desc">@Language.XmlLang(43, 1).Text</div>
                         </div>
                     </div>
                 </div>

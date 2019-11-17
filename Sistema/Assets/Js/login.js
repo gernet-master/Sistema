@@ -46,7 +46,7 @@ var login_div = "";
             });
 
             // Login
-            $('#kt_login_forgot_cancel').click(function(e) {
+            $('#kt_login_forgot_cancel').click(function (e) {
                 e.preventDefault();
                 login_div.removeClass('kt-login--forgot');
                 login_div.removeClass('kt-login--signup');
@@ -58,14 +58,14 @@ var login_div = "";
 
         // Ação ao clicar no botão de login
         submitButton: function () {
-            $('#kt_login_submit').click(function() {
+            $('#kt_login_submit').click(function () {
                 LOGIN.submitLogin();
             });
         },
 
         // Ação ao clicar no botão de recuperar senha
         recoverButton: function () {
-            $('#kt_login_forgot_submit').click(function() {
+            $('#kt_login_forgot_submit').click(function () {
                 LOGIN.submirRecover();
             });
         },
@@ -84,28 +84,32 @@ var login_div = "";
             if ($('#kt-form-login').validationEngine('validate')) {
 
                 // Processando
-                const Swal = swal.fire({
+                swal.fire({
                     title: UTILS.xmlLang(68, 2).Text,
-                    type: 'warning'
+                    type: 'warning',
+                    showConfirmButton: false,
+                    allowOutsideClick: false
                 });
 
-                // Envia o formulário para gravar
+                // Envia o formulário
                 $.post('/Login/Validation', $('#kt-form-login').serializeArray(), function (data) {
 
                     // Retorno
                     var arr = data.split("|");
-                    
+
                     // Se retornou 0, exibe alerta de erro																										
                     if (arr[0] == 0) {
-                        Swal.update({
+                        swal.fire({
                             title: arr[1],
-                            type: 'error'
+                            type: 'error',
+                            showConfirmButton: true,
+                            allowOutsideClick: false
                         });
                     }
 
                     // Se retornou 1, redireciona para página de alteração de senha
                     if (arr[0] == 1) {
-                        $(location).attr('href', 'Login/Password');
+                        $(location).attr('href', '/Login/Password');
                     }
 
                     // Se retornou 2, carrega página inicial
@@ -114,26 +118,30 @@ var login_div = "";
                     }
 
                     // Se retornou 3, usuário já conectado																										
-                    //if (arr[0] == 3) {
-                    //    swal({
-                    //        title: arr[1],
-                    //        text: xmlLang("si365", 2).Text + '?',
-                    //        type: 'question',
-                    //        showConfirmButton: true,
-                    //        showCancelButton: true,
-                    //        confirmButtonText: xmlLang('sc13', 2).Text
-                    //    }).then(function () {
+                    if (arr[0] == 3) {
+                        swal.fire({
+                            title: UTILS.xmlLang(75, 2).Text,
+                            text: UTILS.xmlLang(76, 2).Text + '?',
+                            type: 'question',
+                            showConfirmButton: true,
+                            showCancelButton: true,
+                            confirmButtonText: UTILS.xmlLang(49, 2).Text,
+                            cancelButtonText: UTILS.xmlLang(50, 2).Text,
+                            allowOutsideClick: false
+                        }).then(function (result) {
+                            if (result.value) {
 
-                    //        // Encerra a conxão atual
-                    //        $.post('assets/includes/', { inc: '/assets/includes/login', action: 'session' }).done(function (data) {
+                                // Encerra a conxão atual
+                                $.post('/Home/Logout').done(function (data) {
 
-                    //            // Chama função de validação de login novamente
-                    //            LOGIN.validateForm();
+                                    // Chama função de validação de login novamente
+                                    LOGIN.submitLogin();
 
-                    //        });
+                                });
+                            }
+                        });
 
-                    //    }).catch(swal.noop);
-                    //}
+                    }
 
                 });
             }
@@ -143,7 +151,27 @@ var login_div = "";
         submirRecover: function () {
             $('#kt-form-recover').validationEngine('attach', { boxField: '' });
             if ($('#kt-form-recover').validationEngine('validate')) {
-                alert(2);
+
+                // Envia o formulário
+                $.post('/Login/RecoverPassword', $('#kt-form-recover').serializeArray(), function (data) {
+
+                    // Retorno
+                    var arr = data.split("|");
+
+                    // Se retornou 0, exibe alerta de erro																										
+                    if (arr[0] == 0) {
+                        swal.fire({
+                            title: arr[1],
+                            type: 'error'
+                        });
+                    }
+
+                    // Se retornou 1, carrega página inicial
+                    if (arr[0] == 1) {
+                        $(location).attr('href', '/Home');
+                    }
+
+                });
             }
         },
 
@@ -152,7 +180,7 @@ var login_div = "";
             $('#kt-form-password').validationEngine('attach', { boxField: '' });
             if ($('#kt-form-password').validationEngine('validate')) {
 
-                // Envia o formulário para gravar
+                // Envia o formulário
                 $.post('/Login/ChangePassword', $('#kt-form-password').serializeArray(), function (data) {
 
                     // Retorno
@@ -203,11 +231,11 @@ var login_div = "";
                         return false;
                     }
                 }
-            });            
+            });
 
-        },
+        }
 
-    }
+    };
 
 })(jQuery);
 

@@ -19,8 +19,8 @@ namespace Functions
             // Variaveis
             string server = "DIOGO\\SQLEXPRESS";
             string database = "sistema";
-            string user = "teste";
-            string password = "teste";
+            string user = "sa";
+            string password = "d121079c";
             string catalog = "sistema";
 
             // String de conexão

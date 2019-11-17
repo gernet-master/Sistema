@@ -56,7 +56,7 @@ namespace Sistema.Assets.DB
         }
 
         // Pega os dados de controle do usuário
-        public Usuarios_Sistema ControleUsuario(int idusuario)
+        public Usuarios_Sistema Buscar(int idusuario)
         {
             try
             {
@@ -96,6 +96,33 @@ namespace Sistema.Assets.DB
             }
         }
 
+        // Pega o sessionid de acordo com o usuário
+        public string SessionId(int idusuario = 0)
+        {
+            try
+            {
+                string ret = "";
+
+                string qry = "";
+                qry += "SELECT idsession FROM usuarios_sistema WHERE idusuario = " + idusuario;
+
+                Connection session = new Connection();
+                Query query = session.CreateQuery(qry);
+                IDataReader reader = query.ExecuteQuery();
+                if (reader.Read())
+                {
+                    ret = Convert.ToString(reader["idsession"]);
+                }
+                reader.Close();
+                session.Close();
+
+                return ret;
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+        }
     }
 }
 
