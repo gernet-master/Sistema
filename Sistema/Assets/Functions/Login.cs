@@ -209,7 +209,7 @@ namespace Functions
 
                         // Monta mensagem
                         string link_key = Crypt.CreateHash(DateTime.Now.ToLongDateString());
-                        string link_password = "https://" + gernet_controle.txlink.value + "/password?code=" + link_key;
+                        string link_password = "https://" + gernet_controle.txlink.value + "/resetPassword/" + link_key;
                         string message = "<strong>" + Language.XmlLang(85, 1).Text + "!</strong><Br><Br>";
                         message += Language.XmlLang(86, 2).Text + ".<Br><br>";
                         message += Language.XmlLang(87, 2).Text + ", <a href='" + link_password + "'>" + Language.XmlLang(88, 1).Text + "!</a> " + Language.XmlLang(89, 0).Text + ": " + link_password + "<Br>";

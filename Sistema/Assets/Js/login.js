@@ -87,7 +87,7 @@ var login_div = "";
                 UTILS.processing();
 
                 // Envia o formulário
-                $.post('/Login/Validation', $('#kt-form-login').serializeArray(), function (data) {
+                $.post('/Validation', $('#kt-form-login').serializeArray(), function (data) {
 
                     // Retorno
                     var arr = data.split("|");
@@ -96,7 +96,7 @@ var login_div = "";
                     if (arr[0] == 0) {
                         swal.fire({
                             title: arr[1],
-                            type: 'error',
+                            icon: 'error',
                             showConfirmButton: true,
                             allowOutsideClick: false
                         });
@@ -104,7 +104,7 @@ var login_div = "";
 
                     // Se retornou 1, redireciona para página de alteração de senha
                     if (arr[0] == 1) {
-                        $(location).attr('href', '/Login/Password');
+                        $(location).attr('href', '/Password');
                     }
 
                     // Se retornou 2, carrega página inicial
@@ -117,7 +117,7 @@ var login_div = "";
                         swal.fire({
                             title: UTILS.xmlLang(75, 2).Text,
                             text: UTILS.xmlLang(76, 2).Text + '?',
-                            type: 'question',
+                            icon: 'question',
                             showConfirmButton: true,
                             showCancelButton: true,
                             confirmButtonText: UTILS.xmlLang(49, 2).Text,
@@ -127,7 +127,7 @@ var login_div = "";
                             if (result.value) {
 
                                 // Encerra a conxão atual
-                                $.post('/Home/Logout').done(function (data) {
+                                $.post('/Logout').done(function (data) {
 
                                     // Chama função de validação de login novamente
                                     LOGIN.submitLogin();
@@ -151,7 +151,7 @@ var login_div = "";
                 UTILS.processing();
 
                 // Envia o formulário
-                $.post('/Login/RecoverPassword', $('#kt-form-recover').serializeArray(), function (data) {
+                $.post('/RecoverPassword', $('#kt-form-recover').serializeArray(), function (data) {
 
                     // Retorno
                     var arr = data.split("|");
@@ -160,7 +160,7 @@ var login_div = "";
                     if (arr[0] == 0) {
                         swal.fire({
                             title: arr[1],
-                            type: 'error'
+                            icon: 'error'
                         });
                     }
 
@@ -169,14 +169,14 @@ var login_div = "";
                         let timerInterval;
                         Swal.fire({
                             title: arr[1],
-                            html: UTILS.xmlLang(94, 2).Text + ' <b>5</b> ' + UTILS.xmlLang(95, 0).Text,
-                            type: 'success',
+                            html: UTILS.xmlLang(94, 2).Text,
+                            icon: 'success',
                             timer: 5000,
                             showConfirmButton: true,
-                            confirmButtonText: UTILS.xmlLang(93, 2).Text,
+                            confirmButtonText: UTILS.xmlLang(93, 2).Text + ' (5)',
                             onBeforeOpen: () => {
                                 timerInterval = setInterval(() => {
-                                    Swal.getContent().querySelector('b').textContent = Math.ceil(Swal.getTimerLeft() / 1000);
+                                    Swal.getConfirmButton().textContent = UTILS.xmlLang(93, 2).Text + ' (' + (Math.ceil(Swal.getTimerLeft() / 1000)) + ')';
                                 }, 1000);
                             },
                             onClose: () => {
@@ -203,7 +203,7 @@ var login_div = "";
                 UTILS.processing();
 
                 // Envia o formulário
-                $.post('/Login/ChangePassword', $('#kt-form-password').serializeArray(), function (data) {
+                $.post('/ChangePassword', $('#kt-form-password').serializeArray(), function (data) {
 
                     // Retorno
                     var arr = data.split("|");
@@ -212,7 +212,7 @@ var login_div = "";
                     if (arr[0] == 0) {
                         swal.fire({
                             title: arr[1],
-                            type: 'error'
+                            icon: 'error'
                         });
                     }
 

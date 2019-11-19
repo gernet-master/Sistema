@@ -21,13 +21,13 @@ var HEADER = {};
 
                 swal.fire({
                     title: UTILS.xmlLang(48, 2).Text,
-                    type: 'question',
+                    icon: 'question',
                     showCancelButton: true,
                     confirmButtonText: UTILS.xmlLang(49, 2).Text,
                     cancelButtonText: UTILS.xmlLang(50, 2).Text
                 }).then(function (result) {
                     if (result.value) {
-                        $(location).attr('href', '/Home/Logout');
+                        $(location).attr('href', '/Logout');
                     }
                 });
             });
