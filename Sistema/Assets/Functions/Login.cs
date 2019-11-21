@@ -189,7 +189,7 @@ namespace Functions
             else
             {
                 // Verifica se já foi enviado link no período de 24h
-                if (new UsuariosDB().LinkSenha(idusuario))
+                if (new Log_Link_SenhaDB().LinkSenha(idusuario))
                 {
                     return "0|" + Language.XmlLang(81, 2).Text;
                 }

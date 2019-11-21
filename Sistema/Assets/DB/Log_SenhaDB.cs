@@ -2,23 +2,19 @@
 using Sistema.Assets.Entities;
 using Sistema.Assets.Functions;
 using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Web;
 
 namespace Sistema.Assets.DB
 {
-    public class Log_Link_SenhaoDB : Session
+    public class Log_SenhaDB : Session
     {
-        // Gravar novo log de envio de link para alteração de senha
-        public void Gravar(Log_Link_Senha rs)
+        // Gravar novo log de alteração de senha
+        public void Gravar(Log_Senha rs)
         {
             try
             {
                 string qry = "";
-                qry += "INSERT INTO Log_Link_Senha (idusuario, dtlink, txchave, flutilizado) ";
-                qry += "VALUES (" + rs.idusuario.value + ", '" + rs.dtlink.value + "', '" + rs.txchave.value + "', " + rs.flutilizado.value + ")";
+                qry += "INSERT INTO log_senha (idusuario, dtalteracao) ";
+                qry += "VALUES (" + rs.idusuario.value + ", '" + rs.dtalteracao.value + "')";
 
                 Connection session = new Connection();
                 Query query = session.CreateQuery(qry);
@@ -29,7 +25,7 @@ namespace Sistema.Assets.DB
             {
                 throw erro;
             }
-        }
+        }        
     }
 }
 

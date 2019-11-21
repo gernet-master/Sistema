@@ -99,7 +99,66 @@ namespace Sistema.Controllers
         [Route("ResetPassword/{code}")]
         public ActionResult Reset(string code = "")
         {
-            
+            // Verifica se o código é válido
+            Log_Link_Senha log_link_senha = new Log_Link_SenhaDB().Buscar(code);
+
+            if (log_link_senha == null)
+            {
+                ViewBag.error = 1;
+            }
+            else
+            {
+                // Verifica se o link já foi utilizado
+                if (log_link_senha.flutilizado.value == 1)
+                {
+                    ViewBag.error = 2;
+                }
+                else
+                {
+                    // Minutos entre a data atual e a data do link
+                    var minutes = System.Math.Abs((Convert.ToDateTime(log_link_senha.dtlink.value) - DateTime.Now).TotalMinutes);
+
+                    // Verifica o período de validade do link
+                    if (minutes >= 1440)
+                    {
+                        ViewBag.error = 3;
+                    }
+                    else
+                    {
+                        // Busca o usuário
+                        Usuarios usuarios = new UsuariosDB().Buscar(log_link_senha.idusuario.value);
+
+                        // Verifica se o usuário existe
+                        if (usuarios == null)
+                        {
+                            ViewBag.error = 4;
+                        }
+                        else
+                        {
+                            ViewBag.error = 0;
+
+                            // Gera nova senha
+                            ViewBag.password = Utils.RandomString(8);
+
+                            // Altera a senha do usuário
+                            usuarios.txsenha.value = Crypt.CreateHash(ViewBag.password);
+                            usuarios.Alterar();
+
+                            // Grava no log de alteração de senha do usuário
+                            Log_Senha log_senha = new Log_Senha();
+                            log_senha.idusuario.value = log_link_senha.idusuario.value;
+                            log_senha.Gravar();
+
+                            // Grava que o link foi utilizado
+                            log_link_senha.flutilizado.value = 1;
+                            log_link_senha.dtutilizado.value = DateTime.Now;
+                            log_link_senha.Alterar();
+                        }
+                        
+                    }
+                }
+            }
+
             return PartialView();
         }
 

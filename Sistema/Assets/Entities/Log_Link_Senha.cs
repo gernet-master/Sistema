@@ -20,6 +20,7 @@ namespace Sistema.Assets.Entities
         public Variable dtlink = new Variable(config: "0|0");
         public Variable txchave = new Variable(config: "0|0");
         public Variable flutilizado = new Variable(config: "0|0");
+        public Variable dtutilizado = new Variable(config: "0|0");
 
         // Inicial
         public Log_Link_Senha()
@@ -28,13 +29,20 @@ namespace Sistema.Assets.Entities
             this.idusuario.value = 0;
             this.dtlink.value = DateTime.Now;
             this.txchave.value = "";
-            this.flutilizado.value = 0; 
+            this.flutilizado.value = 0;
+            this.dtutilizado = null;
         }
 
         // Gravar
         public void Gravar()
         {
-            new Log_Link_SenhaoDB().Gravar(this);
+            new Log_Link_SenhaDB().Gravar(this);
+        }
+
+        // Alterar
+        public void Alterar()
+        {
+            new Log_Link_SenhaDB().Alterar(this);
         }
 
     }

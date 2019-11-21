@@ -96,15 +96,15 @@
   <string id="93" text="fechar" />
   <string id="94" text="a página solicitada está incorreta ou foi removida" />
   <string id="95" text="verifique se digitou corretamente ou entre em contato com o administrador do sistema" />
-  <string id="96" text="" />
-  <string id="97" text="" />
-  <string id="98" text="" />
-  <string id="99" text="" />
-  <string id="100" text="" />
-  <string id="101" text="" />
-  <string id="102" text="" />
-  <string id="103" text="" />
-  <string id="104" text="" />
+  <string id="96" text="data" />
+  <string id="97" text="usuário não encontrado" />
+  <string id="98" text="código inválido" />
+  <string id="99" text="o link já foi utilizado para gerar nova senha" />
+  <string id="100" text="link expirado" />
+  <string id="101" text="sua nova senha é" />
+  <string id="102" text="senha alterada" />
+  <string id="103" text="confirma a remoção deste widget" />
+  <string id="104" text="você pode adicioná-lo novamente depois" />
   <string id="105" text="" />
   <string id="106" text="" />
   <string id="107" text="" />

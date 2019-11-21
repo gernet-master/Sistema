@@ -236,27 +236,43 @@ namespace Sistema.Assets.DB
             }
         }
 
-        // Valida se já foi enviado o link para recuperar senha
-        public Boolean LinkSenha(int idusuario = 0)
+        
+
+        // Busca pelo código
+        public Usuarios Buscar(int idusuario = 0)
         {
             try
             {
-                Boolean ret = false;
+                Usuarios u = null;
 
                 string qry = "";
-                qry += "SELECT * from log_link_senha WHERE idusuario = " + idusuario + " AND flutilizado = 0 AND DATEDIFF(HOUR, dtlink, getdate()) < 24";
+                qry += "SELECT * FROM usuarios WHERE idusuario = " + idusuario;
 
                 Connection session = new Connection();
                 Query query = session.CreateQuery(qry);
+
                 IDataReader reader = query.ExecuteQuery();
                 if (reader.Read())
                 {
-                    ret = true;
+                    u = new Usuarios()
+                    {
+                        idusuario = new Variable(value: Convert.ToInt32(reader["idusuario"])),
+                        idgernet = new Variable(value: Convert.ToInt32(reader["idgernet"])),
+                        txnome = new Variable(value: Convert.ToString(reader["txnome"])),
+                        txusuario = new Variable(value: Convert.ToString(reader["txusuario"])),
+                        txsenha = new Variable(value: Convert.ToString(reader["txsenha"])),
+                        txemail = new Variable(value: Convert.ToString(reader["txemail"])),
+                        idperfil = new Variable(value: Convert.ToInt32(reader["idperfil"])),
+                        flativo = new Variable(value: Convert.ToInt32(reader["flativo"])),
+                        flmaster = new Variable(value: Convert.ToInt32(reader["flmaster"])),
+                        flalterasenha = new Variable(value: Convert.ToInt32(reader["flalterasenha"])),
+                        txfoto = new Variable(value: Convert.ToString(reader["txfoto"]))
+                    };
                 }
                 reader.Close();
                 session.Close();
 
-                return ret;
+                return u;
             }
             catch (Exception error)
             {
