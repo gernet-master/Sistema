@@ -6,6 +6,7 @@ Data: 01/01/2020 - v.1.0
 using System;
 using System.Globalization;
 using System.Linq;
+using System.Web;
 
 namespace Functions
 {
@@ -58,12 +59,12 @@ namespace Functions
         public static string Null(string text = "", string value = "")
         {
             string result = "";
-            if (text == null)
+            if (String.IsNullOrEmpty(text))
             {
                 result = value;
             }
             else
-            {
+            { 
                 result = text;
             }
             return result;
@@ -109,6 +110,13 @@ namespace Functions
             Random random = new Random();
             const string chars = "abcdefghijklmnopqrstuvxyzABCDEFGHIJKLMNOPQRSTUVXYZ0123456789";
             return new string(Enumerable.Repeat(chars, length).Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+        // Verifica se o idsession existe na aplicação
+        public static Boolean Session(string idsession)
+        {
+            string[] sessions = HttpContext.Current.Application["sessions"].ToString().Split(',');
+            return Array.Exists(sessions, element => element == idsession);
         }
 
     }

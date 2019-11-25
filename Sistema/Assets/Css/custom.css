@@ -17,7 +17,7 @@
 
 /* Extras */
 .kt-radius-0 {
-    border-radius:unset !important;
+    border-radius: unset !important;
 }
 
 .kt-radius-4 {
@@ -111,6 +111,15 @@
     height: 30px !important;
     width: 30px !important;
 }
+
+/* Chat */
+
+.chat-img {
+    max-width:50px;
+    max-height:50px;
+    border-radius:50%;
+}
+
 
 /* Responsive */
 @media (min-width: 1025px) {

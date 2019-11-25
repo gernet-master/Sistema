@@ -236,9 +236,6 @@ namespace Functions
 
                 }
             }
-
-            // Redireciona de volta para página de login
-            return "1|";
         }
 
         // Altera a senha do usuário

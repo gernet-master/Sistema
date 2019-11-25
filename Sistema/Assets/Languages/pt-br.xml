@@ -105,25 +105,25 @@
   <string id="102" text="senha alterada" />
   <string id="103" text="confirma a remoção deste widget" />
   <string id="104" text="você pode adicioná-lo novamente depois" />
-  <string id="105" text="" />
-  <string id="106" text="" />
-  <string id="107" text="" />
-  <string id="108" text="" />
-  <string id="109" text="" />
-  <string id="110" text="" />
-  <string id="111" text="" />
-  <string id="112" text="" />
-  <string id="113" text="" />
-  <string id="114" text="" />
-  <string id="115" text="" />
-  <string id="116" text="" />
-  <string id="117" text="" />
-  <string id="118" text="" />
-  <string id="119" text="" />
-  <string id="120" text="" />
-  <string id="121" text="" />
-  <string id="122" text="" />
-  <string id="123" text="" />
+  <string id="105" text="chat" />
+  <string id="106" text="configurações" />
+  <string id="107" text="pesquisar" />
+  <string id="108" text="online" />
+  <string id="109" text="offline" />
+  <string id="110" text="confirmação de leitura" />
+  <string id="111" text="abrir automaticamente janela de chat ao receber mensagem" />
+  <string id="112" text="status" />
+  <string id="113" text="invisível" />
+  <string id="114" text="ausente" />
+  <string id="115" text="privacidade" />
+  <string id="116" text="mensagens" />
+  <string id="117" text="remetente" />
+  <string id="118" text="destinatário" />
+  <string id="119" text="mensagem" />
+  <string id="120" text="data mensagem" />
+  <string id="121" text="data recebimento" />
+  <string id="122" text="data leitura" />
+  <string id="123" text="código mensagem" />
   <string id="124" text="" />
   <string id="125" text="" />
   <string id="126" text="" />

@@ -43,10 +43,18 @@ namespace Sistema.Controllers
             return PartialView();
         }
 
+        // Chat
         [Autentication]
-        public ActionResult QuickPanel()
+        public ActionResult Chat()
         {
             return PartialView();
+        }
+
+        // Painel do chat
+        [Autentication]
+        public ActionResult ChatPanel()
+        {
+            return PartialView(new PartialsView_ChatList());
         }
 
         [Autentication]
@@ -83,13 +91,7 @@ namespace Sistema.Controllers
         public ActionResult QuickActions()
         {
             return PartialView();
-        }
-
-        [Autentication]
-        public ActionResult QuickPanelInfo()
-        {
-            return PartialView();
-        }
+        }        
 
         // Lista de idiomas do sistema
         [Autentication]

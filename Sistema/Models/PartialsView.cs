@@ -1,14 +1,10 @@
-﻿namespace Sistema.Models
+﻿using Sistema.Assets.DB;
+using Sistema.Assets.Entities;
+using System.Collections.Generic;
+
+namespace Sistema.Models
 {
-    public class PartialsView
-    {
-        public PartialsView()
-        {
-           
-
-        }
-    }
-
+    // Breadcrumb
     public class PartialsView_Subheader
     {
         public string app { get; set; }
@@ -20,6 +16,17 @@
             this.app = app;
             this.id = id;
             this.id2 = id2;
+        }
+    }
+
+    // Lista de usuários do chat
+    public class PartialsView_ChatList
+    {
+        public List<ChatUser> usuarios = null;
+
+        public PartialsView_ChatList()
+        {
+            usuarios = new ChatDB().ListarUsuarios();
         }
     }
 }

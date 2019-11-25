@@ -134,6 +134,7 @@
     <Compile Include="Assets\DB\Gernet_ControleDB.cs" />
     <Compile Include="Assets\DB\Log_AcessoDB.cs" />
     <Compile Include="Assets\DB\Log_Link_SenhaDB.cs" />
+    <Compile Include="Assets\DB\ChatDB.cs" />
     <Compile Include="Assets\DB\Usuarios_FramesDB.cs" />
     <Compile Include="Assets\DB\Usuarios_PreferenciasDB.cs" />
     <Compile Include="Assets\DB\Log_SenhaDB.cs" />
@@ -141,6 +142,7 @@
     <Compile Include="Assets\DB\Usuarios_SistemaDB.cs" />
     <Compile Include="Assets\DB\UsuariosDB.cs" />
     <Compile Include="Assets\Entities\Gernet_Controle.cs" />
+    <Compile Include="Assets\Entities\Chat.cs" />
     <Compile Include="Assets\Entities\Log_Senha.cs" />
     <Compile Include="Assets\Entities\Log_Link_Senha.cs" />
     <Compile Include="Assets\Entities\Usuarios_Preferencias.cs" />
@@ -1525,12 +1527,12 @@
     <Content Include="Views\Partials\Header.cshtml" />
     <Content Include="Views\Partials\SubHeader.cshtml" />
     <Content Include="Views\Partials\Footer.cshtml" />
-    <Content Include="Views\Partials\QuickPanel.cshtml" />
+    <Content Include="Views\Partials\Chat.cshtml" />
     <Content Include="Views\Partials\ScrollTop.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Partials\UserPanel.cshtml" />
     <Content Include="Views\Partials\Languages.cshtml" />
-    <Content Include="Views\Partials\QuickPanelInfo.cshtml" />
+    <Content Include="Views\Partials\ChatPanel.cshtml" />
     <Content Include="Views\Partials\QuickActions.cshtml" />
     <Content Include="Views\Partials\Notifications.cshtml" />
     <Content Include="Views\Partials\Search.cshtml" />

@@ -234,9 +234,7 @@ namespace Sistema.Assets.DB
             {
                 throw error;
             }
-        }
-
-        
+        }        
 
         // Busca pelo código
         public Usuarios Buscar(int idusuario = 0)
