@@ -17,17 +17,26 @@ var contUserDisconnect;
         init: function () {
             TIMERS.clock();
             TIMERS.interval();
+            TIMERS.chat();
         },
 
         // Inicia contadores
         interval: function () {
             setInterval(TIMERS.clock, 1000);
+            setInterval(TIMERS.chat, 10000);
         },
 
         // Relógio
         clock: function () {
             $('#clock').load('/Partials/Clock');
         },
+
+        // Atualiza chat e checa mensagens - 10 segundos
+        chat: function () {
+
+            // Carrega lista de usuários
+            CHAT.listUsers();
+        }
 
     }
 

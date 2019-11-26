@@ -54,8 +54,3 @@ var UTILS = {};
     };
 
 })(jQuery);
-
-$(document).ready(function () {
-
-
-});

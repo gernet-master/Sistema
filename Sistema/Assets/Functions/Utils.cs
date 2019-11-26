@@ -115,8 +115,15 @@ namespace Functions
         // Verifica se o idsession existe na aplicação
         public static Boolean Session(string idsession)
         {
-            string[] sessions = HttpContext.Current.Application["sessions"].ToString().Split(',');
-            return Array.Exists(sessions, element => element == idsession);
+            if (idsession.Trim().Length == 0)
+            {
+                return false;
+            }
+            else
+            {
+                string[] sessions = HttpContext.Current.Application["sessions"].ToString().Split(',');
+                return Array.Exists(sessions, element => element == idsession);
+            }
         }
 
     }

@@ -25,6 +25,7 @@ namespace Sistema.Assets.Entities
         public Variable txaplicativo = new Variable(config: "0|0");
         public Variable txaplicativomain = new Variable(config: "0|0");
         public Variable txbloqueado = new Variable(config: "0|0");
+        public Variable flstatuschat = new Variable(config: "0|0");
 
         // Inicial
         public Usuarios_Sistema()
@@ -40,6 +41,7 @@ namespace Sistema.Assets.Entities
             this.txaplicativo.value = "";
             this.txaplicativomain.value = "";
             this.txbloqueado.value = null;
+            this.flstatuschat.value = 1;
         }
 
         // Gravar

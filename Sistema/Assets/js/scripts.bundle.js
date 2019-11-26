@@ -3859,7 +3859,7 @@ var KTUtil = function() {
                 },
 
                 get: function(name) {
-                    if (element === undefined) {
+                    if ((element === undefined) || (element === null)) {
                         return;
                     }
 

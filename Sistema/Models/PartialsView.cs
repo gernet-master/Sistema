@@ -1,5 +1,6 @@
 ﻿using Sistema.Assets.DB;
 using Sistema.Assets.Entities;
+using Sistema.Assets.Functions;
 using System.Collections.Generic;
 
 namespace Sistema.Models
@@ -19,14 +20,29 @@ namespace Sistema.Models
         }
     }
 
+    // Painel do chat
+    public class PartialsView_ChatPanel : Session
+    {
+        public Usuarios_Sistema usuarios_sistema = null;
+
+        public PartialsView_ChatPanel()
+        {
+            usuarios_sistema = new Usuarios_SistemaDB().Buscar(session_usuario);
+        }
+    }
+
     // Lista de usuários do chat
-    public class PartialsView_ChatList
+    public class PartialsView_ChatPanelList
     {
         public List<ChatUser> usuarios = null;
+        public int flonline { get; set; }
+        public int floffline { get; set; }
 
-        public PartialsView_ChatList()
+        public PartialsView_ChatPanelList(int online = 1, int offline = 0, string search = "")
         {
-            usuarios = new ChatDB().ListarUsuarios();
+            flonline = online;
+            floffline = offline;
+            usuarios = new ChatDB().ListarUsuarios(search);
         }
     }
 }

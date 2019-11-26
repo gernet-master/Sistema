@@ -48,11 +48,12 @@ namespace Sistema.Assets.Entities
     {
         public int idusuario { get; set; }
         public string txnome { get; set; }
-        public string txmensagem { get; set; }
-        public int recebidas { get; set; }
+        public int qtlidas { get; set; }
+        public int qtrecebidas { get; set; }
         public string ultima { get; set; }
         public DateTime? data_ultima { get; set; }
         public string txfoto { get; set; }
         public string idsession { get; set; }
+        public int flstatuschat { get; set; }
     }
 }

@@ -32,6 +32,10 @@
     background-color: #F4F5FF;
 }
 
+.pointer {
+    cursor: pointer;
+}
+
 /* Footer */
 .kt-footer {
     padding: 8px 0px 6px 0px !important;
@@ -120,6 +124,31 @@
     border-radius:50%;
 }
 
+.kt-padding-chat-search {
+    padding: 0px 20px 20px 20px !important;
+}
+
+.kt-quick-panel .kt-quick-panel__status {
+    position: absolute;
+    z-index: 1;
+    right: 5rem;
+    top: 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    border-radius: 4px;
+    background-color: #f7f8fa;
+    padding: 4px 10px;
+    color: #000000 !important;
+}
 
 /* Responsive */
 @media (min-width: 1025px) {

@@ -1,4 +1,6 @@
 ﻿using Functions;
+using Sistema.Assets.DB;
+using Sistema.Assets.Entities;
 using Sistema.Models;
 using System;
 using System.Globalization;
@@ -43,7 +45,9 @@ namespace Sistema.Controllers
             return PartialView();
         }
 
-        // Chat
+        // ***************** CHAT *****************
+
+        // Icone
         [Autentication]
         public ActionResult Chat()
         {
@@ -54,8 +58,24 @@ namespace Sistema.Controllers
         [Autentication]
         public ActionResult ChatPanel()
         {
-            return PartialView(new PartialsView_ChatList());
+            return PartialView(new PartialsView_ChatPanel());
         }
+
+        // Lista de usuários do chat
+        [Autentication]
+        public ActionResult ChatPanelList(int online = 1, int offline = 0, string search = "")
+        {
+            return PartialView(new PartialsView_ChatPanelList(online, offline, search));
+        }
+
+        // Grava o novo status de chat do usuário
+        [Autentication]
+        public void ChatPanelListStatus(int status = 0)
+        {
+            new Usuarios_SistemaDB().AlterarStatusChat(status);
+        }
+
+        // ***************** E-MAIL *****************
 
         [Autentication]
         public ActionResult Email()
