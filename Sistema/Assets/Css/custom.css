@@ -150,6 +150,12 @@
     color: #000000 !important;
 }
 
+.kt-quick-panel #chat-list-users .kt-notification-v2__item-icon span {
+    position:absolute;
+    margin-top: -20px;
+    margin-left: -18px;
+}
+
 /* Responsive */
 @media (min-width: 1025px) {
     .kt-aside__brand {

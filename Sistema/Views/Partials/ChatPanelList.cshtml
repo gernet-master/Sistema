@@ -23,13 +23,20 @@
             txt_online += "<div class='kt-notification-v2'>";
             txt_online += "    <a href='#' class='kt-notification-v2__item'>";
             txt_online += "        <div class='kt-notification-v2__item-icon'>";
-            txt_online += "            <img class='chat-img' src='" + u.txfoto + "'>";
+            txt_online += "            <img class='chat-img' src='" + Utils.Avatar(u.txfoto) + "'>";
             txt_online += "        </div>";
             txt_online += "        <div class='kt-notification-v2__itek-wrapper'>";
-            txt_online += "            <div class='kt-notification-v2__item-title'>" + u.txnome + "</div>";
-            txt_online += "            <div class='kt-notification-v2__item-desc'>";
-            txt_online += "                Reports based on sales";
-            txt_online += "            </div>";
+            txt_online += "            <div class='kt-notification-v2__item-title'>";
+
+            // Status
+            switch (u.flstatuschat)
+            {
+                case 1: txt_online += "<i class='fa fa-circle btn-font-success'></i>&nbsp;"; break;
+                case 4: txt_online += "<i class='fa fa-circle btn-font-warning'></i>&nbsp;"; break;
+            }
+
+            txt_online += u.txnome + "</div>";
+            txt_online += "            <div class='kt-notification-v2__item-desc'>" + u.ultima + "</div>";
             txt_online += "        </div>";
             txt_online += "    </a>";
             txt_online += "</div>";
@@ -40,13 +47,12 @@
             txt_offline += "<div class='kt-notification-v2'>";
             txt_offline += "    <a href='#' class='kt-notification-v2__item'>";
             txt_offline += "        <div class='kt-notification-v2__item-icon'>";
-            txt_offline += "            <img class='chat-img' src='" + u.txfoto + "'>";
+            txt_offline += "            <span class='kt-badge kt-badge--danger kt-badge--dot kt-badge--xl'></span>";
+            txt_offline += "            <img class='chat-img' src='" + Utils.Avatar(u.txfoto) + "'>";
             txt_offline += "        </div>";
             txt_offline += "        <div class='kt-notification-v2__itek-wrapper'>";
             txt_offline += "            <div class='kt-notification-v2__item-title'>" + u.txnome + "</div>";
-            txt_offline += "            <div class='kt-notification-v2__item-desc'>";
-            txt_offline += "                Reports based on sales";
-            txt_offline += "            </div>";
+            txt_offline += "            <div class='kt-notification-v2__item-desc'>" + u.ultima + "</div>";
             txt_offline += "        </div>";
             txt_offline += "    </a>";
             txt_offline += "</div>";
@@ -54,7 +60,6 @@
         }
 
     }
-
 }
 
 <div class="kt-notification-v2 kt-notification-item-padding-x kt-align-center kt-padding-8 bg-light-blue pointer" id="chat-button-online">

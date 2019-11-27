@@ -8,6 +8,8 @@ Data: 01/01/ 2020 - v.1.0
 var TIMERS = {};
 var userDisconnectInterval;
 var contUserDisconnect;
+var clock_interval;
+var chat_interval;
 
 (function ($) {
 
@@ -22,8 +24,8 @@ var contUserDisconnect;
 
         // Inicia contadores
         interval: function () {
-            setInterval(TIMERS.clock, 1000);
-            setInterval(TIMERS.chat, 10000);
+            clock_interval = setInterval(TIMERS.clock, 1000);
+            chat_interval = setInterval(TIMERS.chat, 5000);
         },
 
         // Relógio
@@ -31,14 +33,14 @@ var contUserDisconnect;
             $('#clock').load('/Partials/Clock');
         },
 
-        // Atualiza chat e checa mensagens - 10 segundos
+        // Atualiza chat e checa mensagens - 5 segundos
         chat: function () {
 
             // Carrega lista de usuários
             CHAT.listUsers();
         }
 
-    }
+    };
 
 })(jQuery);
 

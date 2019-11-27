@@ -126,5 +126,18 @@ namespace Functions
             }
         }
 
+        // Carrega a imagem do avatar ou padrão do sistea
+        public static string Avatar(string txfoto)
+        {
+            if (Utils.Null(txfoto, "") == "")
+            {
+                return "/Assets/Media/users/default.jpg";
+            }
+            else
+            {
+                return txfoto;
+            }
+        }
+
     }
 }

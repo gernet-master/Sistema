@@ -121,6 +121,7 @@ namespace Sistema
                 //"~/Assets/plugins/custom/tinymce/themes/mobile/theme.js",
                 "~/Assets/plugins/custom/validation/jquery.validationEngine-pt_BR.js",
                 "~/Assets/plugins/custom/validation/jquery.validationEngine.js",
+                "~/Assets/plugins/custom/highlight/highlight.js",
                 "~/Assets/js/utils.js",
                 "~/Assets/js/chat.js"
             ));

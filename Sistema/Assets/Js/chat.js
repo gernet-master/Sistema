@@ -18,6 +18,7 @@ var CHAT = {};
             CHAT.catchStatusList();
             CHAT.search();
             CHAT.changeStatus();
+            CHAT.statusButton();
         },
 
         // Lista os usuários do chat
@@ -35,13 +36,11 @@ var CHAT = {};
                 if ($('#kt_quick_panel #chat-div-offline').hasClass('kt-hidden')) { offline = 0; } else { offline = 1; }
             }
 
-            // Verifica se tem que filtrar por usuário
-            var search = $('#kt_quick_panel #chat-search').val();
-
             // Carrega lista
-            $('#kt_quick_panel #chat-list-users').load('/Partials/ChatPanelList/', { online: online, offline: offline, search: search }, function () {
+            $('#kt_quick_panel #chat-list-users').load('/Partials/ChatPanelList/', { online: online, offline: offline }, function () {
                 CHAT.init();
             });
+            }            
         },
 
         // Abre/Esconde lista de usuários
@@ -68,9 +67,25 @@ var CHAT = {};
 
         // Filtra pelo usuário
         search: function () {
-            //$('#kt_quick_panel #chat-search').keyup(function () {
-            //    CHAT.listUsers();
-            //});
+            $('#kt_quick_panel #chat-search').keyup(function () {
+
+                  //          $('#kt_quick_panel .kt-notification-v2__item-title').each(function () { $(this).highlight(search_string, { className: 'text-danger font-weight-bold', accentInsensitive: true }); });
+
+
+                // Texto pesquisado
+                var search_string = $('#kt_quick_panel #chat-search').val();
+
+                // Nenhum: remove highlight e exibe tudo
+                if (search_string == '') {
+                    $('#kt_quick_panel .kt-notification-v2__item-title').each(function () { $(this).closest('.kt-notification-v2').removeClass('kt-hidden'); });
+                }
+
+                // Filtra e marca highlight
+                else
+                {
+                    $('#kt_quick_panel .kt-notification-v2__item-title').each(function () { $(this).closest('.kt-notification-v2').addClass('kt-hidden'); });
+                }
+            });
         },
 
         // Altera o status
@@ -87,6 +102,13 @@ var CHAT = {};
                 // Grava novo status na configuração do usuário
                 $.post('/Partials/ChatPanelListStatus/', { status: status });
             });
+        },
+
+        // Abre a tela de configurações para mudar o status
+        statusButton: function () {
+            $('#kt_quick_panel #kt_quick_panel_status_btn').click(function () {
+                $('#kt_quick_panel .kt-quick-panel__nav li').eq(1).find('a').click();
+            });            
         }
 
     };

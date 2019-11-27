@@ -38,11 +38,11 @@ namespace Sistema.Models
         public int flonline { get; set; }
         public int floffline { get; set; }
 
-        public PartialsView_ChatPanelList(int online = 1, int offline = 0, string search = "")
+        public PartialsView_ChatPanelList(int online = 1, int offline = 0)
         {
             flonline = online;
             floffline = offline;
-            usuarios = new ChatDB().ListarUsuarios(search);
+            usuarios = new ChatDB().ListarUsuarios();
         }
     }
 }

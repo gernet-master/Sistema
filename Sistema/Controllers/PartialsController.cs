@@ -63,9 +63,9 @@ namespace Sistema.Controllers
 
         // Lista de usuários do chat
         [Autentication]
-        public ActionResult ChatPanelList(int online = 1, int offline = 0, string search = "")
+        public ActionResult ChatPanelList(int online = 1, int offline = 0)
         {
-            return PartialView(new PartialsView_ChatPanelList(online, offline, search));
+            return PartialView(new PartialsView_ChatPanelList(online, offline));
         }
 
         // Grava o novo status de chat do usuário

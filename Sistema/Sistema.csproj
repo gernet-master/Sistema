@@ -204,6 +204,7 @@
     <Content Include="Assets\Js\widgets.js" />
     <Content Include="Assets\Plugins\custom\gridstack\gridstack.jQueryUI.js" />
     <Content Include="Assets\Plugins\custom\gridstack\gridstack.js" />
+    <Content Include="Assets\Plugins\custom\highlight\highlight.js" />
     <Content Include="Assets\Plugins\custom\validation\jquery.validationEngine-pt_BR.js" />
     <Content Include="Assets\Plugins\custom\validation\jquery.validationEngine.js" />
     <Content Include="Assets\Plugins\custom\gridstack\gridstack.css" />

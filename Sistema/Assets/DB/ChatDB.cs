@@ -31,7 +31,7 @@ namespace Sistema.Assets.DB
         }
 
         // Lista usuários
-        public List<ChatUser> ListarUsuarios(string search = "")
+        public List<ChatUser> ListarUsuarios()
         {
             try
             {
@@ -47,13 +47,6 @@ namespace Sistema.Assets.DB
                 qry += "    FROM usuarios u ";
                 qry += "	LEFT JOIN usuarios_sistema us ON us.idusuario = u.idusuario ";
                 qry += "    WHERE u.flativo = 1 AND u.idusuario <> " + session_usuario + " AND u.idgernet = " + session_gernet + " ";
-                
-                // Filtro
-                if (search.Trim().Length >= 3)
-                {
-                    qry += "AND u.txnome LIKE '%" + search.Replace(" ", "%") + "%' ";
-                }
-
                 qry += ") AS t ";
                 qry += "ORDER BY CASE WHEN t.qtlidas > 0 THEN CONVERT(VARCHAR(20), t.data, 113) END DESC, CASE WHEN t.qtlidas = 0 THEN t.txnome END ASC";
 
