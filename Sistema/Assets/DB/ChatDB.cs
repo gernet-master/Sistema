@@ -11,7 +11,7 @@ namespace Sistema.Assets.DB
     public class ChatDB : Session
     {
         // Gravar nova mensagem de chat
-        public void Gravar(Chat rs)
+        public void Gravar(ChatMsg rs)
         {
             try
             {
@@ -31,24 +31,27 @@ namespace Sistema.Assets.DB
         }
 
         // Lista usuários
-        public List<ChatUser> ListarUsuarios()
+        public List<ChatUser> ListarUsuarios(string search = "")
         {
             try
             {
                 List<ChatUser> us = new List<ChatUser>();
 
                 string qry = "";
-                qry += "SELECT *, ISNULL(t.data, '1900-01-01') as data_ultima FROM (";
-                qry += "    SELECT u.idusuario, u.txnome, u.txfoto, ISNULL(us.idsession,0) AS idsession, ISNULL(us.flstatuschat, 2) as flstatuschat, ";
-                qry += "        (SELECT COUNT(*) AS total FROM chat WHERE idremetente = u.idusuario AND iddestinatario = " + session_usuario + " AND dtlido is null) AS qtlidas, ";
-                qry += "        (SELECT COUNT(*) AS total FROM chat WHERE idremetente = u.idusuario AND iddestinatario = " + session_usuario + " AND dtrecebido is null) AS qtrecebidas, ";
-                qry += "        (SELECT top 1 txmensagem FROM chat WHERE idremetente = u.idusuario AND iddestinatario = " + session_usuario + " order by dtmensagem desc) as ultima, ";
-                qry += "        (SELECT top 1 dtmensagem FROM chat WHERE idremetente = u.idusuario AND iddestinatario = " + session_usuario + " order by dtmensagem desc) as data ";
-                qry += "    FROM usuarios u ";
-                qry += "	LEFT JOIN usuarios_sistema us ON us.idusuario = u.idusuario ";
-                qry += "    WHERE u.flativo = 1 AND u.idusuario <> " + session_usuario + " AND u.idgernet = " + session_gernet + " ";
+                qry += "SELECT* FROM ( ";
+                qry += "SELECT u.idusuario, u.txnome, u.txfoto, ISNULL(us.idsession,0) AS idsession, ISNULL(us.flstatuschat, 2) as flstatuschat, ";
+                qry += "    (SELECT COUNT(*) AS total FROM chat WHERE idremetente = u.idusuario AND iddestinatario = 1 AND dtlido is null) AS qtnaolidas ";
+                qry += "FROM usuarios u ";
+                qry += "LEFT JOIN usuarios_sistema us ON us.idusuario = u.idusuario ";
+                qry += "WHERE u.flativo = 1 AND u.idusuario <> " + session_usuario + " AND u.idgernet = " + session_gernet + " ";
+
+                if (search.Length > 1)
+                {
+                    qry += "AND u.txnome LIKE '%" + search.Replace(" ", "%") + "%' ";
+                }
+
                 qry += ") AS t ";
-                qry += "ORDER BY CASE WHEN t.qtlidas > 0 THEN CONVERT(VARCHAR(20), t.data, 113) END DESC, CASE WHEN t.qtlidas = 0 THEN t.txnome END ASC";
+                qry += "ORDER BY t.qtnaolidas DESC, t.txnome ASC";
 
                 Connection session = new Connection();
                 Query query = session.CreateQuery(qry);
@@ -60,19 +63,54 @@ namespace Sistema.Assets.DB
                     {
                         idusuario = Convert.ToInt32(reader["idusuario"]),
                         txnome = Convert.ToString(reader["txnome"]),
-                        qtlidas = Convert.ToInt32(reader["qtlidas"]),
-                        qtrecebidas = Convert.ToInt32(reader["qtrecebidas"]),
-                        ultima = Convert.ToString(reader["ultima"]),
-                        data_ultima = Convert.ToDateTime(reader["data_ultima"]),
+                        qtnaolidas = Convert.ToInt32(reader["qtnaolidas"]),
                         txfoto = Convert.ToString(reader["txfoto"]),
                         idsession = Convert.ToString(reader["idsession"]),
-                        flstatuschat = Convert.ToInt32(reader["flstatuschat"])
+                        flstatuschat = Convert.ToInt32(reader["flstatuschat"]),
+                        mensagem = new ChatDB().BuscarUltima(Convert.ToInt32(reader["idusuario"]))
                     });
                 }
                 reader.Close();
                 session.Close();
 
                 return us;
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+        }
+
+        // Busca a última mensagem do chat entre usuários
+        public ChatMsg BuscarUltima(int idusuario = 0)
+        {
+            try
+            {
+                ChatMsg msg = new ChatMsg();
+
+                string qry = "";
+                qry += "SELECT TOP 1 * FROM chat WHERE (iddestinatario = " + idusuario + " AND idremetente = " + session_gernet + ") ";
+                qry += "    or (iddestinatario = " + session_gernet + " AND idremetente = " + idusuario + ") ORDER BY dtmensagem DESC";
+
+                Connection session = new Connection();
+                Query query = session.CreateQuery(qry);
+                IDataReader reader = query.ExecuteQuery();
+
+                if (reader.Read())
+                {                    
+                    msg.idmensagem.value = Convert.ToInt32(reader["idmensagem"]);
+                    msg.idremetente.value = Convert.ToInt32(reader["idremetente"]);
+                    msg.iddestinatario.value = Convert.ToInt32(reader["iddestinatario"]);
+                    msg.txmensagem.value = Convert.ToString(reader["txmensagem"]);
+                    msg.dtmensagem.value = (DateTime?)Convert.ToDateTime(reader["dtmensagem"]);
+                    msg.dtrecebido.value = reader["dtrecebido"] == DBNull.Value ? null : (DateTime?)Convert.ToDateTime(reader["dtrecebido"]);
+                    msg.dtlido.value = reader["dtlido"] == DBNull.Value ? null : (DateTime?)Convert.ToDateTime(reader["dtlido"]);
+                }
+
+                reader.Close();
+                session.Close();
+
+                return msg;
             }
             catch (Exception error)
             {

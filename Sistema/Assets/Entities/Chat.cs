@@ -10,8 +10,8 @@ using System;
 
 namespace Sistema.Assets.Entities
 {
-    // Log de acesso ao sistema
-    public class Chat : Audit
+    // Mensagens do chat
+    public class ChatMsg : Audit
     {
 
         // Variáveis
@@ -24,7 +24,7 @@ namespace Sistema.Assets.Entities
         public Variable dtlido = new Variable(config: "122|1");
 
         // Inicial
-        public Chat()
+        public ChatMsg()
         {
             this.idmensagem.value = 0;
             this.idremetente.value = 0;
@@ -43,17 +43,15 @@ namespace Sistema.Assets.Entities
 
     }
 
-    // Log de acesso ao sistema
+    // Usuários do chat
     public class ChatUser : Audit
     {
         public int idusuario { get; set; }
         public string txnome { get; set; }
-        public int qtlidas { get; set; }
-        public int qtrecebidas { get; set; }
-        public string ultima { get; set; }
-        public DateTime? data_ultima { get; set; }
+        public int qtnaolidas { get; set; }
         public string txfoto { get; set; }
         public string idsession { get; set; }
         public int flstatuschat { get; set; }
+        public ChatMsg mensagem { get; set; }
     }
 }

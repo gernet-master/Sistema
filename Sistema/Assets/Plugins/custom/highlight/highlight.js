@@ -82,10 +82,15 @@ jQuery.fn.unhighlight = function (options) {
 jQuery.fn.highlight = function (words, options) {
     var accentedForms = {
         'c': 'ç',
-        'e': 'é'
+        'a': 'áàâã',
+        'e': 'éèê',
+        'i': 'íìî',
+        'o': 'óòôõ',
+        'u': 'úùû',
+        'n': 'ñ'
     };
 
-    var settings = { className: 'highlight', element: 'span', caseSensitive: false, wordsOnly: false, accentInsensitive: false };
+    var settings = { className: 'highlight', element: 'span', caseSensitive: false, wordsOnly: false, accentInsensitive: true };
     jQuery.extend(settings, options);
 
     if (settings.accentInsensitive) {

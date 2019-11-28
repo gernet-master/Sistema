@@ -6,6 +6,7 @@ Data: 01/01/2020 - v.1.0
 'use strict';
 
 var CHAT = {};
+var chat_running = false;
 
 (function ($) {
 
@@ -14,33 +15,46 @@ var CHAT = {};
         // Inicialização do script
         init: function () {
 
+            // Definição de variaveis
+            chat_running = false;
+
             // Ações
             CHAT.catchStatusList();
             CHAT.search();
             CHAT.changeStatus();
             CHAT.statusButton();
+            CHAT.highlight();
         },
 
         // Lista os usuários do chat
         listUsers: function () {
 
-            // Verifica se a listagem de usuários oonline/offline está aberta
-            var offline = 0;
-            var online = 0;
+            if (!chat_running) {
 
-            if ($('#kt_quick_panel #chat-div-online').length > 0) {
-                if ($('#kt_quick_panel #chat-div-online').hasClass('kt-hidden')) { online = 0; } else { online = 1; }
-            }
+                chat_running = true;
 
-            if ($('#kt_quick_panel #chat-div-offline').length > 0) {
-                if ($('#kt_quick_panel #chat-div-offline').hasClass('kt-hidden')) { offline = 0; } else { offline = 1; }
-            }
+                // Verifica se a listagem de usuários online/offline está aberta
+                var offline = 0;
+                var online = 0;
 
-            // Carrega lista
-            $('#kt_quick_panel #chat-list-users').load('/Partials/ChatPanelList/', { online: online, offline: offline }, function () {
-                CHAT.init();
-            });
+                if ($('#kt_quick_panel #chat-div-online').length > 0) {
+                    if ($('#kt_quick_panel #chat-div-online').hasClass('kt-hidden')) { online = 0; } else { online = 1; }
+                }
+
+                if ($('#kt_quick_panel #chat-div-offline').length > 0) {
+                    if ($('#kt_quick_panel #chat-div-offline').hasClass('kt-hidden')) { offline = 0; } else { offline = 1; }
+                }
+
+                // Pega filtro
+                var search = $('#kt_quick_panel #chat-search').val();
+
+                // Carrega lista
+                $('#kt_quick_panel #chat-list-users').load('/Partials/ChatPanelList/', { online: online, offline: offline, search: search }, function () {
+                    CHAT.init();
+                });
+
             }            
+                   
         },
 
         // Abre/Esconde lista de usuários
@@ -68,23 +82,7 @@ var CHAT = {};
         // Filtra pelo usuário
         search: function () {
             $('#kt_quick_panel #chat-search').keyup(function () {
-
-                  //          $('#kt_quick_panel .kt-notification-v2__item-title').each(function () { $(this).highlight(search_string, { className: 'text-danger font-weight-bold', accentInsensitive: true }); });
-
-
-                // Texto pesquisado
-                var search_string = $('#kt_quick_panel #chat-search').val();
-
-                // Nenhum: remove highlight e exibe tudo
-                if (search_string == '') {
-                    $('#kt_quick_panel .kt-notification-v2__item-title').each(function () { $(this).closest('.kt-notification-v2').removeClass('kt-hidden'); });
-                }
-
-                // Filtra e marca highlight
-                else
-                {
-                    $('#kt_quick_panel .kt-notification-v2__item-title').each(function () { $(this).closest('.kt-notification-v2').addClass('kt-hidden'); });
-                }
+                CHAT.listUsers();                  
             });
         },
 
@@ -109,8 +107,24 @@ var CHAT = {};
             $('#kt_quick_panel #kt_quick_panel_status_btn').click(function () {
                 $('#kt_quick_panel .kt-quick-panel__nav li').eq(1).find('a').click();
             });            
+        },
+
+        // Destaca o texto procurado
+        highlight: function () {
+
+            // Texto pesquisado
+            var search_string = $('#kt_quick_panel #chat-search').val();
+
+            // Marca highlight
+            if (search_string.length > 1) {
+                $('#kt_quick_panel .kt-notification-v2__item-title').each(function () { $(this).highlight(search_string, { className: 'text-danger font-weight-bold' }); });
+            }
         }
 
     };
 
 })(jQuery);
+
+
+
+

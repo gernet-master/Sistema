@@ -150,10 +150,23 @@
     color: #000000 !important;
 }
 
+.kt-quick-panel #chat-list-users .kt-notification-v2 {
+    border-bottom: 1px solid #ececec;
+}
+
 .kt-quick-panel #chat-list-users .kt-notification-v2__item-icon span {
-    position:absolute;
+    position: absolute;
     margin-top: -20px;
     margin-left: -18px;
+}
+
+.kt-quick-panel #chat-list-users .kt-notification-v2__item-desc i {
+    font-size:11px;
+    margin-right:2px;
+}
+
+.kt-quick-panel .kt-notification-v2__item-title span {
+    float:right;
 }
 
 /* Responsive */

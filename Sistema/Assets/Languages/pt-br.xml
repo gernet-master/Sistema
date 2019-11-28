@@ -124,9 +124,9 @@
   <string id="121" text="data recebimento" />
   <string id="122" text="data leitura" />
   <string id="123" text="código mensagem" />
-  <string id="124" text="" />
-  <string id="125" text="" />
-  <string id="126" text="" />
+  <string id="124" text="recebido em" />
+  <string id="125" text="lido em" />
+  <string id="126" text="se desativado, você não poderá visualizar nem exibir confirmações de leitura" />
   <string id="127" text="" />
   <string id="128" text="" />
   <string id="129" text="" />

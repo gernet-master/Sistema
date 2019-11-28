@@ -36,7 +36,7 @@
             }
 
             txt_online += u.txnome + "</div>";
-            txt_online += "            <div class='kt-notification-v2__item-desc'>" + u.ultima + "</div>";
+            txt_online += "            <div class='kt-notification-v2__item-desc'>" + u.mensagem.txmensagem.value + "</div>";
             txt_online += "        </div>";
             txt_online += "    </a>";
             txt_online += "</div>";
@@ -51,8 +51,30 @@
             txt_offline += "            <img class='chat-img' src='" + Utils.Avatar(u.txfoto) + "'>";
             txt_offline += "        </div>";
             txt_offline += "        <div class='kt-notification-v2__itek-wrapper'>";
-            txt_offline += "            <div class='kt-notification-v2__item-title'>" + u.txnome + "</div>";
-            txt_offline += "            <div class='kt-notification-v2__item-desc'>" + u.ultima + "</div>";
+            txt_offline += "            <div class='kt-notification-v2__item-title'>" + u.txnome;
+
+            if (u.qtnaolidas > 0) {
+                txt_offline += "<span class='kt-badge kt-badge--success'>" + u.qtnaolidas + "</span>";
+            }
+
+            txt_offline += "</div>";
+            txt_offline += "            <div class='kt-notification-v2__item-desc'>";
+
+            if (u.mensagem.dtmensagem.value != null)
+            {
+                if (u.mensagem.idremetente.value == Convert.ToInt32(Session["usuario"]))
+                {
+                    txt_offline += "<i class='fa fa-check " + (u.mensagem.dtrecebido.value != null ? "btn-font-success" : "") + "'></i>";
+                    txt_offline += "<i class='fa fa-check " + (u.mensagem.dtlido.value != null ? "btn-font-success" : "") + "'></i>&nbsp;";
+                    txt_offline += u.mensagem.txmensagem.value;
+                }
+                else
+                {
+                    txt_offline += u.mensagem.txmensagem.value;
+                }
+            }
+
+            txt_offline += "</div>";
             txt_offline += "        </div>";
             txt_offline += "    </a>";
             txt_offline += "</div>";
