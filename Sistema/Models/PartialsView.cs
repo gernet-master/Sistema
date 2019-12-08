@@ -25,6 +25,7 @@ namespace Sistema.Models
     {
         public Usuarios_Sistema usuarios_sistema = null;
 
+        // Configurações do usuário
         public PartialsView_ChatPanel()
         {
             usuarios_sistema = new Usuarios_SistemaDB().Buscar(session_usuario);
@@ -32,7 +33,7 @@ namespace Sistema.Models
     }
 
     // Lista de usuários do chat
-    public class PartialsView_ChatPanelList
+    public class PartialsView_ChatPanelList : Session
     {
         public List<ChatUser> usuarios = null;
         public int flonline { get; set; }
@@ -42,7 +43,13 @@ namespace Sistema.Models
         {
             flonline = online;
             floffline = offline;
+
+            // Busca lista de usuários e mensagens
             usuarios = new ChatDB().ListarUsuarios(search);
+
+            // Marca como recebido todas as novas mensagens
+            new ChatDB().CheckRecebido();
+
         }
     }
 }

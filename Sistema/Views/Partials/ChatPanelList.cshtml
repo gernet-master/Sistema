@@ -23,20 +23,67 @@
             txt_online += "<div class='kt-notification-v2'>";
             txt_online += "    <a href='#' class='kt-notification-v2__item'>";
             txt_online += "        <div class='kt-notification-v2__item-icon'>";
+
+            // Status do usuário
+            switch (u.flstatuschat)
+            {
+                case 1: txt_online += "<span class='kt-badge kt-badge--success kt-badge--dot kt-badge--xl'></span>"; break;
+                case 4: txt_online += "<span class='kt-badge kt-badge--warning kt-badge--dot kt-badge--xl'></span>"; break;
+            }
+
             txt_online += "            <img class='chat-img' src='" + Utils.Avatar(u.txfoto) + "'>";
             txt_online += "        </div>";
             txt_online += "        <div class='kt-notification-v2__itek-wrapper'>";
-            txt_online += "            <div class='kt-notification-v2__item-title'>";
+            txt_online += "            <div class='kt-notification-v2__item-title'>" + u.txnome;
 
-            // Status
-            switch (u.flstatuschat)
+            // Quantidade de mensagens não lidas
+            if (u.qtnaolidas > 0)
             {
-                case 1: txt_online += "<i class='fa fa-circle btn-font-success'></i>&nbsp;"; break;
-                case 4: txt_online += "<i class='fa fa-circle btn-font-warning'></i>&nbsp;"; break;
+                txt_online += "<span class='kt-badge kt-badge--success'>" + u.qtnaolidas + "</span>";
             }
 
-            txt_online += u.txnome + "</div>";
-            txt_online += "            <div class='kt-notification-v2__item-desc'>" + u.mensagem.txmensagem.value + "</div>";
+            txt_online += "</div>";
+            txt_online += "<div class='kt-notification-v2__item-desc'>";
+
+            // Verifica se foi enviado ou recebido alguma mensagem
+            if (u.mensagem.dtmensagem.value != null)
+            {
+                // Enviado
+                if (u.mensagem.idremetente.value == Convert.ToInt32(Session["usuario"]))
+                {
+                    // Verifica se o destinatário recebeu
+                    if (u.mensagem.dtrecebido.value == null)
+                    {
+                        txt_online += "<i class='fa fa-check'></i>&nbsp;";
+                    }
+
+                    // Recebeu, verifica se foi lido
+                    else
+                    {
+                        // Verifica se a mensagem possui confirmação de leitura
+                        if (u.mensagem.flprivacidade.value == 1)
+                        {
+                            txt_online += "<i class='fa fa-check " + (u.mensagem.dtlido.value != null ? "btn-font-success" : "") + "'></i>";
+                            txt_online += "<i class='fa fa-check " + (u.mensagem.dtlido.value != null ? "btn-font-success" : "") + "'></i>&nbsp;";
+                        }
+                        else
+                        {
+                            txt_online += "<i class='fa fa-check'></i>";
+                            txt_online += "<i class='fa fa-check'></i>&nbsp;";
+                        }
+                    }
+
+                    txt_online += u.mensagem.txmensagem.value;
+                }
+
+                // Recebido
+                else
+                {
+                    txt_online += u.mensagem.txmensagem.value;
+                }
+            }
+
+            txt_online += "</div>";
             txt_online += "        </div>";
             txt_online += "    </a>";
             txt_online += "</div>";
@@ -53,21 +100,48 @@
             txt_offline += "        <div class='kt-notification-v2__itek-wrapper'>";
             txt_offline += "            <div class='kt-notification-v2__item-title'>" + u.txnome;
 
+            // Quantidade de mensagens não lidas
             if (u.qtnaolidas > 0) {
                 txt_offline += "<span class='kt-badge kt-badge--success'>" + u.qtnaolidas + "</span>";
             }
 
             txt_offline += "</div>";
-            txt_offline += "            <div class='kt-notification-v2__item-desc'>";
+            txt_offline += "<div class='kt-notification-v2__item-desc'>";
 
+            // Verifica se foi enviado ou recebido alguma mensagem
             if (u.mensagem.dtmensagem.value != null)
             {
+                // Enviado
                 if (u.mensagem.idremetente.value == Convert.ToInt32(Session["usuario"]))
                 {
-                    txt_offline += "<i class='fa fa-check " + (u.mensagem.dtrecebido.value != null ? "btn-font-success" : "") + "'></i>";
-                    txt_offline += "<i class='fa fa-check " + (u.mensagem.dtlido.value != null ? "btn-font-success" : "") + "'></i>&nbsp;";
+
+                    // Verifica se o destinatário recebeu
+                    if (u.mensagem.dtrecebido.value == null)
+                    {
+                        txt_offline += "<i class='fa fa-check'></i>&nbsp;";
+                    }
+
+                    // Recebeu, verifica se foi lido
+                    else
+                    {
+                        // Verifica se a mensagem possui confirmação de leitura
+                        if (u.mensagem.flprivacidade.value == 1)
+                        {
+                            txt_offline += "<i class='fa fa-check " + (u.mensagem.dtlido.value != null ? "btn-font-success" : "") + "'></i>";
+                            txt_offline += "<i class='fa fa-check " + (u.mensagem.dtlido.value != null ? "btn-font-success" : "") + "'></i>&nbsp;";
+                        }
+                        else
+                        {
+                            txt_offline += "<i class='fa fa-check'></i>";
+                            txt_offline += "<i class='fa fa-check'></i>&nbsp;";
+                        }
+
+                    }
+
                     txt_offline += u.mensagem.txmensagem.value;
                 }
+
+                // Recebido
                 else
                 {
                     txt_offline += u.mensagem.txmensagem.value;
@@ -84,11 +158,13 @@
     }
 }
 
+<!-- Online -->
 <div class="kt-notification-v2 kt-notification-item-padding-x kt-align-center kt-padding-8 bg-light-blue pointer" id="chat-button-online">
     @Language.XmlLang(108, 1).Text (@online)
 </div>
 <div id="chat-div-online" class="@(Model.flonline == 0 ? "kt-hidden" : "")">@Html.Raw(txt_online)</div>
 
+<!-- Offline -->
 <div class="kt-notification-v2 kt-notification-item-padding-x kt-align-center kt-padding-8 bg-light-blue kt-margin-t-15 pointer" id="chat-button-offline">
     @Language.XmlLang(109, 1).Text (@offline)
 </div>

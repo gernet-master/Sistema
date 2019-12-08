@@ -19,6 +19,8 @@ namespace Sistema.Assets.Entities
         public Variable txlink = new Variable(config: "0|0");
         public Variable txcliente = new Variable(config: "0|0");
         public Variable qtunidades = new Variable(config: "0|0");
+        public Variable idunidadeprincipal = new Variable(config: "0|0");
+        public Variable txidioma = new Variable(config: "0|0");
 
         // Inicial
         public Gernet_Controle()
@@ -27,6 +29,9 @@ namespace Sistema.Assets.Entities
             this.txlink.value = "";
             this.txcliente.value = "";
             this.qtunidades.value = 0;
+            this.idunidadeprincipal.value = 0;
+            this.txidioma.value = "pt-br";
+
         }
 
     }

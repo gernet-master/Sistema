@@ -17,9 +17,11 @@ namespace Sistema.Assets.DB
             try
             {
                 string qry = "";
-                qry += "INSERT INTO Usuarios_Sistema (idusuario, idunidade, flderrubar, idsession, qtacessos, txip, txrefresh, txderrubar, txaplicativo, txaplicativomain, txbloqueado, flstatuschat) ";
+                qry += "INSERT INTO Usuarios_Sistema (idusuario, idunidade, flderrubar, idsession, qtacessos, txip, txrefresh, txderrubar, txaplicativo, ";
+                qry += "txaplicativomain, txbloqueado, flstatuschat, flprivacidade, flmsgconfig) ";
                 qry += "VALUES (" + rs.idusuario.value + ", " + rs.idunidade.value + ", '" + rs.flderrubar.value + "', '" + rs.idsession.value + "', " + rs.qtacessos.value + ", '" + rs.txip.value + "', ";
-                qry += "'" + rs.txrefresh.value + "', '" + rs.txderrubar.value + "', '" + rs.txaplicativo.value + "', '" + rs.txaplicativomain.value + "', '" + rs.txbloqueado.value + "', " + rs.flstatuschat.value + ")";
+                qry += "'" + rs.txrefresh.value + "', '" + rs.txderrubar.value + "', '" + rs.txaplicativo.value + "', '" + rs.txaplicativomain.value + "', '" + rs.txbloqueado.value + "', ";
+                qry += rs.flstatuschat.value + ", " + rs.flprivacidade.value + ", " + rs.flmsgconfig.value + ")";
 
                 Connection session = new Connection();
                 Query query = session.CreateQuery(qry);
@@ -33,17 +35,17 @@ namespace Sistema.Assets.DB
         }
 
         // Altera controle de usuário
-        public void Alterar(Usuarios_Sistema variavel)
+        public void Alterar(Usuarios_Sistema rs)
         {
             try
             {
                 string qry = "";
                 qry += "UPDATE Usuarios_Sistema ";
-                qry += "SET idunidade = " + variavel.idunidade.value + ", flderrubar = " + variavel.flderrubar.value + ", idsession = '" + variavel.idsession.value + "', ";
-                qry += "qtacessos = " + variavel.qtacessos.value + ", txip = '" + variavel.txip.value + "', txrefresh = '" + variavel.txrefresh.value + "', txderrubar = '" + variavel.txderrubar.value + "', ";
-                qry += "txaplicativo = '" + variavel.txaplicativo.value + "', txaplicativomain = '" + variavel.txaplicativomain.value + "', txbloqueado = '" + variavel.txbloqueado.value + "', ";
-                qry += "flstatuschat = " + variavel.flstatuschat.value + " ";
-                qry += "WHERE idusuario = " + variavel.idusuario.value;
+                qry += "SET idunidade = " + rs.idunidade.value + ", flderrubar = " + rs.flderrubar.value + ", idsession = '" + rs.idsession.value + "', ";
+                qry += "qtacessos = " + rs.qtacessos.value + ", txip = '" + rs.txip.value + "', txrefresh = '" + rs.txrefresh.value + "', txderrubar = '" + rs.txderrubar.value + "', ";
+                qry += "txaplicativo = '" + rs.txaplicativo.value + "', txaplicativomain = '" + rs.txaplicativomain.value + "', txbloqueado = '" + rs.txbloqueado.value + "', ";
+                qry += "flstatuschat = " + rs.flstatuschat.value + ", flprivacidade = " + rs.flprivacidade.value  + ", flmsgconfig = " + rs.flmsgconfig.value + " ";
+                qry += "WHERE idusuario = " + rs.idusuario.value;
 
                 Connection session = new Connection();
                 Query query = session.CreateQuery(qry);
@@ -64,6 +66,48 @@ namespace Sistema.Assets.DB
                 string qry = "";
                 qry += "UPDATE Usuarios_Sistema ";
                 qry += "SET flstatuschat = " + flstatuschat + " ";
+                qry += "WHERE idusuario = " + session_usuario;
+
+                Connection session = new Connection();
+                Query query = session.CreateQuery(qry);
+                query.ExecuteUpdate();
+                session.Close();
+            }
+            catch (Exception erro)
+            {
+                throw erro;
+            }
+        }
+
+        // Altera a privacidade do chat
+        public void AlterarPrivacidadeChat(int flprivacidade = 1)
+        {
+            try
+            {
+                string qry = "";
+                qry += "UPDATE Usuarios_Sistema ";
+                qry += "SET flprivacidade = " + flprivacidade + " ";
+                qry += "WHERE idusuario = " + session_usuario;
+
+                Connection session = new Connection();
+                Query query = session.CreateQuery(qry);
+                query.ExecuteUpdate();
+                session.Close();
+            }
+            catch (Exception erro)
+            {
+                throw erro;
+            }
+        }
+
+        // Altera a configuração de msensagem do chat
+        public void AlterarConfigMsgChat(int flmsgconfig = 0)
+        {
+            try
+            {
+                string qry = "";
+                qry += "UPDATE Usuarios_Sistema ";
+                qry += "SET flmsgconfig = " + flmsgconfig + " ";
                 qry += "WHERE idusuario = " + session_usuario;
 
                 Connection session = new Connection();
@@ -105,7 +149,9 @@ namespace Sistema.Assets.DB
                         txaplicativo = new Variable(value: Convert.ToString(reader["txaplicativo"])),
                         txaplicativomain = new Variable(value: Convert.ToString(reader["txaplicativomain"])),
                         txbloqueado = new Variable(value: Convert.ToDateTime(reader["txbloqueado"])),
-                        flstatuschat = new Variable(value: Convert.ToInt32(reader["flstatuschat"]))
+                        flstatuschat = new Variable(value: Convert.ToInt32(reader["flstatuschat"])),
+                        flprivacidade = new Variable(value: Convert.ToInt32(reader["flprivacidade"])),
+                        flmsgconfig = new Variable(value: Convert.ToInt32(reader["flmsgconfig"]))
                     };
                 }
                 reader.Close();

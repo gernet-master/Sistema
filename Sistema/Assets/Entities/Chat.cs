@@ -22,6 +22,7 @@ namespace Sistema.Assets.Entities
         public Variable dtmensagem = new Variable(config: "120|1");
         public Variable dtrecebido = new Variable(config: "121|1");
         public Variable dtlido = new Variable(config: "122|1");
+        public Variable flprivacidade = new Variable(config: "115|1");
 
         // Inicial
         public ChatMsg()
@@ -33,6 +34,7 @@ namespace Sistema.Assets.Entities
             this.dtmensagem.value = null;
             this.dtrecebido.value = null;
             this.dtlido.value = null;
+            this.flprivacidade.value = 1;
         }
 
         // Gravar

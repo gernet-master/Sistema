@@ -16,10 +16,12 @@ namespace Sistema.Assets.DB
         {
             try
             {
+                string qry = "";
+                qry += "INSERT INTO Usuarios_Preferencias (idusuario, idunidade, txidioma) ";
+                qry += "VALUES (" + rs.idusuario.value + ", " + rs.idunidade.value + ", '" + rs.txidioma.value + "')";
+
                 Connection session = new Connection();
-                Query query = session.CreateQuery(@"
-                    INSERT INTO Usuarios_Preferencias (idusuario, idunidade)  
-                    VALUES (" + rs.idusuario.value + ", " + rs.idunidade.value + "')");
+                Query query = session.CreateQuery(qry);
                 query.ExecuteUpdate();
                 session.Close();
             }

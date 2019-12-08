@@ -20,10 +20,12 @@ var chat_running = false;
 
             // Ações
             CHAT.catchStatusList();
-            CHAT.search();
-            CHAT.changeStatus();
+            CHAT.search();            
             CHAT.statusButton();
             CHAT.highlight();
+            CHAT.changeStatus();
+            CHAT.changePrivacy();
+            CHAT.changeMsg();
         },
 
         // Lista os usuários do chat
@@ -35,7 +37,7 @@ var chat_running = false;
 
                 // Verifica se a listagem de usuários online/offline está aberta
                 var offline = 0;
-                var online = 0;
+                var online = 1;
 
                 if ($('#kt_quick_panel #chat-div-online').length > 0) {
                     if ($('#kt_quick_panel #chat-div-online').hasClass('kt-hidden')) { online = 0; } else { online = 1; }
@@ -86,22 +88,6 @@ var chat_running = false;
             });
         },
 
-        // Altera o status
-        changeStatus: function () {
-            $('#kt_quick_panel #kt_quick_panel_tab_settings #flstatuschat').click(function () {
-                var status = $(this).val();
-                switch (parseInt(status)) {
-                    case 1: $('#kt_quick_panel #kt_quick_panel_status_btn').html('<i class="fa fa-circle btn-font-success"></i>&nbsp;' + UTILS.xmlLang(108, 2).Text); break;
-                    case 2: $('#kt_quick_panel #kt_quick_panel_status_btn').html('<i class="fa fa-circle btn-font-danger"></i>&nbsp;' + UTILS.xmlLang(109, 2).Text); break;
-                    case 3: $('#kt_quick_panel #kt_quick_panel_status_btn').html('<i class="fa fa-circle btn-font-brand"></i>&nbsp;' + UTILS.xmlLang(113, 2).Text); break;
-                    case 4: $('#kt_quick_panel #kt_quick_panel_status_btn').html('<i class="fa fa-circle btn-font-warning"></i>&nbsp;' + UTILS.xmlLang(114, 2).Text); break;
-                }
-
-                // Grava novo status na configuração do usuário
-                $.post('/Partials/ChatPanelListStatus/', { status: status });
-            });
-        },
-
         // Abre a tela de configurações para mudar o status
         statusButton: function () {
             $('#kt_quick_panel #kt_quick_panel_status_btn').click(function () {
@@ -119,6 +105,40 @@ var chat_running = false;
             if (search_string.length > 1) {
                 $('#kt_quick_panel .kt-notification-v2__item-title').each(function () { $(this).highlight(search_string, { className: 'text-danger font-weight-bold' }); });
             }
+        },
+
+        // Altera o status
+        changeStatus: function () {
+            $('#kt_quick_panel #kt_quick_panel_tab_settings #flstatuschat').click(function () {
+                var status = $(this).val();
+                switch (parseInt(status)) {
+                    case 1: $('#kt_quick_panel #kt_quick_panel_status_btn').html('<i class="fa fa-circle btn-font-success"></i>&nbsp;' + UTILS.xmlLang(108, 2).Text); break;
+                    case 2: $('#kt_quick_panel #kt_quick_panel_status_btn').html('<i class="fa fa-circle btn-font-danger"></i>&nbsp;' + UTILS.xmlLang(109, 2).Text); break;
+                    case 3: $('#kt_quick_panel #kt_quick_panel_status_btn').html('<i class="fa fa-circle btn-font-brand"></i>&nbsp;' + UTILS.xmlLang(113, 2).Text); break;
+                    case 4: $('#kt_quick_panel #kt_quick_panel_status_btn').html('<i class="fa fa-circle btn-font-warning"></i>&nbsp;' + UTILS.xmlLang(114, 2).Text); break;
+                }
+
+                // Grava novo status na configuração do usuário
+                $.post('/Partials/ChatPanelChangeStatus/', { status: status });
+            });
+        },
+
+        // Altera a privacidade
+        changePrivacy: function() {
+            $('#kt_quick_panel #kt_quick_panel_tab_settings #flprivacy').click(function () {
+
+                // Grava nova configuração de privacidade
+                $.post('/Partials/ChatPanelChangePrivacy/', { privacy: ($(this).is(':checked') ? 1 : 0) });
+            });
+        },
+
+        // Altera a configuração de mensagem
+        changeMsg: function () {
+            $('#kt_quick_panel #kt_quick_panel_tab_settings #flmsgconfig').click(function () {
+
+                // Grava nova configuração de mensagem
+                $.post('/Partials/ChatPanelChatMsg/', { config: ($(this).is(':checked') ? 1 : 0) });
+            });
         }
 
     };

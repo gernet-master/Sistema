@@ -32,7 +32,9 @@ namespace Sistema.Assets.DB
                         idgernet = new Variable(value: Convert.ToInt32(reader["idgernet"])),
                         txcliente = new Variable(value: Convert.ToString(reader["txcliente"])),
                         txlink = new Variable(value: Convert.ToString(reader["txlink"])),
-                        qtunidades = new Variable(value: Convert.ToInt32(reader["qtunidades"]))
+                        qtunidades = new Variable(value: Convert.ToInt32(reader["qtunidades"])),
+                        idunidadeprincipal = new Variable(value: Convert.ToInt32(reader["idunidadeprincipal"])),
+                        txidioma = new Variable(value: Convert.ToString(reader["txidioma"]))
                     };
                 }
                 reader.Close();

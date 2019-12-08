@@ -296,6 +296,20 @@ namespace Functions
             // Pega preferencias do usuário
             Usuarios_Preferencias usuarios_preferencias = new Usuarios_PreferenciasDB().PreferenciasUsuario(usuario.idusuario.value);
 
+            // Se não existir preferencias, cria com base na configuração do cliente
+            if (usuarios_preferencias == null)
+            {
+                Gernet_Controle gernet_controle = new Gernet_ControleDB().Buscar();
+
+                Usuarios_Preferencias cliente_preferencias = new Usuarios_Preferencias();
+                cliente_preferencias.idusuario.value = usuario.idusuario.value;
+                cliente_preferencias.idunidade.value = gernet_controle.idunidadeprincipal.value;
+                cliente_preferencias.txidioma.value = gernet_controle.txidioma.value;
+                cliente_preferencias.Gravar();
+
+                usuarios_preferencias = cliente_preferencias;
+            }
+
             // Insere a sessão do usuário na aplicação se não existir
             HttpContext.Current.Application.Lock();
             HttpContext.Current.Application["contusr"] = Convert.ToInt32(HttpContext.Current.Application["contusr"]) + 1;

@@ -70,9 +70,23 @@ namespace Sistema.Controllers
 
         // Grava o novo status de chat do usuário
         [Autentication]
-        public void ChatPanelListStatus(int status = 0)
+        public void ChatPanelChangeStatus(int status = 0)
         {
             new Usuarios_SistemaDB().AlterarStatusChat(status);
+        }
+
+        // Grava a nova configuração de privacidade
+        [Autentication]
+        public void ChatPanelChangePrivacy(int privacy = 0)
+        {
+            new Usuarios_SistemaDB().AlterarPrivacidadeChat(privacy);
+        }
+
+        // Grava a nova configuração de mensagem
+        [Autentication]
+        public void ChatPanelChatMsg(int config = 0)
+        {
+            new Usuarios_SistemaDB().AlterarConfigMsgChat(config);
         }
 
         // ***************** E-MAIL *****************

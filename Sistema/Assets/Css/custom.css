@@ -119,9 +119,15 @@
 /* Chat */
 
 .chat-img {
-    max-width:50px;
-    max-height:50px;
+    max-width:40px;
+    max-height:40px;
     border-radius:50%;
+}
+
+.kt-notification-v2 .kt-notification-v2__item .kt-notification-v2__item-icon {
+    height: 40px;
+    width: 40px;
+    min-width: 40px;
 }
 
 .kt-padding-chat-search {
@@ -156,17 +162,30 @@
 
 .kt-quick-panel #chat-list-users .kt-notification-v2__item-icon span {
     position: absolute;
-    margin-top: -20px;
-    margin-left: -18px;
+    margin-top: -18px;
+    margin-left: -12px;
+    border:2px solid #FFFFFF;
+}
+
+.kt-quick-panel #chat-list-users .kt-notification-v2__item-desc {
+    display: inline-block;
+    width: 300px;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
 }
 
 .kt-quick-panel #chat-list-users .kt-notification-v2__item-desc i {
-    font-size:11px;
+    font-size:8px;
     margin-right:2px;
 }
 
-.kt-quick-panel .kt-notification-v2__item-title span {
-    float:right;
+.kt-quick-panel .kt-notification-v2__item-title span.kt-badge {
+    float: right;
+}
+
+.kt-notification-v2 .kt-notification-v2__item {
+    padding: 0.7rem 1rem !important;
 }
 
 /* Responsive */

@@ -16,8 +16,8 @@ namespace Sistema.Assets.DB
             try
             {
                 string qry = "";
-                qry += "INSERT INTO chat (idremetente, iddestinatario, txmensagem, dtmensagem, dtlido) ";
-                qry += "VALUES (" + rs.idremetente.value + ", " + rs.iddestinatario.value + ", '" + rs.txmensagem.value + ", '" + rs.dtmensagem.value + ", null, null)";
+                qry += "INSERT INTO chat (idremetente, iddestinatario, txmensagem, dtmensagem, dtlido, flprivacidade) ";
+                qry += "VALUES (" + rs.idremetente.value + ", " + rs.iddestinatario.value + ", '" + rs.txmensagem.value + ", '" + rs.dtmensagem.value + ", null, null, " + rs.flprivacidade.value + ")";
 
                 Connection session = new Connection();
                 Query query = session.CreateQuery(qry);
@@ -40,7 +40,7 @@ namespace Sistema.Assets.DB
                 string qry = "";
                 qry += "SELECT* FROM ( ";
                 qry += "SELECT u.idusuario, u.txnome, u.txfoto, ISNULL(us.idsession,0) AS idsession, ISNULL(us.flstatuschat, 2) as flstatuschat, ";
-                qry += "    (SELECT COUNT(*) AS total FROM chat WHERE idremetente = u.idusuario AND iddestinatario = 1 AND dtlido is null) AS qtnaolidas ";
+                qry += "    (SELECT COUNT(*) AS total FROM chat WHERE idremetente = u.idusuario AND iddestinatario = " + session_usuario + " AND dtlido is null) AS qtnaolidas ";
                 qry += "FROM usuarios u ";
                 qry += "LEFT JOIN usuarios_sistema us ON us.idusuario = u.idusuario ";
                 qry += "WHERE u.flativo = 1 AND u.idusuario <> " + session_usuario + " AND u.idgernet = " + session_gernet + " ";
@@ -89,8 +89,8 @@ namespace Sistema.Assets.DB
                 ChatMsg msg = new ChatMsg();
 
                 string qry = "";
-                qry += "SELECT TOP 1 * FROM chat WHERE (iddestinatario = " + idusuario + " AND idremetente = " + session_gernet + ") ";
-                qry += "    or (iddestinatario = " + session_gernet + " AND idremetente = " + idusuario + ") ORDER BY dtmensagem DESC";
+                qry += "SELECT TOP 1 * FROM chat WHERE (iddestinatario = " + idusuario + " AND idremetente = " + session_usuario + ") ";
+                qry += "    or (iddestinatario = " + session_usuario + " AND idremetente = " + idusuario + ") ORDER BY dtmensagem DESC";
 
                 Connection session = new Connection();
                 Query query = session.CreateQuery(qry);
@@ -105,6 +105,7 @@ namespace Sistema.Assets.DB
                     msg.dtmensagem.value = (DateTime?)Convert.ToDateTime(reader["dtmensagem"]);
                     msg.dtrecebido.value = reader["dtrecebido"] == DBNull.Value ? null : (DateTime?)Convert.ToDateTime(reader["dtrecebido"]);
                     msg.dtlido.value = reader["dtlido"] == DBNull.Value ? null : (DateTime?)Convert.ToDateTime(reader["dtlido"]);
+                    msg.flprivacidade.value = Convert.ToInt32(reader["flprivacidade"]);
                 }
 
                 reader.Close();
@@ -115,6 +116,25 @@ namespace Sistema.Assets.DB
             catch (Exception error)
             {
                 throw error;
+            }
+        }
+
+        // Marca como lida todas as novas mensagens
+        public void CheckRecebido()
+        {
+            try
+            {
+                string qry = "";
+                qry += "UPDATE chat SET dtrecebido = GETDATE() WHERE iddestinatario = " + session_usuario + " AND dtrecebido IS NULL";
+
+                Connection session = new Connection();
+                Query query = session.CreateQuery(qry);
+                query.ExecuteUpdate();
+                session.Close();
+            }
+            catch (Exception erro)
+            {
+                throw erro;
             }
         }
 
