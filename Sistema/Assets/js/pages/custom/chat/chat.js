@@ -6,7 +6,7 @@ var KTAppChat = function () {
 	var chatContentEl;
 
 	// Private functions
-	var initAside = function () {
+    var initAside = function () {
 		// Mobile offcanvas for mobile mode
 		var offcanvas = new KTOffcanvas(chatAsideEl, {
             overlay: true,  
@@ -14,13 +14,13 @@ var KTAppChat = function () {
             closeBy: 'kt_chat_aside_close',
             toggleBy: 'kt_chat_aside_mobile_toggle'
         }); 
-
 		// User listing 
-		var userListEl = KTUtil.find(chatAsideEl, '.kt-scroll');
-		if (!userListEl) {
+        var userListEl = KTUtil.find(chatAsideEl, '.kt-scroll');
+        if (!userListEl) {
 			return;
 		}
 
+       
 		// Initialize perfect scrollbar(see:  https://github.com/utatti/perfect-scrollbar) 
 		KTUtil.scrollInit(userListEl, {
 			mobileNativeScroll: true,  // enable native scroll for mobile

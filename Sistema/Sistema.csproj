@@ -1373,10 +1373,23 @@
     <Content Include="Assets\Plugins\custom\uppy\dist\uppy.min.css" />
     <Content Include="Assets\Plugins\custom\uppy\dist\uppy.min.js" />
     <Content Include="Assets\Plugins\custom\validation\validationEngine.min.css" />
-    <Content Include="Assets\Plugins\general\fortawesome\fontawesome-free\css\all.min.css" />
-    <Content Include="Assets\Plugins\general\fortawesome\fontawesome-free\webfonts\fa-brands-400.svg" />
-    <Content Include="Assets\Plugins\general\fortawesome\fontawesome-free\webfonts\fa-regular-400.svg" />
-    <Content Include="Assets\Plugins\general\fortawesome\fontawesome-free\webfonts\fa-solid-900.svg" />
+    <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\css\all.css" />
+    <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\css\all.min.css" />
+    <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\css\brands.css" />
+    <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\css\brands.min.css" />
+    <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\css\fontawesome.css" />
+    <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\css\fontawesome.min.css" />
+    <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\css\regular.css" />
+    <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\css\regular.min.css" />
+    <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\css\solid.css" />
+    <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\css\solid.min.css" />
+    <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\css\svg-with-js.css" />
+    <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\css\svg-with-js.min.css" />
+    <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\css\v4-shims.css" />
+    <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\css\v4-shims.min.css" />
+    <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\webfonts\fa-brands-400.svg" />
+    <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\webfonts\fa-regular-400.svg" />
+    <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\webfonts\fa-solid-900.svg" />
     <Content Include="Assets\Plugins\general\yaireo\tagify\dist\tagify.css" />
     <Content Include="Assets\Plugins\general\yaireo\tagify\dist\tagify.min.js" />
     <Content Include="Assets\Plugins\general\yaireo\tagify\dist\tagify.polyfills.min.js" />
@@ -3220,6 +3233,7 @@
     <Content Include="demo1\crud\metronic-datatable\child\data-ajax.html" />
     <Content Include="demo1\crud\metronic-datatable\child\data-local.html" />
     <Content Include="demo1\custom\apps\chat\group.html" />
+    <Content Include="demo1\custom\apps\chat\popup2 .html" />
     <Content Include="demo1\custom\apps\chat\popup.html" />
     <Content Include="demo1\custom\apps\chat\private.html" />
     <Content Include="demo1\custom\apps\contacts\add-contact.html" />
@@ -3318,18 +3332,18 @@
     <Folder Include="demo1\assets\plugins\general\ion-rangeslider\img\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Plugins\general\fortawesome\fontawesome-free\webfonts\fa-brands-400.eot" />
-    <Content Include="Assets\Plugins\general\fortawesome\fontawesome-free\webfonts\fa-brands-400.ttf" />
-    <Content Include="Assets\Plugins\general\fortawesome\fontawesome-free\webfonts\fa-brands-400.woff" />
-    <Content Include="Assets\Plugins\general\fortawesome\fontawesome-free\webfonts\fa-brands-400.woff2" />
-    <Content Include="Assets\Plugins\general\fortawesome\fontawesome-free\webfonts\fa-regular-400.eot" />
-    <Content Include="Assets\Plugins\general\fortawesome\fontawesome-free\webfonts\fa-regular-400.ttf" />
-    <Content Include="Assets\Plugins\general\fortawesome\fontawesome-free\webfonts\fa-regular-400.woff" />
-    <Content Include="Assets\Plugins\general\fortawesome\fontawesome-free\webfonts\fa-regular-400.woff2" />
-    <Content Include="Assets\Plugins\general\fortawesome\fontawesome-free\webfonts\fa-solid-900.eot" />
-    <Content Include="Assets\Plugins\general\fortawesome\fontawesome-free\webfonts\fa-solid-900.ttf" />
-    <Content Include="Assets\Plugins\general\fortawesome\fontawesome-free\webfonts\fa-solid-900.woff" />
-    <Content Include="Assets\Plugins\general\fortawesome\fontawesome-free\webfonts\fa-solid-900.woff2" />
+    <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\webfonts\fa-brands-400.eot" />
+    <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\webfonts\fa-brands-400.ttf" />
+    <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\webfonts\fa-brands-400.woff" />
+    <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\webfonts\fa-brands-400.woff2" />
+    <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\webfonts\fa-regular-400.eot" />
+    <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\webfonts\fa-regular-400.ttf" />
+    <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\webfonts\fa-regular-400.woff" />
+    <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\webfonts\fa-regular-400.woff2" />
+    <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\webfonts\fa-solid-900.eot" />
+    <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\webfonts\fa-solid-900.ttf" />
+    <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\webfonts\fa-solid-900.woff" />
+    <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="Assets\Plugins\general\plugins\flaticon2\font\Flaticon2.eot" />
     <Content Include="Assets\Plugins\general\plugins\flaticon2\font\Flaticon2.ttf" />
     <Content Include="Assets\Plugins\general\plugins\flaticon2\font\Flaticon2.woff" />
@@ -3403,6 +3417,7 @@
     <None Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Login\Reset.cshtml" />
     <Content Include="Views\Partials\ChatPanelList.cshtml" />
+    <Content Include="Views\Partials\ChatMsg.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

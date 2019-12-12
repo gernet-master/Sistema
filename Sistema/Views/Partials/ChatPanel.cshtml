@@ -11,13 +11,13 @@
 
     <!-- Status do chat -->
     <a href="#" class="kt-quick-panel__status" id="kt_quick_panel_status_btn">
-        @switch(Model.usuarios_sistema.flstatuschat.value)
+        @switch (Model.usuarios_sistema.flstatuschat.value)
         {
-            case 1: @Html.Raw("<i class='fa fa-circle btn-font-success'></i>&nbsp;" + Language.XmlLang(108, 2).Text); break;
-            case 2: @Html.Raw("<i class='fa fa-circle btn-font-danger'></i>&nbsp;" + Language.XmlLang(109, 2).Text); break;
-            case 3: @Html.Raw("<i class='fa fa-circle btn-font-brand'></i>&nbsp;" + Language.XmlLang(113, 2).Text); break;
-            case 4: @Html.Raw("<i class='fa fa-circle btn-font-warning'></i>&nbsp;" + Language.XmlLang(114, 2).Text); break;
-        }        
+            case 1:@Html.Raw("<i class='fa fa-circle btn-font-success'></i>&nbsp;" + Language.XmlLang(108, 2).Text); break;
+        case 2: @Html.Raw("<i class='fa fa-circle btn-font-danger'></i>&nbsp;" + Language.XmlLang(109, 2).Text); break;
+    case 3: @Html.Raw("<i class='fa fa-circle btn-font-brand'></i>&nbsp;" + Language.XmlLang(113, 2).Text); break;
+case 4: @Html.Raw("<i class='fa fa-circle btn-font-warning'></i>&nbsp;" + Language.XmlLang(114, 2).Text); break;
+}
     </a>
 
     <!-- Fechar chat -->
@@ -56,19 +56,19 @@
                     <div class="form-group form-group-xs row">
                         <div class="kt-radio-list kt-margin-l-10">
                             <label class="kt-radio kt-radio--solid kt-radio--success">
-                                <input type="radio" value="1" @(Model.usuarios_sistema.flstatuschat.value == 1 ? "checked": "") name="flstatuschat" id="flstatuschat"> @Language.XmlLang(108, 2).Text
+                                <input type="radio" value="1" @(Model.usuarios_sistema.flstatuschat.value == 1 ? "checked" : "") name="flstatuschat" id="flstatuschat"> @Language.XmlLang(108, 2).Text
                                 <span></span>
                             </label>
                             <label class="kt-radio kt-radio--solid kt-radio--danger">
-                                <input type="radio" value="2" @(Model.usuarios_sistema.flstatuschat.value == 2 ? "checked": "") name="flstatuschat" id="flstatuschat"> @Language.XmlLang(109, 2).Text
+                                <input type="radio" value="2" @(Model.usuarios_sistema.flstatuschat.value == 2 ? "checked" : "") name="flstatuschat" id="flstatuschat"> @Language.XmlLang(109, 2).Text
                                 <span></span>
                             </label>
                             <label class="kt-radio kt-radio--solid kt-radio--brand">
-                                <input type="radio" value="3" @(Model.usuarios_sistema.flstatuschat.value == 3 ? "checked": "") name="flstatuschat" id="flstatuschat"> @Language.XmlLang(113, 2).Text
+                                <input type="radio" value="3" @(Model.usuarios_sistema.flstatuschat.value == 3 ? "checked" : "") name="flstatuschat" id="flstatuschat"> @Language.XmlLang(113, 2).Text
                                 <span></span>
                             </label>
                             <label class="kt-radio kt-radio--solid kt-radio--warning">
-                                <input type="radio" value="4" @(Model.usuarios_sistema.flstatuschat.value == 4 ? "checked": "") name="flstatuschat" id="flstatuschat"> @Language.XmlLang(114, 2).Text
+                                <input type="radio" value="4" @(Model.usuarios_sistema.flstatuschat.value == 4 ? "checked" : "") name="flstatuschat" id="flstatuschat"> @Language.XmlLang(114, 2).Text
                                 <span></span>
                             </label>
                         </div>
@@ -81,7 +81,7 @@
                         <div class="col-4 kt-align-right">
                             <span class="kt-switch kt-switch--outline kt-switch--icon kt-switch--primary">
                                 <label>
-                                    <input type="checkbox" @(Model.usuarios_sistema.flprivacidade.value == 1 ? "checked": "") name="flprivacy" id="flprivacy">
+                                    <input type="checkbox" @(Model.usuarios_sistema.flprivacidade.value == 1 ? "checked" : "") name="flprivacy" id="flprivacy">
                                     <span></span>
                                 </label>
                             </span>
@@ -96,7 +96,7 @@
                         <div class="col-4 kt-align-right">
                             <span class="kt-switch kt-switch--outline kt-switch--icon kt-switch--primary">
                                 <label>
-                                    <input type="checkbox" @(Model.usuarios_sistema.flmsgconfig.value == 1 ? "checked": "") name="flmsgconfig" id="flmsgconfig">
+                                    <input type="checkbox" @(Model.usuarios_sistema.flmsgconfig.value == 1 ? "checked" : "") name="flmsgconfig" id="flmsgconfig">
                                     <span></span>
                                 </label>
                             </span>
@@ -108,3 +108,5 @@
         </div>
     </div>
 </div>
+
+

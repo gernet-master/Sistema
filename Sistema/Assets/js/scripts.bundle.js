@@ -8884,12 +8884,12 @@ $.extend(true, $.fn.KTDatatable.defaults, defaults);
 
 // Class definition
 var KTChat = function () {
-	var initChat = function (parentEl) {
+    var initChat = function (parentEl) {
+       
 		var messageListEl = KTUtil.find(parentEl, '.kt-scroll');
-
 		if (!messageListEl) {
 			return;
-		}
+        }
 
 		// initialize perfect scrollbar(see:  https://github.com/utatti/perfect-scrollbar)
 		KTUtil.scrollInit(messageListEl, {
@@ -8898,9 +8898,9 @@ var KTChat = function () {
 			desktopNativeScroll: false, // disable native scroll and use custom scroll for desktop
 			resetHeightOnDestroy: true,  // reset css height on scroll feature destroyed
 			handleWindowResize: true, // recalculate hight on window resize
-			rememberPosition: true, // remember scroll position in cookie
+			rememberPosition: false, // remember scroll position in cookie
 			height: function() {  // calculate height
-				var height;
+                var height;
 
 				// Mobile mode
 				if (KTUtil.isInResponsiveRange('tablet-and-mobile')) {
@@ -9032,18 +9032,7 @@ var KTChat = function () {
 		// public functions
 		init: function() {
 			// init modal chat example
-			initChat( KTUtil.getByID('kt_chat_modal'));
-
-			// trigger click to show popup modal chat on page load
-			if (encodeURI(window.location.hostname) == 'keenthemes.com' || encodeURI(window.location.hostname) == 'www.keenthemes.com') {
-				setTimeout(function() {
-		            if (!Cookies.get('kt_app_chat_shown')) {
-		                var expires = new Date(new Date().getTime() + 60 * 60 * 1000); // expire in 60 minutes from now
-		                Cookies.set('kt_app_chat_shown', 1, { expires: expires });
-		                KTUtil.getByID('kt_app_chat_launch_btn').click();
-		            }
-		        }, 2000);
-	        }
+			initChat( KTUtil.getByID('kt_chat_modal'));			
         },
 
         setup: function(element) {

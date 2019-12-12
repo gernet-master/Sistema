@@ -16,7 +16,7 @@ var KTAppChat = function () {
         }); 
 
 		// User listing 
-		var userListEl = KTUtil.find(chatAsideEl, '.kt-scroll');
+        var userListEl = KTUtil.find(chatAsideEl, '.kt-scroll');
 		if (!userListEl) {
 			return;
 		}

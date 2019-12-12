@@ -51,6 +51,7 @@ namespace Sistema.Assets.Entities
         public int idusuario { get; set; }
         public string txnome { get; set; }
         public int qtnaolidas { get; set; }
+        public int qtnaorecebidas { get; set; }
         public string txfoto { get; set; }
         public string idsession { get; set; }
         public int flstatuschat { get; set; }

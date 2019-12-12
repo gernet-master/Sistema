@@ -40,7 +40,8 @@ namespace Sistema.Assets.DB
                 string qry = "";
                 qry += "SELECT* FROM ( ";
                 qry += "SELECT u.idusuario, u.txnome, u.txfoto, ISNULL(us.idsession,0) AS idsession, ISNULL(us.flstatuschat, 2) as flstatuschat, ";
-                qry += "    (SELECT COUNT(*) AS total FROM chat WHERE idremetente = u.idusuario AND iddestinatario = " + session_usuario + " AND dtlido is null) AS qtnaolidas ";
+                qry += "    (SELECT COUNT(*) AS total FROM chat WHERE idremetente = u.idusuario AND iddestinatario = " + session_usuario + " AND dtlido is null) AS qtnaolidas, ";
+                qry += "    (SELECT COUNT(*) AS total FROM chat WHERE idremetente = u.idusuario AND iddestinatario = " + session_usuario + " AND dtrecebido is null) AS qtnaorecebidas ";
                 qry += "FROM usuarios u ";
                 qry += "LEFT JOIN usuarios_sistema us ON us.idusuario = u.idusuario ";
                 qry += "WHERE u.flativo = 1 AND u.idusuario <> " + session_usuario + " AND u.idgernet = " + session_gernet + " ";
@@ -64,6 +65,7 @@ namespace Sistema.Assets.DB
                         idusuario = Convert.ToInt32(reader["idusuario"]),
                         txnome = Convert.ToString(reader["txnome"]),
                         qtnaolidas = Convert.ToInt32(reader["qtnaolidas"]),
+                        qtnaorecebidas = Convert.ToInt32(reader["qtnaorecebidas"]),
                         txfoto = Convert.ToString(reader["txfoto"]),
                         idsession = Convert.ToString(reader["idsession"]),
                         flstatuschat = Convert.ToInt32(reader["flstatuschat"]),
@@ -120,7 +122,7 @@ namespace Sistema.Assets.DB
         }
 
         // Marca como lida todas as novas mensagens
-        public void CheckRecebido()
+        public void MarcaRecebido()
         {
             try
             {

@@ -1,31 +1,4 @@
-﻿@*
-    Descrição: Cabeçalho do sistema com as opções de pesquisa e botões de notificação
-    Data: 01/01/2020 - v.1.0
-*@
-
-@using Functions;
-
-<div id="kt_header" class="kt-header kt-grid__item kt-header--fixed">
-
-    <div></div>
-
-    <div class="kt-header__topbar">
-
-        @*@Html.Action("Search", "Partials")*@
-        @Html.Action("Email", "Partials")
-        @Html.Action("Whatsapp", "Partials")
-        @*@Html.Action("Notifications", "Partials")*@
-        @*@Html.Action("QuickActions", "Partials")*@
-        @Html.Action("Chat", "Partials")
-        @*@Html.Action("Languages", "Partials")*@
-
-        <!-- Menu do usuário -->
-        @Html.Action("UserPanel", "Partials")
-    </div>
-</div>
-
-<!-- end::Demo Panel -->
-<!--Begin:: Chat-->
+﻿<!--Begin:: Chat-->
 <div class="modal fade- modal-sticky-bottom-right" id="kt_chat_modal" role="dialog" data-backdrop="false">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -129,7 +102,43 @@
                                         Hey there, we’re just writing to let you know that you’ve<br> been subscribed to a repository on GitHub.
                                     </div>
                                 </div>
-                                <div class="kt-chat__message kt-chat__message--success">
+                                <div class="kt-chat__message kt-chat__message--right kt-chat__message--brand">
+                                    <div class="kt-chat__user">
+                                        <span class="kt-chat__datetime">30 Seconds</span>
+                                        <a href="#" class="kt-chat__username">You</span></a>
+                                        <span class="kt-media kt-media--circle kt-media--sm">
+                                            <img src="assets/media/users/300_21.jpg" alt="image">
+                                        </span>
+                                    </div>
+                                    <div class="kt-chat__text">
+                                        Hey there, we’re just writing to let you know that you’ve<br> been subscribed to a repository on GitHub.
+                                    </div>
+                                </div>
+
+                                <div class="kt-chat__message kt-chat__message--right kt-chat__message--brand">
+                                    <div class="kt-chat__user">
+                                        <span class="kt-chat__datetime">30 Seconds</span>
+                                        <a href="#" class="kt-chat__username">You</span></a>
+                                        <span class="kt-media kt-media--circle kt-media--sm">
+                                            <img src="assets/media/users/300_21.jpg" alt="image">
+                                        </span>
+                                    </div>
+                                    <div class="kt-chat__text">
+                                        Hey there, we’re just writing to let you know that you’ve<br> been subscribed to a repository on GitHub.
+                                    </div>
+                                </div>
+                                <div class="kt-chat__message kt-chat__message--right kt-chat__message--brand">
+                                    <div class="kt-chat__user">
+                                        <span class="kt-chat__datetime">30 Seconds</span>
+                                        <a href="#" class="kt-chat__username">You</span></a>
+                                        <span class="kt-media kt-media--circle kt-media--sm">
+                                            <img src="assets/media/users/300_21.jpg" alt="image">
+                                        </span>
+                                    </div>
+                                    <div class="kt-chat__text">
+                                        Hey there, we’re just writing to let you know that you’ve<br> been subscribed to a repository on GitHub.
+                                    </div>
+                                </div><div class="kt-chat__message kt-chat__message--success">
                                     <div class="kt-chat__user">
                                         <span class="kt-media kt-media--circle kt-media--sm">
                                             <img src="assets/media/users/100_12.jpg" alt="image">
@@ -226,4 +235,3 @@
         </div>
     </div>
 </div>
-<!--ENd:: Chat-->

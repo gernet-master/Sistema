@@ -46,10 +46,6 @@ namespace Sistema.Models
 
             // Busca lista de usuários e mensagens
             usuarios = new ChatDB().ListarUsuarios(search);
-
-            // Marca como recebido todas as novas mensagens
-            new ChatDB().CheckRecebido();
-
         }
     }
 }

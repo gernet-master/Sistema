@@ -26,6 +26,8 @@ var chat_running = false;
             CHAT.changeStatus();
             CHAT.changePrivacy();
             CHAT.changeMsg();
+            CHAT.showNewMsgs();
+            CHAT.showToast();
         },
 
         // Lista os usuários do chat
@@ -128,7 +130,8 @@ var chat_running = false;
             $('#kt_quick_panel #kt_quick_panel_tab_settings #flprivacy').click(function () {
 
                 // Grava nova configuração de privacidade
-                $.post('/Partials/ChatPanelChangePrivacy/', { privacy: ($(this).is(':checked') ? 1 : 0) });
+                $.post('/Partials/ChatPanelChangePrivacy/', { privacy: ($(this).is(':checked') ? 1 : 0) });                
+
             });
         },
 
@@ -139,6 +142,30 @@ var chat_running = false;
                 // Grava nova configuração de mensagem
                 $.post('/Partials/ChatPanelChatMsg/', { config: ($(this).is(':checked') ? 1 : 0) });
             });
+        },
+
+        // Exibe ícone mostrando novas mensagens
+        showNewMsgs: function () {
+            var cont = $('#kt_quick_panel #chat-new-msgs').val();
+            if (cont > 0) {
+                $('#kt-chat-icon span.kt-chat-icon-badge').removeClass('kt-hidden').html(cont);
+            } else {
+                $('#kt-chat-icon span.kt-chat-icon-badge').addClass('kt-hidden').html(0);
+            }
+        },
+
+        // Exibe toast com aviso de novas mensagens
+        showToast: function () {
+            var cont = $('#kt_quick_panel #chat-new-msgs-toast').val();
+            if (cont != '') {
+                var arr = cont.split(',');
+                for (var i = 0; i < (arr.length - 1); i++) {
+                    var arr2 = arr[i].split('|');
+
+                    // Toast
+                    toastr.chat(UTILS.xmlLang(128, 2).Text + " " + arr2[1] + " " + UTILS.xmlLang(129, 0).Text, arr2[0]);
+                }
+            }
         }
 
     };

@@ -1,6 +1,6 @@
 ﻿@*
-Descrição: Dashboard principal do sistema
-Data: 01/01/2020 - v.1.0
+    Descrição: Dashboard principal do sistema
+    Data: 01/01/2020 - v.1.0
 *@
 
 @Html.Action("SubHeader", "Partials")
@@ -15,6 +15,7 @@ Data: 01/01/2020 - v.1.0
                 <div class="kt-portlet__head-label">
                     <h3 class="kt-portlet__head-title">
                         teste
+                        <button type="button" class="btn btn-label-brand btn-lg btn-upper" id="kt_app_chat_launch_btn" data-toggle="modal" data-target="#kt_chat_modal">Send Message</button>
                     </h3>
                 </div>
             </div>
@@ -22,3 +23,5 @@ Data: 01/01/2020 - v.1.0
 
     </div>
 </div>
+
+@Html.Action("ChatMsg", "Partials")

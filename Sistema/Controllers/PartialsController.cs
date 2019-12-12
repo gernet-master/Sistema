@@ -61,6 +61,13 @@ namespace Sistema.Controllers
             return PartialView(new PartialsView_ChatPanel());
         }
 
+        // Tela de mensagem do chat
+        [Autentication]
+        public ActionResult ChatMsg()
+        {
+            return PartialView();
+        }
+
         // Lista de usuários do chat
         [Autentication]
         public ActionResult ChatPanelList(int online = 1, int offline = 0, string search = "")
