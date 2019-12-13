@@ -27,6 +27,7 @@ var chat_running = false;
             CHAT.changePrivacy();
             CHAT.changeMsg();
             CHAT.showNewMsgs();
+            CHAT.openChatPanel();
             CHAT.showToast();
         },
 
@@ -166,6 +167,20 @@ var chat_running = false;
                     toastr.chat(UTILS.xmlLang(128, 2).Text + " " + arr2[1] + " " + UTILS.xmlLang(129, 0).Text, arr2[0]);
                 }
             }
+        },
+
+        // Abre janela de mensagem
+        openChatPanel: function () {
+            $('#kt_quick_panel #chat-list-user-id').click(function () {
+
+                var id = $(this).attr('data-id');
+                $('#kt_chat_modal').modal('toggle');
+            });
+        },
+
+        // Envia mensagem
+        sendMsg: function () {
+            alert(2)
         }
 
     };

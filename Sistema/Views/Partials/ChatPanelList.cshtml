@@ -22,7 +22,7 @@
         if ((Utils.Session(u.idsession)) && (u.flstatuschat != 3))
         {
 
-            txt_online += "<div class='kt-notification-v2'>";
+            txt_online += "<div class='kt-notification-v2' data-id='" + u.idusuario + "' id='chat-list-user-id'>";
             txt_online += "    <a href='#' class='kt-notification-v2__item'>";
             txt_online += "        <div class='kt-notification-v2__item-icon'>";
 
@@ -101,7 +101,7 @@
         else
         {
 
-            txt_offline += "<div class='kt-notification-v2' data-toggle='modal' data-target='#kt_chat_modal'>";
+            txt_offline += "<div class='kt-notification-v2' data-id='" + u.idusuario + "' id='chat-list-user-id'>";
             txt_offline += "    <a href='#' class='kt-notification-v2__item'>";
             txt_offline += "        <div class='kt-notification-v2__item-icon'>";
             txt_offline += "            <span class='kt-badge kt-badge--danger kt-badge--dot kt-badge--xl'></span>";

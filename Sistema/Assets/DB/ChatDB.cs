@@ -38,7 +38,7 @@ namespace Sistema.Assets.DB
                 List<ChatUser> us = new List<ChatUser>();
 
                 string qry = "";
-                qry += "SELECT* FROM ( ";
+                qry += "SELECT * FROM ( ";
                 qry += "SELECT u.idusuario, u.txnome, u.txfoto, ISNULL(us.idsession,0) AS idsession, ISNULL(us.flstatuschat, 2) as flstatuschat, ";
                 qry += "    (SELECT COUNT(*) AS total FROM chat WHERE idremetente = u.idusuario AND iddestinatario = " + session_usuario + " AND dtlido is null) AS qtnaolidas, ";
                 qry += "    (SELECT COUNT(*) AS total FROM chat WHERE idremetente = u.idusuario AND iddestinatario = " + session_usuario + " AND dtrecebido is null) AS qtnaorecebidas ";

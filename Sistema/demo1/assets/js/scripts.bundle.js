@@ -8899,7 +8899,9 @@ var KTChat = function () {
 			handleWindowResize: true, // recalculate hight on window resize
 			rememberPosition: true, // remember scroll position in cookie
 			height: function() {  // calculate height
-				var height;
+                var height;
+
+                alert(1)
 
 				// Mobile mode
 				if (KTUtil.isInResponsiveRange('tablet-and-mobile')) {
