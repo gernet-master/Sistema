@@ -50,6 +50,36 @@ var UTILS = {};
                 showConfirmButton: false,
                 allowOutsideClick: false
             });
+        },
+
+        // Carrega o link do menu
+        menu: function (link) {
+            if (link != '') {
+
+                // Bloqueia o aplicativo
+                $('#kt_content_app').block({
+                    css: {
+                        border: 'none',
+                        padding: '15px',
+                        backgroundColor: '#17a2b8',
+                        '-webkit-border-radius': '10px',
+                        '-moz-border-radius': '10px',
+                        opacity: .5,
+                        color: '#fff'
+                    },
+                    overlayCSS: {
+                        backgroundColor: 'background: rgba(0, 0, 0, 0.1)',
+                        opacity: 0.6,
+                        cursor: 'wait'
+                    }, 
+                    message: UTILS.xmlLang(68, 2).Text
+                }); 
+
+                // Carrega e desbloqueia
+                $('#kt_content_app').load(link, function () {
+                    $('#kt_content_app').unblock();
+                });
+            }
         }
     };
 

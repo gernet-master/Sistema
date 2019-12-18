@@ -11,7 +11,7 @@ namespace Sistema.Controllers
         [Route("Administrador/PerfisAcesso")]
         public ActionResult Index()
         {
-            return View("~/Views/Administrador/PerfisAcesso/Index.cshtml");
+            return PartialView("~/Views/Administrador/PerfisAcesso/Index.cshtml");
         }
     }
 }

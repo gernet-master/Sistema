@@ -21,7 +21,7 @@ namespace Sistema
                 "~/Assets/plugins/general/sticky-js/dist/sticky.min.js",
                 //"~/Assets/plugins/general/wnumb/wNumb.js",
                 //"~/Assets/plugins/general/jquery-form/dist/jquery.form.min.js",
-                //"~/Assets/plugins/general/block-ui/jquery.blockUI.js",
+                "~/Assets/plugins/general/block-ui/jquery.blockUI.js",
                 //"~/Assets/plugins/general/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js",
                 //"~/Assets/plugins/general/js/global/integration/plugins/bootstrap-datepicker.init.js",
                 //"~/Assets/plugins/general/bootstrap-datetime-picker/js/bootstrap-datetimepicker.min.js",

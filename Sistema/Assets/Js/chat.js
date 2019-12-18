@@ -175,6 +175,7 @@ var chat_running = false;
 
                 var id = $(this).attr('data-id');
                 $('#kt_chat_modal').modal('toggle');
+
             });
         },
 
@@ -186,7 +187,4 @@ var chat_running = false;
     };
 
 })(jQuery);
-
-
-
 

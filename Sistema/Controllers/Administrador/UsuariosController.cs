@@ -12,7 +12,7 @@ namespace Sistema.Controllers
         [Route("Administrador/Usuarios")]
         public ActionResult Index()
         {
-            return View("~/Views/Administrador/Usuarios/Index.cshtml", new UsuariosView());
+            return PartialView("~/Views/Administrador/Usuarios/Index.cshtml", new UsuariosView());
         }
     }
 }

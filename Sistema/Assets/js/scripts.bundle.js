@@ -1234,7 +1234,7 @@ var KTMenu = function (elementId, options) {
          * Handles link click
          * @returns {KTMenu}
          */
-        handleLinkClick: function (e) {
+        handleLinkClick: function (e) {            
             var submenu = this.closest('.kt-menu__item.kt-menu__item--submenu'); //
 
             var result = Plugin.eventTrigger('linkClick', this, e);
@@ -3860,7 +3860,7 @@ var KTUtil = function () {
                 },
 
                 get: function (name) {
-                    if (element === undefined) {
+                    if ((element === undefined) || (element === null)) {
                         return;
                     }
 
@@ -9410,13 +9410,6 @@ var KTLayout = function () {
             this.initAside();
             this.initAsideSecondary();
             this.initPageStickyPortlet();
-
-            // Non functional links notice(can be removed in production)
-            $('#kt_aside_menu, #kt_header_menu').on('click', '.kt-menu__link[href="#"]', function (e) {
-                swal.fire("", "You have clicked on a non-functional dummy link!");
-
-                e.preventDefault();
-            });
         },
 
         initHeader: function () {
@@ -9703,23 +9696,14 @@ var KTQuickPanel = function () {
 
     var initOffcanvas = function () {
         new KTOffcanvas(panel, {
-            overlay: true,
+            overlay: false,
             baseClass: 'kt-quick-panel',
             closeBy: 'kt_quick_panel_close_btn',
             toggleBy: 'kt_quick_panel_toggler_btn'
         });
     }
 
-    var initNotifications = function () {
-        KTUtil.scrollInit(notificationPanel, {
-            mobileNativeScroll: true,
-            resetHeightOnDestroy: true,
-            handleWindowResize: true,
-            height: function () {
-                return getContentHeight();
-            }
-        });
-    }
+
 
     var initLogs = function () {
         KTUtil.scrollInit(logsPanel, {
@@ -9754,12 +9738,10 @@ var KTQuickPanel = function () {
     return {
         init: function () {
             panel = KTUtil.get('kt_quick_panel');
-            notificationPanel = KTUtil.get('kt_quick_panel_tab_notifications');
             logsPanel = KTUtil.get('kt_quick_panel_tab_logs');
             settingsPanel = KTUtil.get('kt_quick_panel_tab_settings');
 
             initOffcanvas();
-            initNotifications();
             initLogs();
             initSettings();
             updatePerfectScrollbars();

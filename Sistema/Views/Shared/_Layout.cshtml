@@ -46,7 +46,7 @@ Data: 01/01/2020 - v.1.0
                     <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
 
                         <!-- Content -->
-                        <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+                        <div class="kt-container kt-container--fluid  kt-grid__item kt-grid__item--fluid" id="kt_content_app">
                             @RenderBody()
                         </div>
 
@@ -76,5 +76,3 @@ Data: 01/01/2020 - v.1.0
 @Scripts.Render("~/system_timer")
 @Scripts.Render("~/system_header")
 @Scripts.Render("~/system_footer")
-
-@RenderSection("scripts", required: false)
