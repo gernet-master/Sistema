@@ -140,5 +140,80 @@ namespace Sistema.Assets.DB
             }
         }
 
+        // Lista as últimas 30 mensagens entre usuários
+        public List<ChatMsg> ListarMensagens(int id = 0)
+        {
+            try
+            {
+                List<ChatMsg> msgs = new List<ChatMsg>();
+
+                string qry = "";
+                qry += "SELECT TOP 30 * ";
+                qry += "FROM chat ";
+                qry += "WHERE(idremetente = " + id + " AND iddestinatario = " + session_usuario + ") OR (idremetente = " + session_usuario + " AND iddestinatario = " + id + ") ";
+                qry += "ORDER BY dtmensagem";
+
+                Connection session = new Connection();
+                Query query = session.CreateQuery(qry);
+                IDataReader reader = query.ExecuteQuery();
+
+                while (reader.Read())
+                {
+                    msgs.Add(new ChatMsg()
+                    {
+                        idmensagem = new Variable(value: Convert.ToInt32(reader["idmensagem"])),
+                        idremetente = new Variable(value: Convert.ToInt32(reader["idremetente"])),
+                        iddestinatario = new Variable(value: Convert.ToInt32(reader["iddestinatario"])),
+                        txmensagem = new Variable(value: Convert.ToString(reader["txmensagem"])),
+                        dtmensagem = new Variable(value: (DateTime?)Convert.ToDateTime(reader["dtmensagem"])),
+                        dtrecebido = new Variable(value: reader["dtrecebido"] == DBNull.Value ? null : (DateTime?)Convert.ToDateTime(reader["dtrecebido"])),
+                        dtlido = new Variable(value: reader["dtlido"] == DBNull.Value ? null : (DateTime?)Convert.ToDateTime(reader["dtlido"])),
+                        flprivacidade = new Variable(value: Convert.ToInt32(reader["flprivacidade"]))
+                    });
+                }
+                reader.Close();
+                session.Close();
+
+                return msgs;
+            }
+            catch (Exception erro)
+            {
+                throw erro;
+            }            
+        }
+
+        // Busca os dados do destinatário
+        public ChatDest DadosDestinatario(int id = 0)
+        {
+            try
+            {
+                ChatDest dest = new ChatDest();
+
+                string qry = "";
+                qry += "SELECT u.txnome, us.flstatuschat ";
+                qry += "FROM usuarios u ";
+                qry += "INNER JOIN usuarios_sistema us ON us.idusuario = u.idusuario ";
+                qry += "WHERE u.idusuario = " + id;
+
+                Connection session = new Connection();
+                Query query = session.CreateQuery(qry);
+                IDataReader reader = query.ExecuteQuery();
+
+                if (reader.Read())
+                {
+                    dest.txnome = Convert.ToString(reader["txnome"]);
+                    dest.flstatuschat = Convert.ToInt32(reader["flstatuschat"]);
+                }
+
+                reader.Close();
+                session.Close();
+
+                return dest;
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+        }
     }
 }

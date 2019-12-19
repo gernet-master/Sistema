@@ -176,7 +176,16 @@ var chat_running = false;
                 var id = $(this).attr('data-id');
                 $('#kt_chat_modal').modal('toggle');
 
+                // Busca as últimas 30 conversas
+                CHAT.loadMsg(id);
             });
+        },
+
+        // Lista as últimas 30 mensagens
+        loadMsg: function (id) {
+            if ((id != "") && (id > 0)) {
+                $('#kt_chat_modal #kt-chat__messages').load('/Partials/ChatPanelListMsgs/', { id: id });
+            }
         },
 
         // Envia mensagem

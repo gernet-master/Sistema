@@ -3418,6 +3418,7 @@
     <Content Include="Views\Login\Reset.cshtml" />
     <Content Include="Views\Partials\ChatPanelList.cshtml" />
     <Content Include="Views\Partials\ChatMsg.cshtml" />
+    <Content Include="Views\Partials\ChatPanelListMsgs.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

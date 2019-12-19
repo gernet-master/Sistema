@@ -57,4 +57,11 @@ namespace Sistema.Assets.Entities
         public int flstatuschat { get; set; }
         public ChatMsg mensagem { get; set; }
     }
+
+    // Dados do destinatário
+    public class ChatDest
+    {
+        public string txnome { get; set; }
+        public int flstatuschat { get; set; }
+    }
 }

@@ -48,4 +48,19 @@ namespace Sistema.Models
             usuarios = new ChatDB().ListarUsuarios(search);
         }
     }
+
+    // Lista de mensagens do chat
+    public class PartialsView_ChatPanelListMsgs : Session
+    {
+        public int id { get; set; }
+        public List<ChatMsg> msgs { get; set; }
+        //public ChatDest dest { get; set; }
+
+        public PartialsView_ChatPanelListMsgs(int id = 0)
+        {
+            this.id = id;
+            this.msgs = new ChatDB().ListarMensagens(id);
+            //this.dest = new ChatDB().DadosDestinatario(id);
+        }
+    }
 }

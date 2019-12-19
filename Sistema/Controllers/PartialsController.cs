@@ -96,6 +96,13 @@ namespace Sistema.Controllers
             new Usuarios_SistemaDB().AlterarConfigMsgChat(config);
         }
 
+        // Lista as mensagens
+        [Autentication]
+        public ActionResult ChatPanelListMsgs(int id = 0)
+        {
+            return PartialView(new PartialsView_ChatPanelListMsgs(id));
+        }
+
         // ***************** E-MAIL *****************
 
         [Autentication]

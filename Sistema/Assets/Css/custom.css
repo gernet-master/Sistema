@@ -196,6 +196,11 @@
     padding: 10px;
 }
 
+.kt-chat__message {
+    clear: both !important;
+    width:100% !important;
+}
+
 /* Toast */
 .toast {
     width: 400px !important;
@@ -218,6 +223,13 @@
 .toast .toast-message {
     font-size: 1rem !important;
     margin-left: 10px;
+}
+
+/* Header */
+.kt-header__topbar-user {
+    border: 1px solid #ececec !important;
+    margin-left: 20px !important;
+    box-shadow: 0px 0px 13px 0px rgba(82, 63, 105, 0.05);
 }
 
 /* Responsive */

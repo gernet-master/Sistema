@@ -1,0 +1,41 @@
+﻿@*
+    Descrição: Lista as mensagens entre os usuários
+    Data: 01/01/2020 - v.1.0
+*@
+
+@model Sistema.Models.PartialsView_ChatPanelListMsgs
+
+@using Functions;
+
+@{
+    // Loop nas mensagens
+    foreach (var u in Model.msgs)
+    {
+        // Enviadas
+        if (u.iddestinatario.value == Model.id)
+        {
+            <div class="kt-chat__message kt-chat__message--right kt-chat__message--brand">
+                <div class="kt-chat__user">
+                    <span class="kt-chat__datetime">@u.dtmensagem.value</span>
+                </div>
+                <div class="kt-chat__text">
+                    @u.txmensagem.value
+                </div>
+            </div>
+        }
+
+        // Recebidas
+        else
+        {
+            <div class="kt-chat__message kt-chat__message--success">
+                <div class="kt-chat__user">
+                    <span class="kt-chat__datetime">@u.dtmensagem.value</span>
+                </div>
+                <div class="kt-chat__text">
+                    @u.txmensagem.value
+                </div>
+            </div>
+        }
+
+    }
+}
