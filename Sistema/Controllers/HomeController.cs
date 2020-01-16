@@ -8,8 +8,15 @@ namespace Sistema.Controllers
         // Dashboard principal do sistema
         [Autentication]
         public ActionResult Index()
-        { 
+        {
             return View();
-        }      
+        }
+
+        // Dashboard principal do sistema
+        [Autentication]
+        public ActionResult Dashboard()
+        {
+            return PartialView();
+        }
     }
 }
