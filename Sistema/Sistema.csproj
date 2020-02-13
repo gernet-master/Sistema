@@ -160,16 +160,20 @@
     <Compile Include="Assets\Functions\Utils.cs" />
     <Compile Include="Assets\Functions\Autentication.cs" />
     <Compile Include="Assets\Functions\Language.cs" />
-    <Compile Include="Controllers\Administrador\UsuariosController.cs" />
-    <Compile Include="Controllers\Administrador\PerfisAcessoController.cs" />
+    <Compile Include="Controllers\Apps\Administrador\UsuariosController.cs" />
+    <Compile Include="Controllers\Apps\Administrador\PerfisAcessoController.cs" />
+    <Compile Include="Controllers\Apps\Master\ModulosSistemaController.cs" />
+    <Compile Include="Controllers\Apps\Master\TabelasController.cs" />
+    <Compile Include="Controllers\Apps\Master\MenusController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\Apps\Master\AplicativosController.cs" />
     <Compile Include="Controllers\PartialsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Administrador\UsuariosView.cs" />
+    <Compile Include="Models\Apps\Administrador\UsuariosView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -3408,13 +3412,15 @@
     <Content Include="Views\Partials\Search.cshtml" />
     <Content Include="Views\Partials\Email.cshtml" />
     <Content Include="Views\Partials\Whatsapp.cshtml" />
-    <Content Include="Views\Administrador\PerfisAcesso\Index.cshtml" />
-    <Content Include="Views\Administrador\Usuarios\Index.cshtml" />
+    <Content Include="Views\Apps\Administrador\PerfisAcesso\Index.cshtml" />
+    <Content Include="Views\Apps\Administrador\Usuarios\Index.cshtml" />
     <Content Include="Views\Login\Password.cshtml" />
     <Content Include="sistema" />
     <Content Include="Views\Login\Disconnnect.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Home\Dashboard.cshtml" />
+    <Content Include="Views\Error\InvalidUrl.cshtml" />
+    <Content Include="Views\Apps\Master\Aplicativos\Index.cshtml" />
     <None Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Login\Reset.cshtml" />
     <Content Include="Views\Partials\ChatPanelList.cshtml" />

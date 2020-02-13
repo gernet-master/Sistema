@@ -9,10 +9,10 @@ namespace Sistema.Controllers
     {
         // Página inicial do cadastro de usuários
         [Autentication]
-        [Route("Administrador/Usuarios")]
+        [Route("Apps/Administrador/Usuarios")]
         public ActionResult Index()
         {
-            return PartialView("~/Views/Administrador/Usuarios/Index.cshtml", new UsuariosView());
+            return PartialView("~/Views/Apps/Administrador/Usuarios/Index.cshtml", new UsuariosView());
         }
     }
 }

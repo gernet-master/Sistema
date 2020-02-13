@@ -6,9 +6,17 @@ namespace Sistema.Controllers
     public class ErrorController : Controller
     {
         // Controle de erros do sistema
-        public ActionResult Index(int error = 0)
+        public ActionResult Index()
         { 
             return PartialView();
-        }      
+        }
+
+        // Página de url de aplicativo inválido
+        [Autentication]
+        [Route("Error/InvalidUrl")]
+        public ActionResult InvalidUrl()
+        {
+            return PartialView();
+        }
     }
 }

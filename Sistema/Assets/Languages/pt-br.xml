@@ -130,12 +130,12 @@
   <string id="127" text="whatsapp" />
   <string id="128" text="enviou" />
   <string id="129" text="nova(s) mensagem(ns)" />
-  <string id="130" text="" />
-  <string id="131" text="" />
-  <string id="132" text="" />
-  <string id="133" text="" />
-  <string id="134" text="" />
-  <string id="135" text="" />
+  <string id="130" text="aplicativos" />
+  <string id="131" text="menus" />
+  <string id="132" text="módulos do sistema" />
+  <string id="133" text="tabelas" />
+  <string id="134" text="o aplicativo que você está tentando acessar não existe ou foi removido" />
+  <string id="135" text="entre em contato com o administrador do sistema" />
   <string id="136" text="" />
   <string id="137" text="" />
   <string id="138" text="" />

@@ -8,10 +8,10 @@ namespace Sistema.Controllers
     {
         // Página inicial do cadastro de perfil de acesso
         [Autentication]
-        [Route("Administrador/PerfisAcesso")]
+        [Route("Apps/Administrador/PerfisAcesso")]
         public ActionResult Index()
         {
-            return PartialView("~/Views/Administrador/PerfisAcesso/Index.cshtml");
+            return PartialView("~/Views/Apps/Administrador/PerfisAcesso/Index.cshtml");
         }
     }
 }

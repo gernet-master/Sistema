@@ -52,6 +52,19 @@ var UTILS = {};
             });
         },
 
+        // Limpa o console de erros do navegador
+        clear: function () {
+            console.API;
+            if (typeof console._commandLineAPI !== 'undefined') {
+                console.API = console._commandLineAPI; //chrome
+            } else if (typeof console._inspectorCommandLineAPI !== 'undefined') {
+                console.API = console._inspectorCommandLineAPI; //Safari
+            } else if (typeof console.clear !== 'undefined') {
+                console.API = console;
+            }
+            console.API.clear();
+        },
+
         // Carrega o link do menu
         menu: function (link) {
             if (link != '') {
@@ -76,8 +89,15 @@ var UTILS = {};
                 }); 
 
                 // Carrega e desbloqueia
-                $('#kt_content_app').load(link, function () {
-                    $('#kt_content_app').unblock();
+                $('#kt_content_app').load(link, function (response, status, xhr) {
+
+                    // Verifica se o arquivo existe
+                    if (status == "error") {
+                        $('#kt_content_app').load('/Error/InvalidUrl');
+                        UTILS.clear();
+                    } else {
+                        $('#kt_content_app').unblock();
+                    }
                 });
             }
         }
