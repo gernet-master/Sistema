@@ -31,11 +31,18 @@ namespace Sistema.Controllers
             return PartialView();
         }
 
-        // Breadcrumb
+        // Breadcrumb Dashboard
         [Autentication]
         public ActionResult SubHeader(string app = "", int id = 0, int id2 = 0)
         {
             return PartialView(new PartialsView_Subheader(app, id, id2));
+        }
+
+        // Breadcrumb App
+        [Autentication]
+        public ActionResult SubHeaderApp(string app = "", int id = 0, int id2 = 0)
+        {
+            return PartialView(new PartialsView_SubHeaderApp(app, id, id2));
         }
 
         // Rodapé

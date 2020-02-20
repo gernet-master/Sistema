@@ -13,7 +13,6 @@ namespace Sistema.Assets.Entities
     // Configuração do Cliente
     public class Gernet_Controle : Audit
     {
-
         // Variáveis
         public Variable idgernet = new Variable(config: "0|0");
         public Variable txlink = new Variable(config: "0|0");
@@ -33,6 +32,12 @@ namespace Sistema.Assets.Entities
             this.txidioma.value = "pt-br";
 
         }
+    }
 
+    // Lista para carregamento de select
+    public class Select_List
+    {
+        public Variable ident { get; set; }
+        public Variable text { get; set; }
     }
 }

@@ -1,0 +1,93 @@
+﻿@*
+    Descrição: Cadastro de tabelas do sistema
+    Data: 01/01/2020 - v.1.0
+*@
+
+@model Sistema.Models.TabelasView
+
+@Html.Action("SubHeaderApp", "Partials", new { app = "/Apps/Master/Tabelas/Incluir", id = 0, id2 = 0 })
+
+@using Functions;
+
+@{ Inputs input = new Inputs(); }
+
+<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+        <div class="row form-elements">
+            <div class="col-md-12">
+                <div class="kt-portlet">
+                    <div class="kt-portlet__body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                @{
+                                    // Verifica se existe alguma tabela que não foi cadastrada
+                                    if (Model.tabelaN.Count > 0)
+                                    {
+
+                                        input.inputType = "select";
+                                        input.label = Language.XmlLang(138, 2).Text;
+                                        input.id = "frm_tabela";
+                                        input.className = "form-control";
+                                        input.required = true;
+                                        input.validation = "required";
+                                        input.options = Model.tabelaN;
+                                        input.firstOption = Language.XmlLang(146, 2).Text;
+                                        @Html.Raw(input.CreateInput());
+                                    }
+                                    else
+                                    {
+
+                                        input.inputType = "text";
+                                        input.label = Language.XmlLang(138, 2).Text;
+                                        input.id = "frm_tabela";
+                                        input.className = "form-control";
+                                        input.required = true;
+                                        input.validation = "required,minSize[2],maxSize[200]";
+                                        input.inputValue = "";
+                                        input.readOnly = true;
+                                        @Html.Raw(input.CreateInput());
+                                    }
+
+                                }
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                @{
+                                    // Código do idioma
+                                    input.inputType = "text";
+                                    input.label = Language.XmlLang(139, 2).Text;
+                                    input.id = "frm_codigo_idioma";
+                                    input.className = "form-control";
+                                    input.required = true;
+                                    input.validation = "required,minSize[1],maxSize[10]";
+                                    input.inputValue = "";
+                                    input.maxLenght = 10;
+                                    @Html.Raw(input.CreateInput());
+                                }
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="texto_idioma">@Language.XmlLang(140, 2).Text</label>
+                                    <span id="texto_idioma" class="font-red">---</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                @{
+                                    // Possui auditoria
+                                    input.inputType = "switch";
+                                    input.label = Language.XmlLang(141, 2).Text;
+                                    input.id = "frm_auditoria";
+                                    input.inputChecked = false;
+                                    @Html.Raw(input.CreateInput());
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

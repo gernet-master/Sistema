@@ -135,6 +135,7 @@
     <Compile Include="Assets\DB\Log_AcessoDB.cs" />
     <Compile Include="Assets\DB\Log_Link_SenhaDB.cs" />
     <Compile Include="Assets\DB\ChatDB.cs" />
+    <Compile Include="Assets\DB\TabelasDB.cs" />
     <Compile Include="Assets\DB\Usuarios_FramesDB.cs" />
     <Compile Include="Assets\DB\Usuarios_PreferenciasDB.cs" />
     <Compile Include="Assets\DB\Log_SenhaDB.cs" />
@@ -145,12 +146,14 @@
     <Compile Include="Assets\Entities\Chat.cs" />
     <Compile Include="Assets\Entities\Log_Senha.cs" />
     <Compile Include="Assets\Entities\Log_Link_Senha.cs" />
+    <Compile Include="Assets\Entities\Tabelas.cs" />
     <Compile Include="Assets\Entities\Usuarios_Preferencias.cs" />
     <Compile Include="Assets\Entities\Usuarios_Frames.cs" />
     <Compile Include="Assets\Entities\Log_Acesso.cs" />
     <Compile Include="Assets\Entities\Usuarios_Unidades.cs" />
     <Compile Include="Assets\Entities\Usuarios_Sistema .cs" />
     <Compile Include="Assets\Entities\Usuarios.cs" />
+    <Compile Include="Assets\Functions\Inputs.cs" />
     <Compile Include="Assets\Functions\Session.cs" />
     <Compile Include="Assets\Functions\Audit.cs" />
     <Compile Include="Assets\Functions\Crypt.cs" />
@@ -174,6 +177,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Apps\Administrador\UsuariosView.cs" />
+    <Compile Include="Models\Apps\Master\TabelasView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -3421,11 +3425,14 @@
     <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Views\Error\InvalidUrl.cshtml" />
     <Content Include="Views\Apps\Master\Aplicativos\Index.cshtml" />
+    <Content Include="Views\Apps\Master\Tabelas\Index.cshtml" />
+    <Content Include="Views\Apps\Master\Tabelas\Incluir.cshtml" />
     <None Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Login\Reset.cshtml" />
     <Content Include="Views\Partials\ChatPanelList.cshtml" />
     <Content Include="Views\Partials\ChatMsg.cshtml" />
     <Content Include="Views\Partials\ChatPanelListMsgs.cshtml" />
+    <Content Include="Views\Partials\SubHeaderApp.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -56,9 +56,9 @@ var UTILS = {};
         clear: function () {
             console.API;
             if (typeof console._commandLineAPI !== 'undefined') {
-                console.API = console._commandLineAPI; //chrome
+                console.API = console._commandLineAPI; 
             } else if (typeof console._inspectorCommandLineAPI !== 'undefined') {
-                console.API = console._inspectorCommandLineAPI; //Safari
+                console.API = console._inspectorCommandLineAPI; 
             } else if (typeof console.clear !== 'undefined') {
                 console.API = console;
             }
@@ -86,17 +86,21 @@ var UTILS = {};
                         cursor: 'wait'
                     }, 
                     message: UTILS.xmlLang(68, 2).Text
-                }); 
+                });                 
 
                 // Carrega e desbloqueia
                 $('#kt_content_app').load(link, function (response, status, xhr) {
 
+                    // Esconde qualquer tooltip que esteja aberta
+                    $(".tooltip").tooltip("hide");
+
                     // Verifica se o arquivo existe
                     if (status == "error") {
-                        $('#kt_content_app').load('/Error/InvalidUrl');
-                        UTILS.clear();
+                  //      $('#kt_content_app').load('/Error/InvalidUrl');
+                   //     UTILS.clear();
                     } else {
                         $('#kt_content_app').unblock();
+                        KTApp.initComponents();
                     }
                 });
             }

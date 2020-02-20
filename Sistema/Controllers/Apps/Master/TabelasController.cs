@@ -7,12 +7,20 @@ namespace Sistema.Controllers
 {
     public class TabelasController : Controller
     {
-        // Página inicial do cadastro de tabelas
+        // Dashboard do cadastro de tabelas
         [Autentication]
         [Route("Apps/Master/Tabelas")]
         public ActionResult Index()
         {
             return PartialView("~/Views/Apps/Master/Tabelas/Index.cshtml", new UsuariosView());
+        }
+
+        // Página do cadastro de tabelas
+        [Autentication]
+        [Route("Apps/Master/Tabelas/Incluir")]
+        public ActionResult Incluir()
+        {
+            return PartialView("~/Views/Apps/Master/Tabelas/Incluir.cshtml", new TabelasView(0, 0));
         }
     }
 }
