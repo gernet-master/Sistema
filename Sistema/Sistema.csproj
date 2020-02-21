@@ -210,6 +210,7 @@
     <Content Include="Assets\Js\pages\components\validation\jquery.validationEngine-pt_BR.js" />
     <Content Include="Assets\Js\pages\components\validation\jquery.validationEngine.js" />
     <Content Include="Assets\Js\widgets.js" />
+    <Content Include="Assets\Media\logos\logo-dark.png" />
     <Content Include="Assets\Plugins\custom\gridstack\gridstack.jQueryUI.js" />
     <Content Include="Assets\Plugins\custom\gridstack\gridstack.js" />
     <Content Include="Assets\Plugins\custom\highlight\highlight.js" />

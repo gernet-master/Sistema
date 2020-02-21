@@ -303,4 +303,8 @@
     .kt-header-mobile {
         background-color: #4fa3e0;
     }
+
+    .kt-sticky-toolbar {
+        top: 20% !important;
+    }
 }
