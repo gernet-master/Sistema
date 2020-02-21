@@ -12,7 +12,7 @@ namespace Sistema.Controllers
         [Route("Apps/Master/Tabelas")]
         public ActionResult Index()
         {
-            return PartialView("~/Views/Apps/Master/Tabelas/Index.cshtml", new UsuariosView());
+            return PartialView("~/Views/Apps/Master/Tabelas/Index.cshtml");
         }
 
         // Página do cadastro de tabelas

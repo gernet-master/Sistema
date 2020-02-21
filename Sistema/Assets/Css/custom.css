@@ -18,7 +18,15 @@
 /* Cores */
 
 .ft-red {
-    color: red;
+    color: red !important;
+}
+
+.ft-yellow {
+    color: yellow !important;
+}
+
+.ft-brown {
+    color: brown !important;
 }
 
 /* Extras */
@@ -258,6 +266,30 @@
 
 .kt-sticky-toolbar .kt-sticky-toolbar__item > a > i {
     font-size: 2.2rem !important;
+}
+
+.kt-sticky-toolbar .kt-sticky-toolbar__item.kt-sticky-toolbar__item--alert > a > i {
+    color: #d7d84a;
+}
+
+.kt-sticky-toolbar .kt-sticky-toolbar__item.kt-sticky-toolbar__item--alert:hover > a {
+    background: #d7d84a;
+}
+
+.kt-sticky-toolbar .kt-sticky-toolbar__item.kt-sticky-toolbar__item--alert:hover > a > i {
+    color: #FFFFFF;
+}
+
+.kt-sticky-toolbar .kt-sticky-toolbar__item.kt-sticky-toolbar__item--brown > a > i {
+    color: firebrick;
+}
+
+.kt-sticky-toolbar .kt-sticky-toolbar__item.kt-sticky-toolbar__item--brown:hover > a {
+    background: firebrick;
+}
+
+.kt-sticky-toolbar .kt-sticky-toolbar__item.kt-sticky-toolbar__item--brown:hover > a > i {
+    color: #FFFFFF;
 }
 
 /* Content */

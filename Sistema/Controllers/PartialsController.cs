@@ -45,6 +45,13 @@ namespace Sistema.Controllers
             return PartialView(new PartialsView_SubHeaderApp(app, id, id2));
         }
 
+        // Ações de aplicativo
+        [Autentication]
+        public ActionResult ActionButtons()
+        {
+            return PartialView();
+        }
+
         // Rodapé
         [Autentication]
         public ActionResult Footer()

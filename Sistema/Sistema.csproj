@@ -3434,6 +3434,7 @@
     <Content Include="Views\Partials\ChatMsg.cshtml" />
     <Content Include="Views\Partials\ChatPanelListMsgs.cshtml" />
     <Content Include="Views\Partials\SubHeaderApp.cshtml" />
+    <Content Include="Views\Partials\ActionButtons.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

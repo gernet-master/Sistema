@@ -147,12 +147,12 @@
   <string id="144" text="tabela" />
   <string id="145" text="código idioma" />
   <string id="146" text="selecione" />
-  <string id="147" text="" />
-  <string id="148" text="" />
-  <string id="149" text="" />
-  <string id="150" text="" />
-  <string id="151" text="" />
-  <string id="152" text="" />
+  <string id="147" text="alterar" />
+  <string id="148" text="excluir" />
+  <string id="149" text="localizar" />
+  <string id="150" text="imprimir" />
+  <string id="151" text="gravar" />
+  <string id="152" text="cancelar" />
   <string id="153" text="" />
   <string id="154" text="" />
   <string id="155" text="" />

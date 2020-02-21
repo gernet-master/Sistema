@@ -11,8 +11,10 @@
 
 @{ Inputs input = new Inputs(); }
 
-<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt_content_app_gernet" id="kt_content"><!-- .kt-content -->
-    <div class="kt-container--fluid  kt-grid__item kt-grid__item--fluid"><!-- .kt-container -->
+<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt_content_app_gernet" id="kt_content">
+    <!-- .kt-content -->
+    <div class="kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+        <!-- .kt-container -->
         <div class="row form-elements">
             <div class="col-md-12">
                 <div class="kt-portlet">
@@ -92,23 +94,4 @@
     </div>
 </div>
 
-<ul class="kt-sticky-toolbar">
-    <li class="kt-sticky-toolbar__item kt-sticky-toolbar__item--success" data-toggle="kt-tooltip" title="" data-placement="right" data-original-title="Check out more demos">
-        <a href="#"><i class="la la-save"></i></a>
-    </li>
-    <li class="kt-sticky-toolbar__item kt-sticky-toolbar__item--brand" data-toggle="kt-tooltip" title="" data-placement="left" data-original-title="Layout Builder">
-        <a href="#"><i class="la la-file"></i></a>
-    </li>
-    <li class="kt-sticky-toolbar__item kt-sticky-toolbar__item--warning" data-toggle="kt-tooltip" title="" data-placement="left" data-original-title="Documentation">
-        <a href="#"><i class="la la-edit"></i></a>
-    </li>
-    <li class="kt-sticky-toolbar__item kt-sticky-toolbar__item--danger" data-toggle="kt-tooltip" title="" data-placement="left" data-original-title="Chat Example">
-        <a href="#"><i class="la la-search"></i></a>
-    </li>
-    <li class="kt-sticky-toolbar__item kt-sticky-toolbar__item--warning" data-toggle="kt-tooltip" title="" data-placement="left" data-original-title="Documentation">
-        <a href="#"><i class="la la-trash"></i></a>
-    </li>
-    <li class="kt-sticky-toolbar__item kt-sticky-toolbar__item--danger" data-toggle="kt-tooltip" title="" data-placement="left" data-original-title="Chat Example">
-        <a href="#"><i class="la la-print"></i></a>
-    </li>
-</ul>
+@Html.Action("ActionButtons", "Partials")
