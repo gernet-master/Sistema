@@ -146,6 +146,7 @@
     <Compile Include="Assets\Entities\Chat.cs" />
     <Compile Include="Assets\Entities\Log_Senha.cs" />
     <Compile Include="Assets\Entities\Log_Link_Senha.cs" />
+    <Compile Include="Assets\Entities\Widgets.cs" />
     <Compile Include="Assets\Entities\Tabelas.cs" />
     <Compile Include="Assets\Entities\Usuarios_Preferencias.cs" />
     <Compile Include="Assets\Entities\Usuarios_Frames.cs" />
@@ -171,6 +172,7 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\Apps\Master\AplicativosController.cs" />
+    <Compile Include="Controllers\WidgetsController.cs" />
     <Compile Include="Controllers\PartialsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -178,6 +180,7 @@
     </Compile>
     <Compile Include="Models\Apps\Administrador\UsuariosView.cs" />
     <Compile Include="Models\Apps\Master\TabelasView.cs" />
+    <Compile Include="Models\WidgetsView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -3435,6 +3438,9 @@
     <Content Include="Views\Partials\ChatPanelListMsgs.cshtml" />
     <Content Include="Views\Partials\SubHeaderApp.cshtml" />
     <Content Include="Views\Partials\ActionButtons.cshtml" />
+    <Content Include="Views\Widgets\NovoRegistro.cshtml" />
+    <Content Include="Views\Widgets\PesquisaRapida.cshtml" />
+    <Content Include="Views\Widgets\Opcoes.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -153,15 +153,15 @@
   <string id="150" text="imprimir" />
   <string id="151" text="gravar" />
   <string id="152" text="cancelar" />
-  <string id="153" text="" />
-  <string id="154" text="" />
-  <string id="155" text="" />
-  <string id="156" text="" />
-  <string id="157" text="" />
-  <string id="158" text="" />
-  <string id="159" text="" />
-  <string id="160" text="" />
-  <string id="161" text="" />
+  <string id="153" text="controle gernet" />
+  <string id="154" text="log de acesso" />
+  <string id="155" text="log de alteração de senha" />
+  <string id="156" text="log de link de senha" />
+  <string id="157" text="cadastro de tabelas do sistema" />
+  <string id="158" text="pesquisa rápida" />
+  <string id="159" text="cor" />
+  <string id="160" text="minimizar" />
+  <string id="161" text="remover" />
   <string id="162" text="" />
   <string id="163" text="" />
   <string id="164" text="" />

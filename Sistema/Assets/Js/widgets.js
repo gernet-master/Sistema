@@ -24,6 +24,52 @@ var temp_portlet = "";
             WIDGETS.outsideClick();
             WIDGETS.resizeWidget();
             WIDGETS.onChange();
+            WIDGETS.typeAhead();
+        },
+
+        typeAhead: function () {
+            var substringMatcher = function (strs) {
+                return function findMatches(q, cb) {
+                    var matches, substringRegex;
+                    // an array that will be populated with substring matches
+                    matches = [];
+
+                    // regex used to determine if a string contains the substring `q`
+                    substrRegex = new RegExp(q, 'i');
+
+                    // iterate through the pool of strings and for any string that
+                    // contains the substring `q`, add it to the `matches` array
+                    $.each(strs, function (i, str) {
+                        if (substrRegex.test(str)) {
+                            matches.push(str);
+                        }
+                    });
+
+                    cb(matches);
+                };
+            };
+
+            var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
+                'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
+                'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
+                'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
+                'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
+                'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
+                'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
+                'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
+                'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
+            ];
+
+            alert($('#the-basics .typeahead').length)
+            $('#the-basics .typeahead').typeahead({
+                hint: true,
+                highlight: true,
+                minLength: 1
+            },
+                {
+                    name: 'states',
+                    source: substringMatcher(states)
+                });
         },
 
         // Pega o clique nos botões da barra para reposicionar o menu e abrir
@@ -50,13 +96,16 @@ var temp_portlet = "";
                     // Abre o clone
                     $('#temp_portlet_dropdown').dropdown('toggle');
 
+                    // Preenche a caixa de seleção de cor com a cor atual do widget
+                    $('#temp_portlet_dropdown .gernet-widget-color').css('backgroundColor', $(this).find('div.dropdown-menu').closest('.grid-stack-item-content').css('backgroundColor'));
+
                     // Esconde a dropdown original
                     $(this).find('div.dropdown-menu').hide();
 
                     // Posiciona o clone dentro do widget
                     var o = $(this).offset();
-                    $('#temp_portlet_dropdown').css('top', o.top + 40);
-                    $('#temp_portlet_dropdown').css('left', o.left + 33);
+                    $('#temp_portlet_dropdown').css('top', o.top - 100);
+                    $('#temp_portlet_dropdown').css('left', o.left - 35);
 
                     // Define temp
                     temp_portlet = $(this).attr('data-id');
@@ -100,7 +149,7 @@ var temp_portlet = "";
             }).then(function (result) {
                 if (result.value) {
                     WIDGETS.hideDropDown();
-                    $(".grid-stack").data("gridstack").removeWidget($('#portlet' + p).closest('.grid-stack-item'));
+                    $(".grid-stack").data("gridstack").removeWidget($('#portlet_' + p).closest('.grid-stack-item'));
                 }
             });            
         },
@@ -109,49 +158,49 @@ var temp_portlet = "";
         toggle: function (p, o) {
 
             // Maximizar
-            if ($('#portlet' + p).css('display') == 'none') {
+            if ($('#portlet_' + p).css('display') == 'none') {
 
                 // Seta o min height para o tamanho original
-                $(".grid-stack").data("gridstack").minHeight($('#portlet' + p).closest('.grid-stack-item'), parseInt($('#portlet' + p).closest('.grid-stack-item').attr('data-gs-temp-height')));
+                $(".grid-stack").data("gridstack").minHeight($('#portlet_' + p).closest('.grid-stack-item'), parseInt($('#portlet_' + p).closest('.grid-stack-item').attr('data-gs-temp-height')));
 
                 // Insere a opção de redimensionar
-                $(".grid-stack").data("gridstack").resizable($('#portlet' + p).closest('.grid-stack-item'), true);
+                $(".grid-stack").data("gridstack").resizable($('#portlet_' + p).closest('.grid-stack-item'), true);
 
                 // Retorna o widget para o tamanho original
-                $(".grid-stack").data("gridstack").resize($('#portlet' + p).closest('.grid-stack-item'), null, parseInt($('#portlet' + p).closest('.grid-stack-item').attr('data-gs-original-height')));
+                $(".grid-stack").data("gridstack").resize($('#portlet_' + p).closest('.grid-stack-item'), null, parseInt($('#portlet_' + p).closest('.grid-stack-item').attr('data-gs-original-height')));
 
                 // Altera o texto do botão
                 $(o).find('span').html('Minimizar');
-                $('.grid-stack label[data-id="options' + p + '"] .gernet-widget-toogle').find('span').html('Minimizar');
+                $('.grid-stack label[data-id="options_' + p + '"] .gernet-widget-toogle').find('span').html('Minimizar');
 
                 // Altera o icone botão
                 $(o).find('i').attr('class', 'kt-nav__link-icon la la-angle-down');
-                $('.grid-stack label[data-id="options' + p + '"] .gernet-widget-toogle').find('i').attr('class', 'kt-nav__link-icon la la-angle-down');
+                $('.grid-stack label[data-id="options_' + p + '"] .gernet-widget-toogle').find('i').attr('class', 'kt-nav__link-icon la la-angle-down');
 
             // Minimizar
             } else {
 
                 // Seta o min height para 1
-                $(".grid-stack").data("gridstack").minHeight($('#portlet' + p).closest('.grid-stack-item'), 1);
+                $(".grid-stack").data("gridstack").minHeight($('#portlet_' + p).closest('.grid-stack-item'), 1);
 
                 // Remove a opção de redimensionar
-                $(".grid-stack").data("gridstack").resizable($('#portlet' + p).closest('.grid-stack-item'), false);
+                $(".grid-stack").data("gridstack").resizable($('#portlet_' + p).closest('.grid-stack-item'), false);
 
                 // Reduz o widget para 1 de altura
-                $(".grid-stack").data("gridstack").resize($('#portlet' + p).closest('.grid-stack-item'), null, 1);
+                $(".grid-stack").data("gridstack").resize($('#portlet_' + p).closest('.grid-stack-item'), null, 1);
 
                 // Altera o texto do botão
                 $(o).find('span').html('Maximizar');
-                $('.grid-stack label[data-id="options' + p + '"] .gernet-widget-toogle').find('span').html('Maximizar');
+                $('.grid-stack label[data-id="options_' + p + '"] .gernet-widget-toogle').find('span').html('Maximizar');
 
                 // Altera o icone botão
                 $(o).find('i').attr('class', 'kt-nav__link-icon la la-angle-up');
-                $('.grid-stack label[data-id="options' + p + '"] .gernet-widget-toogle').find('i').attr('class', 'kt-nav__link-icon la la-angle-up');
+                $('.grid-stack label[data-id="options_' + p + '"] .gernet-widget-toogle').find('i').attr('class', 'kt-nav__link-icon la la-angle-up');
 
             }
 
             // Ação
-            $('#portlet' + p).toggle();
+            $('#portlet_' + p).toggle();
 
         },
 
@@ -186,7 +235,7 @@ var temp_portlet = "";
                 var arrColors = ['000000', '993300', '333300', '000080', '333399', '333333', '800000', 'FF6600', '808000', '008000', '008080', '0000FF', '666699', '808080', 'FF0000', 'FF9900', '99CC00', '339966', '33CCCC', '3366FF', '800080', '999999', 'FF00FF', 'FFCC00', 'FFFF00', '00FF00', '00FFFF', '00CCFF', '993366', 'C0C0C0', 'FF99CC', 'FFCC99', 'FFFF99', 'CCFFFF', '99CCFF', 'FFFFFF'];
                 var temp = '';
                 $.each(arrColors, function (index, value) {
-                    temp += '<span style="background-color:#' + value + '" onClick="WIDGETS.colorChange(' + p + ', \'#' + value + '\')"></span>';
+                    temp += '<span style="background-color:#' + value + '" onClick="WIDGETS.colorChange(\'' + p + '\', \'#' + value + '\')"></span>';
                 });
                 $('#temp_portlet_dropdown .color-picker').removeClass('kt-hidden').html(temp);
             } else {
@@ -198,10 +247,10 @@ var temp_portlet = "";
         // Altera a cor do widget
         colorChange: function (p, v) {
             $('#temp_portlet_dropdown .gernet-widget-color').css('backgroundColor', v);
-            $('#portlet' + p).closest('.grid-stack-item-content').css('backgroundColor', v);
-            $('#portlet' + p).closest('.kt-portlet').css('backgroundColor', v);
-            $('#portlet' + p).closest('.kt-portlet').find('.kt-portlet__head-title').css("color", WIDGETS.getContrastYIQ(v));
-            $('.grid-stack label[data-id="options' + p + '"] .gernet-widget-color').css('backgroundColor', v);
+            $('#portlet_' + p).closest('.grid-stack-item-content').css('backgroundColor', v);
+            $('#portlet_' + p).closest('.kt-portlet').css('backgroundColor', v);
+            $('#portlet_' + p).closest('.kt-portlet').find('.kt-portlet__head-title').css("color", WIDGETS.getContrastYIQ(v));
+            $('.grid-stack label[data-id="options_' + p + '"] .gernet-widget-color').css('backgroundColor', v);
         },
 
         // Pega o contraste da cor
@@ -216,7 +265,7 @@ var temp_portlet = "";
 
         // Atualiza o widget
         reload: function (p) {
-
+            alert('Em desenvolvimento');
         }
 
     };

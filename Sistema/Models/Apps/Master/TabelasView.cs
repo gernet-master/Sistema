@@ -1,5 +1,6 @@
 ﻿using Sistema.Assets.DB;
 using Sistema.Assets.Entities;
+using Sistema.Assets.Functions;
 using System.Collections.Generic;
 
 namespace Sistema.Models

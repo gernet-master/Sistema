@@ -1,12 +1,18 @@
 ﻿@*
-    Descrição: Cadastro de tabelas do sistema
-    Data: 01/01/2020 - v.1.0
+Descrição: Cadastro de tabelas do sistema
+Data: 01/01/2020 - v.1.0
 *@
 
+@* Controles do aplicativo *@
 @model Sistema.Models.TabelasView
 
+@* Subheader *@
 @Html.Action("SubHeaderApp", "Partials", new { app = "/Apps/Master/Tabelas/Incluir", id = 0, id2 = 0 })
 
+@* Botões de ação *@
+@Html.Action("ActionButtons", "Partials")
+
+@* Funções *@
 @using Functions;
 
 @{ Inputs input = new Inputs(); }
@@ -50,7 +56,7 @@
                                         @Html.Raw(input.CreateInput());
                                     }
 
-                                }
+                                }                                
                             </div>
                         </div>
                         <div class="row">
@@ -93,5 +99,3 @@
         </div>
     </div>
 </div>
-
-@Html.Action("ActionButtons", "Partials")

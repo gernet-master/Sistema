@@ -36,7 +36,7 @@ namespace Sistema
                 //"~/Assets/plugins/general/js/global/integration/plugins/bootstrap-switch.init.js",
                 //"~/Assets/plugins/general/select2/dist/js/select2.full.js",
                 //"~/Assets/plugins/general/ion-rangeslider/js/ion.rangeSlider.js",
-                //"~/Assets/plugins/general/typeahead.js/dist/typeahead.bundle.js",
+                "~/Assets/plugins/general/typeahead.js/dist/typeahead.bundle.js",
                 //"~/Assets/plugins/general/handlebars/dist/handlebars.js",
                 //"~/Assets/plugins/general/inputmask/dist/jquery.inputmask.bundle.js",
                 //"~/Assets/plugins/general/inputmask/dist/inputmask/inputmask.date.extensions.js",
