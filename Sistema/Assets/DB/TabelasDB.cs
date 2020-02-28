@@ -157,5 +157,51 @@ namespace Sistema.Assets.DB
                 throw error;
             }
         }
+
+        // Listagem
+        public (List<Tabelas>, WidgetsListagem) Listagem(int pagina = 1, int registros = 10, string order = "txtabela")
+        {
+            try
+            {
+                List<Tabelas> listagem = new List<Tabelas>();
+                WidgetsListagem controle = new WidgetsListagem();
+
+                string qry = "";
+                qry += "SELECT COUNT (*) OVER () AS ROW_COUNT, idtabela, txtabela, flauditoria, idcodigoidioma ";
+                qry += "FROM Tabelas ";
+                qry += "ORDER BY " + order + " ";
+                qry += "OFFSET " + ((pagina - 1) * registros) + " ROWS FETCH NEXT " + registros + " ROWS ONLY";
+
+                Connection session = new Connection();
+                Query query = session.CreateQuery(qry);
+                IDataReader reader = query.ExecuteQuery();
+
+                if (reader.Read())
+                {
+                    controle.qtde = Convert.ToInt32(reader["ROW_COUNT"]);
+                    controle.colunas = "25,25,25,25";
+                    controle.exibe = "1,1,1,1";
+
+                    while (reader.Read())
+                    {
+                        listagem.Add(new Tabelas()
+                        {
+                            idtabela = new Variable(value: Convert.ToInt32(reader["idtabela"])),
+                            txtabela = new Variable(value: Convert.ToString(reader["txtabela"])),
+                            flauditoria = new Variable(value: Convert.ToBoolean(reader["flauditoria"])),
+                            idcodigoidioma = new Variable(value: Convert.ToInt32(reader["idcodigoidioma"]))
+                        });
+                    }
+                }
+                reader.Close();
+                session.Close();
+
+                return (listagem, controle);
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+        }
     }
 }

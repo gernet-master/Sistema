@@ -45,6 +45,11 @@ Data: 01/01/2020 - v.1.0
 
                     <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
 
+                        <!-- Objeto usado para corrigir a posição das opções dentro dos portlets -->
+                        <label id="temp_portlet_dropdown" style="position:absolute; z-index:999">
+                            <div class="dropdown-menu dropdown-menu-right"></div>
+                        </label>
+
                         <!-- Content -->
                         <div class="kt-container kt-container--fluid  kt-grid__item kt-grid__item--fluid" id="kt_content_app">
                             @RenderBody()

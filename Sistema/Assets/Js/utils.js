@@ -96,8 +96,8 @@ var UTILS = {};
 
                     // Verifica se o arquivo existe
                     if (status == "error") {
-                        $('#kt_content_app').load('/Error/InvalidUrl');
-                        UTILS.clear();
+                     //   $('#kt_content_app').load('/Error/InvalidUrl');
+                    //    UTILS.clear();
                     } else {
                         $('#kt_content_app').unblock();
                         KTApp.initComponents();

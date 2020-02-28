@@ -3,6 +3,7 @@ using Sistema.Assets.DB;
 using Sistema.Assets.Entities;
 using Sistema.Models;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Web.Mvc;
 
@@ -24,11 +25,11 @@ namespace Sistema.Controllers
             return PartialView(new WidgetsView_NovoRegistro(widget, texto));
         }
 
-        // Pesquisa Rápida
+        // Listagem
         [Autentication]
-        public ActionResult PesquisaRapida(Widgets widget, string texto = "")
+        public ActionResult Listagem(Widgets widget, string texto, dynamic result)
         {
-            return PartialView(new WidgetsView_PesquisaRapida(widget, texto));
+            return PartialView(new WidgetsView_Listagem(widget, texto, result));
         }
     }
 }

@@ -29,16 +29,18 @@ namespace Sistema.Models
         }
     }
 
-    // Pesquisa Rápida
-    public class WidgetsView_PesquisaRapida
+    // Listagem
+    public class WidgetsView_Listagem
     {
         public Widgets widget { get; set; }
         public string texto { get; set; }
+        public dynamic result { get; set; }
 
-        public WidgetsView_PesquisaRapida(Widgets widget, string texto)
+        public WidgetsView_Listagem(Widgets widget, string texto, dynamic result)
         {
             this.widget = widget;
             this.texto = texto;
+            this.result = result;
         }
     }
 }

@@ -48,4 +48,28 @@ namespace Sistema.Assets.Entities
             this.app = app;
         }
     }
+
+    // Listagem
+    public class WidgetsListagem
+    {
+        // Variáveis
+        public int qtde { get; set; }
+        public string colunas { get; set; }
+        public string exibe { get; set; }
+
+        // Inicial
+        public WidgetsListagem()
+        {
+            this.qtde = 0;
+            this.colunas = "";
+            this.exibe = "";
+        }
+
+        public WidgetsListagem(int qtde, string colunas, string exibe)
+        {
+            this.qtde = qtde;
+            this.colunas = colunas;
+            this.exibe = exibe;
+        }
+    }
 }

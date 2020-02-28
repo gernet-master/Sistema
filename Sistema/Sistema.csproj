@@ -207,6 +207,7 @@
     <Content Include="Assets\Css\skins\brand\light.rtl.css" />
     <Content Include="Assets\Css\skins\brand\light.rtl.min.css" />
     <Content Include="Assets\Js\chat.js" />
+    <Content Include="Assets\Js\forms.js" />
     <Content Include="Assets\Js\utils.js" />
     <Content Include="Assets\Js\header.js" />
     <Content Include="Assets\Js\login.js" />
@@ -3439,8 +3440,8 @@
     <Content Include="Views\Partials\SubHeaderApp.cshtml" />
     <Content Include="Views\Partials\ActionButtons.cshtml" />
     <Content Include="Views\Widgets\NovoRegistro.cshtml" />
-    <Content Include="Views\Widgets\PesquisaRapida.cshtml" />
     <Content Include="Views\Widgets\Opcoes.cshtml" />
+    <Content Include="Views\Widgets\Listagem.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
