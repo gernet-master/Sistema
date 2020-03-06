@@ -1,7 +1,9 @@
 ﻿/*
 Descrição: Rotinas para gravar a auditoria do sistema
-Data: 01/01/2020 - v.1.0
+Data: 01/01/2021 - v.1.0
 */
+
+using System;
 
 namespace Sistema.Assets.Functions
 {
@@ -16,7 +18,6 @@ namespace Sistema.Assets.Functions
             this.value = value;
             this.config = config;
         }
-
     }
 
     // Auditoria

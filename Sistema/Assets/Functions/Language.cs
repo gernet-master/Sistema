@@ -1,6 +1,6 @@
 ﻿/*
 Descrição: Funções para retornar o texto solicitado no idioma correto
-Data: 01/01/2020 - v.1.0
+Data: 01/01/2021 - v.1.0
 */
 
 using System;

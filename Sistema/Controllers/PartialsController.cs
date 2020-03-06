@@ -1,10 +1,14 @@
-﻿using Functions;
+﻿/*
+Descrição: Controlador de includes internos do sistema
+Data: 01/01/2021 - v.1.0
+*/
+
 using Sistema.Assets.DB;
-using Sistema.Assets.Entities;
 using Sistema.Models;
 using System;
 using System.Globalization;
 using System.Web.Mvc;
+using Functions;
 
 namespace Sistema.Controllers
 {
@@ -170,6 +174,7 @@ namespace Sistema.Controllers
         }
 
         // Retorna a hora atual do servidor
+        [Autentication]
         public string Clock()
         {
             CultureInfo culture = new CultureInfo("pt-BR");

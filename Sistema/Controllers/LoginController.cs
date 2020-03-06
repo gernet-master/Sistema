@@ -1,9 +1,14 @@
-﻿using Functions;
+﻿/*
+Descrição: Controlador da página de login
+Data: 01/01/2021 - v.1.0
+*/
+
 using Sistema.Assets.DB;
 using Sistema.Assets.Entities;
 using System;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Functions;
 
 namespace Sistema.Controllers
 {

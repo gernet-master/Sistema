@@ -1,6 +1,6 @@
 ﻿/*
 Descrição: Classe do log de alteração de senha
-Data: 01/01/2020 - v.1.0
+Data: 01/01/2021 - v.1.0
 */
 
 using Functions;

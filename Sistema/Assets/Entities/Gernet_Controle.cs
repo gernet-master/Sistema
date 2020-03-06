@@ -1,6 +1,6 @@
 ﻿/*
 Descrição: Classe con a configuração do cliente
-Data: 01/01/2020 - v.1.0
+Data: 01/01/2021 - v.1.0
 */
 
 using Functions;

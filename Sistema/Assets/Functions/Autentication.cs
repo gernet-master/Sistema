@@ -1,10 +1,9 @@
 ﻿/*
 Descrição: Verifica se o usuário está autenticado no sistema
-Data: 01/01/2020 - v.1.0
+Data: 01/01/2021 - v.1.0
 */
 
 using Sistema.Assets.DB;
-using Sistema.Assets.Functions;
 using System;
 using System.Web;
 using System.Web.Mvc;

@@ -1,6 +1,6 @@
 ﻿/*
 Descrição: Classe dos frames vinculados ao usuário
-Data: 01/01/2020 - v.1.0
+Data: 01/01/2021 - v.1.0
 */
 
 using Sistema.Assets.Functions;

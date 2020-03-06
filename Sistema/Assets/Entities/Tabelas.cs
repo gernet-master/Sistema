@@ -1,6 +1,6 @@
 ﻿/*
 Descrição: Classe de tabelas do sistema
-Data: 01/01/2020 - v.1.0
+Data: 01/01/2021 - v.1.0
 */
 
 using Sistema.Assets.DB;
@@ -10,7 +10,7 @@ namespace Sistema.Assets.Entities
 {
 
     // Tabelas do sistema
-    public class Tabelas : Audit
+    public class Tabelas
     {
 
         // Variáveis

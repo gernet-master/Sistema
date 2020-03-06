@@ -1,5 +1,10 @@
-﻿using Functions;
+﻿/*
+Descrição: Controlador incial do sistema
+Data: 01/01/2021 - v.1.0
+*/
+
 using System.Web.Mvc;
+using Functions;
 
 namespace Sistema.Controllers
 {
