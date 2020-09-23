@@ -19,10 +19,10 @@ var login_div = "";
             // Define o formulário
             if ($('#kt_login').length > 0) {
                 login_div = $('#kt_login');
-            }
-
-            if ($('#kt_password').length > 0) {
-                login_div = $('#kt_password');
+            } else {
+                if ($('#kt_password').length > 0) {
+                    login_div = $('#kt_password');
+                }
             }
 
             // Ações
@@ -80,41 +80,37 @@ var login_div = "";
         // Envia o formulário de login
         submitLogin: function () {
 
-            $('#kt-form-login').validationEngine('attach', { boxField: '' });
-            if ($('#kt-form-login').validationEngine('validate')) {
+            if (!FORMS.validate('kt-form-login')) {
 
                 // Processando
                 UTILS.processing();
 
                 // Envia o formulário
-                $.post('/Validation', $('#kt-form-login').serializeArray(), function (data) {
+                $.post('/Validation', $('#kt-form-login').serializeArray(), function (response) {
 
-                    // Retorno
-                    var arr = data.split("|");
-
-                    // Se retornou 0, exibe alerta de erro																										
-                    if (arr[0] == 0) {
-                        swal.fire({
-                            title: arr[1],
+                    // Se retornou 0, exibe alerta de erro	
+                    if (response.success == 0) {
+                        Swal.fire({
                             icon: 'error',
+                            title: response.msg,
                             showConfirmButton: true,
                             allowOutsideClick: false
                         });
                     }
 
                     // Se retornou 1, redireciona para página de alteração de senha
-                    if (arr[0] == 1) {
+                    if (response.success == 1) {
                         $(location).attr('href', '/Password');
                     }
 
                     // Se retornou 2, carrega página inicial
-                    if (arr[0] == 2) {
+                    if (response.success == 2) {
                         $(location).attr('href', 'Home');
                     }
 
                     // Se retornou 3, usuário já conectado																										
-                    if (arr[0] == 3) {
-                        swal.fire({
+                    if (response.success == 3) {
+                        Swal.fire({
                             title: UTILS.xmlLang(75, 2).Text,
                             text: UTILS.xmlLang(76, 2).Text + '?',
                             icon: 'question',
@@ -144,36 +140,34 @@ var login_div = "";
 
         // Envia o formulário para recuperar senha
         submirRecover: function () {
-            $('#kt-form-recover').validationEngine('attach', { boxField: '' });
-            if ($('#kt-form-recover').validationEngine('validate')) {
+
+            if (!FORMS.validate('kt-form-recover')) {
 
                 // Processando
                 UTILS.processing();
 
                 // Envia o formulário
-                $.post('/RecoverPassword', $('#kt-form-recover').serializeArray(), function (data) {
+                $.post('/RecoverPassword', $('#kt-form-recover').serializeArray(), function (response) {
 
-                    // Retorno
-                    var arr = data.split("|");
-
-                    // Se retornou 0, exibe alerta de erro																										
-                    if (arr[0] == 0) {
-                        swal.fire({
-                            title: arr[1],
-                            icon: 'error'
+                    // Se retornou 0, exibe alerta de erro																									
+                    if (response.success == 0) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: response.msg
                         });
                     }
 
                     // Se retornou 1, carrega página inicial
-                    if (arr[0] == 1) {
+                    if (response.success == 1) {
                         let timerInterval;
                         Swal.fire({
-                            title: arr[1],
-                            html: UTILS.xmlLang(94, 2).Text,
+                            title: response.msg,
                             icon: 'success',
                             timer: 5000,
                             showConfirmButton: true,
                             confirmButtonText: UTILS.xmlLang(93, 2).Text + ' (5)',
+                            timerProgressBar: true,
+                            allowOutsideClick: false,
                             onBeforeOpen: () => {
                                 timerInterval = setInterval(() => {
                                     Swal.getConfirmButton().textContent = UTILS.xmlLang(93, 2).Text + ' (' + (Math.ceil(Swal.getTimerLeft() / 1000)) + ')';
@@ -196,28 +190,25 @@ var login_div = "";
 
         // Envia o formulário para alterar a senha
         submirChangePassword: function () {
-            $('#kt-form-password').validationEngine('attach', { boxField: '' });
-            if ($('#kt-form-password').validationEngine('validate')) {
+
+            if (!FORMS.validate('kt-form-password')) {
 
                 // Processando
                 UTILS.processing();
 
                 // Envia o formulário
-                $.post('/ChangePassword', $('#kt-form-password').serializeArray(), function (data) {
+                $.post('/ChangePassword', $('#kt-form-password').serializeArray(), function (response) {
 
                     // Retorno
-                    var arr = data.split("|");
-
-                    // Se retornou 0, exibe alerta de erro																										
-                    if (arr[0] == 0) {
-                        swal.fire({
-                            title: arr[1],
-                            icon: 'error'
+                    if (response.success == 0) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: response.msg
                         });
                     }
 
                     // Se retornou 1, carrega página inicial
-                    if (arr[0] == 1) {
+                    if (response.success == 1) {
                         $(location).attr('href', '/Home');
                     }
 

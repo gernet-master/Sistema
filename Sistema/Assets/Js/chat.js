@@ -19,7 +19,7 @@ var chat_running = false;
             chat_running = false;
 
             // Ações
-            CHAT.catchStatusList();
+            CHAT.getStatusList();
             CHAT.search();            
             CHAT.statusButton();
             CHAT.highlight();
@@ -63,7 +63,7 @@ var chat_running = false;
         },
 
         // Abre/Esconde lista de usuários
-        catchStatusList: function () {
+        getStatusList: function () {
 
             // Online
             $('#kt_quick_panel #chat-button-online').click(function () {
@@ -112,7 +112,7 @@ var chat_running = false;
 
         // Altera o status
         changeStatus: function () {
-            $('#kt_quick_panel #kt_quick_panel_tab_settings #flstatuschat').click(function () {
+            $('#kt_quick_panel #kt_quick_panel_tab_settings .chat_status_option').click(function () {
                 var status = $(this).val();
                 switch (parseInt(status)) {
                     case 1: $('#kt_quick_panel #kt_quick_panel_status_btn').html('<i class="fa fa-circle btn-font-success"></i>&nbsp;' + UTILS.xmlLang(108, 2).Text); break;

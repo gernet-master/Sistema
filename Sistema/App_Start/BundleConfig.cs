@@ -11,8 +11,8 @@ namespace Sistema
                  
             bundles.Add(new ScriptBundle("~/system_scripts").Include(
                 "~/Assets/js/global.js",
-                "~/Assets/plugins/general/jquery/dist/jquery.js",
-                "~/Assets/plugins/general/popper.js/dist/umd/popper.js",
+                "~/Assets/plugins/general/jquery/dist/jquery-3.5.1.min.js",
+                "~/Assets/plugins/general/popper.js/dist/js/popper.min.js",
                 "~/Assets/plugins/general/bootstrap/dist/js/bootstrap.min.js",
                 "~/Assets/plugins/general/js-cookie/src/js.cookie.js",
                 //"~/Assets/plugins/general/moment/min/moment.min.js",
@@ -70,7 +70,7 @@ namespace Sistema
                 //"~/Assets/plugins/general/counterup/jquery.counterup.js",
                 //"~/Assets/plugins/general/es6-promise-polyfill/promise.min.js",
                 "~/Assets/plugins/general/sweetalert2/dist/sweetalert2.min.js",
-                "~/Assets/plugins/general/js/global/integration/plugins/sweetalert2.init.js",
+                //"~/Assets/plugins/general/js/global/integration/plugins/sweetalert2.init.js",
                 //"~/Assets/plugins/general/jquery.repeater/src/lib.js",
                 //"~/Assets/plugins/general/jquery.repeater/src/jquery.input.js",
                 //"~/Assets/plugins/general/jquery.repeater/src/repeater.js",
@@ -119,13 +119,20 @@ namespace Sistema
                 //"~/Assets/plugins/custom/tinymce/tinymce.min.js",
                 //"~/Assets/plugins/custom/tinymce/themes/silver/theme.js",
                 //"~/Assets/plugins/custom/tinymce/themes/mobile/theme.js",
-                "~/Assets/plugins/custom/validation/jquery.validationEngine-pt_BR.js",
-                "~/Assets/plugins/custom/validation/jquery.validationEngine.js",
+                "~/Assets/plugins/custom/mask/jquery.mask.min.js",
                 "~/Assets/plugins/custom/highlight/highlight.js",
-                "~/Assets/js/forms.js",
+                "~/Assets/plugins/custom/viacep/jquery-viacep.min.js",
                 "~/Assets/js/utils.js",
-                "~/Assets/js/chat.js"
+                "~/Assets/js/forms.js",
+                "~/Assets/js/chat.js",
+                "~/Assets/plugins/custom/gridstack/gridstack.js",
+                "~/Assets/plugins/custom/gridstack/gridstack.jQueryUI.js",
+                "~/Assets/js/widgets.js",
+                "~/Assets/js/list.js"
             ));
+
+            bundles.Add(new ScriptBundle("~/system_page").Include(
+                "~/Assets/js/page.js"));
 
             bundles.Add(new ScriptBundle("~/system_timer").Include(
                 "~/Assets/js/timer.js"));
@@ -139,10 +146,11 @@ namespace Sistema
             bundles.Add(new ScriptBundle("~/system_footer").Include(
                "~/Assets/js/footer.js"));
 
-            bundles.Add(new ScriptBundle("~/gridstack").Include(
-               "~/Assets/plugins/custom/gridstack/gridstack.js",
-               "~/Assets/plugins/custom/gridstack/gridstack.jQueryUI.js",
-               "~/Assets/js/widgets.js"));
+            bundles.Add(new ScriptBundle("~/system_apps").Include(
+               "~/Assets/js/app.js"));
+
+            bundles.Add(new ScriptBundle("~/system_list").Include(
+               "~/Assets/js/list.js"));
 
             bundles.Add(new StyleBundle("~/system_css").Include(
                 "~/Assets/plugins/general/perfect-scrollbar/css/perfect-scrollbar.css",
@@ -200,7 +208,6 @@ namespace Sistema
                 "~/Assets/css/skins/brand/dark.css",
                 "~/Assets/css/skins/aside/dark.css",
                 "~/Assets/plugins/custom/gridstack/gridstack.css",
-                "~/Assets/plugins/custom/validation/validationEngine.min.css",
                 "~/Assets/css/custom.css"
             ));
 

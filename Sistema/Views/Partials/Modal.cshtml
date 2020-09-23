@@ -1,0 +1,21 @@
+﻿@*
+    Descrição: Modal
+    Data: 01/01/2021 - v.1.0
+*@
+
+@using Functions;
+
+@* 1º Modal - Telas de localização *@
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog"></div>
+</div>
+
+@* 2º Modal - Telas de localização ou novo cadastro dentro do modal *@
+<div class="modal modal-child fade" id="myModal2" data-backdrop-limit="1" tabindex="-2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-modal-parent="#myModal1" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog"></div>
+</div>
+
+@* 3º Modal - Tela de localização dentro de tela do novo cadastro dentro do modal *@
+<div class="modal modal-child fade" id="myModal3" data-backdrop-limit="1" tabindex="-3" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-modal-parent="#myModal2" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog"></div>
+</div>

@@ -42,6 +42,15 @@ var UTILS = {};
             }
         },
 
+        // Verifica se existe o objeto
+        isUndefined: function (o, v) {
+            if (typeof o === 'undefined') {
+                return v;
+            } else {
+                return o;
+            }
+        },
+
         // Exibe alerta de processando
         processing: function () {
             swal.fire({
@@ -66,8 +75,8 @@ var UTILS = {};
         },
 
         // Carrega o link do menu
-        menu: function (link) {
-            if (link != '') {
+        menu: function (controller, action, id, id2) {
+            if ((controller != '') && (action != '')) {
 
                 // Bloqueia o aplicativo
                 $('#kt_content_app').block({
@@ -89,7 +98,7 @@ var UTILS = {};
                 });                 
 
                 // Carrega e desbloqueia
-                $('#kt_content_app').load(link, function (response, status, xhr) {
+                $('#kt_content_app').load("/Partials/App/", { controller: controller, action: action, id: id, id2: id2 } , function (response, status, xhr) {
 
                     // Esconde qualquer tooltip que esteja aberta
                     $(".tooltip").tooltip("hide");
@@ -104,7 +113,13 @@ var UTILS = {};
                     }
                 });
             }
+        },
+
+        // Valida se é numerico
+        isNumber: function (value) {
+            return !isNaN(value);
         }
+
     };
 
 })(jQuery);

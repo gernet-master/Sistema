@@ -1,36 +1,36 @@
 ﻿@* Model *@
-@model Sistema.Models.WidgetsView_Opcoes
+@model Sistema.Models.WidgetsView_Options
 
 @* Funções *@
 @using Functions;
 
 <!-- Opções -->
-<label data-toggle="kt-tooltip" title="Opções" data-placement="left" class="kt-margin-l-10 gridstack-dropdown bg-white" data-id="option_@Model.id">
+<label data-toggle="kt-tooltip" title="Opções" data-placement="left" class="kt-margin-l-10 gridstack-dropdown bg-white" data-id="options_@Model.id">
     <a href="#" class="btn btn-sm btn-icon btn-default btn-icon-md kt-radius-0" aria-haspopup="true" aria-expanded="false">
         <i class="fa fa-bars"></i>
     </a>
     <div class="dropdown-menu dropdown-menu-right">
         <ul class="kt-nav">
-            <li class="kt-nav__item">
-                <a href="#" onclick="WIDGETS.reload('@Model.id')" class="kt-nav__link">
+            <li class="kt-nav__item" id="widget_option_refresh">
+                <a href="#" onclick="LIST.refreshList()" class="kt-nav__link">
                     <i class="kt-nav__link-icon la la-refresh"></i>
                     <span class="kt-nav__link-text">@Language.XmlLang(136, 2).Text</span>
                 </a>
             </li>
-            <li class="kt-nav__item">
+            <li class="kt-nav__item" id="widget_option_color">
                 <a href="#" onclick="WIDGETS.color('@Model.id')" class="kt-nav__link">
                     <i class="kt-nav__link-icon la la-eyedropper"></i>
                     <span class="kt-nav__link-text">@Language.XmlLang(159, 2).Text</span><span class="gernet-widget-color"></span>
                 </a>
                 <div class="color-picker kt-hidden"></div>
             </li>
-            <li class="kt-nav__item">
+            <li class="kt-nav__item" id="widget_option_minimize">
                 <a href="#" onclick="WIDGETS.toggle('@Model.id', this)" class="kt-nav__link gernet-widget-toogle">
                     <i class="kt-nav__link-icon la la-angle-down"></i>
                     <span class="kt-nav__link-text">@Language.XmlLang(160, 2).Text</span>
                 </a>
             </li>
-            <li class="kt-nav__item">
+            <li class="kt-nav__item" id="widget_option_remove">
                 <a href="#" onclick="WIDGETS.remove('@Model.id')" class="kt-nav__link">
                     <i class="kt-nav__link-icon la la-close"></i>
                     <span class="kt-nav__link-text">@Language.XmlLang(161, 2).Text</span>

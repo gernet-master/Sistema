@@ -28,12 +28,12 @@
 }
 
 .formError {
-    position: absolute;
+    /*position: absolute;
     top: 300px;
     left: 300px;
     display: block;
     cursor: pointer;
-    opacity: 1 !important
+    opacity: 1 !important*/
 }
 
 .ajaxSubmit {
@@ -44,19 +44,25 @@
 }
 
 .formError .formErrorContent {
-    background: #fc5858;
+    background: #FFFFFF;
     position: relative;
-    color: #fff;
+    color: #F33;
     width: auto;
     font-size: 12px;
     padding: 2px 12px;
-    border-radius:10px;
-    margin-top:10px;
+    margin-bottom:2px;
+    border-radius:4px;
+    border:1px solid #F33;
+    font-weight:500;
 }
 
-    .formError .formErrorContent:hover {
-        background-color: #FF2F2F !important
-    }
+.formError .formErrorContent i {
+    margin-right:5px;
+}
+
+/*.formError .formErrorContent:hover {
+    background-color: #FF2F2F !important
+}*/
 
 .greenPopup .formErrorContent {
     background: #33be40

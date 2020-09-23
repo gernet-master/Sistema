@@ -26,15 +26,39 @@ namespace Sistema.Controllers
         public JsonResult Validation(FormCollection form)
         {
             // Recebe as variáveis
-            string user = Utils.ClearText(form["user"], 20);
-            string password = Utils.ClearText(form["password"], 20);
+            string user = Utils.RemoveDiacritics(form["user"]);
+            string password = Utils.RemoveDiacritics(form["password"]);
             int remember = Utils.Numbers(Utils.Null(form["password"], "0"));
 
             // Valida dados
-            string r = Login.LoginCheck(user, password, remember);
+            Retorno result = Login.LoginCheck(user, password, remember);
 
             // Retorno
-            return Json(r);
+            return Json(result);
+        }
+
+        // Confirma a exclusão de registros
+        [Route("Login/ConfirmDelete")]
+        public JsonResult ConfirmDelete(string password = "")
+        {
+            var resultado = new { login = 0 };
+
+            // Verifica se possui usuário na sessão
+            if (Session["usuario"] != null)
+            {
+                // Codifica a senha
+                password = Crypt.CreateHash(password);
+
+                // Valida os dados
+                Usuarios usuario = new UsuariosDB().Login("", password, Convert.ToInt32(Session["usuario"]));
+
+                // Usuário validado
+                if (usuario != null)
+                {
+                    resultado = new { login = 1 };
+                }
+            }
+            return Json(resultado, JsonRequestBehavior.AllowGet);
         }
 
         // Formulário para alterar senha
@@ -55,14 +79,14 @@ namespace Sistema.Controllers
         public JsonResult ChangePassword(FormCollection form)
         {
             // Recebe as variáveis
-            string password_atual = Utils.ClearText(form["password_atual"], 20);
-            string password_novo = Utils.ClearText(form["password_novo"], 20);
+            string password_atual = Utils.RemoveDiacritics(form["password_atual"]);
+            string password_novo = Utils.RemoveDiacritics(form["password_novo"]);
 
             // Valida dados
-            string r = Login.ChangePassword(password_atual, password_novo);
+            Retorno result = Login.ChangePassword(password_atual, password_novo);
 
             // Retorno
-            return Json(r);
+            return Json(result);
         }
 
         // Validação dos dados para recuperar senha
@@ -75,10 +99,10 @@ namespace Sistema.Controllers
             string email = Utils.ClearText(form["email"], 20);
 
             // Valida dados
-            string r = Login.RecoverPassword(user, email);
+            Retorno result = Login.RecoverPassword(user, email);
 
             // Retorno
-            return Json(r);
+            return Json(result);
         }
 
         // Usuário acessou de outro local
@@ -167,7 +191,7 @@ namespace Sistema.Controllers
             return PartialView();
         }
 
-        // Sai do sistema
+        // Sair do sistema
         [Route("Logout")]
         public ActionResult Logout()
         {
@@ -185,9 +209,6 @@ namespace Sistema.Controllers
                 Usuarios_Sistema usuarios_sistema = new Usuarios_SistemaDB().Buscar(Convert.ToInt32(Session["usuario"]));
                 usuarios_sistema.idsession.value = "";
                 usuarios_sistema.Alterar();
-
-                // Exclui os frames cadastrados do usuário
-                new Usuarios_FramesDB().Excluir(Convert.ToInt32(Session["usuario"]));
 
                 // Grava log de acesso
                 Log_Acesso log = new Log_Acesso();

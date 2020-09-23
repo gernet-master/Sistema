@@ -9,15 +9,20 @@ using System.Web;
 
 namespace Sistema.Assets.DB
 {
-    public class Usuarios_FramesDB : Session
+    public class AuditoriaDB : Session
     {
-        // Exclui todos os registros de frames
-        public void Excluir(int idusuario = 0)
+
+        // Altera usuário
+        public void Gravar(Auditoria rs)
         {
             try
             {
+                string qry = "";
+                qry += "INSERT into Auditoria (dtauditoria, idusuario, txlog, txoperacao, txip, idtabela, ididentificador) ";
+                qry += "VALUES ('" + rs.dtauditoria + "', " + rs.idusuario + ", '" + rs.txlog + "', '" + rs.txoperacao + "', '" + rs.txip + "', " + rs.idtabela + ", " + rs.ididentificador + ")";
+
                 Connection session = new Connection();
-                Query query = session.CreateQuery(@"DELETE FROM usuarios_frames WHERE idusuario = " + idusuario);
+                Query query = session.CreateQuery(qry);
                 query.ExecuteUpdate();
                 session.Close();
             }
@@ -29,4 +34,3 @@ namespace Sistema.Assets.DB
         
     }
 }
-

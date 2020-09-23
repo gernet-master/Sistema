@@ -1,10 +1,15 @@
 ﻿@* Model *@
-@model Sistema.Models.WidgetsView_NovoRegistro
+@model Sistema.Models.WidgetsView_New
 
 @* Funções *@
 @using Functions;
 
-<div class="grid-stack-item" data-gs-x="@Model.widget.xpos" data-gs-y="@Model.widget.ypos" data-gs-width="@Model.widget.width" data-gs-height="@Model.widget.height" data-gs-no-resize="@Model.widget.resize">
+<div id="widget_name_@Model.widget.name" class="grid-stack-item"
+
+     @* Propriedades de controle do widget *@
+     data-gs-x="@Model.widget.xpos" data-gs-y="@Model.widget.ypos" data-gs-width="@Model.widget.width" 
+     data-gs-height="@Model.widget.height" data-gs-no-resize="@Model.widget.resize">
+
     <div class="grid-stack-item-content bg-light-blue kt-radius-4">
         <div class="kt-portlet kt-iconbox kt-iconbox--brand kt-iconbox--animate-slower kt-margin-b-0 kt-padding-8 shadow-none">
             <div class="kt-portlet__body">
@@ -20,7 +25,7 @@
                     </div>
                     <div class="kt-iconbox__desc">
                         <h3 class="kt-iconbox__title">
-                            <a class="kt-link" href="javascript:UTILS.menu('@Model.widget.app')">@Language.XmlLang(24, 2).Text</a>
+                            <a class="kt-link" href="#" onclick="UTILS.menu('@Model.widget.controller', '@Model.widget.action')">@Language.XmlLang(24, 2).Text</a>
                         </h3>
                         <div class="kt-iconbox__content">
                             @Model.texto

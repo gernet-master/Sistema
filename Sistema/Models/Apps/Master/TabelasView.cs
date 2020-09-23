@@ -2,6 +2,7 @@
 using Sistema.Assets.Entities;
 using Sistema.Assets.Functions;
 using System.Collections.Generic;
+using System.Web;
 
 namespace Sistema.Models
 {
@@ -20,6 +21,9 @@ namespace Sistema.Models
 
             // Busca registro principal
             this.tabela = new TabelasDB().Buscar(id);
+
+            // Grava o nome do identifcador principal
+            HttpContext.Current.Session["ident_name"] = tabela.txtabela.value;
 
             // Lista todas as tabelas que ainda não foram cadastradas
             this.tabelaN = new TabelasDB().ListarNaoCadastradas();

@@ -13,23 +13,23 @@ namespace Sistema.Controllers
     {
         // Opções
         [Autentication]
-        public ActionResult Opcoes(string id = "")
+        public ActionResult Options(string id = "")
         {
-            return PartialView(new WidgetsView_Opcoes(id));
+            return PartialView(new WidgetsView_Options(id));
         }
 
         // Novo Registro
         [Autentication]
-        public ActionResult NovoRegistro(Widgets widget, string texto = "")
+        public ActionResult New(Widgets widget, string texto = "")
         {
-            return PartialView(new WidgetsView_NovoRegistro(widget, texto));
+            return PartialView(new WidgetsView_New(widget, texto));
         }
 
         // Listagem
         [Autentication]
-        public ActionResult Listagem(Widgets widget, string texto, dynamic result)
-        {
-            return PartialView(new WidgetsView_Listagem(widget, texto, result));
+        public ActionResult List(Widgets widget, string texto, dynamic result)
+        {           
+            return PartialView(new WidgetsView_List(widget, texto, result));
         }
     }
 }

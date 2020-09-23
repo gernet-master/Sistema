@@ -4,8 +4,10 @@ Data: 01/01/2021 - v.1.0
 */
 
 using System;
+using System.Data;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using System.Web;
 
 namespace Functions
@@ -86,6 +88,17 @@ namespace Functions
             return result;
         }
 
+        // Remove acentos da string
+        public static string RemoveDiacritics(string text = "")
+        {
+            if (string.IsNullOrWhiteSpace(text))
+                return text;
+
+            text = text.Normalize(NormalizationForm.FormD);
+            var chars = text.Where(c => CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark).ToArray();
+            return new string(chars).Normalize(NormalizationForm.FormC);
+        }
+
         // Pega o ip do cliente
         public static string GetIPAddress()
         {
@@ -139,5 +152,25 @@ namespace Functions
             }
         }
 
+        // Formata campo para exibição em listagem
+        public static string formatField(dynamic value, string type)
+        {
+            string ret = "";
+
+            switch (type)
+            {
+                case "boolean":
+                    ret = (Convert.ToBoolean(value) ? "<i class='fa fa-check ft-green'></i>" : "<i class='fa fa-times ft-red'></i>");
+                    break;
+                case "language":
+                    ret = Language.XmlLang(Convert.ToInt32(value), 2).Text;
+                    break;
+                default:
+                    ret = Convert.ToString(value);
+                    break;
+            }
+
+            return ret;
+        }        
     }
 }

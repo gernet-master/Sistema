@@ -3,16 +3,14 @@ Descrição: Classe de tabelas do sistema
 Data: 01/01/2021 - v.1.0
 */
 
+using Functions;
 using Sistema.Assets.DB;
-using Sistema.Assets.Functions;
 
 namespace Sistema.Assets.Entities
 {
-
     // Tabelas do sistema
     public class Tabelas
     {
-
         // Variáveis
         public Variable idtabela = new Variable(config: "143|0");
         public Variable txtabela = new Variable(config: "144|1");
@@ -24,7 +22,7 @@ namespace Sistema.Assets.Entities
         {
             this.idtabela.value = 0;
             this.txtabela.value = "";
-            this.flauditoria.value = false;
+            this.flauditoria.value = 0;
             this.idcodigoidioma.value = null;
         }
 
@@ -35,9 +33,29 @@ namespace Sistema.Assets.Entities
         }
 
         // Alterar
-        public void Alterar()
+        public void Alterar(Tabelas temp)
         {
-            new TabelasDB().Alterar(this);
+            new TabelasDB().Alterar(this, temp);
+        }
+
+        // Excluir
+        public void Excluir()
+        {
+            new TabelasDB().Excluir(this);
+        }
+
+        // Função para retornar o campo correto
+        public Variable GetField(string field = "")
+        {
+            dynamic r = null;
+            switch (field)
+            {
+                case "idtabela": r = this.idtabela; break;
+                case "txtabela": r = this.txtabela; break;
+                case "flauditoria": r = this.flauditoria; break;
+                case "idcodigoidioma": r = this.idcodigoidioma; break;
+            }
+            return r;
         }
     }
 }

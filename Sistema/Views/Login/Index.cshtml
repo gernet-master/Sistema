@@ -9,20 +9,20 @@ Data: 01/01/2021 - v.1.0
 
 <html lang="pt-br">
 
-<!-- Head -->
+@* Head *@
 <head>
     <meta charset="utf-8" />
     <title>@Language.XmlLang(1, 1).Text</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <!-- Fonts -->
+    @* Fonts *@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700" />
 
-    <!-- Styles -->
+    @* Styles *@
     @Styles.Render("~/system_css")
     @Styles.Render("~/login_css")
 
-    <!-- Icon -->
+    @* Icon *@
     <link rel="shortcut icon" href="../assets/media/logos/favicon.ico" />
 </head>
 
@@ -48,13 +48,14 @@ Data: 01/01/2021 - v.1.0
                                     </a>
                                 </div>
 
-                                <!-- Login -->
+                                @* Formulário de login *@
                                 <div class="kt-login__signin">
 
                                     <div class="kt-login__form">
 
                                         <form class="kt-form" action="" id="kt-form-login">
 
+                                            @* Usuário *@
                                             <div class="form-group">
                                                 <label for="user">@Language.XmlLang(29, 1).Text</label>
                                                 <div class="input-group">
@@ -69,10 +70,11 @@ Data: 01/01/2021 - v.1.0
                                                             </svg>
                                                         </span>
                                                     </div>
-                                                    <input class="form-control kt-margin-l-40 validate[required,minSize[3],maxSize[20]]" type="text" placeholder="" name="user" id="user" maxlength="20" value="gernet">
+                                                    <input class="form-control kt-margin-l-40" validate="required,minsize=3,maxsize=20" type="text" placeholder="" name="user" id="user" maxlength="20" value="gernet">
                                                 </div>
                                             </div>
 
+                                            @* Senha *@
                                             <div class="form-group kt-margin-t-15">
                                                 <label for="password">@Language.XmlLang(30, 1).Text</label>
                                                 <div class="input-group">
@@ -89,10 +91,11 @@ Data: 01/01/2021 - v.1.0
                                                             </svg>
                                                         </span>
                                                     </div>
-                                                    <input class="form-control kt-margin-l-40 validate[required,minSize[6],maxSize[20]]" type="password" placeholder="" name="password" id="password" maxlength="20" value="d121079c">
+                                                    <input class="form-control kt-margin-l-40" validate="required,minsize=6,maxsize=20" type="password" placeholder="" name="password" id="password" maxlength="20" value="d121079c">                                                    
                                                 </div>
                                             </div>
 
+                                            @* Permanecer conectado *@
                                             <div class="kt-login__extra">
                                                 <label class="kt-checkbox">
                                                     <input type="checkbox" value="1" id="remember" name="remember"> @Language.XmlLang(36, 2).Text
@@ -109,16 +112,19 @@ Data: 01/01/2021 - v.1.0
 
                                 </div>
 
-                                <!-- Recuperar senha -->
+                                @* Recuperar senha *@
                                 <div class="kt-login__forgot">
+
                                     <div class="kt-login__head">
                                         <h3 class="kt-login__title">@Language.XmlLang(37, 2).Text ?</h3>
                                         <div class="kt-login__desc">@Language.XmlLang(40, 2).Text</div>
                                     </div>
+
                                     <div class="kt-login__form">
 
                                         <form class="kt-form" action="" id="kt-form-recover">
 
+                                            @* Usuário *@
                                             <div class="form-group">
                                                 <label for="user">@Language.XmlLang(29, 1).Text</label>
                                                 <div class="input-group">
@@ -133,10 +139,11 @@ Data: 01/01/2021 - v.1.0
                                                             </svg>
                                                         </span>
                                                     </div>
-                                                    <input class="form-control kt-margin-l-40 validate[required,minSize[3],maxSize[20]]" type="text" placeholder="" name="user_r" id="user_r" maxlength="20" value="gernet">
+                                                    <input class="form-control kt-margin-l-40" validate="required,minsize=3,maxsize=20" type="text" placeholder="" name="user_r" id="user_r" maxlength="20" value="gernet">
                                                 </div>
                                             </div>
 
+                                            @* E-mail *@
                                             <div class="form-group kt-margin-t-15">
                                                 <label for="email">@Language.XmlLang(31, 1).Text</label>
                                                 <div class="input-group">
@@ -150,7 +157,7 @@ Data: 01/01/2021 - v.1.0
                                                             </svg>
                                                         </span>
                                                     </div>
-                                                    <input class="form-control kt-margin-l-40 validate[required,minSize[6],maxSize[100],email]" type="text" placeholder="" name="email" id="email" maxlength="100" value="dbcdiogo@gmail.com">
+                                                    <input class="form-control kt-margin-l-40" validate="required,minsize=6,maxsize=100,email" type="text" placeholder="" name="email" id="email" maxlength="100" value="dbcdiogo@gmail.com">
                                                 </div>
                                             </div>
 
@@ -165,18 +172,24 @@ Data: 01/01/2021 - v.1.0
 
                             </div>
                         </div>
+
+
+                        @* Logo Gernet *@
                         <div class="kt-login__account">
                             <a href="http://www.gernet.com.br" target="_blank" data-toggle="kt-tooltip" title="@Language.XmlLang(45, 2).Text www.gernet.com.br" data-placement="top">
                                 <img src="~/Assets/Media/logos/gernet.png" />
                             </a>
                         </div>
+
                     </div>
                 </div>
+
+                @* Mensagens *@
                 <div class="kt-grid__item kt-grid__item--fluid kt-grid__item--center kt-grid kt-grid--ver kt-login__content" style="background-image: url(assets/media/bg/bg-5.jpg);">
                     <div class="kt-login__section">
                         <div class="kt-login__block">
-                            @*<h3 class="kt-login__title">@Language.XmlLang(44, 1).Text</h3>
-                            <div class="kt-login__desc">@Language.XmlLang(43, 1).Text</div>*@
+                            <h3 class="kt-login__title">@Language.XmlLang(44, 1).Text</h3>
+                            <div class="kt-login__desc">@Language.XmlLang(43, 1).Text</div>
                         </div>
                     </div>
                 </div>
@@ -188,6 +201,6 @@ Data: 01/01/2021 - v.1.0
 
 </html>
 
-<!-- Scripts -->
+@* Scripts *@
 @Scripts.Render("~/system_scripts")
 @Scripts.Render("~/system_login")

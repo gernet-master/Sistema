@@ -43,7 +43,7 @@
   <string id="40" text="preencha com seu e-mail para receber instruções de como gerar uma nova senha" />
   <string id="41" text="solicitar" />
   <string id="42" text="voltar" />
-  <string id="43" text="sistema para controle interno de crm e processos" />
+  <string id="43" text="sistema para controle interno" />
   <string id="44" text="intranet" />
   <string id="45" text="ir para o site" />
   <string id="46" text="dados incorretos" />
@@ -99,7 +99,7 @@
   <string id="96" text="data" />
   <string id="97" text="usuário não encontrado" />
   <string id="98" text="código inválido" />
-  <string id="99" text="o link já foi utilizado para gerar nova senha" />
+  <string id="99" text="este link já foi utilizado" />
   <string id="100" text="link expirado" />
   <string id="101" text="sua nova senha é" />
   <string id="102" text="senha alterada" />
@@ -163,42 +163,142 @@
   <string id="160" text="minimizar" />
   <string id="161" text="remover" />
   <string id="162" text="listagem" />
-  <string id="163" text="" />
-  <string id="164" text="" />
-  <string id="165" text="" />
-  <string id="166" text="" />
-  <string id="167" text="" />
-  <string id="168" text="" />
-  <string id="169" text="" />
-  <string id="170" text="" />
-  <string id="171" text="" />
-  <string id="172" text="" />
-  <string id="173" text="" />
-  <string id="174" text="" />
-  <string id="175" text="" />
-  <string id="176" text="" />
-  <string id="177" text="" />
-  <string id="178" text="" />
-  <string id="179" text="" />
-  <string id="180" text="" />
-  <string id="181" text="" />
-  <string id="182" text="" />
-  <string id="183" text="" />
-  <string id="184" text="" />
-  <string id="185" text="" />
-  <string id="186" text="" />
-  <string id="187" text="" />
-  <string id="188" text="" />
-  <string id="189" text="" />
-  <string id="190" text="" />
-  <string id="191" text="" />
-  <string id="192" text="" />
-  <string id="193" text="" />
-  <string id="194" text="" />
-  <string id="195" text="" />
-  <string id="196" text="" />
-  <string id="197" text="" />
-  <string id="198" text="" />
-  <string id="199" text="" />
-  <string id="200" text="" />
+  <string id="163" text="exibindo" />
+  <string id="164" text="a" />
+  <string id="165" text="do total de" />
+  <string id="166" text="exibir por página" />
+  <string id="167" text="página" />
+  <string id="168" text="objeto não encontrado na classe" />
+  <string id="169" text="aguarde, carregando..." />
+  <string id="170" text="primeira página" />
+  <string id="171" text="página anterior" />
+  <string id="172" text="próxima página" />
+  <string id="173" text="última página" />
+  <string id="174" text="filtrar resultados" />
+  <string id="175" text="exibir ou esconder colunas" />
+  <string id="176" text="gravar pesquisa" />
+  <string id="177" text="ler perquisa" />
+  <string id="178" text="nenhum registro encontrado" />
+  <string id="179" text="cep" />
+  <string id="180" text="cep não localizado" />
+  <string id="181" text="informe o número do cep" />
+  <string id="182" text="cep com formato inválido" />
+  <string id="183" text="aplicar filtro" />
+  <string id="184" text="limpar filtro" />
+  <string id="185" text="colunas" />
+  <string id="186" text="todas" />
+  <string id="187" text="somente visíveis" />
+  <string id="188" text="formato" />
+  <string id="189" text="páginas" />
+  <string id="190" text="exportar" />
+  <string id="191" text="excel" />
+  <string id="192" text="pdf" />
+  <string id="193" text="primeiro registro" />
+  <string id="194" text="registro anterior" />
+  <string id="195" text="próximo registro" />
+  <string id="196" text="último registro" />
+  <string id="197" text="código do identificador" />
+  <string id="198" text="histórico de alterações" />
+  <string id="199" text="identificador" />
+  <string id="200" text="registro não informado" />
+  <string id="201" text="registro inválido" />
+  <string id="202" text="todas as tabelas estão cadastradas" />
+  <string id="203" text="ação não localizada" />
+  <string id="204" text="excluir registro" />
+  <string id="205" text="informe sua senha para confirmar" />
+  <string id="206" text="confirmar" />
+  <string id="207" text="informe a senha" />
+  <string id="208" text="ocorreu um erro durante o processamento" />
+  <string id="209" text="aguarde, processando" />
+  <string id="210" text="registro não localizado" />
+  <string id="211" text="registro excluído com sucesso" />
+  <string id="212" text="localização de registros" />
+  <string id="213" text="registro inserido com sucesso" />
+  <string id="214" text="registro alterado com sucesso" />
+  <string id="215" text="preferências do usuário" />
+  <string id="216" text="log de auditoria" />
+  <string id="217" text="sistema do usuário" />
+  <string id="218" text="unidades do usuário" />
+  <string id="219" text="obrigatório" />
+  <string id="220" text="mínimo de" />
+  <string id="221" text="máximo de" />
+  <string id="222" text="caracter(es)" />
+  <string id="223" text="e-mail inválido" />
+  <string id="224" text="os campos devem ser iguais" />
+  <string id="225" text="preencha somente com números" />
+  <string id="226" text="" />
+  <string id="227" text="" />
+  <string id="228" text="" />
+  <string id="229" text="" />
+  <string id="230" text="" />
+  <string id="231" text="" />
+  <string id="232" text="" />
+  <string id="233" text="" />
+  <string id="234" text="" />
+  <string id="235" text="" />
+  <string id="236" text="" />
+  <string id="237" text="" />
+  <string id="238" text="" />
+  <string id="239" text="" />
+  <string id="240" text="" />
+  <string id="241" text="" />
+  <string id="242" text="" />
+  <string id="243" text="" />
+  <string id="244" text="" />
+  <string id="245" text="" />
+  <string id="246" text="" />
+  <string id="247" text="" />
+  <string id="248" text="" />
+  <string id="249" text="" />
+  <string id="250" text="" />
+  <string id="251" text="" />
+  <string id="252" text="" />
+  <string id="253" text="" />
+  <string id="254" text="" />
+  <string id="255" text="" />
+  <string id="256" text="" />
+  <string id="257" text="" />
+  <string id="258" text="" />
+  <string id="259" text="" />
+  <string id="260" text="" />
+  <string id="261" text="" />
+  <string id="262" text="" />
+  <string id="263" text="" />
+  <string id="264" text="" />
+  <string id="265" text="" />
+  <string id="266" text="" />
+  <string id="267" text="" />
+  <string id="268" text="" />
+  <string id="269" text="" />
+  <string id="270" text="" />
+  <string id="271" text="" />
+  <string id="272" text="" />
+  <string id="273" text="" />
+  <string id="274" text="" />
+  <string id="275" text="" />
+  <string id="276" text="" />
+  <string id="277" text="" />
+  <string id="278" text="" />
+  <string id="279" text="" />
+  <string id="280" text="" />
+  <string id="281" text="" />
+  <string id="282" text="" />
+  <string id="283" text="" />
+  <string id="284" text="" />
+  <string id="285" text="" />
+  <string id="286" text="" />
+  <string id="287" text="" />
+  <string id="288" text="" />
+  <string id="289" text="" />
+  <string id="290" text="" />
+  <string id="291" text="" />
+  <string id="292" text="" />
+  <string id="293" text="" />
+  <string id="294" text="" />
+  <string id="295" text="" />
+  <string id="296" text="" />
+  <string id="297" text="" />
+  <string id="298" text="" />
+  <string id="299" text="" />
+  <string id="300" text="" />
 </lang>

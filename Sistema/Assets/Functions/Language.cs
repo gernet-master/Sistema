@@ -58,23 +58,31 @@ namespace Functions
             // Seleção do item
             XmlNode node = xml.SelectSingleNode("//string[@id='" + ident + "']");
 
-            // Texto
-            if (node.Attributes != null && node.Attributes["text"] != null)
+            if (node != null)
             {
-                x.Text = node.Attributes["text"].Value;
+                // Texto
+                if (node.Attributes != null && node.Attributes["text"] != null)
+                {
+                    x.Text = node.Attributes["text"].Value;
+                }
+                else
+                {
+                    x.Text = "";
+                }
+
+                // Accesskey
+                if (node.Attributes != null && node.Attributes["accesskey"] != null)
+                {
+                    x.AccessKey = node.Attributes["accesskey"].Value;
+                }
+                else
+                {
+                    x.AccessKey = "";
+                }
             }
             else
             {
                 x.Text = "";
-            }
-
-            // Accesskey
-            if (node.Attributes != null && node.Attributes["accesskey"] != null)
-            {
-                x.AccessKey = node.Attributes["accesskey"].Value;
-            }
-            else
-            {
                 x.AccessKey = "";
             }
 

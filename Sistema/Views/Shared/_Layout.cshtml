@@ -9,75 +9,79 @@ Data: 01/01/2021 - v.1.0
 
 <html lang="pt-br">
 
-    <!-- Head -->
+    @* Head *@
     <head>
         <meta charset="utf-8" />
         <title>@Language.XmlLang(1, 1).Text</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-        <!-- Fonts -->
+        @* Fonts *@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700" />
 
-        <!-- Styles -->
+        @* Styles *@
         @Styles.Render("~/system_css")
 
-        <!-- Icon -->
+        @* Icon *@
         <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
     </head>
 
-    <!-- Body -->
+    @* Body *@
     <body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--fixed kt-subheader--solid kt-aside--enabled kt-aside--static kt-aside--minimize kt-footer--fixed kt-page--loading">
-
-        <!-- Header Mobile -->
+        
+        @* Header Mobile *@
         @Html.Action("HeaderMobile", "Partials")
 
         <div class="kt-grid kt-grid--hor kt-grid--root">
 
             <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
 
-                <!-- Menu -->
+                @* Menu *@
                 @Html.Action("Menu", "Partials")
 
                 <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
 
-                    <!-- Header -->
+                    @* Header *@
                     @Html.Action("Header", "Partials")
 
                     <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
 
-                        <!-- Objeto usado para corrigir a posição das opções dentro dos portlets -->
+                        @* Objeto usado para corrigir a posição das opções dentro dos portlets *@
                         <label id="temp_portlet_dropdown" style="position:absolute; z-index:999">
                             <div class="dropdown-menu dropdown-menu-right"></div>
                         </label>
 
-                        <!-- Content -->
+                        @* Content *@
                         <div class="kt-container kt-container--fluid  kt-grid__item kt-grid__item--fluid" id="kt_content_app">
                             @RenderBody()
                         </div>
 
                     </div>
 
-                    <!-- Footer -->
+                    @* Footer *@
                     @Html.Action("Footer", "Partials")
                 </div>
             </div>
         </div>
 
-        <!-- Chat Panel -->
+        @* Chat Panel *@
         @Html.Action("ChatPanel", "Partials")
 
-        <!-- Tela de mensagem do chat -->
+        @* Tela de mensagem do chat *@
         @Html.Action("ChatMsg", "Partials")
 
-        <!-- Scroll Top -->
+        @* Scroll Top *@
         @Html.Action("ScrollTop", "Partials")
+
+        @* Modal *@
+        @Html.Action("Modal", "Partials")
 
     </body>
 
 </html>
 
-<!-- Scripts -->
+@* Scripts *@
 @Scripts.Render("~/system_scripts")
 @Scripts.Render("~/system_timer")
 @Scripts.Render("~/system_header")
 @Scripts.Render("~/system_footer")
+@RenderSection("scripts", required: false)

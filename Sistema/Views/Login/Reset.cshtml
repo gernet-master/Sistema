@@ -30,19 +30,18 @@ Data: 01/01/2021 - v.1.0
 
     <div class="kt-margin-t-100">
         <center>
+
+            @* Mensagens *@
             @if (ViewBag.error == 0)
             {
-                <h1 style="font-weight: 700; font-size: 10rem; color:#4800ff;">@Language.XmlLang(102, 1).Text</h1>
-                <p style="font-weight: 500; font-size: 3rem; color:#000000;">
-                    @Language.XmlLang(101, 2).Text
-                </p>
+                <h1 style="font-weight: 700; font-size: 6rem; color:#4800ff;">@Language.XmlLang(102, 1).Text</h1><br />
                 <p style="font-weight: 500; font-size: 2rem; color:#000000;">
-                    @ViewBag.password.
+                    @Language.XmlLang(101, 2).Text: <label style="font-weight: 700; font-size: 3rem; color:#ff0000;">@ViewBag.password</label>
                 </p>
             }
             else
             {
-                <h1 style="font-weight: 700; font-size: 10rem; color:#4800ff;">@Language.XmlLang(77, 1).Text</h1>
+                <h1 style="font-weight: 700; font-size: 6rem; color:#4800ff;">@Language.XmlLang(77, 1).Text</h1><br />
                 <p style="font-weight: 500; font-size: 2rem; color:#000000;">
                     @switch (ViewBag.error)
                     {
@@ -62,9 +61,12 @@ Data: 01/01/2021 - v.1.0
                 </p>
             }
 
+            @* Redireciona para login *@
             <div class="kt-margin-t-50">
                 <button onclick="location.href='/Login';" type="button" class="btn btn-brand btn-pill btn-elevate">@Language.XmlLang(80, 1).Text</button>
             </div>
+
+            @* Logo Gernet *@
             <div class="kt-margin-t-100">
                 <a href="http://www.gernet.com.br" target="_blank" data-toggle="kt-tooltip" title="@Language.XmlLang(45, 2).Text www.gernet.com.br" data-placement="top">
                     <img src="~/Assets/Media/logos/gernet.png" />

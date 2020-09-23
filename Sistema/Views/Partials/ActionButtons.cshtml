@@ -1,25 +1,36 @@
-﻿@using Functions;
+﻿@* Funções *@
+@using Functions;
 
-<ul class="kt-sticky-toolbar">
-    @*<li class="kt-sticky-toolbar__item kt-sticky-toolbar__item--dark" data-toggle="kt-tooltip" title="" data-placement="left" data-original-title="@Language.XmlLang(24, 1).Text" id="btn_ger_new">
-        <a href="#"><i class="la la-file"></i></a>
+@* Botões de ações *@
+<ul class="kt-sticky-toolbar" id="kt_buttons_app_gernet">
+
+    @* Novo registro *@
+    <li id="app_actionbutton_new" class="@(Model.id == 0 ? "hide" : "") kt-sticky-toolbar__item kt-sticky-toolbar__item--dark" data-toggle="kt-tooltip" title="" data-placement="left" data-original-title="@Language.XmlLang(24, 2).Text" id="btn_ger_new">
+        <a href="#" onClick="APP.action('N')"><i class="la la-file"></i></a>
     </li>
-    <li class="kt-sticky-toolbar__item kt-sticky-toolbar__item--info" data-toggle="kt-tooltip" title="" data-placement="left" data-original-title="@Language.XmlLang(147, 1).Text" id="btn_ger_edit">
-        <a href="#"><i class="la la-edit"></i></a>
+
+    @* Gravar *@
+    <li id="app_actionbutton_save" class="kt-sticky-toolbar__item kt-sticky-toolbar__item--success" data-toggle="kt-tooltip" title="" data-placement="right" data-original-title="@Language.XmlLang(151, 2).Text" id="btn_ger_save">
+        <a href="#" onClick="APP.action('S')"><i class="la la-save"></i></a>
     </li>
-    <li class="kt-sticky-toolbar__item kt-sticky-toolbar__item--danger" data-toggle="kt-tooltip" title="" data-placement="left" data-original-title="@Language.XmlLang(148, 1).Text" id="btn_ger_delete">
-        <a href="#"><i class="la la-trash"></i></a>
+
+    @* Excluir *@
+    <li id="app_actionbutton_delete" class="@(Model.id == 0 ? "hide" : "") kt-sticky-toolbar__item kt-sticky-toolbar__item--danger" data-toggle="kt-tooltip" title="" data-placement="left" data-original-title="@Language.XmlLang(148, 2).Text" id="btn_ger_delete">
+        <a href="#" onClick="APP.action('D')"><i class="la la-trash"></i></a>
     </li>
-    <li class="kt-sticky-toolbar__item kt-sticky-toolbar__item--alert" data-toggle="kt-tooltip" title="" data-placement="left" data-original-title="@Language.XmlLang(149, 1).Text" id="btn_ger_search">
-        <a href="#"><i class="la la-search"></i></a>
-    </li>*@
-    <li class="kt-sticky-toolbar__item kt-sticky-toolbar__item--success" data-toggle="kt-tooltip" title="" data-placement="right" data-original-title="@Language.XmlLang(151, 1).Text" id="btn_ger_save">
-        <a href="#"><i class="la la-save"></i></a>
+
+    @* Localizar *@
+    <li id="app_actionbutton_find" class="@(Model.id == 0 ? "hide" : "") kt-sticky-toolbar__item kt-sticky-toolbar__item--alert" data-toggle="kt-tooltip" title="" data-placement="left" data-original-title="@Language.XmlLang(149, 2).Text" id="btn_ger_search">
+        <a href="#" onClick="APP.action('F')"><i class="la la-search"></i></a>
     </li>
-    <li class="kt-sticky-toolbar__item kt-sticky-toolbar__item--warning" data-toggle="kt-tooltip" title="" data-placement="left" data-original-title="@Language.XmlLang(152, 1).Text" id="btn_ger_cancel">
-        <a href="#"><i class="la la-times-circle"></i></a>
+
+    @* Cancelar *@
+    <li id="app_actionbutton_cancel" class="@(Model.id > 0 ? "hide" : "") kt-sticky-toolbar__item kt-sticky-toolbar__item--warning" data-toggle="kt-tooltip" title="" data-placement="left" data-original-title="@Language.XmlLang(152, 2).Text" id="btn_ger_cancel">
+        <a href="#" onClick="APP.action('C')"><i class="la la-times-circle"></i></a>
     </li>
-    @*<li class="kt-sticky-toolbar__item kt-sticky-toolbar__item--brown" data-toggle="kt-tooltip" title="" data-placement="left" data-original-title="@Language.XmlLang(150, 1).Text" id="btn_ger_print">
-        <a href="#"><i class="la la-print"></i></a>
+
+    @* Imprimir *@
+    @*<li id="app_actionbutton_print" class="@(Model.id == 0 ? "hide" : "") kt-sticky-toolbar__item kt-sticky-toolbar__item--brown" data-toggle="kt-tooltip" title="" data-placement="left" data-original-title="@Language.XmlLang(150, 2).Text" id="btn_ger_print">
+        <a href="#" onClick="APP.action('P')"><i class="la la-print"></i></a>
     </li>*@
 </ul>

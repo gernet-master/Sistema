@@ -5,7 +5,7 @@
             $.validationEngineLanguage.allRules = {
                 "required": {
                     "regex": "none",
-                    "alertText": "obrigatório",
+                    "alertText": "Obrigatório",
                     "alertTextCheckboxMultiple": "Selecione uma opção",
                     "alertTextCheckboxe": "obrigatório",
                     "alertTextDateRange": "Ambas as datas do intervalo são obrigatórias"

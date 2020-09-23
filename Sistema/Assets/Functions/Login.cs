@@ -15,19 +15,33 @@ namespace Functions
     public class Login
     {
         // Valida usuário e senha
-        public static string LoginCheck(string user = "", string password = "", int remember = 0)
+        public static Retorno LoginCheck(string user = "", string password = "", int remember = 0)
         {
+            // Retorno
+            Retorno result = new Retorno();
 
             // Verifica se o usuário está dentro do padrão
             if ((user == "") || (user.Length > 20))
             {
-                return "0|" + Language.XmlLang(46, 2).Text;
+                result.success = 0;
+                result.msg = Language.XmlLang(46, 2).Text;
+                return result;
             }
 
             // Verifica se a senha está dentro do padrão
             if ((password == "") || (password.Length > 20))
             {
-                return "0|" + Language.XmlLang(46, 2).Text;
+                result.success = 0;
+                result.msg = Language.XmlLang(46, 2).Text;
+                return result;
+            }
+
+            // Verifica se possui caracteres inválidos para senha
+            if ((password.IndexOf(" ") >= 0) || (password.IndexOf("<") >= 0) || (password.IndexOf(">") >= 0) || (password.IndexOf("'") >= 0))
+            {
+                result.success = 0;
+                result.msg = Language.XmlLang(46, 2).Text;
+                return result;
             }
 
             // Codifica a senha
@@ -44,6 +58,7 @@ namespace Functions
                 int idusuario = new UsuariosDB().Id(user);
                 if (idusuario > 0)
                 {
+
                     // Total de vezes o usuário errou a senha nos últimos 5 minutos
                     int erro = new Log_AcessoDB().ErrouSenha(idusuario);
 
@@ -51,7 +66,9 @@ namespace Functions
                     if (erro > 5)
                     {
                         // Exibe mensagem de usuário bloqueado e a data para desbloqueio
-                        return "0|" + Language.XmlLang(69, 2).Text + "<br><br>" + Language.XmlLang(70, 2).Text + ": " + DateTime.Now.AddMinutes(10);
+                        result.success = 0;
+                        result.msg = Language.XmlLang(69, 2).Text + "<br><br>" + Language.XmlLang(70, 2).Text + ": " + DateTime.Now.AddMinutes(10);
+                        return result;
                     }
 
                     // 5º erro
@@ -81,7 +98,9 @@ namespace Functions
                         }
 
                         // Exibe mensagem de usuário bloqueado
-                        return "0|" + Language.XmlLang(71, 2).Text + ".<br><br>" + Language.XmlLang(72, 2).Text + " " + erro + " " + Language.XmlLang(5, 0).Text + " 5.<br><br>" + Language.XmlLang(73, 2).Text;
+                        result.success = 0;
+                        result.msg = Language.XmlLang(71, 2).Text + ".<br><br>" + Language.XmlLang(72, 2).Text + " " + erro + " " + Language.XmlLang(5, 0).Text + " 5.<br><br>" + Language.XmlLang(73, 2).Text;
+                        return result;
                     }
 
                     // 1º ao 4º erro
@@ -94,12 +113,12 @@ namespace Functions
                         log.Gravar();
 
                         // Exibe aviso
-                        return "0|" + Language.XmlLang(71, 2).Text + ".<br><br>" + Language.XmlLang(72, 2).Text + " " + erro + " " + Language.XmlLang(5, 0).Text + " 5.<br><br>" + Language.XmlLang(74, 2).Text;
+                        result.success = 0;
+                        result.msg = Language.XmlLang(71, 2).Text + ".<br><br>" + Language.XmlLang(72, 2).Text + " " + erro + " " + Language.XmlLang(5, 0).Text + " 5.<br><br>" + Language.XmlLang(74, 2).Text;
+                        return result;
                     }                      
 
                 }
-
-                return "0|" + Language.XmlLang(46, 2).Text;
             }
 
             // Dados corretos
@@ -118,7 +137,9 @@ namespace Functions
                         if (seconds < 600) {
 
                             // Exibe mensagem de usuário bloqueado e a data para desbloqueio
-                            return "0|" + Language.XmlLang(69, 2).Text + "<br><br>" + Language.XmlLang(70, 2).Text + ": " + DateTime.Now.AddMinutes(10);
+                            result.success = 0;
+                            result.msg = Language.XmlLang(69, 2).Text + "<br><br>" + Language.XmlLang(70, 2).Text + ": " + DateTime.Now.AddMinutes(10);
+                            return result;
                         }
                     }
                 }
@@ -126,7 +147,9 @@ namespace Functions
                 // Verifica se usuário está ativo
                 if (!Convert.ToBoolean(usuario.flativo.value))
                 {
-                    return "0|" + Language.XmlLang(47, 2).Text;
+                    result.success = 0;
+                    result.msg = Language.XmlLang(47, 2).Text;
+                    return result;
                 }
 
                 // Pega a última sessionid
@@ -140,7 +163,8 @@ namespace Functions
                     HttpContext.Current.Session["usuario"] = usuario.idusuario.value;
 
                     // Retorna mensagem de confirmação
-                    return "3|";
+                    result.success = 3;
+                    return result;
                 }
 
                 // Verifica se o usuário é forçado a alterar a senha
@@ -152,46 +176,60 @@ namespace Functions
                     HttpContext.Current.Session["cookie"] = remember;
 
                     // Redireciona para tela de alteração
-                    return "1|";
+                    result.success = 1;
+                    return result;
                 }                
 
                 // Executa as rotinas de login
                 RotinaLogin(usuario, usuarios_sistema, remember);
 
                 // Redireciona para home
-                return "2|";
+                result.success = 2;
+                return result;
             }
-
+            return result;
         }
 
         // Envia link para recuperação de senha
-        public static string RecoverPassword(string user = "", string email = "")
+        public static Retorno RecoverPassword(string user = "", string email = "")
         {
+            // Retorno
+            Retorno result = new Retorno();
+
             // Verifica se o usuário está dentro do padrão
             if ((user == "") || (user.Length > 20))
             {
-                return "0|" + Language.XmlLang(46, 2).Text;
+                result.success = 0;
+                result.msg = Language.XmlLang(46, 2).Text;
+                return result;
             }
 
             // Verifica se o email está dentro do padrão
             if ((email == "") || (email.Length > 100))
             {
-                return "0|" + Language.XmlLang(46, 2).Text;
+                result.success = 0;
+                result.msg = Language.XmlLang(46, 2).Text;
+                return result;
             }
 
             // Valida os dados
             int idusuario = new UsuariosDB().ValidaUsuarioEmail(user, email);
 
+            // Se retornou 0, dados inválidos
             if (idusuario == 0)
             {
-                return "0|" + Language.XmlLang(46, 2).Text;
+                result.success = 0;
+                result.msg = Language.XmlLang(46, 2).Text;
+                return result;
             }
             else
             {
                 // Verifica se já foi enviado link no período de 24h
                 if (new Log_Link_SenhaDB().LinkSenha(idusuario))
                 {
-                    return "0|" + Language.XmlLang(81, 2).Text;
+                    result.success = 0;
+                    result.msg = Language.XmlLang(81, 2).Text;
+                    return result;
                 }
                 else
                 {
@@ -200,7 +238,9 @@ namespace Functions
 
                     if (gernet_controle == null)
                     {
-                        return "0|" + Language.XmlLang(84, 2).Text;
+                        result.success = 0;
+                        result.msg = Language.XmlLang(84, 2).Text;
+                        return result;
                     }
                     else
                     {
@@ -225,11 +265,15 @@ namespace Functions
                             log_link_senha.txchave.value = link_key;
                             log_link_senha.Gravar();
 
-                            return "1|" + Language.XmlLang(92, 2).Text;                            
+                            result.success = 1;
+                            result.msg = Language.XmlLang(92, 2).Text;
+                            return result;
                         }
                         else
                         {
-                            return "0|" + Language.XmlLang(84, 2).Text;
+                            result.success = 0;
+                            result.msg = Language.XmlLang(84, 2).Text;
+                            return result;
                         }
                         
                     }
@@ -239,27 +283,44 @@ namespace Functions
         }
 
         // Altera a senha do usuário
-        public static string ChangePassword(string password_atual = "", string password_novo = "")
+        public static Retorno ChangePassword(string password_atual = "", string password_novo = "")
         {
+            // Retorno
+            Retorno result = new Retorno();
+
             // Verifica se a senha está dentro do padrão
-            if ((password_atual == "") || (password_atual.Length > 20))
+            if ((password_atual.Length < 8) || (password_atual.Length > 20))
             {
-                return "0|" + Language.XmlLang(46, 2).Text;
+                result.success = 0;
+                result.msg = Language.XmlLang(46, 2).Text;
+                return result;
             }
 
             // Verifica se a nova senha está dentro do padrão
-            if ((password_novo == "") || (password_novo.Length > 20))
+            if ((password_novo.Length < 8) || (password_novo.Length > 20))
             {
-                return "0|" + Language.XmlLang(46, 2).Text;
+                result.success = 0;
+                result.msg = Language.XmlLang(46, 2).Text;
+                return result;
             }
 
             // Verifica se a nova senha é igual a antiga
             if (password_atual == password_novo)
             {
-                return "0|" + Language.XmlLang(67, 2).Text;
+                result.success = 0;
+                result.msg = Language.XmlLang(67, 2).Text;
+                return result;
             }
 
-            // Codifica a senha
+            // Verifica se possui caracteres inválidos para senha
+            if ((password_novo.IndexOf(" ") >= 0) || (password_novo.IndexOf("<") >= 0) || (password_novo.IndexOf(">") >= 0) || (password_novo.IndexOf("'") >= 0))
+            {
+                result.success = 0;
+                result.msg = Language.XmlLang(67, 2).Text;
+                return result;
+            }
+
+            // Codifica a senha atual e nova senha
             password_atual = Crypt.CreateHash(password_atual);
             password_novo = Crypt.CreateHash(password_novo);
 
@@ -269,25 +330,28 @@ namespace Functions
             // Dados incorretos
             if (usuario == null)
             {
-                return "0|" + Language.XmlLang(46, 2).Text;
+                result.success = 0;
+                result.msg = Language.XmlLang(46, 2).Text;
+                return result;
             }
 
             // Dados corretos
             else
             {
+                result.success = 1;
                 usuario.flalterasenha.value = 0;
                 usuario.txsenha.value = password_novo;
                 usuario.Alterar();
-            }
 
-            // Pega os dados de controle do usuário
-            Usuarios_Sistema usuarios_sistema = new Usuarios_SistemaDB().Buscar(usuario.idusuario.value);
+                // Pega os dados de controle do usuário
+                Usuarios_Sistema usuarios_sistema = new Usuarios_SistemaDB().Buscar(usuario.idusuario.value);
 
-            // Executa as rotinas de login
-            RotinaLogin(usuario, usuarios_sistema, Convert.ToInt32(HttpContext.Current.Session["cookie"]));
+                // Executa as rotinas de login
+                RotinaLogin(usuario, usuarios_sistema, Convert.ToInt32(HttpContext.Current.Session["cookie"]));
 
-            // Redireciona para home
-            return "1|";
+                // Redireciona para home
+                return result;
+            }            
         }
 
         // Rotinas de login
@@ -339,6 +403,7 @@ namespace Functions
                 else
                 {
                     cookie = new HttpCookie("sistema_gernet");
+                    cookie.SameSite = SameSiteMode.None;
                     cookie.Value = usuario.idusuario.value + "|" + usuario.idperfil.value;
                 }
 
@@ -412,9 +477,6 @@ namespace Functions
 
             // Grava o código do escritório
             HttpContext.Current.Session["unidade"] = unidade;
-
-            // Exclui os frames cadastrados do usuário
-            new Usuarios_FramesDB().Excluir(usuario.idusuario.value);
 
             // Grava log de acesso
             Log_Acesso log = new Log_Acesso();

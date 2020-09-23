@@ -3,38 +3,46 @@
     Data: 01/01/2021 - v.1.0
 *@
 
-@model Sistema.Models.PartialsView_SubHeaderApp
-
+@* Funções *@
 @using Functions;
 
 <div class="kt-subheader  kt-grid__item" id="kt_subheader">
 
     <div class="kt-container  kt-container--fluid ">
 
+        @* Breadcrumb *@
         <div class="kt-subheader__main">
 
-            <!-- Dashboard -->
-            <span class="kt-subheader__desc"><a href="javascript:UTILS.menu('/Home/Dashboard')">@Language.XmlLang(7, 2).Text</a></span>
+            @* Dashboard *@
+            <span class="kt-subheader__desc"><a href="javascript:UTILS.menu('Home','Dashboard')">@Language.XmlLang(7, 2).Text</a></span>
 
-            <!-- Loop nos aplicativos -->
+            @* Loop nos aplicativos *@
             @{
-                if (Model.app != "")
+                if (Model.action != "")
                 {
-                    string[] arr = Model.app.Replace("/Apps/", "").Split('/');
-                    foreach (string a in arr)
+                    string[] arr = Model.action.TrimStart('/').Split('/');
+
+                    @* Remove o primeiro elemento do array de app *@
+                    //arr = arr.Skip(1).ToArray();
+
+                    @* Remove o último item do array de app *@
+                    //Array.Resize(ref arr, arr.Length - 1);
+
+                    @* Lista *@
+                    @*foreach (string a in arr)
                     {
                         <span class="separator-arrow">></span>
                         <span class="kt-subheader__desc"><a href="#">@a</a></span>
-                    }
+                    }*@
                 }
             }
 
-            <!-- Identificador de registro principal -->
+            @* Identificador de registro principal *@
             @{
                 if (Model.id > 0)
                 {
                     <span class="separator-arrow">></span>
-                    <h3 class="kt-subheader__title">XXXXXXXXXXXXXXXXXXXXXXX</h3>
+                    <h3 class="kt-subheader__title">@HttpContext.Current.Session["ident_name"]</h3>
                 }
                 else
                 {
@@ -43,34 +51,49 @@
                 }
             }
         </div>
-
+        
+        @* Botões de ação *@
         <div class="kt-subheader__toolbar">
             <div class="kt-subheader__wrapper">
-                <a href="#" class="btn kt-subheader__btn-primary btn-icon" data-toggle="kt-tooltip" title="" data-placement="bottom">
-                    <i class="la la-angle-double-left"></i>
-                </a>
-                <a href="#" class="btn kt-subheader__btn-primary btn-icon" data-toggle="kt-tooltip" title="" data-placement="bottom">
-                    <i class="la la-angle-left"></i>
-                </a>
-                <a href="#" class="btn kt-subheader__btn-primary btn-icon" data-toggle="kt-tooltip" title="" data-placement="bottom">
-                    <i class="la la-angle-right"></i>
-                </a>
-                <a href="#" class="btn kt-subheader__btn-primary btn-icon" data-toggle="kt-tooltip" title="" data-placement="bottom" style="margin-right:40px;">
-                    <i class="la la-angle-double-right"></i>
-                </a>
-                <a href="#" class="btn kt-subheader__btn-primary btn-icon" data-toggle="kt-tooltip" title="" data-placement="bottom">
+
+                @* Navegação dos registros *@
+                <label id="app_navigation_buttons" class="@(Model.id == 0 ? "hide" : "")">
+                    <a href="#" onClick="APP.regChange('F')" class="btn kt-subheader__btn-primary btn-icon" data-toggle="kt-tooltip" title="@Language.XmlLang(193, 2).Text" data-placement="bottom">
+                        <i class="la la-angle-double-left"></i>
+                    </a>
+                    <a href="#" onClick="APP.regChange('P')" class="btn kt-subheader__btn-primary btn-icon" data-toggle="kt-tooltip" title="@Language.XmlLang(194, 2).Text" data-placement="bottom">
+                        <i class="la la-angle-left"></i>
+                    </a>
+                    <a href="#" onClick="APP.regChange('N')" class="btn kt-subheader__btn-primary btn-icon" data-toggle="kt-tooltip" title="@Language.XmlLang(195, 2).Text" data-placement="bottom">
+                        <i class="la la-angle-right"></i>
+                    </a>
+                    <a href="#" onClick="APP.regChange('L')" class="btn kt-subheader__btn-primary btn-icon" data-toggle="kt-tooltip" title="@Language.XmlLang(196, 2).Text" data-placement="bottom" style="margin-right:40px;">
+                        <i class="la la-angle-double-right"></i>
+                    </a>
+                </label>
+
+                @* Voltar para dashboard *@
+                <a id="app_dashboard_button" href="javascript:UTILS.menu('@Model.controller', 'Dashboard')" class="btn kt-subheader__btn-primary btn-icon" data-toggle="kt-tooltip" title="@Language.XmlLang(7, 2).Text" data-placement="bottom">
                     <i class="la la-desktop"></i>
                 </a>
-                <a href="#" class="btn kt-subheader__btn-primary btn-icon" data-toggle="kt-tooltip" title="" data-placement="bottom">
+
+                @* Configurações do aplicativo *@
+                <a href="#" class="btn kt-subheader__btn-primary btn-icon" data-toggle="kt-tooltip" title="@Language.XmlLang(106, 2).Text" data-placement="bottom">
                     <i class="la la-cog"></i>
                 </a>
-                <a href="#" class="btn kt-subheader__btn-primary btn-icon" data-toggle="kt-tooltip" title="" data-placement="bottom">
+
+                @* Visualizar id do registro, somente Master *@
+                <a id="app_ident_button" href="#" onClick="APP.showIdent()" class="@(Model.id == 0 ? "hide" : "") btn kt-subheader__btn-primary btn-icon" data-toggle="kt-tooltip" title="@Language.XmlLang(197, 2).Text" data-placement="bottom">
                     <i class="la la-info-circle"></i>
                 </a>
-                <a href="#" class="btn kt-subheader__btn-primary btn-icon" data-toggle="kt-tooltip" title="" data-placement="bottom">
+
+                @* Histórico de alterações *@
+                <a id="app_history_button" href="#" onClick="APP.showHistory()" class="@(Model.id == 0 ? "hide" : "") btn kt-subheader__btn-primary btn-icon" data-toggle="kt-tooltip" title="@Language.XmlLang(198, 2).Text" data-placement="bottom">
                     <i class="la la-history"></i>
                 </a>
-                <a href="javascript:UTILS.menu('@Model.app')" class="btn kt-subheader__btn-primary btn-icon" data-toggle="kt-tooltip" title="@Language.XmlLang(136, 2).Text" data-placement="bottom">
+
+                @* Atualizar Página *@
+                <a id="app_refresh_button" href="#" onclick="UTILS.menu('@Model.controller', '@Model.action', '@Model.id', '@Model.id2')" class="btn kt-subheader__btn-primary btn-icon" data-toggle="kt-tooltip" title="@Language.XmlLang(136, 2).Text" data-placement="bottom">
                     <i class="la la-refresh"></i>
                 </a>
             </div>

@@ -19,7 +19,7 @@ namespace Sistema.Assets.DB
                 int idusuario = 0;
 
                 string qry = "";
-                qry += "INSERT INSERT INTO Usuarios (idgernet, txnome, txusuario, txsenha, txemail, idperfil, flativo, flmaster, flalterasenha, txfoto) output INSERTED.idusuario ";
+                qry += "INSERT INTO Usuarios (idgernet, txnome, txusuario, txsenha, txemail, idperfil, flativo, flmaster, flalterasenha, txfoto) output INSERTED.idusuario ";
                 qry += "VALUES (" + rs.idgernet.value + ", '" + rs.txnome.value + "', '" + rs.txusuario.value + "', '" + rs.txsenha.value + "', '" + rs.txemail.value + "', " + rs.idperfil.value + ", ";
                 qry += rs.flativo.value + ", " + rs.flmaster.value + ", " + rs.flalterasenha.value + ", '" + rs.txfoto.value + "')";
 

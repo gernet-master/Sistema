@@ -10,7 +10,7 @@ namespace Sistema.Controllers
 {
     public class HomeController : Controller
     {
-        // Dashboard principal do sistema
+        // Página principal do sistema
         [Autentication]
         public ActionResult Index()
         {

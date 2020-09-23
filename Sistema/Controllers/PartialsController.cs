@@ -35,30 +35,46 @@ namespace Sistema.Controllers
             return PartialView();
         }
 
-        // Breadcrumb Dashboard
+        // Aplicativo
         [Autentication]
-        public ActionResult SubHeader(string app = "", int id = 0, int id2 = 0)
+        public ActionResult App(string controller = "", string action = "", int id = 0, int id2 = 0)
         {
-            return PartialView(new PartialsView_Subheader(app, id, id2));
-        }
+            // Verifica se foi passado controller e action
+            if ((controller != "") && (action != ""))
+            {
+                // Grava a pagina atual na session para utilizar caso seja feito refresh da página
+                Session["current_page"] = controller + "|" + action + "|" + id + "|" + id2;
 
-        // Breadcrumb App
-        [Autentication]
-        public ActionResult SubHeaderApp(string app = "", int id = 0, int id2 = 0)
-        {
-            return PartialView(new PartialsView_SubHeaderApp(app, id, id2));
-        }
+                // Redireciona para app
+                return PartialView(new PartialsView_AppView(controller, action, id, id2));
 
-        // Ações de aplicativo
-        [Autentication]
-        public ActionResult ActionButtons()
-        {
-            return PartialView();
+            }
+            // Redireciona para dashboard principal
+            else
+            {
+                return PartialView(new PartialsView_AppView("Home", "Dashboard", id, id2));
+            }
         }
 
         // Rodapé
         [Autentication]
         public ActionResult Footer()
+        {
+            return PartialView();
+        }
+
+        // Calculadora
+        [Autentication]
+        public ActionResult Calculator()
+        {
+            return PartialView();
+        }
+
+        // ***************** CEP *****************
+
+        // Pesquisa CEP
+        [Autentication]
+        public ActionResult Cep()
         {
             return PartialView();
         }
@@ -137,6 +153,12 @@ namespace Sistema.Controllers
 
         [Autentication]
         public ActionResult ScrollTop()
+        {
+            return PartialView();
+        }
+
+        [Autentication]
+        public ActionResult Modal()
         {
             return PartialView();
         }

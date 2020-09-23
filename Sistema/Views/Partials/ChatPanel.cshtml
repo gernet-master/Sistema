@@ -56,19 +56,19 @@
                     <div class="form-group form-group-xs row">
                         <div class="kt-radio-list kt-margin-l-10">
                             <label class="kt-radio kt-radio--solid kt-radio--success">
-                                <input type="radio" value="1" @(Model.usuarios_sistema.flstatuschat.value == 1 ? "checked" : "") name="flstatuschat" id="flstatuschat"> @Language.XmlLang(108, 2).Text
+                                <input class="chat_status_option" type="radio" value="1" @(Model.usuarios_sistema.flstatuschat.value == 1 ? "checked" : "") name="flstatuschat" id="flstatuschat_on"> @Language.XmlLang(108, 2).Text
                                 <span></span>
                             </label>
                             <label class="kt-radio kt-radio--solid kt-radio--danger">
-                                <input type="radio" value="2" @(Model.usuarios_sistema.flstatuschat.value == 2 ? "checked" : "") name="flstatuschat" id="flstatuschat"> @Language.XmlLang(109, 2).Text
+                                <input class="chat_status_option" type="radio" value="2" @(Model.usuarios_sistema.flstatuschat.value == 2 ? "checked" : "") name="flstatuschat" id="flstatuschat_off"> @Language.XmlLang(109, 2).Text
                                 <span></span>
                             </label>
                             <label class="kt-radio kt-radio--solid kt-radio--brand">
-                                <input type="radio" value="3" @(Model.usuarios_sistema.flstatuschat.value == 3 ? "checked" : "") name="flstatuschat" id="flstatuschat"> @Language.XmlLang(113, 2).Text
+                                <input class="chat_status_option" type="radio" value="3" @(Model.usuarios_sistema.flstatuschat.value == 3 ? "checked" : "") name="flstatuschat" id="flstatuschat_in"> @Language.XmlLang(113, 2).Text
                                 <span></span>
                             </label>
                             <label class="kt-radio kt-radio--solid kt-radio--warning">
-                                <input type="radio" value="4" @(Model.usuarios_sistema.flstatuschat.value == 4 ? "checked" : "") name="flstatuschat" id="flstatuschat"> @Language.XmlLang(114, 2).Text
+                                <input class="chat_status_option" type="radio" value="4" @(Model.usuarios_sistema.flstatuschat.value == 4 ? "checked" : "") name="flstatuschat" id="flstatuschat_aw"> @Language.XmlLang(114, 2).Text
                                 <span></span>
                             </label>
                         </div>

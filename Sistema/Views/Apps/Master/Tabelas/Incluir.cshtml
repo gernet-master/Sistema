@@ -1,101 +1,105 @@
 ﻿@*
-Descrição: Cadastro de tabelas do sistema
-Data: 01/01/2021 - v.1.0
+    Descrição: Cadastro de tabelas do sistema
+    Data: 01/01/2021 - v.1.0
 *@
 
 @* Controles do aplicativo *@
 @model Sistema.Models.TabelasView
 
-@* Subheader *@
-@Html.Action("SubHeaderApp", "Partials", new { app = "/Apps/Master/Tabelas/Incluir", id = 0, id2 = 0 })
-
-@* Botões de ação *@
-@Html.Action("ActionButtons", "Partials")
-
 @* Funções *@
 @using Functions;
 
-@{ Inputs input = new Inputs(); }
+@* Inputs *@
+@{ Inputs inp = new Inputs(); }
 
-<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt_content_app_gernet" id="kt_content">
-    <!-- .kt-content -->
-    <div class="kt-container--fluid  kt-grid__item kt-grid__item--fluid">
-        <!-- .kt-container -->
-        <div class="row form-elements">
-            <div class="col-md-12">
-                <div class="kt-portlet">
-                    <div class="kt-portlet__body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                @{
-                                    // Verifica se existe alguma tabela que não foi cadastrada
-                                    if (Model.tabelaN.Count > 0)
-                                    {
 
-                                        input.inputType = "select";
-                                        input.label = Language.XmlLang(138, 2).Text;
-                                        input.id = "frm_tabela";
-                                        input.className = "form-control";
-                                        input.required = true;
-                                        input.validation = "required";
-                                        input.options = Model.tabelaN;
-                                        input.firstOption = Language.XmlLang(146, 2).Text;
-                                        @Html.Raw(input.CreateInput());
-                                    }
-                                    else
-                                    {
+<div class="row">
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        @{
+            // Verifica se esta editando algum registro
+            if (Model.tabela.idtabela.value > 0)
+            {
+                inp.inputType = "text";
+                inp.label = Language.XmlLang(138, 2).Text;
+                inp.id = "frm_tabela";
+                inp.className = "form-control bg-readonly";
+                inp.required = true;
+                inp.validation = "required,minsize=2,maxsize=200";
+                inp.readOnly = true;
+                inp.inputValue = Model.tabela.txtabela.value;
+                @Html.Raw(inp.CreateInput());
+            }
+            else
+            {
+                // Verifica se existe alguma tabela que não foi cadastrada
+                if (Model.tabelaN.Count > 0)
+                {
 
-                                        input.inputType = "text";
-                                        input.label = Language.XmlLang(138, 2).Text;
-                                        input.id = "frm_tabela";
-                                        input.className = "form-control";
-                                        input.required = true;
-                                        input.validation = "required,minSize[2],maxSize[200]";
-                                        input.inputValue = "";
-                                        input.readOnly = true;
-                                        @Html.Raw(input.CreateInput());
-                                    }
-
-                                }                                
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                @{
-                                    // Código do idioma
-                                    input.inputType = "text";
-                                    input.label = Language.XmlLang(139, 2).Text;
-                                    input.id = "frm_codigo_idioma";
-                                    input.className = "form-control";
-                                    input.required = true;
-                                    input.validation = "required,minSize[1],maxSize[10]";
-                                    input.inputValue = "";
-                                    input.maxLenght = 10;
-                                    @Html.Raw(input.CreateInput());
-                                }
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label for="texto_idioma">@Language.XmlLang(140, 2).Text</label>
-                                    <span id="texto_idioma" class="font-red">---</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                @{
-                                    // Possui auditoria
-                                    input.inputType = "switch";
-                                    input.label = Language.XmlLang(141, 2).Text;
-                                    input.id = "frm_auditoria";
-                                    input.inputChecked = false;
-                                    @Html.Raw(input.CreateInput());
-                                }
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    inp.inputType = "select";
+                    inp.label = Language.XmlLang(138, 2).Text;
+                    inp.id = "frm_tabela";
+                    inp.className = "form-control";
+                    inp.required = true;
+                    inp.validation = "required";
+                    inp.options = Model.tabelaN;
+                    inp.firstOption = Language.XmlLang(146, 2).Text;
+                    inp.inputValue = Model.tabela.txtabela.value;
+                    @Html.Raw(inp.CreateInput());
+                }
+                else
+                {
+                    inp.inputType = "text";
+                    inp.label = Language.XmlLang(138, 2).Text;
+                    inp.id = "frm_tabela";
+                    inp.className = "form-control";
+                    inp.required = true;
+                    inp.validation = "required,minsize=2,maxsize=200";
+                    inp.readOnly = true;
+                    inp.inputValue = "";
+                    inp.placeholder = Language.XmlLang(202, 2).Text;
+                    @Html.Raw(inp.CreateInput());
+                }
+            }
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+        @{
+            // Código do idioma
+            inp.inputType = "text";
+            inp.label = Language.XmlLang(139, 2).Text;
+            inp.id = "frm_codigo_idioma";
+            inp.className = "form-control";
+            inp.required = true;
+            inp.validation = "required,numbers,minsize=1,maxsize=5";
+            inp.inputValue = Convert.ToString(Model.tabela.idcodigoidioma.value);
+            inp.maxLenght = 10;
+            inp.mask = "00000";
+            inp.blur = "loadTextLanguage(this.value)";
+            @Html.Raw(inp.CreateInput());
+        }
+    </div>
+    <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+        <div class="form-group">
+            <label for="texto_idioma">@Language.XmlLang(140, 2).Text</label>
+            <h4 id="texto_idioma" class="ft-red pt-3">@Language.XmlLang(Convert.ToInt32(Model.tabela.idcodigoidioma.value), 2).Text</h4>
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        @{
+            // Possui auditoria
+            inp.inputType = "switch";
+            inp.label = Language.XmlLang(141, 2).Text;
+            inp.id = "frm_auditoria";
+            inp.inputChecked = (Model.tabela.flauditoria.value == 1 ? true : false);
+            @Html.Raw(inp.CreateInput());
+        }
+    </div>
+</div>
+           
+
+
+<script src="~/Assets/Js/Apps/Master/Tabelas/incluir.js"></script>

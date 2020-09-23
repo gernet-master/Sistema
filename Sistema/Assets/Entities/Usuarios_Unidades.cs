@@ -4,7 +4,7 @@ Data: 01/01/2021 - v.1.0
 */
 
 using Sistema.Assets.DB;
-using Sistema.Assets.Functions;
+using Functions;
 
 namespace Sistema.Assets.Entities
 {

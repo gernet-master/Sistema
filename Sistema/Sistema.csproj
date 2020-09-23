@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -45,11 +44,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.7\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.8\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -57,22 +56,22 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.7.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.7.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
     </Reference>
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -136,7 +135,7 @@
     <Compile Include="Assets\DB\Log_Link_SenhaDB.cs" />
     <Compile Include="Assets\DB\ChatDB.cs" />
     <Compile Include="Assets\DB\TabelasDB.cs" />
-    <Compile Include="Assets\DB\Usuarios_FramesDB.cs" />
+    <Compile Include="Assets\DB\AuditoriaDB.cs" />
     <Compile Include="Assets\DB\Usuarios_PreferenciasDB.cs" />
     <Compile Include="Assets\DB\Log_SenhaDB.cs" />
     <Compile Include="Assets\DB\Usuarios_UnidadesDB.cs" />
@@ -144,17 +143,19 @@
     <Compile Include="Assets\DB\UsuariosDB.cs" />
     <Compile Include="Assets\Entities\Gernet_Controle.cs" />
     <Compile Include="Assets\Entities\Chat.cs" />
+    <Compile Include="Assets\Entities\Retorno.cs" />
     <Compile Include="Assets\Entities\Log_Senha.cs" />
     <Compile Include="Assets\Entities\Log_Link_Senha.cs" />
+    <Compile Include="Assets\Entities\Auditoria.cs" />
     <Compile Include="Assets\Entities\Widgets.cs" />
     <Compile Include="Assets\Entities\Tabelas.cs" />
     <Compile Include="Assets\Entities\Usuarios_Preferencias.cs" />
-    <Compile Include="Assets\Entities\Usuarios_Frames.cs" />
     <Compile Include="Assets\Entities\Log_Acesso.cs" />
     <Compile Include="Assets\Entities\Usuarios_Unidades.cs" />
     <Compile Include="Assets\Entities\Usuarios_Sistema .cs" />
     <Compile Include="Assets\Entities\Usuarios.cs" />
     <Compile Include="Assets\Functions\Inputs.cs" />
+    <Compile Include="Assets\Functions\Err.cs" />
     <Compile Include="Assets\Functions\Session.cs" />
     <Compile Include="Assets\Functions\Audit.cs" />
     <Compile Include="Assets\Functions\Crypt.cs" />
@@ -194,7 +195,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Clients\1\logo-.png" />
+    <Content Include="Assets\Clients\1\logo.png" />
     <Content Include="Assets\Css\custom.css" />
     <Content Include="Assets\Css\login\login.css" />
     <Content Include="Assets\Css\login\login.min.css" />
@@ -216,8 +217,12 @@
     <Content Include="Assets\Css\skins\brand\light.min.css" />
     <Content Include="Assets\Css\skins\brand\light.rtl.css" />
     <Content Include="Assets\Css\skins\brand\light.rtl.min.css" />
+    <Content Include="Assets\Js\page.js" />
+    <Content Include="Assets\Js\Apps\Master\Tabelas\incluir.js" />
     <Content Include="Assets\Js\chat.js" />
+    <Content Include="Assets\Js\app.js" />
     <Content Include="Assets\Js\forms.js" />
+    <Content Include="Assets\Js\list.js" />
     <Content Include="Assets\Js\utils.js" />
     <Content Include="Assets\Js\header.js" />
     <Content Include="Assets\Js\login.js" />
@@ -228,6 +233,7 @@
     <Content Include="Assets\Plugins\custom\gridstack\gridstack.jQueryUI.js" />
     <Content Include="Assets\Plugins\custom\gridstack\gridstack.js" />
     <Content Include="Assets\Plugins\custom\highlight\highlight.js" />
+    <Content Include="Assets\Plugins\custom\mask\jquery.mask.min.js" />
     <Content Include="Assets\Plugins\custom\validation\jquery.validationEngine-pt_BR.js" />
     <Content Include="Assets\Plugins\custom\validation\jquery.validationEngine.js" />
     <Content Include="Assets\Plugins\custom\gridstack\gridstack.css" />
@@ -510,7 +516,9 @@
     <Content Include="Assets\Js\pages\my-script.min.js" />
     <Content Include="Assets\Js\scripts.bundle.js" />
     <Content Include="Assets\Js\scripts.bundle.min.js" />
-    <Content Include="Assets\Languages\pt-br.xml" />
+    <Content Include="Assets\Languages\pt-br.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Assets\Media\bg\300.jpg" />
     <Content Include="Assets\Media\bg\350.jpg" />
     <Content Include="Assets\Media\bg\400.jpg" />
@@ -1396,6 +1404,8 @@
     <Content Include="Assets\Plugins\custom\uppy\dist\uppy.min.css" />
     <Content Include="Assets\Plugins\custom\uppy\dist\uppy.min.js" />
     <Content Include="Assets\Plugins\custom\validation\validationEngine.min.css" />
+    <Content Include="Assets\Plugins\custom\viacep\jquery-viacep.min.js" />
+    <Content Include="Assets\Plugins\general\bootstrap\dist\js\bootstrap.min.js" />
     <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\css\all.css" />
     <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\css\all.min.css" />
     <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\css\brands.css" />
@@ -1413,6 +1423,8 @@
     <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\webfonts\fa-brands-400.svg" />
     <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\webfonts\fa-regular-400.svg" />
     <Content Include="Assets\Plugins\general\fontawesome\fontawesome-free\webfonts\fa-solid-900.svg" />
+    <Content Include="Assets\Plugins\general\jquery\dist\jquery-3.5.1.min.js" />
+    <Content Include="Assets\Plugins\general\popper.js\dist\js\popper.min.js" />
     <Content Include="Assets\Plugins\general\yaireo\tagify\dist\tagify.css" />
     <Content Include="Assets\Plugins\general\yaireo\tagify\dist\tagify.min.js" />
     <Content Include="Assets\Plugins\general\yaireo\tagify\dist\tagify.polyfills.min.js" />
@@ -1437,7 +1449,6 @@
     <Content Include="Assets\Plugins\general\bootstrap-timepicker\js\bootstrap-timepicker.min.js" />
     <Content Include="Assets\Plugins\general\bootstrap-touchspin\dist\jquery.bootstrap-touchspin.css" />
     <Content Include="Assets\Plugins\general\bootstrap-touchspin\dist\jquery.bootstrap-touchspin.js" />
-    <Content Include="Assets\Plugins\general\bootstrap\dist\js\bootstrap.min.js" />
     <Content Include="Assets\Plugins\general\chart.js\dist\Chart.bundle.js" />
     <Content Include="Assets\Plugins\general\clipboard\dist\clipboard.min.js" />
     <Content Include="Assets\Plugins\general\counterup\jquery.counterup.js" />
@@ -1459,7 +1470,7 @@
     <Content Include="Assets\Plugins\general\jquery.repeater\src\jquery.input.js" />
     <Content Include="Assets\Plugins\general\jquery.repeater\src\lib.js" />
     <Content Include="Assets\Plugins\general\jquery.repeater\src\repeater.js" />
-    <Content Include="Assets\Plugins\general\jquery\dist\jquery.js" />
+    <Content Include="Assets\Plugins\general\jquery\dist\jquery-old.js" />
     <Content Include="Assets\Plugins\general\js-cookie\src\js.cookie.js" />
     <Content Include="Assets\Plugins\general\js\global\integration\plugins\bootstrap-datepicker.init.js" />
     <Content Include="Assets\Plugins\general\js\global\integration\plugins\bootstrap-markdown.init.js" />
@@ -1491,7 +1502,6 @@
     <Content Include="Assets\Plugins\general\plugins\jquery-idletimer\idle-timer.min.js" />
     <Content Include="Assets\Plugins\general\plugins\line-awesome\css\line-awesome.css" />
     <Content Include="Assets\Plugins\general\plugins\line-awesome\fonts\line-awesome.svg" />
-    <Content Include="Assets\Plugins\general\popper.js\dist\umd\popper.js" />
     <Content Include="Assets\Plugins\general\quill\dist\quill.js" />
     <Content Include="Assets\Plugins\general\quill\dist\quill.snow.css" />
     <Content Include="Assets\Plugins\general\raphael\raphael.js" />
@@ -3414,6 +3424,10 @@
     <Content Include="demo1\assets\plugins\general\summernote\dist\font\summernote.eot" />
     <Content Include="demo1\assets\plugins\general\summernote\dist\font\summernote.ttf" />
     <Content Include="demo1\assets\plugins\general\summernote\dist\font\summernote.woff" />
+    <Content Include="Assets\Plugins\general\popper.js\dist\js\popper.min.js.map" />
+    <Content Include="Assets\Plugins\general\bootstrap\dist\js\bootstrap.min.js.map" />
+    <Content Include="Assets\Plugins\general\tooltip.js\dist\umd\tooltip.min.js.map" />
+    <Content Include="Assets\Plugins\general\jquery\dist\jquery-3.5.1.min.map" />
     <None Include="packages.config" />
     <Content Include="Views\Partials\HeaderMobile.cshtml" />
     <Content Include="Views\Partials\Menu.cshtml" />
@@ -3422,7 +3436,6 @@
     <Content Include="Views\Partials\Footer.cshtml" />
     <Content Include="Views\Partials\Chat.cshtml" />
     <Content Include="Views\Partials\ScrollTop.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Partials\UserPanel.cshtml" />
     <Content Include="Views\Partials\Languages.cshtml" />
     <Content Include="Views\Partials\ChatPanel.cshtml" />
@@ -3437,15 +3450,17 @@
     <Content Include="sistema" />
     <Content Include="Views\Login\Disconnnect.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
-    <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Views\Error\InvalidUrl.cshtml" />
     <Content Include="Views\Apps\Master\Aplicativos\Index.cshtml" />
-    <Content Include="Views\Apps\Master\Tabelas\Index.cshtml" />
+    <Content Include="Views\Apps\Master\Tabelas\Dashboard.cshtml" />
     <Content Include="Views\Apps\Master\Tabelas\Incluir.cshtml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Content Include="Views\Apps\Master\Tabelas\Filtro.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Dashboard.cshtml" />
     <None Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Login\Reset.cshtml" />
     <Content Include="Views\Partials\ChatPanelList.cshtml" />
@@ -3453,9 +3468,13 @@
     <Content Include="Views\Partials\ChatPanelListMsgs.cshtml" />
     <Content Include="Views\Partials\SubHeaderApp.cshtml" />
     <Content Include="Views\Partials\ActionButtons.cshtml" />
-    <Content Include="Views\Widgets\NovoRegistro.cshtml" />
-    <Content Include="Views\Widgets\Opcoes.cshtml" />
-    <Content Include="Views\Widgets\Listagem.cshtml" />
+    <Content Include="Views\Widgets\New.cshtml" />
+    <Content Include="Views\Widgets\Options.cshtml" />
+    <Content Include="Views\Widgets\List.cshtml" />
+    <Content Include="Views\Partials\Modal.cshtml" />
+    <Content Include="Views\Partials\Calculator.cshtml" />
+    <Content Include="Views\Partials\Cep.cshtml" />
+    <Content Include="Views\Partials\App.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -3491,11 +3510,12 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>Este projeto faz referência a pacotes do NuGet que não estão presentes neste computador. Use a Restauração de Pacotes do NuGet para baixá-los.  Para obter mais informações, consulte http://go.microsoft.com/fwlink/?LinkID=322105. O arquivo ausente é {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

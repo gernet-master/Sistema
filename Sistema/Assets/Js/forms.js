@@ -12,9 +12,186 @@ var FORMS = {};
 
         // Init
         init: function () {
-
+            FORMS.mask();
         },
+
+        // Inicia mascaras de campos
+        mask: function () {
+            $(document).find('input[mask]').each(function () {
+                var m = $(this).attr('mask').split('|');
+
+                // Validação especifica para tratar telefones
+                if (m[0] == '(00) 00000-0000') {
+                    var maskBehavior = function (val) {
+                        return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+                    },
+                        options = {
+                            onKeyPress: function (val, e, field, options) {
+                                field.mask(maskBehavior.apply({}, arguments), options);
+                            }
+                        };
+                    $(this).mask(maskBehavior, options);
+                } else {
+                    var rev = false;
+                    if (m[1] !== undefined) { rev = m[1]; }
+                    $(this).mask(m[0], { reverse: rev });
+                }
+            });
+        },
+
+        // Valida campos de formulário
+        validate: function (id) {
+
+            // Retorno
+            var error_form = false;
+            var error_validate = false;
+
+            // Remove todos os erros existentes e a classe de erro
+            $('#' + id).find('div.form-error-msg').remove();
+            $('#' + id + ' :input').removeClass('form-error');
+
+            // Pega todos os inputs do form
+            var fields = $('#' + id + ' :input'); 
+
+            // Faz loop nos inputs
+            for (var f = 0; f < fields.length; f++) {
+
+                // Cria o objeto
+                var obj = $(fields[f]);
+
+                // Pega o atributo validação
+                var validate = obj.attr('validate');
+
+                // Se possuir validação, pega todos os parametros
+                if ((validate != '') && (validate !== undefined)) {
+
+                    // Separa os parametros
+                    var param = validate.split(',');
+
+                    // Loop nos parametros
+                    for (var p = 0; p < param.length; p++) {
+
+                        // Chama função de validação
+                        error_validate = FORMS.validateParam(obj, param[p]);
+                        
+                        // Se possuir erro, para de processar demais parametros
+                        if (error_validate) {
+                            error_form = true;
+                            break;
+                        }
+                    }
+                }
+            }        
+            
+            return error_form;
+        },
+
+        // Valida os parametros de validação dos campos de formulário
+        validateParam: function (obj, param) {
+
+            // Retorno
+            var ret = false;
+            var pattern = "";
+
+            // Separa o tipo e o valor
+            var tipo = param.split('=');
+
+            // Pega o tipo de paramentro
+            switch (tipo[0].toLowerCase()) {
+
+                // Campo obrigatorio
+                case 'required':
+
+                    if ($(obj).val() == '') {
+                        FORMS.insertValidation(obj, UTILS.xmlLang(219, 2).Text);
+                        ret = true;
+                    } 
+                    break;
+
+                // Tamanho mínimo 
+                case 'minsize':
+                    if ($(obj).val().length < UTILS.isUndefined(tipo[1], 0)) {
+                        FORMS.insertValidation(obj, UTILS.xmlLang(220, 2).Text + ' ' + tipo[1] + ' ' + UTILS.xmlLang(222, 0).Text);
+                        ret = true;
+                    }
+                    break;
+
+                // Tamanho máximo
+                case 'maxsize':
+                    if ($(obj).val().length > UTILS.isUndefined(tipo[1], 0)) {
+                        FORMS.insertValidation(obj, UTILS.xmlLang(221, 2).Text + ' ' + tipo[1] + ' ' + UTILS.xmlLang(222, 0).Text);
+                        ret = true;
+                    }
+                    break;
+
+                // E-mail
+                case "email":
+                    pattern = /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i;
+                    if (!pattern.test($(obj).val())) {
+                        FORMS.insertValidation(obj, UTILS.xmlLang(223, 2).Text);
+                        ret = true;
+                    }
+                    break;
+
+                // Campos iguais
+                case "equals":
+                    if ($(obj).val() !== $('#' + UTILS.isUndefined(tipo[1], 'xxx')).val()) {
+                        FORMS.insertValidation(obj, UTILS.xmlLang(224, 2).Text);
+                        ret = true;
+                    }
+                    break;
+
+                // Somente números
+                case "numbers":
+                    pattern = /^\d+$/;
+                    if (!pattern.test($(obj).val())) {
+                        FORMS.insertValidation(obj, UTILS.xmlLang(225, 2).Text);
+                        ret = true;
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+
+            return ret;
+        },
+
+        // Insere o aviso de erro no campo
+        insertValidation: function (obj, error) {
+
+            // Mensagem
+            var html = '';
+            html = '<div class="form-error-msg" id="form-erro-id-' + $(obj).attr('id') + '" ';
+
+            // Verifica se tem um input group
+            if ($(obj).prev().attr('class') == 'input-group-prepend') {
+                html += ' style="margin-left:' + ($(obj).prev().width() + 40) + 'px !important; margin-top:2px !important;" ';      
+            }
+
+            html += '><i class="fa fa-times-circle" aria-hidden="true"></i>' + error + '</div>';            
+
+            // Adiciona a classe para deixar a border inferior do obejto vermelha
+            $(obj).addClass('form-error');
+
+            // Insere a mensagem abaixo do objeto
+            $(obj).after(html);
+
+            // Remove a mensagem de erro se for digitado alguma coisa em campo input text ou password
+            if ($(obj).is('input:text, input:password')) {
+                $(obj).keyup(function () {
+                    $('#form-erro-id-' + $(obj).attr('id')).remove();
+                    $('#' + $(obj).attr('id')).removeClass('form-error');
+                })
+            }
+        }
     }
 
 })(jQuery);
 
+$(document).ready(function () {
+
+    // Inicia funções
+    FORMS.init();
+
+});

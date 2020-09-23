@@ -3,8 +3,6 @@
     Data: 01/01/2021 - v.1.0
 *@
 
-@model Sistema.Models.PartialsView_Subheader
-
 @using Functions;
 
 <div class="kt-subheader  kt-grid__item" id="kt_subheader">
@@ -14,11 +12,12 @@
         <div class="kt-subheader__main">
 
             <!-- Dashboard -->
-            <span class="kt-subheader__desc"><a href="javascript:UTILS.menu('/Home/Dashboard')">@Language.XmlLang(7, 2).Text</a></span>
-
+            <span class="kt-subheader__desc"><a href="javascript:UTILS.menu('Home', 'Dashboard')">@Language.XmlLang(7, 2).Text</a></span>
+            ===
+            @ViewBag.breadcrumb
             <!-- Loop nos aplicativos -->
             @{
-                if (Model.app != "")
+                @*if (Model.app != "")
                 {
                     string[] arr = Model.app.Replace("/Apps/", "").Split('/');
                     foreach (string a in arr)
@@ -26,7 +25,7 @@
                         <span class="separator-arrow">></span>
                         <span class="kt-subheader__desc"><a href="#">@a</a></span>
                     }
-                }
+                }*@
             }
 
             <!-- Identificador de registro principal -->
@@ -41,10 +40,10 @@
 
         <div class="kt-subheader__toolbar">
             <div class="kt-subheader__wrapper">
-                <a href="#" class="btn kt-subheader__btn-primary btn-icon" data-toggle="kt-tooltip" title="@Language.XmlLang(137, 2).Text" data-placement="bottom">
+                <a href="#" class="btn kt-subheader__btn-primary btn-icon" data-toggle="kt-tooltip" title="@Language.XmlLang(106, 2).Text" data-placement="bottom">
                     <i class="la la-cog"></i>
                 </a>
-                <a href="javascript:UTILS.menu('@Model.app')" class="btn kt-subheader__btn-primary btn-icon" data-toggle="kt-tooltip" title="@Language.XmlLang(136, 2).Text" data-placement="bottom">
+                <a href="javascript:UTILS.menu('@Model.controller', '@Model.action')" class="btn kt-subheader__btn-primary btn-icon" data-toggle="kt-tooltip" title="@Language.XmlLang(136, 2).Text" data-placement="bottom">
                     <i class="la la-refresh"></i>
                 </a>
             </div>

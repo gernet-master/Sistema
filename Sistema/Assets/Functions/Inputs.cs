@@ -23,6 +23,15 @@ namespace Functions
         public bool readOnly { get; set; }
         public int maxLenght { get; set; }
         public bool inputChecked { get; set; }
+        public string mask { get; set; }
+        public string placeholder { get; set; }
+        public string keyUp { get; set; }
+        public string blur { get; set; }
+        public bool addButton { get; set; }
+        public string buttonTooltip { get; set; }
+        public string buttonClick { get; set; }
+        public string buttonClass { get; set; }
+        public string buttonValue { get; set; }
 
         private void Init()
         {
@@ -38,6 +47,15 @@ namespace Functions
             this.readOnly = false;
             this.maxLenght = 0;
             this.inputChecked = false;
+            this.mask = "";
+            this.placeholder = "";
+            this.keyUp = "";
+            this.blur = "";
+            this.addButton = false;
+            this.buttonTooltip = "";
+            this.buttonClick = "";
+            this.buttonClass = "";
+            this.buttonValue = "";
         }
 
         // Desenha o input
@@ -55,25 +73,54 @@ namespace Functions
                     inp += "<div class='form-group'>";
 
                     // Label
-                    if (this.label != "") { inp += "<label for='" + this.id + "' class='" + (this.required ? "required" : "") + "'>" + this.label + "</label>"; }
+                    if (Utils.Null(this.label, "") != "") { inp += "<label for='" + this.id + "' class='" + (this.required ? "required" : "") + "'>" + this.label + "</label>"; }
+
+                    // Se possuir botão, cria o input-group
+                    if (this.addButton) { inp += "<div class='input-group'>"; }
 
                     // Cria input
                     inp += "<input type='text' ";
 
                     // Classe
-                    inp += " class='" + this.className + " " + (this.validation != "" ? " validate[" + this.validation + "]" : "") + "' ";
+                    if (Utils.Null(this.className, "") != "") { inp += " class='" + this.className + " ' "; }
 
                     // ID
-                    inp += " id='" + this.id + "' name='" + this.id + "' ";
+                    if (Utils.Null(this.id, "") != "") { inp += " id='" + this.id + "' name='" + this.id + "' "; }
+
+                    // Validação
+                    if (Utils.Null(this.validation, "") != "") { inp += " validate='" + this.validation + "' "; }
 
                     // MaxLenght
                     if (this.maxLenght > 0) { inp += " maxlength='" + this.maxLenght + "' "; }
+
+                    // Mascara
+                    if (Utils.Null(this.mask, "") != "") { inp += " mask='" + this.mask + "' "; }
+
+                    // Placeholder
+                    if (Utils.Null(this.placeholder, "") != "") { inp += " placeholder='" + this.placeholder + "' "; }
+
+                    // KeyUp
+                    if (Utils.Null(this.keyUp, "") != "") { inp += " onKeyUp='" + this.keyUp + "' "; }
+
+                    // Blur
+                    if (Utils.Null(this.blur, "") != "") { inp += " onBlur='" + this.blur + "' "; }
+
+                    // ReadOnly
+                    if (this.readOnly) { inp += " readonly "; }
 
                     // Valor
                     inp += " value='" + this.inputValue + "' ";
 
                     // Finaliza input
                     inp += " />";
+
+                    // Se possuir botão, finaliza o input-group
+                    if (this.addButton) {
+                        inp += "<div class='input-group-append'>";
+                        inp += "<button onClick='" + buttonClick + "' class='" + buttonClass + "' type='button' data-toggle='kt-tooltip' title='" + buttonTooltip + "' data-placement='right'>" + buttonValue + "</button>";
+                        inp += "</div>";
+                        inp += "</div>";
+                    }
 
                     inp += "</div>";
 

@@ -16,21 +16,19 @@ var temp_portlet = "";
         // Inicialização do script
         init: function () {
 
-            // Inicia grid
-            grid = $('.grid-stack').gridstack();
-
             // Ações
             WIDGETS.catchToolButton();
             WIDGETS.outsideClick();
             WIDGETS.resizeWidget();
             WIDGETS.onChange();
+            WIDGETS.fixTableHeaders();
         },        
 
         // Pega o clique nos botões da barra para reposicionar o menu e abrir
         catchToolButton: function () {
             
             // Abrir dropdown
-            $('.gridstack-dropdown').on('click', function () {
+            $(document).on('click', '.gridstack-dropdown', function () {
 
                 // Checa se o clique foi em outro botão da toolbar
                 if (temp_portlet != $(this).attr('data-id')) {
@@ -103,7 +101,7 @@ var temp_portlet = "";
             }).then(function (result) {
                 if (result.value) {
                     WIDGETS.hideDropDown();
-                    $(".grid-stack").data("gridstack").removeWidget($('#portlet_' + p).closest('.grid-stack-item'));
+                    $(".grid-stack").data("gridstack").removeWidget($('#widget_portlet_' + p).closest('.grid-stack-item'));
                 }
             });            
         },
@@ -112,16 +110,16 @@ var temp_portlet = "";
         toggle: function (p, o) {
 
             // Maximizar
-            if ($('#portlet_' + p).css('display') == 'none') {
+            if ($('#widget_portlet_' + p).css('display') == 'none') {
 
                 // Seta o min height para o tamanho original
-                $(".grid-stack").data("gridstack").minHeight($('#portlet_' + p).closest('.grid-stack-item'), parseInt($('#portlet_' + p).closest('.grid-stack-item').attr('data-gs-temp-height')));
+                $(".grid-stack").data("gridstack").minHeight($('#widget_portlet_' + p).closest('.grid-stack-item'), parseInt($('#widget_portlet_' + p).closest('.grid-stack-item').attr('data-gs-temp-height')));
 
                 // Insere a opção de redimensionar
-                $(".grid-stack").data("gridstack").resizable($('#portlet_' + p).closest('.grid-stack-item'), true);
+                $(".grid-stack").data("gridstack").resizable($('#widget_portlet_' + p).closest('.grid-stack-item'), true);
 
                 // Retorna o widget para o tamanho original
-                $(".grid-stack").data("gridstack").resize($('#portlet_' + p).closest('.grid-stack-item'), null, parseInt($('#portlet_' + p).closest('.grid-stack-item').attr('data-gs-original-height')));
+                $(".grid-stack").data("gridstack").resize($('#widget_portlet_' + p).closest('.grid-stack-item'), null, parseInt($('#widget_portlet_' + p).closest('.grid-stack-item').attr('data-gs-original-height')));
 
                 // Altera o texto do botão
                 $(o).find('span').html('Minimizar');
@@ -135,13 +133,13 @@ var temp_portlet = "";
             } else {
 
                 // Seta o min height para 1
-                $(".grid-stack").data("gridstack").minHeight($('#portlet_' + p).closest('.grid-stack-item'), 1);
+                $(".grid-stack").data("gridstack").minHeight($('#widget_portlet_' + p).closest('.grid-stack-item'), 1);
 
                 // Remove a opção de redimensionar
-                $(".grid-stack").data("gridstack").resizable($('#portlet_' + p).closest('.grid-stack-item'), false);
+                $(".grid-stack").data("gridstack").resizable($('#widget_portlet_' + p).closest('.grid-stack-item'), false);
 
                 // Reduz o widget para 1 de altura
-                $(".grid-stack").data("gridstack").resize($('#portlet_' + p).closest('.grid-stack-item'), null, 1);
+                $(".grid-stack").data("gridstack").resize($('#widget_portlet_' + p).closest('.grid-stack-item'), null, 1);
 
                 // Altera o texto do botão
                 $(o).find('span').html('Maximizar');
@@ -151,10 +149,15 @@ var temp_portlet = "";
                 $(o).find('i').attr('class', 'kt-nav__link-icon la la-angle-up');
                 $('.grid-stack label[data-id="options_' + p + '"] .gernet-widget-toogle').find('i').attr('class', 'kt-nav__link-icon la la-angle-up');
 
+                // Se possuir filtro, esconde
+                if ($('#widget_filter_' + p).length > 0) {
+                    $('#widget_filter_' + p).addClass('hide');
+                }
+
             }
 
             // Ação
-            $('#portlet_' + p).toggle();
+            $('#widget_portlet_' + p).toggle();
 
         },
 
@@ -173,12 +176,14 @@ var temp_portlet = "";
 
             // Grava nova configuração da grid
             $('.grid-stack').on('change', function (event, items) {
-                for (var i = 0; i < items.length; i++) {
-                    var widget = items[i].id;
-                    var height = items[i].height;
-                    var width = items[i].width;
-                    var top = items[i].y;
-                    var left = items[i].x;
+                if (items !== undefined) {
+                    for (var i = 0; i < items.length; i++) {
+                        var widget = items[i].id;
+                        var height = items[i].height;
+                        var width = items[i].width;
+                        var top = items[i].y;
+                        var left = items[i].x;
+                    }
                 }
             }); 
         },
@@ -201,9 +206,9 @@ var temp_portlet = "";
         // Altera a cor do widget
         colorChange: function (p, v) {
             $('#temp_portlet_dropdown .gernet-widget-color').css('backgroundColor', v);
-            $('#portlet_' + p).closest('.grid-stack-item-content').css('backgroundColor', v);
-            $('#portlet_' + p).closest('.kt-portlet').css('backgroundColor', v);
-            $('#portlet_' + p).closest('.kt-portlet').find('.kt-portlet__head-title').css("color", WIDGETS.getContrastYIQ(v));
+            $('#widget_portlet_' + p).closest('.grid-stack-item-content').css('backgroundColor', v);
+            $('#widget_portlet_' + p).closest('.kt-portlet').css('backgroundColor', v);
+            $('#widget_portlet_' + p).closest('.kt-portlet').find('.kt-portlet__head-title').css("color", WIDGETS.getContrastYIQ(v));
             $('.grid-stack label[data-id="options_' + p + '"] .gernet-widget-color').css('backgroundColor', v);
         },
 
@@ -217,11 +222,57 @@ var temp_portlet = "";
             return (yiq >= 128) ? '#000000 !important' : '#FFFFFF !important';
         },
 
-        // Atualiza o widget
-        reload: function (p) {
-            alert('Em desenvolvimento');
-        }
+        // Fixa o cabeçalho de tabelas
+        fixTableHeaders: function () {
+            $('.grid-stack-item-content').scroll(function () {
+                if ($(this).scrollTop() > 0) {
 
+                    // Pega o nome do widget
+                    var n = $(this).find('#widget_temp_name').val();
+
+                    // Calcula a altura dos objetos anteriores ao cabeçalho da tabela
+                    var h1 = $(this).find('#widget_header_' + n).height(); // Cabeçalho
+                    var h2 = $(this).find('#widget_filter_' + n).height(); // Filtro
+                    var h3 = $(this).find('#widget_table_buttons_' + n).height(); // Botões da listagem
+                    var h4 = $(this).find('#widget_table_result_' + n + ' thead').height(); // Barra de cabeçalho da tabela
+                    var h = parseInt(h1) + parseInt(h2) + parseInt(h3) + parseInt(h4);
+
+                    // Se filtro estiver aberto, adiciona 6 para correção de posição
+                    if (!$(this).find('#widget_filter_' + n).hasClass('hide')) {
+                        h = h + 6;
+                    }
+
+                    // Pega o quanto foi alterado na barra de rolagem
+                    var p = $(this).find('thead.fixed-header').offset().top;
+                    var p2 = $(this).scrollTop();
+
+                    // Pega o elemento clonado
+                    var o = $(this).find('[id^=clone_header_]');
+
+                    // Verifica se está no limite para fixar
+                    if ((parseInt(p2) - parseInt(h2)) > p) {
+
+                        // Se não existir cria
+                        if (o.length == 0) {
+                            
+                            var clone = '';
+                            clone = $('#clone');
+                            clone = $(this).find('#widget_table_result_' + n).clone(true);
+                            clone.find('tbody').remove();
+                            clone.find('thead').removeClass('fixed-header');
+                            clone.attr('id', 'clone_header_' + n);
+                            clone.css({ position: 'relative', top: p2 - h });
+                            $(this).find('#widget_table_result_' + n).parent('div').prepend(clone);
+
+                        } else {
+                            $(o).css({ top: p2 - h });
+                        }
+                    } else {
+                        $(this).find('#clone_header_' + n).remove();
+                    }
+                }
+            })
+        }
     };
 
 })(jQuery);
@@ -233,4 +284,3 @@ $(document).ready(function () {
     WIDGETS.init();
 
 });
-

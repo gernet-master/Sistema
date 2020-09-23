@@ -1,0 +1,67 @@
+﻿@*
+    Descrição: Breadcrumb Dashboard
+    Data: 01/01/2021 - v.1.0
+*@
+
+@* Controles do aplicativo *@
+@model Sistema.Models.PartialsView_AppView
+
+@* Funções *@
+@using Functions;
+
+@* Verifica se é dashboard *@
+@if (Model.action == "Dashboard")
+{
+    @* Carrega html da página *@
+    @Html.Action(Model.action, Model.controller)
+
+    @* Subheader *@
+    @RenderPage("~/Views/Partials/SubHeader.cshtml")
+}
+else
+{
+
+    @* Painel que carrega a tela de localização *@
+    <div id="panel_search"></div>
+
+    @* Carrega html da página *@
+    <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt_content_app_gernet" id="kt_content">
+        <div class="kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+            <div class="row form-elements">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="kt-portlet">
+                        <div class="kt-portlet__body">
+                            <form action="" method="post" id="kt_form_app_gernet">
+                                @Html.Action(Model.action, Model.controller)
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @* Subheader *@
+    @RenderPage("~/Views/Partials/SubHeaderApp.cshtml")
+
+    @* Botões de ação *@
+    @RenderPage("~/Views/Partials/ActionButtons.cshtml")
+}
+
+@* Armazena variaveis para controle *@
+<form method="post" id="app_form_control">
+    <input type="hidden" id="app_temp_controller" name="app_temp_controller" value="@Model.controller" />
+    <input type="hidden" id="app_temp_action" name="app_temp_action" value="@Model.action" />
+    <input type="hidden" id="app_temp_id" name="app_temp_id" value="@Model.id" />
+    <input type="hidden" id="app_temp_id2" name="app_temp_id2" value="@Model.id2" />
+</form>
+
+@* Verifica se é dashboard e carrega script de controle dos widgets *@
+@if (Model.action == "Dashboard")
+{
+    <script>$('.grid-stack').gridstack();</script>
+}
+else
+{
+    @Scripts.Render("~/system_apps")
+}

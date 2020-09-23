@@ -1851,7 +1851,7 @@
 				prompt.addClass("ajaxed");
 
 			// create the prompt content
-			var promptContent = $('<div>').addClass("formErrorContent").html(promptText).appendTo(prompt);
+			var promptContent = $('<div>').addClass("formErrorContent").html("<i class='fa fa-times-circle' aria-hidden='true'></i>" + promptText).appendTo(prompt);
 			// create the css arrow pointing at the field
 			// note that there is no triangle on max-checkbox and radio
 			if (options.showArrow) {
@@ -1885,7 +1885,7 @@
 
 			prompt.css({
 				"opacity": 0,
-				'position':'absolute'
+				//'position':'absolute'
 			});
 			field.before(prompt);
 			

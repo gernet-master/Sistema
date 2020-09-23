@@ -6,23 +6,23 @@ using System.Collections.Generic;
 namespace Sistema.Models
 {
     // Opções
-    public class WidgetsView_Opcoes
+    public class WidgetsView_Options
     {
         public string id { get; set; }
 
-        public WidgetsView_Opcoes(string id)
+        public WidgetsView_Options(string id)
         {
             this.id = id;
         }
     }
 
     // Novo Registro
-    public class WidgetsView_NovoRegistro
+    public class WidgetsView_New
     {
         public Widgets widget { get; set; }
         public string texto { get; set; }
 
-        public WidgetsView_NovoRegistro(Widgets widget, string texto)
+        public WidgetsView_New(Widgets widget, string texto)
         {
             this.widget = widget;
             this.texto = texto;
@@ -30,16 +30,21 @@ namespace Sistema.Models
     }
 
     // Listagem
-    public class WidgetsView_Listagem
+    public class WidgetsView_List
     {
         public Widgets widget { get; set; }
         public string texto { get; set; }
         public dynamic result { get; set; }
 
-        public WidgetsView_Listagem(Widgets widget, string texto, dynamic result)
+        public WidgetsView_List(Widgets widget, string texto, dynamic result)
         {
             this.widget = widget;
             this.texto = texto;
+            this.result = result;
+        }
+
+        public WidgetsView_List(dynamic result)
+        {
             this.result = result;
         }
     }
