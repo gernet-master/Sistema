@@ -9,6 +9,8 @@ using System;
 using System.Globalization;
 using System.Web.Mvc;
 using Functions;
+using Sistema.Assets.Entities;
+using Sistema.Assets.Functions;
 
 namespace Sistema.Controllers
 {
@@ -54,6 +56,50 @@ namespace Sistema.Controllers
             {
                 return PartialView(new PartialsView_AppView("Home", "Dashboard", id, id2));
             }
+        }
+
+        // Dashboard
+        [Autentication]
+        public JsonResult SaveConfigDashboard(string action = "", string controller = "", int dashboard = 1, string register = "")
+        {
+            // Retorno
+            Retorno result = new Retorno();
+            result.msg = Language.XmlLang(208, 2).Text;
+
+            // Busca o código do aplicativo
+            int idaplicativo = new AplicativosDB().BuscarActionController(action, controller).idaplicativo.value;
+
+            // Usuário
+            int idusuario = Convert.ToInt32(Utils.Null(Convert.ToString(Session["usuario"]), "0"));
+
+            // Busca o registro de configuração da dashboard para o usuário
+            Usuarios_Dashboard ud = new Usuarios_DashboardDB().Buscar(idusuario, idaplicativo);
+
+            // Gravar
+            if (ud == null)
+            {
+                Usuarios_Dashboard dash = new Usuarios_Dashboard();
+                dash.idusuario.value = idusuario;
+                dash.idaplicativo.value = idaplicativo;
+                dash.fldashboard.value = dashboard;
+                dash.fltiporeg.value = register;
+                dash.Gravar();
+                result.success = 1;
+                result.msg = Language.XmlLang(243, 2).Text;
+            }
+
+            // Alterar
+            else
+            {
+                ud.fldashboard.value = dashboard;
+                ud.fltiporeg.value = register;
+                ud.Alterar();
+                result.success = 1;
+                result.msg = Language.XmlLang(243, 2).Text;
+            }
+
+            // Retorno
+            return Json(result);
         }
 
         // Rodapé
@@ -153,12 +199,6 @@ namespace Sistema.Controllers
 
         [Autentication]
         public ActionResult ScrollTop()
-        {
-            return PartialView();
-        }
-
-        [Autentication]
-        public ActionResult Modal()
         {
             return PartialView();
         }

@@ -19,8 +19,14 @@ namespace Sistema.Controllers
 
         // Formulário do cadastro de tabelas
         [Autentication]
-        public ActionResult Incluir(int id = 0, int id2 = 0)
+        public ActionResult Incluir(int id = 0, int id2 = 0, string register = "")
         {
+            // Validação para seleção de registro inicial caso esteja configurado para não exibir a dashboard
+            if (register != "")
+            {
+                id = new TabelasDB().Paginar(id, register);
+            }
+
             return PartialView("~/Views/Apps/Master/Tabelas/Incluir.cshtml", new TabelasView(id, id2));
         }
 
@@ -81,7 +87,10 @@ namespace Sistema.Controllers
             // Verifica permissões
 
             // Valida dados obrigatórios
-            if (tabela == "") { result.msg = Language.XmlLang(210, 2).Text; }
+            if (tabela == "") {
+                result.msg = Language.XmlLang(138, 2).Text + " " + Language.XmlLang(234, 0).Text;
+                return Json(result);
+            }
 
             // Busca registro para gravar
             Tabelas reg = new TabelasDB().Buscar(ident);

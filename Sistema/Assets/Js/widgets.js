@@ -27,7 +27,7 @@ var temp_portlet = "";
         // Pega o clique nos botões da barra para reposicionar o menu e abrir
         catchToolButton: function () {
             
-            // Abrir dropdown
+            //// Abrir dropdown
             $(document).on('click', '.gridstack-dropdown', function () {
 
                 // Checa se o clique foi em outro botão da toolbar

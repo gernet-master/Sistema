@@ -1,0 +1,139 @@
+﻿@*
+    Descrição: Cadastro de menus do sistema
+    Data: 01/01/2021 - v.1.0
+*@
+
+@* Controles do aplicativo *@
+@model Sistema.Models.MenusView
+
+@* Funções *@
+@using Functions;
+
+@* Inputs *@
+@{ Inputs inp = new Inputs(); }
+
+<div class="row">
+    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-6">
+        @{
+            // Código do idioma
+            inp.inputType = "text";
+            inp.label = Language.XmlLang(249, 2).Text;
+            inp.id = "frm_codigo_idioma";
+            inp.className = "form-control";
+            inp.required = true;
+            inp.validation = "required,numbers,minsize=1,maxsize=5";
+            inp.inputValue = Convert.ToString(Model.menu.idcodigoidioma.value);
+            inp.maxLenght = 10;
+            inp.mask = "00000";
+            inp.blur = "loadTextLanguage(this.value)";
+            @Html.Raw(inp.CreateInput());
+        }
+    </div>
+    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-6">
+        <div class="form-group">
+            <label for="texto_idioma">@Language.XmlLang(140, 2).Text</label>
+            <h4 id="texto_idioma" class="ft-red pt-3">@Language.XmlLang(Convert.ToInt32(Model.menu.idcodigoidioma.value), 2).Text</h4>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+        @{
+            // Menu pai
+            inp.inputType = "find";
+            inp.label = Language.XmlLang(245, 2).Text;
+            inp.id = "frm_menu_pai";
+            inp.id2 = "frm_idmenu_pai";
+            inp.className = "form-control";
+            inp.inputValue = Convert.ToString(Model.menu.menupai_nome.value);
+            inp.inputValue2 = Convert.ToString(Model.menu.idmenupai.value);
+            inp.findClick = "FORMS.fieldLocation('Menus','idmenu,menu_nome','frm_idmenu_pai,frm_menu_pai')";
+            inp.removeClick = "FORMS.removeValues('frm_menu_pai,frm_idmenu_pai')";
+            @Html.Raw(inp.CreateInput());
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+        @{
+            // Aplicativo
+            inp.inputType = "find";
+            inp.label = Language.XmlLang(230, 2).Text;
+            inp.id = "frm_aplicativo";
+            inp.id2 = "frm_idaplicativo";
+            inp.className = "form-control";
+            inp.inputValue = Convert.ToString(Model.menu.aplicativo.value);
+            inp.inputValue2 = Convert.ToString(Model.menu.idaplicativo.value);
+            inp.findClick = "FORMS.fieldLocation('Aplicativos','idaplicativo,txaplicativo','frm_idaplicativo,frm_aplicativo')";
+            inp.removeClick = "FORMS.removeValues('frm_aplicativo,frm_idaplicativo')";
+            @Html.Raw(inp.CreateInput());
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-2 col-md-2 col-lg-2 col-xs-4">
+        @{
+            // Ordem
+            inp.inputType = "text";
+            inp.label = Language.XmlLang(246, 2).Text;
+            inp.id = "frm_ordem";
+            inp.className = "form-control";
+            inp.required = true;
+            inp.validation = "required,numbers,minsize=1,maxsize=3";
+            inp.inputValue = Convert.ToString(Model.menu.nrordem.value);
+            inp.maxLenght = 3;
+            inp.mask = "000";
+            @Html.Raw(inp.CreateInput());
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
+        @{
+            // Icone
+            inp.inputType = "textarea";
+            inp.label = Language.XmlLang(247, 2).Text;
+            inp.id = "frm_icone";
+            inp.className = "form-control";
+            inp.inputValue = Convert.ToString(Model.menu.txicone.value);
+            @Html.Raw(inp.CreateInput());
+        }
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2 col-xs-6" style="padding-top:50px;">
+        @Html.Raw(Convert.ToString(Model.menu.txicone.value))
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+        @{
+            // Ativo
+            inp.inputType = "switch";
+            inp.label = Language.XmlLang(33, 2).Text;
+            inp.id = "frm_ativo";
+            inp.inputChecked = (Model.menu.flativo.value == 1 ? true : false);
+            @Html.Raw(inp.CreateInput());
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+        @{
+            // Master
+            inp.inputType = "switch";
+            inp.label = Language.XmlLang(34, 2).Text;
+            inp.id = "frm_master";
+            inp.inputChecked = (Model.menu.flmaster.value == 1 ? true : false);
+            @Html.Raw(inp.CreateInput());
+        }
+    </div>
+</div>
+
+<script src="~/Assets/Js/Apps/Master/Menus/incluir.js"></script>
+
+

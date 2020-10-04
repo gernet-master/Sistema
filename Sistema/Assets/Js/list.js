@@ -37,14 +37,25 @@ var LIST = {};
         // Alterar ordenação
         orderChange: function (f, d) {
 
-            // Altera o campo de ordenação
-            $('#widget_temp_order').val(f);
+            // Se campo estiver vazio, não permite ordenar
+            if (f == '') {
 
-            // Altera a direção de ordenação
-            $('#widget_temp_direction').val(d);
+                Swal.fire({
+                    icon: 'warning',
+                    text: UTILS.xmlLang(250, 2).Text
+                });
 
-            // Recarrega resultados
-            LIST.refreshList();
+            } else {
+
+                // Altera o campo de ordenação
+                $('#widget_temp_order').val(f);
+
+                // Altera a direção de ordenação
+                $('#widget_temp_direction').val(d);
+
+                // Recarrega resultados
+                LIST.refreshList();
+            }
         },
 
         // Exibir ou esconder campos
@@ -55,11 +66,14 @@ var LIST = {};
                 $('#widget_portlet_' + n).find("[id='column_" + f + "']").removeClass('hide');
                 $(o).find('i').removeClass('ft-red').removeClass('fa-eye-slash').addClass('fa-eye').addClass('ft-green');
 
-                // Esconde
+            // Esconde
             } else {
                 $('#widget_portlet_' + n).find("[id='column_" + f + "']").addClass('hide');
                 $(o).find('i').removeClass('ft-green').removeClass('fa-eye').addClass('fa-eye-slash').addClass('ft-red');
             }
+
+            // Copia o html do dropdown clonado para o original
+            $('#hideShow_' + n).html($('#temp_portlet_dropdown').find('div.dropdown-menu').html());
         },
 
         // Exibir ou esconder o filtro

@@ -8901,7 +8901,6 @@ var KTChat = function () {
 			height: function() {  // calculate height
                 var height;
 
-                alert(1)
 
 				// Mobile mode
 				if (KTUtil.isInResponsiveRange('tablet-and-mobile')) {

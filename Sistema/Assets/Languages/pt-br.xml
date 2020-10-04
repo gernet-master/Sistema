@@ -226,31 +226,31 @@
   <string id="223" text="e-mail inválido" />
   <string id="224" text="os campos devem ser iguais" />
   <string id="225" text="preencha somente com números" />
-  <string id="226" text="" />
-  <string id="227" text="" />
-  <string id="228" text="" />
-  <string id="229" text="" />
-  <string id="230" text="" />
-  <string id="231" text="" />
-  <string id="232" text="" />
-  <string id="233" text="" />
-  <string id="234" text="" />
-  <string id="235" text="" />
-  <string id="236" text="" />
-  <string id="237" text="" />
-  <string id="238" text="" />
-  <string id="239" text="" />
-  <string id="240" text="" />
-  <string id="241" text="" />
-  <string id="242" text="" />
-  <string id="243" text="" />
-  <string id="244" text="" />
-  <string id="245" text="" />
-  <string id="246" text="" />
-  <string id="247" text="" />
-  <string id="248" text="" />
-  <string id="249" text="" />
-  <string id="250" text="" />
+  <string id="226" text="criado por" />
+  <string id="227" text="ultima alteração" />
+  <string id="228" text="visualizar histórico completo" />
+  <string id="229" text="código aplicativo" />
+  <string id="230" text="aplicativo" />
+  <string id="231" text="action" />
+  <string id="232" text="controller" />
+  <string id="233" text="nome do aplicativo" />
+  <string id="234" text="é obrigatório" />
+  <string id="235" text="cadastro de aplicativos do sistema" />
+  <string id="236" text="action inicial" />
+  <string id="237" text="configuração de dashboard por usuário" />
+  <string id="238" text="sempre exibir a dashboard" />
+  <string id="239" text="abrir tela como" />
+  <string id="240" text="último cadastrado" />
+  <string id="241" text="selecionar registro" />
+  <string id="242" text="primeiro cadastrado" />
+  <string id="243" text="configuração alterada com sucesso" />
+  <string id="244" text="código do menu" />
+  <string id="245" text="menu pai" />
+  <string id="246" text="ordem" />
+  <string id="247" text="ícone" />
+  <string id="248" text="cadastro de menus do sistema" />
+  <string id="249" text="código do nome" />
+  <string id="250" text="não é possivel ordenar por este campo" />
   <string id="251" text="" />
   <string id="252" text="" />
   <string id="253" text="" />

@@ -102,7 +102,7 @@ namespace Sistema.Assets.DB
                 List<Tabelas> tabs = new List<Tabelas>();
 
                 string qry = "";
-                qry += "SELECT * FROM Tabelas";
+                qry += "SELECT * FROM Tabelas ORDER BY txtabela";
 
                 Connection session = new Connection();                
                 Query query = session.CreateQuery(qry);
@@ -231,7 +231,7 @@ namespace Sistema.Assets.DB
         {
             try
             {
-                List<Select_List> tabs = new List<Select_List>();
+                List<Select_List> list = new List<Select_List>();
 
                 string qry = "";
                 qry += "SELECT name AS texto FROM SYS.TABLES WHERE name <> 'sysdiagrams' AND name NOT IN (SELECT txtabela FROM Tabelas) ORDER BY name";
@@ -242,7 +242,7 @@ namespace Sistema.Assets.DB
 
                 while (reader.Read())
                 {
-                    tabs.Add(new Select_List()
+                    list.Add(new Select_List()
                     {
                         ident = new Variable(value: Convert.ToString(reader["texto"])),
                         text = new Variable(value: Convert.ToString(reader["texto"]))
@@ -251,7 +251,7 @@ namespace Sistema.Assets.DB
                 reader.Close();
                 session.Close();
 
-                return tabs;
+                return list;
             }
             catch (Exception error)
             {
@@ -297,7 +297,8 @@ namespace Sistema.Assets.DB
                 control.direction = direction;
                 control.columns = new int[4] { 0, 34, 33, 34 };
                 control.show = new int[4] { 0, 1, 1, 1 };
-                control.headers = new string[4] { "199", "144", "141", "145" };
+                control.headers = new string[4] { "199", "144", "141", "139" };
+                control.orderfields = new string[4] { "idtabela", "txtabela", "flauditoria", "idcodigoidioma" };
                 control.fields = new string[4] { "idtabela", "txtabela", "flauditoria", "idcodigoidioma" };
                 control.formatFields = new string[4] { "master", "", "boolean", "language" };
 

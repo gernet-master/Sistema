@@ -95,13 +95,16 @@ var UTILS = {};
                         cursor: 'wait'
                     }, 
                     message: UTILS.xmlLang(68, 2).Text
-                });                 
+                });              
 
                 // Carrega e desbloqueia
                 $('#kt_content_app').load("/Partials/App/", { controller: controller, action: action, id: id, id2: id2 } , function (response, status, xhr) {
 
                     // Esconde qualquer tooltip que esteja aberta
                     $(".tooltip").tooltip("hide");
+
+                    // Controle posição dos elementos
+                    PAGE.windowResize();
 
                     // Verifica se o arquivo existe
                     if (status == "error") {

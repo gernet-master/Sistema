@@ -1,4 +1,10 @@
-﻿@using Functions;
+﻿@*
+    Descrição: Calculadora do sistema
+    Data: 01/01/2021 - v.1.0
+*@
+
+@* Funções *@
+@using Functions;
 
 <span data-toggle="kt-tooltip" title="@Language.XmlLang(3, 2).Text" data-placement="right">
     <a href="#" class="dropdown-toggle dropdown-toggle-noarrow kt-footer__menu-link kt-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -12,11 +18,11 @@
     </a>
     <div class="dropdown-menu" x-placement="top-start" id="footer_calc">
         <div class="row calc-visor">
-            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 calc-temp">&nbsp;</div>
-            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 calc-result">0</div>
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 calc-temp">&nbsp;</div>
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 calc-result">0</div>
         </div>
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
                 <a href="#" data-calc="CE" class="btn btn-sm btn-icon">CE</a>
                 <a href="#" data-calc="C" class="btn btn-sm btn-icon">C</a>
                 <a href="#" data-calc="%" class="btn btn-sm btn-icon">%</a>
@@ -25,7 +31,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
                 <a href="#" data-calc="7" class="btn btn-sm btn-icon">7</a>
                 <a href="#" data-calc="8" class="btn btn-sm btn-icon">8</a>
                 <a href="#" data-calc="9" class="btn btn-sm btn-icon">9</a>
@@ -34,7 +40,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
                 <a href="#" data-calc="4" class="btn btn-sm btn-icon">4</a>
                 <a href="#" data-calc="5" class="btn btn-sm btn-icon">5</a>
                 <a href="#" data-calc="6" class="btn btn-sm btn-icon">6</a>
@@ -43,7 +49,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
                 <a href="#" data-calc="1" class="btn btn-sm btn-icon">1</a>
                 <a href="#" data-calc="2" class="btn btn-sm btn-icon">2</a>
                 <a href="#" data-calc="3" class="btn btn-sm btn-icon">3</a>
@@ -52,7 +58,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
                 <a href="#" data-calc="+/-" class="btn btn-sm btn-icon">+/-</a>
                 <a href="#" data-calc="0" class="btn btn-sm btn-icon">0</a>
                 <a href="#" data-calc="." class="btn btn-sm btn-icon">.</a>

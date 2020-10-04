@@ -22,8 +22,9 @@ namespace Sistema.Models
             // Busca registro principal
             this.tabela = new TabelasDB().Buscar(id);
 
-            // Grava o nome do identifcador principal
+            // Grava o nome e identificador do registro
             HttpContext.Current.Session["ident_name"] = tabela.txtabela.value;
+            HttpContext.Current.Session["ident_code"] = tabela.idtabela.value;
 
             // Lista todas as tabelas que ainda não foram cadastradas
             this.tabelaN = new TabelasDB().ListarNaoCadastradas();

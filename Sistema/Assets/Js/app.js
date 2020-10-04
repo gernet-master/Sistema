@@ -195,26 +195,20 @@ var APP = {};
                     $('.kt_content_app_gernet').block({ baseZ: 3, message: null, overlayCSS: { backgroundColor: '#ececec', opacity: 0.3, cursor: 'default' } });
                     $('#kt_buttons_app_gernet').block({ baseZ: 3, message: null, overlayCSS: { backgroundColor: '#ececec', opacity: 0.3, cursor: 'default' } });
 
-                    // Verifica se já foi carregada a página de localização
-                    if ($('#panel_search').html() == '') {
+                    // Cria campos de formulário
+                    var data = [];
+                    data.push({ name: 'widget_temp_name', value: 'inner_app_find' });
+                    data.push({ name: 'widget_temp_controller', value: $('#app_temp_controller').val() });
+                    data.push({ name: 'widget_temp_action', value: 'ListarWidget' });
+                    data.push({ name: 'widget_temp_page', value: 1 });
+                    data.push({ name: 'widget_temp_registers', value: 10 });
+                    data.push({ name: 'widget_temp_order', value: '' });
+                    data.push({ name: 'widget_temp_direction', value: 'asc' });
 
-                        // Cria campos de formulário
-                        var data = [];
-                        data.push({ name: 'widget_temp_name', value: 'inner_app_find' });
-                        data.push({ name: 'widget_temp_controller', value: $('#app_temp_controller').val() });
-                        data.push({ name: 'widget_temp_action', value: 'ListarWidget' });
-                        data.push({ name: 'widget_temp_page', value: 1 });
-                        data.push({ name: 'widget_temp_registers', value: 10 });
-                        data.push({ name: 'widget_temp_order', value: '' });
-                        data.push({ name: 'widget_temp_direction', value: 'asc' });
-
-                        // Carrega página
-                        $('#panel_search').load('/' + $('#app_temp_controller').val() + '/ListarWidget/', data, function () {
-                            $("#panel_search").slideToggle("slow");
-                        });
-                    } else {
+                    // Carrega página
+                    $('#panel_search').load('/' + $('#app_temp_controller').val() + '/ListarWidget/', data, function () {
                         $("#panel_search").slideToggle("slow");
-                    }
+                    });
                     
                     break;
 

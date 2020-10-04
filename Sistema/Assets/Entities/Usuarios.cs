@@ -10,7 +10,7 @@ namespace Sistema.Assets.Entities
 {
 
     // Usuários do sistema
-    public class Usuarios : Audit
+    public class Usuarios
     {
 
         // Variáveis

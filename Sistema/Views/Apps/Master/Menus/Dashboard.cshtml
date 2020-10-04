@@ -1,0 +1,25 @@
+﻿@*
+    Descrição: Dashboard do cadastro de menus do sistema
+    Data: 01/01/2021 - v.1.0
+*@
+
+@using Sistema.Assets.DB;
+@using Sistema.Assets.Entities;
+@using Functions;
+
+<div class="grid-stack">
+
+    @* Novo registro *@
+    @Html.Action("New",
+        "Widgets",
+        new { widget = new Widgets(9, 0, 3, 2, 0, 0, true, "Menus", "Incluir", "wdg_new"),
+        texto = Language.XmlLang(248, 2).Text })
+
+    @* Listagem *@
+    @Html.Action("List",
+        "Widgets",
+        new { widget = new Widgets(0, 0, 9, 8, 0, 0, false, "Menus", "ListarWidget", "wdg_list"),
+        texto = Language.XmlLang(162, 2).Text,
+        result = new MenusDB().ListarWidget(null) })
+
+</div>

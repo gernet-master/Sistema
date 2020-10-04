@@ -166,23 +166,89 @@ var FORMS = {};
 
             // Verifica se tem um input group
             if ($(obj).prev().attr('class') == 'input-group-prepend') {
-                html += ' style="margin-left:' + ($(obj).prev().width() + 40) + 'px !important; margin-top:2px !important;" ';      
+                html += ' style="margin-left:' + ($(obj).prev().width() + ($(obj).hasClass('kt-margin-l-40') ? 40 : 0)) + 'px !important; margin-top:2px !important;" ';      
             }
 
             html += '><i class="fa fa-times-circle" aria-hidden="true"></i>' + error + '</div>';            
 
-            // Adiciona a classe para deixar a border inferior do obejto vermelha
+            // Adiciona a classe para deixar a border inferior do objeto vermelha
             $(obj).addClass('form-error');
 
-            // Insere a mensagem abaixo do objeto
-            $(obj).after(html);
+            // Verifica se tem um botao após o input e  nsere a mensagem abaixo do objeto
+            if ($(obj).next().attr('class') == 'input-group-append') {
+                $(obj).next().after(html);
+            } else {
+                $(obj).after(html);
+            }
+
 
             // Remove a mensagem de erro se for digitado alguma coisa em campo input text ou password
             if ($(obj).is('input:text, input:password')) {
                 $(obj).keyup(function () {
                     $('#form-erro-id-' + $(obj).attr('id')).remove();
                     $('#' + $(obj).attr('id')).removeClass('form-error');
+                });
+            }
+
+            // Remove a mensagem de erro se for selecionado algum item
+            if ($(obj).is('select')) {
+                $(obj).change(function () {
+                    $('#form-erro-id-' + $(obj).attr('id')).remove();
+                    $('#' + $(obj).attr('id')).removeClass('form-error');
                 })
+            }
+        },
+
+        // Remove valores dos campos
+        removeValues: function (f) {
+            var arr = f.split(",");
+            for (var i = 0; i < arr.length; i++) {
+                $('#' + arr[i]).val('');
+            }
+        },
+
+        // Abre tela de localização para campos
+        fieldLocation: function (a, f, i) {
+
+            $('.kt_content_app_gernet').block({ baseZ: 3, message: null, overlayCSS: { backgroundColor: '#ececec', opacity: 0.3, cursor: 'default' } });
+            $('#kt_buttons_app_gernet').block({ baseZ: 3, message: null, overlayCSS: { backgroundColor: '#ececec', opacity: 0.3, cursor: 'default' } });
+
+            // Cria campos de formulário
+            var data = [];
+            data.push({ name: 'widget_temp_name', value: 'inner_app_find' });
+            data.push({ name: 'widget_temp_controller', value: a });
+            data.push({ name: 'widget_temp_action', value: 'ListarWidget' });
+            data.push({ name: 'widget_temp_page', value: 1 });
+            data.push({ name: 'widget_temp_registers', value: 10 });
+            data.push({ name: 'widget_temp_order', value: '' });
+            data.push({ name: 'widget_temp_direction', value: 'asc' });
+            data.push({ name: 'widget_temp_input_find', value: 1 });
+            data.push({ name: 'widget_temp_input_fields', value: f });
+            data.push({ name: 'widget_temp_input_return', value: i });
+
+            // Carrega página
+            $('#panel_search').load('/' + a + '/ListarWidget/', data, function () {
+                $("#panel_search").slideToggle("slow");
+            });
+        },
+
+        // Carrega valores nos campos
+        loadRegister: function (v, f) {
+
+            // Fecha a tela
+            APP.closeSearch();
+
+            // Pega os valores
+            var values = v.split('||');
+            var fields = f.split(',');
+
+            // Carrega os valores
+            for (var p = 0; p < values.length; p++) {
+                $('#' + fields[p]).val(values[p]);
+
+                // Remove a mensagem de erro se existir
+                $('#form-erro-id-' + fields[p]).remove();
+                $('#' + fields[p]).removeClass('form-error');
             }
         }
     }

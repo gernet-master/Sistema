@@ -98,8 +98,14 @@ namespace Functions
 
                 foreach (FieldInfo myField in obj.GetType().GetFields())
                 {
+                    // Pega o campo
                     Variable val = obj.GetField(myField.Name);
-                    msg += Language.XmlLang(Convert.ToInt32(val.config.Split('|')[0]), 1).Text + ": " + val.value + "<br>";
+
+                    // Somente faz auditoria nos campos com configuração
+                    if (val.config != "")
+                    {                        
+                        msg += Language.XmlLang(Convert.ToInt32(val.config.Split('|')[0]), 1).Text + ": " + val.value + "<br>";
+                    }
                 }
                 
             }
@@ -109,14 +115,19 @@ namespace Functions
             {
                 foreach (FieldInfo myField in obj.GetType().GetFields())
                 {
+                    // Pega os campos
                     Variable val = obj.GetField(myField.Name);
                     Variable val2 = obj2.GetField(myField.Name);
 
-                    // Verifica se houve alteração
-                    if (val.value != val2.value)
+                    // Somente faz auditoria nos campos com configuração
+                    if (val.config != "")
                     {
-                        msg += Language.XmlLang(Convert.ToInt32(val2.config.Split('|')[0]), 1).Text + ": " + val2.value + " => " + val.value + "<br>";
-                    }                    
+                        // Verifica se houve alteração
+                        if (val.value != val2.value)
+                        {
+                            msg += Language.XmlLang(Convert.ToInt32(val2.config.Split('|')[0]), 1).Text + ": " + val2.value + " => " + val.value + "<br>";
+                        }
+                    }
                 }
             }
 

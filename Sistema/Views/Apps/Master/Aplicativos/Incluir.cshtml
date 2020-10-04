@@ -1,0 +1,82 @@
+﻿@*
+    Descrição: Cadastro de aplicativos do sistema
+    Data: 01/01/2021 - v.1.0
+*@
+
+@* Controles do aplicativo *@
+@model Sistema.Models.AplicativosView
+
+@* Funções *@
+@using Functions;
+
+@* Inputs *@
+@{ Inputs inp = new Inputs(); }
+
+<div class="row">
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+        @{
+            // Nome do aplicativo
+            inp.inputType = "text";
+            inp.label = Language.XmlLang(233, 2).Text;
+            inp.id = "frm_aplicativo";
+            inp.className = "form-control";
+            inp.required = true;
+            inp.validation = "required,minsize=1,maxsize=100";
+            inp.inputValue = Convert.ToString(Model.aplicativo.txaplicativo.value);
+            inp.maxLenght = 100;
+            @Html.Raw(inp.CreateInput());
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-6">
+        @{
+            // Nome da action
+            inp.inputType = "text";
+            inp.label = Language.XmlLang(236, 2).Text;
+            inp.id = "frm_action";
+            inp.className = "form-control";
+            inp.required = true;
+            inp.validation = "required,minsize=1,maxsize=20";
+            inp.inputValue = Convert.ToString(Model.aplicativo.txaction.value);
+            inp.maxLenght = 20;
+            @Html.Raw(inp.CreateInput());
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-6">
+        @{
+            // Nome do controller
+            inp.inputType = "text";
+            inp.label = Language.XmlLang(232, 2).Text;
+            inp.id = "frm_controller";
+            inp.className = "form-control";
+            inp.required = true;
+            inp.validation = "required,minsize=1,maxsize=20";
+            inp.inputValue = Convert.ToString(Model.aplicativo.txcontroller.value);
+            inp.maxLenght = 20;
+            @Html.Raw(inp.CreateInput());
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-12">
+        @{
+            // Tabelas
+            inp.inputType = "find";
+            inp.label = Language.XmlLang(144, 2).Text;
+            inp.id = "frm_tabela";
+            inp.id2 = "frm_idtabela";
+            inp.className = "form-control";
+            inp.inputValue = Convert.ToString(Model.aplicativo.txtabela.value);
+            inp.inputValue2 = Convert.ToString(Model.aplicativo.idtabela.value);
+            inp.findClick = "FORMS.fieldLocation('Tabelas','idtabela,txtabela','frm_idtabela,frm_tabela')";
+            inp.removeClick = "FORMS.removeValues('frm_tabela,frm_idtabela')";
+            @Html.Raw(inp.CreateInput());
+        }
+    </div>
+</div>
+
+
+

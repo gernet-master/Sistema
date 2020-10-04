@@ -1,5 +1,5 @@
 ﻿@*
-    Descrição: Dashboard do cadastro de tabelas do sistema
+    Descrição: Filtro de pesquisa do cadastro de menus do sistema
     Data: 01/01/2021 - v.1.0
 *@
 
@@ -10,9 +10,9 @@
         @{
             Inputs inp = new Inputs();
             inp.inputType = "text";
-            inp.label = Language.XmlLang(138, 2).Text;
+            inp.label = Language.XmlLang(233, 2).Text;
             inp.className = "form-control mb-0";
-            inp.id = "filter_txtabela";
+            inp.id = "filter_txaplicativo";
             inp.maxLenght = 50;
             @Html.Raw(inp.CreateInput());
         }

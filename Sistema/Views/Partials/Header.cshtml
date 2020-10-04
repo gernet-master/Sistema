@@ -3,6 +3,7 @@
     Data: 01/01/2021 - v.1.0
 *@
 
+@* Funções *@
 @using Functions;
 
 <div id="kt_header" class="kt-header kt-grid__item kt-header--fixed">
@@ -11,17 +12,30 @@
 
     <div class="kt-header__topbar">
 
-        @*@Html.Action("Search", "Partials")*@
-        @*@Html.Action("Email", "Partials")
-        @Html.Action("Whatsapp", "Partials")*@
-        @*@Html.Action("Notifications", "Partials")*@
-        @*@Html.Action("QuickActions", "Partials")*@
-        @Html.Action("Chat", "Partials")
-        @*@Html.Action("Languages", "Partials")*@
+        @* Busca no sistema *@
+        @Html.Action("Search", "Partials")
 
-        <!-- Menu do usuário -->
+        @* E-mails *@
+        @Html.Action("Email", "Partials")
+
+        @* Whatsapp *@
+        @Html.Action("Whatsapp", "Partials")
+
+        @* Notificações *@
+        @Html.Action("Notifications", "Partials")
+
+        @* Ações rápidas *@
+        @Html.Action("QuickActions", "Partials")
+
+        @* Chat *@
+        @Html.Action("Chat", "Partials")
+
+        @* Idiomas do sistema *@
+        @Html.Action("Languages", "Partials")
+
+        @* Menu do usuário *@
         @Html.Action("UserPanel", "Partials")
-        
+
     </div>
 </div>
 

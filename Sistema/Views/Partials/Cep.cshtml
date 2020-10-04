@@ -1,4 +1,10 @@
-﻿@using Functions;
+﻿@*
+    Descrição: Localização de cep
+    Data: 01/01/2021 - v.1.0
+*@
+
+@* Funções *@
+@using Functions;
 
 <span data-toggle="kt-tooltip" title="@Language.XmlLang(4, 2).Text" data-placement="right">
     <a href="#" class="dropdown-toggle dropdown-toggle-noarrow kt-footer__menu-link kt-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -11,7 +17,7 @@
     </a>
     <div class="dropdown-menu" x-placement="top-start" id="footer_cep">
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
                 @{
                     Inputs inp = new Inputs();
                     inp.inputType = "text";
@@ -19,7 +25,6 @@
                     inp.className = "form-control";
                     inp.id = "search_cep";
                     inp.maxLenght = 9;
-                    inp.validation = "minSize[9],maxSize[9]";
                     inp.mask = "00000-000";
                     inp.keyUp = "FOOTER.enterSearchCep(event)";
                     inp.placeholder = "_____-___";
@@ -33,7 +38,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" id="cep_result">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12" id="cep_result">
                 @Language.XmlLang(181, 2).Text
             </div>
         </div>

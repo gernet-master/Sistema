@@ -3,6 +3,7 @@ Descrição: Funções para montar os inputs
 Data: 01/01/2021 - v.1.0
 */
 
+using System;
 using System.Collections.Generic;
 
 namespace Functions
@@ -17,6 +18,7 @@ namespace Functions
         public bool required { get; set; }
         public string validation { get; set; }
         public dynamic options { get; set; }
+        public string optionsFields { get; set; }
         public string firstOption { get; set; }
         public string className { get; set; }
         public string inputValue { get; set; }
@@ -32,6 +34,11 @@ namespace Functions
         public string buttonClick { get; set; }
         public string buttonClass { get; set; }
         public string buttonValue { get; set; }
+        public string change { get; set; }
+        public string id2 { get; set; }
+        public string inputValue2 { get; set; }
+        public string findClick { get; set; }
+        public string removeClick { get; set; }
 
         private void Init()
         {
@@ -41,6 +48,7 @@ namespace Functions
             this.required = false;
             this.validation = "";
             this.options = null;
+            this.optionsFields = "";
             this.firstOption = "";
             this.className = "";
             this.inputValue = "";
@@ -56,6 +64,11 @@ namespace Functions
             this.buttonClick = "";
             this.buttonClass = "";
             this.buttonValue = "";
+            this.change = "";
+            this.inputValue2 = "";
+            this.id2 = "";
+            this.findClick = "";
+            this.removeClick = "";
         }
 
         // Desenha o input
@@ -126,6 +139,47 @@ namespace Functions
 
                     break;
 
+                // Textarea
+                case "textarea":
+
+                    inp += "<div class='form-group'>";
+
+                    // Label
+                    if (Utils.Null(this.label, "") != "") { inp += "<label for='" + this.id + "' class='" + (this.required ? "required" : "") + "'>" + this.label + "</label>"; }
+
+                    // Cria input
+                    inp += "<textarea ";
+
+                    // Classe
+                    if (Utils.Null(this.className, "") != "") { inp += " class='" + this.className + " ' "; }
+
+                    // ID
+                    if (Utils.Null(this.id, "") != "") { inp += " id='" + this.id + "' name='" + this.id + "' "; }
+
+                    // Validação
+                    if (Utils.Null(this.validation, "") != "") { inp += " validate='" + this.validation + "' "; }
+
+                    // MaxLenght
+                    if (this.maxLenght > 0) { inp += " maxlength='" + this.maxLenght + "' "; }
+
+                    // Placeholder
+                    if (Utils.Null(this.placeholder, "") != "") { inp += " placeholder='" + this.placeholder + "' "; }
+
+                    // ReadOnly
+                    if (this.readOnly) { inp += " readonly "; }
+
+                    inp += ">";
+
+                    // Valor
+                    inp += this.inputValue;
+
+                    // Finaliza input
+                    inp += " </textarea>";
+
+                    inp += "</div>";
+
+                    break;
+
                 // Select
                 case "select":
 
@@ -138,10 +192,13 @@ namespace Functions
                     inp += "<select ";
 
                     // Classe
-                    inp += " class='" + this.className + " " + (this.validation != "" ? " validate[" + this.validation + "]" : "") + "' ";
+                    if (Utils.Null(this.className, "") != "") { inp += " class='" + this.className + " ' "; }
 
                     // ID
-                    inp += " id='" + this.id + "' name='" + this.id + "' ";
+                    if (Utils.Null(this.id, "") != "") { inp += " id='" + this.id + "' name='" + this.id + "' "; }
+
+                    // Validação
+                    if (Utils.Null(this.validation, "") != "") { inp += " validate='" + this.validation + "' "; }
 
                     // Finaliza input
                     inp += ">";
@@ -149,17 +206,79 @@ namespace Functions
                     // Primeira opção
                     if (this.firstOption != "") { inp += "<option value=''>-- " + this.firstOption + " --</option>"; }
 
+                    // Pega os campos para utilizar como identificador e valor
+                    var vals = optionsFields.Split(',');
+
                     // Opções
-                    if (this.options.Count > 0)
+                    if (this.options != null)
                     {
-                        foreach (var o in this.options)
+                        if (this.options.Count > 0)
                         {
-                            inp += "<option value='" + o.ident.value + "'>" + o.text.value + "</option>";
+                            foreach (var o in this.options)
+                            {
+                                Variable value = o.GetField(vals[0].Trim());
+                                Variable text = o.GetField(vals[1].Trim());
+
+                                inp += "<option value='" + value.value + "' ";
+
+                                // Marca o item se possuir valor
+                                if (Utils.Null(this.inputValue, "") != "")
+                                {
+                                    if (Convert.ToString(this.inputValue) == Convert.ToString(value.value))
+                                    {
+                                        inp += " selected ";
+                                    }
+                                }
+
+                                inp += ">" + text.value + "</option>";
+                            }
                         }
                     }
 
                     // Finaliza input
                     inp += "</select>";
+
+                    inp += "</div>";
+
+                    break;
+
+                // Localização
+                case "find":
+
+                    inp += "<div class='form-group'>";
+
+                    // Label
+                    if (this.label != "") { inp += "<label for='" + this.id + "' class='" + (this.required ? "required" : "") + "'>" + this.label + "</label>"; }
+
+                    // Campo escondido para armazenar o identificador
+                    inp += "<input type='hidden' class='hidden' id='" + this.id2 + "' name='" + this.id2 + "' value='" + this.inputValue2 + "'>";
+
+                        // Input
+                        inp += "<div class='input-group pointer'>";
+
+                            inp += "<div onClick=\"" + this.findClick + "\" class='input-group-prepend' data-toggle='kt-tooltip' title='" + Language.XmlLang(149, 2).Text + "' data-placement='bottom'>";
+                            inp += "<span class='input-group-text'><i class='fas fa-search'></i></span></div>";
+
+                            inp += "<input onClick=\"" + this.findClick + "\" type='text' readonly ";
+
+                            // Classe
+                            if (Utils.Null(this.className, "") != "") { inp += " class='" + this.className + " ' "; }
+
+                            // ID
+                            if (Utils.Null(this.id, "") != "") { inp += " id='" + this.id + "' name='" + this.id + "' "; }
+
+                            // Validação
+                            if (Utils.Null(this.validation, "") != "") { inp += " validate='" + this.validation + "' "; }
+
+                            // Valor
+                            inp += " value='" + this.inputValue + "' ";
+
+                            inp += ">";
+
+                            inp += "<div onClick=\"" + this.removeClick + "\" class='input-group-append' data-toggle='kt-tooltip' title='" + Language.XmlLang(161, 2).Text + "' data-placement='bottom'>";
+                            inp += "<span class='input-group-text'><i class='fas fa-times'></i></span></div>";
+
+                        inp += "</div>";
 
                     inp += "</div>";
 
@@ -179,10 +298,16 @@ namespace Functions
                     inp += "<input type='checkbox' ";
 
                     // ID
-                    inp += " id='" + this.id + "' name='" + this.id + "' ";
+                    if (Utils.Null(this.id, "") != "") { inp += " id='" + this.id + "' name='" + this.id + "' "; }
+
+                    // Validação
+                    if (Utils.Null(this.validation, "") != "") { inp += " validate='" + this.validation + "' "; }
 
                     // Checked
                     if (this.inputChecked) { inp += " checked "; }
+
+                    // OnChange
+                    if (Utils.Null(this.change, "") != "") { inp += " onChange='" + this.change + "' "; }
 
                     // Finaliza input
                     inp += "value='1' />";

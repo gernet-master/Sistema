@@ -31,10 +31,29 @@ namespace Sistema.Assets.Entities
         }
     }
 
-    // Lista para carregamento de select
+    // Class utilizada para gerar listas
     public class Select_List
     {
-        public Variable ident { get; set; }
-        public Variable text { get; set; }
+        public Variable ident = new Variable(config: "0|0");
+        public Variable text = new Variable(config: "0|0");
+
+        // Inicial
+        public Select_List()
+        {
+            this.ident.value = 0;
+            this.text.value = "";
+        }
+
+        public Variable GetField(string field = "")
+        {
+            dynamic r = null;
+            switch (field)
+            {
+                case "ident": r = this.ident; break;
+                case "text": r = this.text; break;
+            }
+            return r;
+        }
     }
+
 }

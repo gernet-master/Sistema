@@ -159,12 +159,16 @@ namespace Functions
 
             switch (type)
             {
+                // Exibe icone V/X para informar
                 case "boolean":
                     ret = (Convert.ToBoolean(value) ? "<i class='fa fa-check ft-green'></i>" : "<i class='fa fa-times ft-red'></i>");
                     break;
+                
+                // Carrega a partir do arquivo de idioma
                 case "language":
                     ret = Language.XmlLang(Convert.ToInt32(value), 2).Text;
                     break;
+
                 default:
                     ret = Convert.ToString(value);
                     break;

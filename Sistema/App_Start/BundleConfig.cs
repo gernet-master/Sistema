@@ -208,7 +208,8 @@ namespace Sistema
                 "~/Assets/css/skins/brand/dark.css",
                 "~/Assets/css/skins/aside/dark.css",
                 "~/Assets/plugins/custom/gridstack/gridstack.css",
-                "~/Assets/css/custom.css"
+                "~/Assets/css/custom.css",
+                "~/Assets/css/grid.css"
             ));
 
             bundles.Add(new StyleBundle("~/login_css").Include(

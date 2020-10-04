@@ -1,17 +1,23 @@
-﻿using Sistema.Assets.DB;
+﻿using Functions;
+using Sistema.Assets.DB;
 using Sistema.Assets.Entities;
 using Sistema.Assets.Functions;
+using System;
 using System.Collections.Generic;
+using System.Web;
 
 namespace Sistema.Models
 {
     // Aplicativo
-    public class PartialsView_AppView
+    public class PartialsView_AppView : Session
     {
         public string controller { get; set; }
         public string action { get; set; }
         public int id { get; set; }
         public int id2 { get; set; }
+        public List<Select_List> list { get; set; }
+        public Usuarios_Dashboard dashboard { get; set; }
+        public string register { get; set; }
 
         public PartialsView_AppView(string controller, string action, int id, int id2)
         {
@@ -19,6 +25,35 @@ namespace Sistema.Models
             this.action = action;
             this.id = id;
             this.id2 = id2;
+            this.register = "";
+
+            // Crias as opções para o controle da dashboard
+            this.list = new List<Select_List>();
+            this.list.Add(new Select_List() { ident = new Variable(value: ""), text = new Variable(value: Language.XmlLang(24, 2).Text) });
+            this.list.Add(new Select_List() { ident = new Variable(value: "F"), text = new Variable(value: Language.XmlLang(242, 2).Text) });
+            this.list.Add(new Select_List() { ident = new Variable(value: "L"), text = new Variable(value: Language.XmlLang(240, 2).Text) });
+
+            // Pega as configurações da dashboard para o usuario
+            this.dashboard = new Usuarios_DashboardDB().Buscar(session_usuario, new AplicativosDB().BuscarActionController("Dashboard", controller).idaplicativo.value);
+
+            // Valida a configuração da dashboard
+            if (this.dashboard != null)
+            {
+                // Não exibir dashboard
+                if (this.dashboard.fldashboard.value == 0)
+                {
+                    this.action = "Incluir";
+                    this.id = 0;
+                    this.register = Convert.ToString(this.dashboard.fltiporeg.value).Trim();
+
+                    // Grava a pagina atual na session para utilizar caso seja feito refresh da página
+                    HttpContext.Current.Session["current_page"] = controller + "|" + this.action + "|" + this.id + "|" + id2;
+                }
+            }
+            else
+            {
+                this.dashboard = new Usuarios_Dashboard();
+            }
         }
     }
 

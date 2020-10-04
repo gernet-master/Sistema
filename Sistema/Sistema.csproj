@@ -130,23 +130,29 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Assets\DB\MenusDB.cs" />
     <Compile Include="Assets\DB\Gernet_ControleDB.cs" />
     <Compile Include="Assets\DB\Log_AcessoDB.cs" />
     <Compile Include="Assets\DB\Log_Link_SenhaDB.cs" />
     <Compile Include="Assets\DB\ChatDB.cs" />
+    <Compile Include="Assets\DB\AplicativosDB.cs" />
     <Compile Include="Assets\DB\TabelasDB.cs" />
     <Compile Include="Assets\DB\AuditoriaDB.cs" />
+    <Compile Include="Assets\DB\Usuarios_DashboardDB.cs" />
     <Compile Include="Assets\DB\Usuarios_PreferenciasDB.cs" />
     <Compile Include="Assets\DB\Log_SenhaDB.cs" />
     <Compile Include="Assets\DB\Usuarios_UnidadesDB.cs" />
     <Compile Include="Assets\DB\Usuarios_SistemaDB.cs" />
     <Compile Include="Assets\DB\UsuariosDB.cs" />
+    <Compile Include="Assets\Entities\Menus.cs" />
     <Compile Include="Assets\Entities\Gernet_Controle.cs" />
     <Compile Include="Assets\Entities\Chat.cs" />
     <Compile Include="Assets\Entities\Retorno.cs" />
     <Compile Include="Assets\Entities\Log_Senha.cs" />
     <Compile Include="Assets\Entities\Log_Link_Senha.cs" />
     <Compile Include="Assets\Entities\Auditoria.cs" />
+    <Compile Include="Assets\Entities\Aplicativos.cs" />
+    <Compile Include="Assets\Entities\Usuarios_Dashboard.cs" />
     <Compile Include="Assets\Entities\Widgets.cs" />
     <Compile Include="Assets\Entities\Tabelas.cs" />
     <Compile Include="Assets\Entities\Usuarios_Preferencias.cs" />
@@ -180,6 +186,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Apps\Administrador\UsuariosView.cs" />
+    <Compile Include="Models\Apps\Master\MenusView.cs" />
+    <Compile Include="Models\Apps\Master\AplicativosView.cs" />
     <Compile Include="Models\Apps\Master\TabelasView.cs" />
     <Compile Include="Models\WidgetsView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -217,6 +225,8 @@
     <Content Include="Assets\Css\skins\brand\light.min.css" />
     <Content Include="Assets\Css\skins\brand\light.rtl.css" />
     <Content Include="Assets\Css\skins\brand\light.rtl.min.css" />
+    <Content Include="Assets\Css\grid.css" />
+    <Content Include="Assets\Js\Apps\Master\Menus\incluir.js" />
     <Content Include="Assets\Js\page.js" />
     <Content Include="Assets\Js\Apps\Master\Tabelas\incluir.js" />
     <Content Include="Assets\Js\chat.js" />
@@ -3451,7 +3461,6 @@
     <Content Include="Views\Login\Disconnnect.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Error\InvalidUrl.cshtml" />
-    <Content Include="Views\Apps\Master\Aplicativos\Index.cshtml" />
     <Content Include="Views\Apps\Master\Tabelas\Dashboard.cshtml" />
     <Content Include="Views\Apps\Master\Tabelas\Incluir.cshtml" />
     <None Include="Properties\Settings.settings">
@@ -3461,6 +3470,12 @@
     <Content Include="Views\Apps\Master\Tabelas\Filtro.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Dashboard.cshtml" />
+    <Content Include="Views\Apps\Master\Aplicativos\Dashboard.cshtml" />
+    <Content Include="Views\Apps\Master\Aplicativos\Filtro.cshtml" />
+    <Content Include="Views\Apps\Master\Aplicativos\Incluir.cshtml" />
+    <Content Include="Views\Apps\Master\Menus\Dashboard.cshtml" />
+    <Content Include="Views\Apps\Master\Menus\Filtro.cshtml" />
+    <Content Include="Views\Apps\Master\Menus\Incluir.cshtml" />
     <None Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Login\Reset.cshtml" />
     <Content Include="Views\Partials\ChatPanelList.cshtml" />
@@ -3471,7 +3486,6 @@
     <Content Include="Views\Widgets\New.cshtml" />
     <Content Include="Views\Widgets\Options.cshtml" />
     <Content Include="Views\Widgets\List.cshtml" />
-    <Content Include="Views\Partials\Modal.cshtml" />
     <Content Include="Views\Partials\Calculator.cshtml" />
     <Content Include="Views\Partials\Cep.cshtml" />
     <Content Include="Views\Partials\App.cshtml" />

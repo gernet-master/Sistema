@@ -1,5 +1,5 @@
 ﻿@*
-    Descrição: Breadcrumb Dashboard
+    Descrição: Página que carrega a aplicação
     Data: 01/01/2021 - v.1.0
 *@
 
@@ -13,10 +13,14 @@
 @if (Model.action == "Dashboard")
 {
     @* Carrega html da página *@
-    @Html.Action(Model.action, Model.controller)
+    <div class="page-element-responsive" pos="1">
+        @Html.Action(Model.action, Model.controller)
+    </div>
 
     @* Subheader *@
+    <div class="page-element-responsive" pos="2">
     @RenderPage("~/Views/Partials/SubHeader.cshtml")
+    </div>
 }
 else
 {
@@ -25,15 +29,17 @@ else
     <div id="panel_search"></div>
 
     @* Carrega html da página *@
-    <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt_content_app_gernet" id="kt_content">
-        <div class="kt-container--fluid  kt-grid__item kt-grid__item--fluid">
-            <div class="row form-elements">
-                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <div class="kt-portlet">
-                        <div class="kt-portlet__body">
-                            <form action="" method="post" id="kt_form_app_gernet">
-                                @Html.Action(Model.action, Model.controller)
-                            </form>
+    <div class="page-element-responsive" pos="1">
+        <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt_content_app_gernet" id="kt_content">
+            <div class="kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+                <div class="row form-elements">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                        <div class="kt-portlet">
+                            <div class="kt-portlet__body">
+                                <form action="" method="post" id="kt_form_app_gernet">
+                                    @Html.Action(Model.action, Model.controller, new { register = Model.register })
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -41,11 +47,19 @@ else
         </div>
     </div>
 
-    @* Subheader *@
-    @RenderPage("~/Views/Partials/SubHeaderApp.cshtml")
+    @* Atualiza identificador principal *@
+    if (HttpContext.Current.Session["ident_code"].ToString() != "")
+    {
+        Model.id = Convert.ToInt32(HttpContext.Current.Session["ident_code"]);
+    }
 
-    @* Botões de ação *@
-    @RenderPage("~/Views/Partials/ActionButtons.cshtml")
+    <div class="page-element-responsive" pos="2">
+        @* Subheader *@
+        @RenderPage("~/Views/Partials/SubHeaderApp.cshtml")
+
+        @* Botões de ação *@
+        @RenderPage("~/Views/Partials/ActionButtons.cshtml")
+    </div>
 }
 
 @* Armazena variaveis para controle *@

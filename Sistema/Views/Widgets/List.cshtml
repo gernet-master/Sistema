@@ -1,4 +1,9 @@
-﻿@* Model *@
+﻿@*
+    Descrição: Widget de listagem de resultado
+    Data: 01/01/2021 - v.1.0
+*@
+
+@* Model *@
 @model Sistema.Models.WidgetsView_List
 
 @* Funções *@
@@ -16,10 +21,9 @@
 }
 
 @* Listagem *@
-<div id="widget_name_@Model.widget.name" class="grid-stack-item" 
-
+<div id="widget_name_@Model.widget.name" class="grid-stack-item"
      @* Propriedades de controle do widget *@
-     data-gs-x="@Model.widget.xpos" data-gs-y="@Model.widget.ypos" data-gs-width="@Model.widget.width" data-gs-height="@Model.widget.height" data-gs-min-width="@Model.widget.min_width" 
+     data-gs-x="@Model.widget.xpos" data-gs-y="@Model.widget.ypos" data-gs-width="@Model.widget.width" data-gs-height="@Model.widget.height" data-gs-min-width="@Model.widget.min_width"
      data-gs-min-height="@Model.widget.min_height" data-gs-original-height="@Model.widget.height" data-gs-temp-height="@Model.widget.height" data-gs-no-resize="@Model.widget.resize">
 
     <div class="grid-stack-item-content kt-radius-4" style="background-color:#FFFFFF;">
@@ -55,7 +59,7 @@
                     </div>
                     <div class="kt-portlet__head-toolbar">
                         <div class="kt-portlet__head-group">
-                           <label data-toggle="kt-tooltip" title="@Language.XmlLang(93, 2).Text" data-placement="left" class="kt-margin-l-10 bg-white">
+                            <label data-toggle="kt-tooltip" title="@Language.XmlLang(93, 2).Text" data-placement="left" class="kt-margin-l-10 bg-white">
                                 <a href="#" onclick="APP.closeSearch()" class="btn btn-sm btn-icon btn-default btn-icon-md kt-radius-0" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-times"></i>
                                 </a>
@@ -70,12 +74,12 @@
                 <div class="kt-widget1" style="padding:10px !important;">
                     <div class="dataTables_wrapper dt-bootstrap4">
                         <div class="row" id="portlet_filter_@Model.widget.name">
-                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
                                 @Html.Action("Filtro", Model.widget.controller)
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 text-center">
                                 @* Botões de ação do filtro *@
                                 <button onclick="LIST.refreshList();" type="button" class="btn btn-brand mr-5">@Language.XmlLang(183, 2).Text</button>
                                 <button onclick="LIST.clearFilter('@Model.widget.name');" type="button" class="btn btn-warning">@Language.XmlLang(184, 2).Text</button>
@@ -103,7 +107,7 @@
                     </form>
 
                     @* Tabela de resultados *@
-                    <div class="kt-widget1 bg-white">
+                    <div class="kt-widget1 bg-white kt-radius-4">
 
                         <div class="dataTables_wrapper dt-bootstrap4">
 
@@ -111,8 +115,8 @@
                             <div class="row" id="widget_table_buttons_@Model.widget.name">
 
                                 @* Seleção do número de registros por página *@
-                                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                    @Language.XmlLang(166, 2).Text
+                                <div class="col-sm-6 col-md-6 col-lg-6 col-xs-3 mt-2 pl-3">
+                                    <label class="kt-hidden-mobile">@Language.XmlLang(166, 2).Text</label>
                                     <label>
                                         <select onchange="LIST.registersChange(this.value)" id="widget_registers_select" name="widget_registers_select" aria-controls="kt_table_1" class="custom-select custom-select-sm form-control form-control-sm">
                                             @for (var i = 1; i <= 10; i++)
@@ -124,21 +128,21 @@
                                 </div>
 
                                 @* Botões de controle de resultado *@
-                                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 text-right">
+                                <div class="col-sm-6 col-md-6 col-lg-6 col-xs-9 text-right">
 
                                     @* Exibir ou esconder o filtro *@
-                                    <label data-toggle="kt-tooltip" title="@Language.XmlLang(174, 2).Text" data-placement="left" class="bg-white mr-2" data-id="">
+                                    <label data-toggle="kt-tooltip" title="@Language.XmlLang(174, 2).Text" data-placement="left" class="bg-white mr-2 mt-2" data-id="">
                                         <a href="javascript:LIST.showHideFilter('@Model.widget.name')" class="btn btn-sm btn-icon btn-default btn-icon-md kt-radius-0" aria-haspopup="false" aria-expanded="false">
                                             <i class="fa fa-filter"></i>
                                         </a>
                                     </label>
 
                                     @* Exibir ou esconder colunas da tabela *@
-                                    <label data-toggle="kt-tooltip" title="@Language.XmlLang(175, 2).Text" data-placement="left" class="gridstack-dropdown bg-white mr-2" data-id="">
+                                    <label data-toggle="kt-tooltip" title="@Language.XmlLang(175, 2).Text" data-placement="left" class="gridstack-dropdown bg-white mr-2 mt-2">
                                         <a href="#" class="btn btn-sm btn-icon btn-default btn-icon-md gernet-widget-dropdown kt-radius-0" aria-haspopup="true" aria-expanded="false">
                                             <i class="fa fa-eye"></i>
                                         </a>
-                                        <div class="dropdown-menu dropdown-menu-right">
+                                        <div class="dropdown-menu dropdown-menu-right" id="hideShow_@Model.widget.name">
                                             <ul class="kt-nav">
 
                                                 @* Loop nos cabeçalhos *@
@@ -169,14 +173,14 @@
                                     </label>
 
                                     @* Gravar consulta do filtro *@
-                                    <label data-toggle="kt-tooltip" title="@Language.XmlLang(176, 2).Text" data-placement="left" class="gridstack-dropdown bg-white mr-2" data-id="">
+                                    <label data-toggle="kt-tooltip" title="@Language.XmlLang(176, 2).Text" data-placement="left" class="gridstack-dropdown bg-white mr-2 mt-2" data-id="">
                                         <a href="#" class="btn btn-sm btn-icon btn-default btn-icon-md gernet-widget-dropdown kt-radius-0" aria-haspopup="true" aria-expanded="false">
                                             <i class="fa fa-save"></i>
                                         </a>
                                     </label>
 
                                     @* Ler consultas do filtro *@
-                                    <label data-toggle="kt-tooltip" title="@Language.XmlLang(177, 2).Text" data-placement="left" class="gridstack-dropdown bg-white mr-2" data-id="">
+                                    <label data-toggle="kt-tooltip" title="@Language.XmlLang(177, 2).Text" data-placement="left" class="gridstack-dropdown bg-white mr-2 mt-2" data-id="">
                                         <a href="#" class="btn btn-sm btn-icon btn-default btn-icon-md gernet-widget-dropdown kt-radius-0" aria-haspopup="true" aria-expanded="false">
                                             <i class="fa fa-folder"></i>
                                         </a>
@@ -193,7 +197,7 @@
                                     </label>
 
                                     @* Exportar *@
-                                    <label data-toggle="kt-tooltip" title="Exportar" data-placement="left" class="gridstack-dropdown bg-white" data-id="">
+                                    <label data-toggle="kt-tooltip" title="Exportar" data-placement="left" class="gridstack-dropdown bg-white mt-2 mr-1" data-id="">
                                         <a href="#" class="btn btn-sm btn-icon btn-default btn-icon-md gernet-widget-dropdown kt-radius-0" aria-haspopup="true" aria-expanded="false">
                                             <i class="fa fa-download"></i>
                                         </a>
@@ -201,10 +205,10 @@
                                             <ul class="kt-nav" style="width:300px !important; padding:15px !important;">
                                                 <li class="kt-nav__item">
                                                     <div class="row">
-                                                        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3" style="padding-top:10px;">
+                                                        <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3" style="padding-top:10px;">
                                                             @Language.XmlLang(189, 2).Text:
                                                         </div>
-                                                        <div class="col-sm-9 col-md-9 col-lg-9 col-xl-9">
+                                                        <div class="col-sm-9 col-md-9 col-lg-9 col-xs-9">
                                                             <label>
                                                                 <select id="widget_print_page_start" name="widget_print_page_start" aria-controls="kt_table_1" class="custom-select custom-select-sm form-control form-control-sm">
                                                                     @for (var i = 1; i <= num_pages; i++)
@@ -225,10 +229,10 @@
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3" style="padding-top:10px;">
+                                                        <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3" style="padding-top:10px;">
                                                             @Language.XmlLang(185, 2).Text:
                                                         </div>
-                                                        <div class="col-sm-9 col-md-9 col-lg-9 col-xl-9">
+                                                        <div class="col-sm-9 col-md-9 col-lg-9 col-xs-9">
                                                             <select id="widget_print_columns" name="widget_print_columns" aria-controls="kt_table_1" class="custom-select custom-select-sm form-control form-control-sm">
                                                                 <option value="1">@Language.XmlLang(186, 2).Text</option>
                                                                 <option value="2">@Language.XmlLang(187, 2).Text</option>
@@ -236,16 +240,16 @@
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3" style="padding-top:15px;">
+                                                        <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3" style="padding-top:15px;">
                                                             @Language.XmlLang(188, 2).Text:
                                                         </div>
-                                                        <div class="col-sm-9 col-md-9 col-lg-9 col-xl-9 widget_print_options">
+                                                        <div class="col-sm-9 col-md-9 col-lg-9 col-xs-9 widget_print_options">
                                                             <i title="@Language.XmlLang(150, 2).Text" class="kt-nav__link-icon la la-print"></i>
                                                             <i title="@Language.XmlLang(191, 2).Text" class="kt-nav__link-icon la la-file-excel-o"></i>
                                                             <i title="@Language.XmlLang(140, 2).Text" class="kt-nav__link-icon la la-file-text-o"></i>
                                                             <i title="@Language.XmlLang(192, 2).Text" class="kt-nav__link-icon la la-file-pdf-o"></i>
                                                         </div>
-                                                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center pt-3">
+                                                        <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 text-center pt-3">
                                                             <button onclick=";" type="button" class="btn btn-info">@Language.XmlLang(190, 2).Text</button>
                                                         </div>
                                                     </div>
@@ -260,8 +264,8 @@
                             @* Tabela de Resultados *@
                             <div class="row">
                                 <div class="col-sm-12">
-
-                                    <table class="table table-striped table-bordered table-hover table-checkable dataTable dtr-inline" role="grid" id="widget_table_result_@Model.widget.name">
+                                    
+                                    <table class="table table-striped table-bordered table-hover dataTable dtr-inline table-responsive-sm" role="grid" id="widget_table_result_@Model.widget.name">
 
                                         @* Cabeçalho *@
                                         <thead class="fixed-header">
@@ -270,13 +274,13 @@
                                                 @for (var l = 0; l < Model.result.Item2.headers.Length; l++)
                                                 {
                                                     <th id="column_@Model.result.Item2.fields[l]"
-                                                        onclick="LIST.orderChange('@Model.result.Item2.fields[l]', '@((Model.result.Item2.fields[l] == Model.result.Item2.order) ? ((Model.result.Item2.direction == "asc") ? "desc" : "asc") : "asc")')"
+                                                        onclick="LIST.orderChange('@Model.result.Item2.orderfields[l]', '@((Model.result.Item2.orderfields[l] == Model.result.Item2.order) ? ((Model.result.Item2.direction == "asc") ? "desc" : "asc") : "asc")')"
                                                         width="@(Model.result.Item2.columns[l])%" class="@(Model.result.Item2.show[l] == 1 ? "" : "hide")">
 
                                                         @Language.XmlLang(Convert.ToInt32(Model.result.Item2.headers[l]), 2).Text
 
                                                         @* Exibe a seta de ordenação *@
-                                                        @if (Model.result.Item2.fields[l] == Model.result.Item2.order)
+                                                        @if (Model.result.Item2.orderfields[l] == Model.result.Item2.order)
                                                         {
                                                             if (Model.result.Item2.direction == "asc")
                                                             {
@@ -299,127 +303,146 @@
                                             {
                                                 foreach (var l in Model.result.Item1)
                                                 {
-                                                    <tr onclick="LIST.loadRegister(@l.GetField(Model.result.Item2.fields[0]).value)">
+
+                                                    @* Cria o link de retorno de acordo com tipo de localização *@
+                                                    string link = "";
+                                                    string values = "";
+
+                                                    if (Model.widget.inputFind == 1)
+                                                    {
+                                                        // Pega os campos para pegar os valores
+                                                        var vals = Model.widget.inputFields.Trim().Split(',');
+                                                        foreach (var a in vals) {
+                                                            if (values != "") { values += "||"; }
+                                                            values += l.GetField(a.Trim()).value;
+                                                        }
+
+                                                        link = "FORMS.loadRegister('" + values + "', '" + Model.widget.inputReturn + "')";
+                                                    }
+                                                    else
+                                                    {
+                                                        link = "LIST.loadRegister(" + l.GetField(Model.result.Item2.fields[0]).value + ")";                                                        
+                                                    }
+
+                                                    @* Linha com o resultado *@
+                                                    <tr onclick="@link">
 
                                                         @* Loop nos campos *@
                                                         @for (var i = 0; i < Model.result.Item2.fields.Length; i++)
                                                         {
-                                                            <td id="column_@Model.result.Item2.fields[i]" class="@(Model.result.Item2.show[i] == 1 ? "" : "hide")">
-                                                                @{
-                                                                    // Pega o objeto do campo
-                                                                    Variable val = l.GetField(Model.result.Item2.fields[i]);
+                                                        <td id="column_@Model.result.Item2.fields[i]" class="@(Model.result.Item2.show[i] == 1 ? "" : "hide")">
+                                                            @{
+                                                                // Pega o objeto do campo
+                                                                Variable val = l.GetField(Model.result.Item2.fields[i]);
 
-                                                                    // Verifica se não ocorreu erro
-                                                                    if (val == null)
-                                                                    {
-                                                                        Err.SystemError(Language.XmlLang(168, 1).Text, "", false);
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        @Html.Raw(Utils.formatField(val.value, Model.result.Item2.formatFields[i]))
-                                                                    }
+                                                                // Verifica se não ocorreu erro
+                                                                if (val == null)
+                                                                {
+                                                                    Err.SystemError(Language.XmlLang(168, 1).Text, "", false);
                                                                 }
-                                                            </td>
-                                                        }
-                                                    </tr>
+                                                                else
+                                                                {
+                                                                    @Html.Raw(Utils.formatField(val.value, Model.result.Item2.formatFields[i]))
+                                                                }
+                                                            }
+                                                        </td>
+                                                    }
+                                                </tr>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <tr><td colspan="@Model.result.Item2.headers.Length">@Language.XmlLang(178, 1).Text</td></tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        @* Rodapé da tabela de listagem *@
+
+                        @* Somente exibe se possuir resultados *@
+                        @if(Model.result.Item1.Count > 0)
+                        {
+                            <div class="row">
+
+                                @* Combo com opção para mudar de página e total de páginas *@
+                                <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3 text-left pl-3">
+                                    <div class="dataTables_length" id="kt_table_1_length">
+                                        <label class="kt-hidden-mobile">@Language.XmlLang(167, 2).Text</label>
+                                        <label>
+                                            <select onchange = "LIST.pageChange(this.value)" id="widget_page_select" name="widget_page_select" aria-controls="kt_table_1" class="custom-select custom-select-sm form-control form-control-sm">
+                                            @for(var i = 1; i <= num_pages; i++)
+                                            {
+                                                @Html.Raw("<option value='" + i + "' " + (Model.result.Item2.page == i? "selected" : "") + ">" + i + "</option>")
+                                            }
+                                            </select>
+                                        </label>
+                                        <label class="kt-hidden-mobile">@Language.XmlLang(165, 0).Text<strong> @num_pages</strong></label>
+                                    </div>
+                                </div>
+
+                                @* Paginação *@
+                                <div class="col-sm-6 col-md-6 col-lg-6 col-xs-9">
+                                    <div class="dataTables_paginate paging_simple_numbers" id="kt_table_1_paginate" style="display: flex; justify-content: center;">
+                                        <ul class="pagination">
+
+                                            @* Exibe setas de primeira página e página anterior somente se não estiver na primeiro página *@
+                                            @if (Model.result.Item2.page > 1)
+                                            {
+                                                <li data-toggle="kt-tooltip" title="@Language.XmlLang(170, 2).Text" data-placement="left" class="paginate_button page-item previous" id="kt_table_1_previous">
+                                                    <a href = "#" onClick="LIST.pageChange(1)" aria-controls="kt_table_1" data-dt-idx="0" tabindex="0" class="page-link"><i class="la la-angle-double-left"></i></a>
+                                                </li>
+                                                <li data-toggle="kt-tooltip" title="@Language.XmlLang(171, 2).Text" data-placement="left" class="paginate_button page-item previous" id="kt_table_1_previous">
+                                                    <a href = "#" onClick="LIST.pageChange(@(Model.result.Item2.page - 1))" aria-controls="kt_table_1" data-dt-idx="0" tabindex="0" class="page-link"><i class="la la-angle-left"></i></a>
+                                                </li>
+                                            }
+
+                                            @* Até 3 páginas anteriores *@
+                                            @for (var p = (Model.result.Item2.page - 3); p<Model.result.Item2.page; p++)
+                                            {
+                                                if (p > 0)
+                                                {
+                                                    <li class="paginate_button page-item"><a href = "#" onClick="LIST.pageChange(@p)" aria-controls="kt_table_1" data-dt-idx="1" tabindex="0" class="page-link">@p</a></li>
                                                 }
                                             }
-                                            else
+
+                                            @* Página atual *@
+                                            <li class="paginate_button page-item active"><a href = "#" aria-controls="kt_table_1" data-dt-idx="1" tabindex="0" class="page-link">@Model.result.Item2.page</a></li>
+
+                                            @* Até 3 páginas posteriores *@
+                                            @for (var p = (Model.result.Item2.page + 1); p <= (Model.result.Item2.page + 3); p++)
                                             {
-                                                <tr><td colspan="@Model.result.Item2.headers.Length">@Language.XmlLang(178, 1).Text</td></tr>
+                                                if (p <= num_pages)
+                                                {
+                                                    <li class="paginate_button page-item"><a href = "#" onClick="LIST.pageChange(@p)" aria-controls="kt_table_1" data-dt-idx="1" tabindex="0" class="page-link">@p</a></li>
+                                                }
                                             }
-                                        </tbody>
-                                    </table>
+
+                                            @* Exibe setas de proxima página e ultima página somente se não estiver na útlima página *@
+                                            @if (Model.result.Item2.page<num_pages)
+                                            {
+                                                <li data-toggle="kt-tooltip" title="@Language.XmlLang(172, 2).Text" data-placement="left" class="paginate_button page-item next" id="kt_table_1_next">
+                                                    <a href = "#" onClick="LIST.pageChange(@(Model.result.Item2.page + 1))" aria-controls="kt_table_1" data-dt-idx="5" tabindex="0" class="page-link"><i class="la la-angle-right"></i></a>
+                                                </li>
+                                                <li data-toggle="kt-tooltip" title="@Language.XmlLang(173, 2).Text" data-placement="left" class="paginate_button page-item next" id="kt_table_1_next">
+                                                    <a href = "#" onClick="LIST.pageChange(@num_pages)" aria-controls="kt_table_1" data-dt-idx="5" tabindex="0" class="page-link"><i class="la la-angle-double-right"></i></a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                @* Exibição do total de registros *@
+                                <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3 text-right pr-3 kt-hidden-mobile">
+                                    <div class="dataTables_info text-right" id="kt_table_1_info" role="status" aria-live="polite">
+                                        @Language.XmlLang(163, 2).Text <strong>@(((Model.result.Item2.page - 1) * Model.result.Item2.registers) + 1)</strong>
+                                        @Language.XmlLang(164, 0).Text <strong>@((Model.result.Item2.page * Model.result.Item2.registers) > Model.result.Item2.count ? Model.result.Item2.count : (Model.result.Item2.page * Model.result.Item2.registers))</strong>
+                                        @Language.XmlLang(165, 0).Text <strong>@Model.result.Item2.count</strong>
+                                    </div>
                                 </div>
                             </div>
-
-                            @* Rodapé da tabela de listagem *@
-
-                            @* Somente exibe se possuir resultados *@
-                            @if (Model.result.Item1.Count > 0)
-                            {
-                                <div class="row">
-
-                                    @* Combo com opção para mudar de página e total de páginas *@
-                                    <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 text-left">
-                                        <div class="dataTables_length" id="kt_table_1_length">
-                                            @Language.XmlLang(167, 2).Text
-                                            <label>
-                                                <select onchange="LIST.pageChange(this.value)" id="widget_page_select" name="widget_page_select" aria-controls="kt_table_1" class="custom-select custom-select-sm form-control form-control-sm">
-                                                    @for (var i = 1; i <= num_pages; i++)
-                                                    {
-                                                        @Html.Raw("<option value='" + i + "' " + (Model.result.Item2.page == i ? "selected" : "") + ">" + i + "</option>")
-                                                    }
-                                                </select>
-                                            </label>
-                                            @Language.XmlLang(165, 0).Text <strong>@num_pages</strong>
-                                        </div>
-                                    </div>
-
-                                    @* Paginação *@
-                                    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                        <div class="dataTables_paginate paging_simple_numbers" id="kt_table_1_paginate" style="display: flex; justify-content: center;">
-                                            <ul class="pagination">
-
-                                                @{
-                                                    // Exibe setas de primeira página e página anterior somente se não estiver na primeiro página
-                                                    if (Model.result.Item2.page > 1)
-                                                    {
-                                                        <li data-toggle="kt-tooltip" title="@Language.XmlLang(170, 2).Text" data-placement="left" class="paginate_button page-item previous" id="kt_table_1_previous">
-                                                            <a href="#" onClick="LIST.pageChange(1)" aria-controls="kt_table_1" data-dt-idx="0" tabindex="0" class="page-link"><i class="la la-angle-double-left"></i></a>
-                                                        </li>
-                                                        <li data-toggle="kt-tooltip" title="@Language.XmlLang(171, 2).Text" data-placement="left" class="paginate_button page-item previous" id="kt_table_1_previous">
-                                                            <a href="#" onClick="LIST.pageChange(@(Model.result.Item2.page - 1))" aria-controls="kt_table_1" data-dt-idx="0" tabindex="0" class="page-link"><i class="la la-angle-left"></i></a>
-                                                        </li>
-                                                    }
-
-                                                    // Até 3 páginas anteriores
-                                                    for (var p = (Model.result.Item2.page - 3); p < Model.result.Item2.page; p++)
-                                                    {
-                                                        if (p > 0)
-                                                        {
-                                                            <li class="paginate_button page-item"><a href="#" onClick="LIST.pageChange(@p)" aria-controls="kt_table_1" data-dt-idx="1" tabindex="0" class="page-link">@p</a></li>
-                                                        }
-                                                    }
-
-                                                    // Página atual
-                                                    <li class="paginate_button page-item active"><a href="#" aria-controls="kt_table_1" data-dt-idx="1" tabindex="0" class="page-link">@Model.result.Item2.page</a></li>
-
-                                                    // Até 3 páginas posteriores
-                                                    for (var p = (Model.result.Item2.page + 1); p <= (Model.result.Item2.page + 3); p++)
-                                                    {
-                                                        if (p <= num_pages)
-                                                        {
-                                                            <li class="paginate_button page-item"><a href="#" onClick="LIST.pageChange(@p)" aria-controls="kt_table_1" data-dt-idx="1" tabindex="0" class="page-link">@p</a></li>
-                                                        }
-                                                    }
-
-                                                    // Exibe setas de proxima página e ultima página somente se não estiver na útlima página
-                                                    if (Model.result.Item2.page < num_pages)
-                                                    {
-                                                        <li data-toggle="kt-tooltip" title="@Language.XmlLang(172, 2).Text" data-placement="left" class="paginate_button page-item next" id="kt_table_1_next">
-                                                            <a href="#" onClick="LIST.pageChange(@(Model.result.Item2.page + 1))" aria-controls="kt_table_1" data-dt-idx="5" tabindex="0" class="page-link"><i class="la la-angle-right"></i></a>
-                                                        </li>
-                                                        <li data-toggle="kt-tooltip" title="@Language.XmlLang(173, 2).Text" data-placement="left" class="paginate_button page-item next" id="kt_table_1_next">
-                                                            <a href="#" onClick="LIST.pageChange(@num_pages)" aria-controls="kt_table_1" data-dt-idx="5" tabindex="0" class="page-link"><i class="la la-angle-double-right"></i></a>
-                                                        </li>
-                                                    }
-                                                }
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    @* Exibição do total de registros *@
-                                    <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 text-right">
-                                        <div class="dataTables_info text-right" id="kt_table_1_info" role="status" aria-live="polite">
-                                            @Language.XmlLang(163, 2).Text <strong>@(((Model.result.Item2.page - 1) * Model.result.Item2.registers) + 1)</strong>
-                                            @Language.XmlLang(164, 0).Text <strong>@((Model.result.Item2.page * Model.result.Item2.registers) > Model.result.Item2.count ? Model.result.Item2.count : (Model.result.Item2.page * Model.result.Item2.registers))</strong>
-                                            @Language.XmlLang(165, 0).Text <strong>@Model.result.Item2.count</strong>
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-                        </div>
+                        }
                     </div>
                 </div>
             </div>
