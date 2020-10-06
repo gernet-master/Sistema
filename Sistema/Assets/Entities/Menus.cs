@@ -24,6 +24,7 @@ namespace Sistema.Assets.Entities
         public Variable menu_nome = new Variable();
         public Variable menupai_nome = new Variable();
         public Variable aplicativo = new Variable();
+        public Variable menus_filhos = new Variable();
 
         // Inicial
         public Menus()

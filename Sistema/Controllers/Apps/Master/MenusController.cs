@@ -1,4 +1,9 @@
-﻿using Functions;
+﻿/*
+Descrição: Controlador para cadastro de menus
+Data: 01/01/2021 - v.1.0
+*/
+
+using Functions;
 using Sistema.Assets.DB;
 using Sistema.Assets.Entities;
 using Sistema.Models;
@@ -10,21 +15,27 @@ namespace Sistema.Controllers
 {
     public class MenusController : Controller
     {
-        // Dashboard do cadastro de aplicativos
+        // Dashboard
         [Autentication]
         public ActionResult Dashboard()
         {
             return PartialView("~/Views/Apps/Master/Menus/Dashboard.cshtml");
         }
 
-        // Formulário do cadastro de menus
+        // Cadastro
         [Autentication]
-        public ActionResult Incluir(int id = 0, int id2 = 0)
+        public ActionResult Incluir(int id = 0, int id2 = 0, string register = "")
         {
+            // Validação para seleção de registro inicial caso esteja configurado para não exibir a dashboard
+            if (register != "")
+            {
+                id = new MenusDB().Paginar(id, register);
+            }
+
             return PartialView("~/Views/Apps/Master/Menus/Incluir.cshtml", new MenusView(id, id2));
         }
 
-        // Excluir registro
+        // Excluir
         [Autentication]
         public JsonResult Excluir(int id = 0, int id2 = 0)
         {
@@ -58,17 +69,18 @@ namespace Sistema.Controllers
             return Json(result);
         }
 
-        // Filtro do cadastro de menus
+        // Filtro
         [Autentication]
         public ActionResult Filtro()
         {
             return PartialView("~/Views/Apps/Master/Menus/Filtro.cshtml");
         }
 
-        // Gravar registro
+        // Gravar
         [Autentication]
         [ValidateInput(false)]
-        [HttpPost]        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public JsonResult Gravar(FormCollection form)
         {
             Retorno result = new Retorno();
@@ -130,7 +142,7 @@ namespace Sistema.Controllers
             return Json(result);
         }
 
-        // Página para listagem de registros de menus
+        // Listagem
         [Autentication]
         [HttpPost]
         public ActionResult ListarWidget(FormCollection form)
@@ -139,6 +151,7 @@ namespace Sistema.Controllers
             return PartialView("~/Views/Widgets/List.cshtml", new WidgetsView_List(new Widgets().Create(form), "", result));
         }
 
+        // Paginação
         [Autentication]
         public int Paginar(int id = 0, int id2 = 0, string action = "")
         {

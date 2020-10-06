@@ -3,17 +3,43 @@
     Data: 01/01/2021 - v.1.0
 *@
 
+@* Funções *@
 @using Functions;
 
+@* Inputs *@
+@{ Inputs inp = new Inputs(); }
+
 <div class="row">
-    <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6">
+    <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4">
         @{
-            Inputs inp = new Inputs();
+            // Nome do aplicativo
             inp.inputType = "text";
-            inp.label = Language.XmlLang(233, 2).Text;
+            inp.label = Language.XmlLang(230, 2).Text;
             inp.className = "form-control mb-0";
             inp.id = "filter_txaplicativo";
-            inp.maxLenght = 50;
+            inp.maxLenght = 20;
+            @Html.Raw(inp.CreateInput());
+        }
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4">
+        @{
+            // Action
+            inp.inputType = "text";
+            inp.label = Language.XmlLang(231, 2).Text;
+            inp.className = "form-control mb-0";
+            inp.id = "filter_txaction";
+            inp.maxLenght = 20;
+            @Html.Raw(inp.CreateInput());
+        }
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4">
+        @{
+            // Controller
+            inp.inputType = "text";
+            inp.label = Language.XmlLang(232, 2).Text;
+            inp.className = "form-control mb-0";
+            inp.id = "filter_txcontroller";
+            inp.maxLenght = 20;
             @Html.Raw(inp.CreateInput());
         }
     </div>

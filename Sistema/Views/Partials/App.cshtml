@@ -37,6 +37,11 @@ else
                         <div class="kt-portlet">
                             <div class="kt-portlet__body">
                                 <form action="" method="post" id="kt_form_app_gernet">
+
+                                    @* Token de segurança *@
+                                    @Html.AntiForgeryToken()
+
+                                    @* Carrega a tela de cadastro *@
                                     @Html.Action(Model.action, Model.controller, new { register = Model.register })
                                 </form>
                             </div>

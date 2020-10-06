@@ -109,7 +109,7 @@ namespace Sistema.Assets.DB
                 List<Menus> menus = new List<Menus>();
 
                 string qry = "";
-                qry += "SELECT * FROM Menus";
+                qry += "SELECT * FROM Menus ORDER BY nrordem";
 
                 Connection session = new Connection();                
                 Query query = session.CreateQuery(qry);
@@ -138,7 +138,79 @@ namespace Sistema.Assets.DB
             {
                 throw error;
             }
-        }        
+        }
+
+        // Listar Menus por nivel
+        public List<Menus> ListarPorNivel(int idmenupai)
+        {
+            try
+            {
+                List<Menus> menus = new List<Menus>();
+
+                string qry = "";
+                qry += "SELECT * FROM Menus WHERE idmenupai = " + idmenupai + " AND flativo = 1 ORDER BY nrordem";
+
+                Connection session = new Connection();
+                Query query = session.CreateQuery(qry);
+                IDataReader reader = query.ExecuteQuery();
+
+                while (reader.Read())
+                {
+                    menus.Add(new Menus()
+                    {
+                        idmenu = new Variable(value: Convert.ToInt32(reader["idmenu"])),
+                        idmenupai = new Variable(value: Convert.ToInt32(reader["idmenupai"])),
+                        idcodigoidioma = new Variable(value: Convert.ToInt32(reader["idcodigoidioma"])),
+                        idaplicativo = new Variable(value: Convert.ToInt32(reader["idaplicativo"])),
+                        txicone = new Variable(value: Convert.ToString(reader["txicone"])),
+                        nrordem = new Variable(value: Convert.ToInt32(reader["nrordem"])),
+                        flativo = new Variable(value: Convert.ToInt32(reader["flativo"])),
+                        flmaster = new Variable(value: Convert.ToInt32(reader["flmaster"])),
+                        menus_filhos = new Variable(value: new MenusDB().ListarPorNivel(Convert.ToInt32(reader["idmenu"]))),
+                        aplicativo = new Variable(value: (Convert.ToInt32(reader["idaplicativo"]) == 0 ? null : new AplicativosDB().Buscar(Convert.ToInt32(reader["idaplicativo"]))))
+                    });
+                }
+                reader.Close();
+                session.Close();
+
+                return menus;
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+        }
+
+        // Busca pelo action e controller do aplicativo para retornar o nome do menu
+        public int BuscarActionController(string action = "", string controller = "")
+        {
+            try
+            {
+                int idioma = 0;
+
+                string qry = "";
+                qry += "SELECT idcodigoidioma FROM Menus ";
+                qry += "WHERE idaplicativo = (SELECT idaplicativo FROM Aplicativos WHERE txaction = '" + action + "' AND txcontroller = '" + controller + "')";
+
+                Connection session = new Connection();
+                Query query = session.CreateQuery(qry);
+
+                IDataReader reader = query.ExecuteQuery();
+                if (reader.Read())
+                {
+                    idioma = Convert.ToInt32(reader["idcodigoidioma"]);
+                    
+                }
+                reader.Close();
+                session.Close();
+
+                return idioma;
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+        }
 
         // Busca pelo código
         public Menus Buscar(int idmenu = 0)
@@ -235,11 +307,18 @@ namespace Sistema.Assets.DB
                 // Filtro de resultados
                 if (form != null)
                 {
-                    //if (form.AllKeys.Contains("filter_txaplicativo"))
-                    //{
-                    //    string filter_txaplicativo = Utils.ClearText(form["filter_txaplicativo"], 50);
-                    //    if (filter_txaplicativo.Length > 0) { filter += "AND A.txaplicativo LIKE '%" + filter_txaplicativo.Replace(" ", "%") + "%' "; }
-                    //}
+
+                    // Ativo
+                    if (form.AllKeys.Contains("filter_flativo"))
+                    {
+                        filter += "AND m.flativo = " + Convert.ToInt32(Utils.Null(form["filter_flativo"], "0")) + " ";
+                    }
+
+                    // Master
+                    if (form.AllKeys.Contains("filter_flmaster"))
+                    {
+                        filter += "AND m.flmaster = " + Convert.ToInt32(Utils.Null(form["filter_flmaster"], "0")) + " ";
+                    }
 
                     if (form.AllKeys.Contains("widget_temp_page")) { page = Convert.ToInt32(form["widget_temp_page"]); }
                     if (form.AllKeys.Contains("widget_temp_registers")) { registers = Convert.ToInt32(form["widget_temp_registers"]); }
@@ -255,7 +334,7 @@ namespace Sistema.Assets.DB
                 control.direction = direction;
                 control.columns = new int[8] { 0, 20, 20, 20, 10, 10, 10, 10 };
                 control.show = new int[8] { 0, 1, 1, 1, 1, 1, 1, 1 };
-                control.headers = new string[8] { "244", "139", "245", "230", "247", "246", "33", "34" };
+                control.headers = new string[8] { "28", "139", "245", "230", "247", "246", "33", "34" };
                 control.orderfields = new string[8] { "m.idmenu", "m.idcodigoidioma", "m.idmenupai", "a.txaplicativo", "", "m.nrordem", "m.flativo", "m.flmaster" };
                 control.fields = new string[8] { "idmenu", "idcodigoidioma", "menupai", "aplicativo", "txicone", "nrordem", "flativo", "flmaster" };
                 control.formatFields = new string[8] { "master", "language", "language", "", "", "", "boolean", "boolean" };

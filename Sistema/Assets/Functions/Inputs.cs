@@ -39,6 +39,10 @@ namespace Functions
         public string inputValue2 { get; set; }
         public string findClick { get; set; }
         public string removeClick { get; set; }
+        public bool showAll { get; set; }
+        public bool inputCheckedAll { get; set; }
+        public string defaultValue { get; set; }
+        public bool noClear { get; set; }
 
         private void Init()
         {
@@ -69,6 +73,11 @@ namespace Functions
             this.id2 = "";
             this.findClick = "";
             this.removeClick = "";
+            this.showAll = false;
+            this.inputCheckedAll = false;
+            this.defaultValue = "";
+            this.noClear = false;
+
         }
 
         // Desenha o input
@@ -124,6 +133,9 @@ namespace Functions
                     // Valor
                     inp += " value='" + this.inputValue + "' ";
 
+                    // No clear
+                    if (this.noClear) { inp += " noclear='true' "; }
+
                     // Finaliza input
                     inp += " />";
 
@@ -167,6 +179,9 @@ namespace Functions
 
                     // ReadOnly
                     if (this.readOnly) { inp += " readonly "; }
+
+                    // No clear
+                    if (this.noClear) { inp += " noclear='true' "; }
 
                     inp += ">";
 
@@ -235,6 +250,9 @@ namespace Functions
                         }
                     }
 
+                    // No clear
+                    if (this.noClear) { inp += " noclear='true' "; }
+
                     // Finaliza input
                     inp += "</select>";
 
@@ -295,7 +313,10 @@ namespace Functions
                     inp += "<div class='kt-checkbox-list'><span class='kt-switch kt-switch--outline kt-switch--icon kt-switch--success kt-switch--lg'><label>";
 
                     // Cria input
-                    inp += "<input type='checkbox' ";
+                    inp += "<input class='control-switch' type='checkbox' ";
+
+                    // Valor padrão para reset de formulário
+                    inp += " defaultValue='" + Utils.Null(this.defaultValue, "1") + "' ";
 
                     // ID
                     if (Utils.Null(this.id, "") != "") { inp += " id='" + this.id + "' name='" + this.id + "' "; }
@@ -309,10 +330,27 @@ namespace Functions
                     // OnChange
                     if (Utils.Null(this.change, "") != "") { inp += " onChange='" + this.change + "' "; }
 
+                    // Se possuir o botão todos e estiver com a opção checkedAll, desabilita o input
+                    if ((this.showAll) && (this.inputCheckedAll))
+                    {
+                        inp += " disabled ";
+                    }
+
                     // Finaliza input
                     inp += "value='1' />";
 
-                    inp += "<span></span></label ></span></div></div>";
+                    // Verifica se deve mostrar o botão todos
+                    if (this.showAll)
+                    {
+                        inp += "<button onClick=\"FORMS.switchAll(this, '" + this.id + "')\" type='button' class='swicth-all-button ";
+
+                        // Checked All
+                        if (this.inputCheckedAll) { inp += " bg-dark_green "; }
+
+                        inp += "'>" + Language.XmlLang(251, 2).Text + "</button>";
+                    }
+
+                    inp += "<span></span></label></span></div></div>";
 
                     break;
 

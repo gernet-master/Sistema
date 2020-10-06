@@ -8,6 +8,17 @@ using System.Web;
 
 namespace Sistema.Models
 {
+    // Menu do sistema
+    public class PartialsView_MenuView : Session
+    {
+        public List<Menus> menus = null;
+
+        public PartialsView_MenuView()
+        {
+            this.menus = new MenusDB().ListarPorNivel(0);
+        }
+    }
+
     // Aplicativo
     public class PartialsView_AppView : Session
     {
@@ -18,6 +29,7 @@ namespace Sistema.Models
         public List<Select_List> list { get; set; }
         public Usuarios_Dashboard dashboard { get; set; }
         public string register { get; set; }
+        public int idcodigoidioma { get; set; }
 
         public PartialsView_AppView(string controller, string action, int id, int id2)
         {
@@ -32,6 +44,9 @@ namespace Sistema.Models
             this.list.Add(new Select_List() { ident = new Variable(value: ""), text = new Variable(value: Language.XmlLang(24, 2).Text) });
             this.list.Add(new Select_List() { ident = new Variable(value: "F"), text = new Variable(value: Language.XmlLang(242, 2).Text) });
             this.list.Add(new Select_List() { ident = new Variable(value: "L"), text = new Variable(value: Language.XmlLang(240, 2).Text) });
+
+            // Pega o nome do menu para montar o breadcrumb
+            this.idcodigoidioma = new MenusDB().BuscarActionController("Dashboard", controller);
 
             // Pega as configurações da dashboard para o usuario
             this.dashboard = new Usuarios_DashboardDB().Buscar(session_usuario, new AplicativosDB().BuscarActionController("Dashboard", controller).idaplicativo.value);

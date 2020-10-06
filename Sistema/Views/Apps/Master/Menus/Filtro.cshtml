@@ -3,18 +3,40 @@
     Data: 01/01/2021 - v.1.0
 *@
 
+@* Funções *@
 @using Functions;
 
+@* Inputs *@
+@{ Inputs inp = new Inputs(); }
+
 <div class="row">
-    <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6">
+
+    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-6">
         @{
-            Inputs inp = new Inputs();
-            inp.inputType = "text";
-            inp.label = Language.XmlLang(233, 2).Text;
-            inp.className = "form-control mb-0";
-            inp.id = "filter_txaplicativo";
-            inp.maxLenght = 50;
+            // Ativo
+            inp.inputType = "switch";
+            inp.label = Language.XmlLang(33, 2).Text;
+            inp.id = "filter_flativo";
+            inp.showAll = true;
+            inp.inputChecked = true;
+            inp.inputCheckedAll = true;
+            inp.defaultValue = "A";
             @Html.Raw(inp.CreateInput());
         }
     </div>
+
+    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-6">
+        @{
+            // Master
+            inp.inputType = "switch";
+            inp.label = Language.XmlLang(34, 2).Text;
+            inp.id = "filter_flmaster";
+            inp.showAll = true;
+            inp.inputChecked = true;
+            inp.inputCheckedAll = true;
+            inp.defaultValue = "A";
+            @Html.Raw(inp.CreateInput());
+        }
+    </div>
+
 </div>

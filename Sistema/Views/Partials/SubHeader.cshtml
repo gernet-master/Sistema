@@ -17,18 +17,10 @@
 
             @* Dashboard *@
             <span class="kt-subheader__desc"><a href="javascript:UTILS.menu('Home', 'Dashboard')">@Language.XmlLang(7, 2).Text</a></span>
-            @* Loop nos aplicativos *@
-            @{
-                @*if (Model.app != "")
-                {
-                    string[] arr = Model.app.Replace("/Apps/", "").Split('/');
-                    foreach (string a in arr)
-                    {
-                        <span class="separator-arrow">></span>
-                        <span class="kt-subheader__desc"><a href="#">@a</a></span>
-                    }
-                }*@
-            }
+            
+            @* Aplicativo *@
+            <span class="separator-arrow">></span>
+            <span class="kt-subheader__desc"><a href="#">@Language.XmlLang(Model.idcodigoidioma, 2).Text</a></span>                    
 
             @* Identificador de registro principal *@
             @{

@@ -1,4 +1,9 @@
-﻿using Functions;
+﻿/*
+Descrição: Controlador para cadastro de módulos do sistema
+Data: 01/01/2021 - v.1.0
+*/
+
+using Functions;
 using Sistema.Models;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -7,12 +12,11 @@ namespace Sistema.Controllers
 {
     public class ModulosSistemaController : Controller
     {
-        // Página inicial do cadastro de módulos do sistema
+        // Dashboard
         [Autentication]
-        [Route("Apps/Master/ModulosSistema")]
-        public ActionResult Index()
+        public ActionResult Dashboard()
         {
-            return PartialView("~/Views/Apps/Master/ModulosSistema/Index.cshtml", new UsuariosView());
+            return PartialView("~/Views/Apps/Master/Modulos/Dashboard.cshtml");
         }
     }
 }

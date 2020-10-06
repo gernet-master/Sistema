@@ -55,6 +55,11 @@
     background-color: #F4F5FF;
 }
 
+.bg-dark_green {
+    background-color: #0abb87 !important;
+    color: #FFFFFF !important;
+}
+
 .pointer {
     cursor: pointer;
 }
@@ -407,6 +412,18 @@
     z-index: 3 !important;
 }
 
+.swicth-all-button {
+    color: #495057;
+    font-size: 1rem;
+    margin-top: 2px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #FFF;
+    padding: 0px 10px;
+    border: 1px solid #e2e5ec;
+    border-radius: 4px;
+}
+
 /* Localização */
 
 #panel_search {
@@ -476,6 +493,10 @@
 .form-error-msg i {
     color: red !important;
     margin-right: 6px;
+}
+
+.kt-switch input[disabled] ~ span:after, .kt-switch input[disabled] ~ span:before {
+     opacity: 0.3 !important;
 }
 
 /* CEP */

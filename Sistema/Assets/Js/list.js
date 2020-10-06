@@ -87,9 +87,46 @@ var LIST = {};
             }
         },
 
-        // Limpa o filtro de resultado
+        // Limpa o filtro de pesquisa
         clearFilter: function (n) {
+
+            // Limpa todos os campos text, select e textarea
             $('#widget_filter_' + n + ' :input:not(:checkbox):not(:button)[noclear!=true]').val('');
+
+            // Limpa os campos checkbox
+            $('#widget_filter_' + n + ' :input:checkbox').each(function () {
+
+                // Pega o valor padrão
+                var def = $(this).attr('defaultValue');
+
+                // Seta o padrão
+                switch (def) {
+
+                    // Não selecionado
+                    case "0":
+                        $(this).prop('disabled', false);
+                        $(this).prop('checked', false);
+                        if ($(this).next('.swicth-all-button').length > 0) { $(this).next('.swicth-all-button').removeClass('bg-dark_green'); }
+                        break;
+
+                    // Selecionado
+                    case "1":
+                        $(this).prop('disabled', false);
+                        $(this).prop('checked', true);
+                        if ($(this).next('.swicth-all-button').length > 0) { $(this).next('.swicth-all-button').removeClass('bg-dark_green'); }
+                        break;
+
+                    // Todos selecionado
+                    case "A":
+                        $(this).prop('disabled', true);
+                        $(this).prop('checked', true);
+                        if ($(this).next('.swicth-all-button').length > 0) { $(this).next('.swicth-all-button').addClass('bg-dark_green'); }
+                        break;
+
+                    default:
+                        break;
+                }
+            });
         },
 
         // Atualiza o resultado
@@ -115,7 +152,35 @@ var LIST = {};
 
             // Verifica se o formulário de filtro está visivel e serializa os inputs
             if (!$('#widget_filter_' + n).hasClass('hide')) {
+
+                // Serializa os inputs
                 form = form.concat($("#widget_filter_" + n).serializeArray());
+
+                // Procura todos os switchs 
+                $('#widget_filter_' + n + ' .control-switch').each(function () {
+
+                    // Verifica se este switch possui a opção todos
+                    if ($(this).next('.swicth-all-button').length == 1) {
+
+                        // Verifica se o botão todos possui a classe 
+                        if (!$(this).next('.swicth-all-button').hasClass('bg-dark_green')) {
+
+                            // Se o input não estiver marcado, adiciona ao array o item com valor 0
+                            if (!$(this).is(':checked')) {
+                                form.push({ name: $(this).attr('id'), value: 0 });
+                            }
+                        }
+
+                        // Não possui
+                    } else {
+
+                        // Se o input não estiver marcado, adiciona ao array o item com valor 0
+                        if (!$(this).is(':checked')) {
+                            form.push({ name: $(this).attr('id'), value: 0 });
+                        }
+                    }
+                })
+
             }
 
             // Atualiza o widget

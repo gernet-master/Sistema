@@ -34,7 +34,7 @@ namespace Sistema.Controllers
         [Autentication]
         public ActionResult Menu()
         {
-            return PartialView();
+            return PartialView(new PartialsView_MenuView());
         }
 
         // Aplicativo

@@ -107,7 +107,7 @@ namespace Sistema.Assets.DB
                 List<Aplicativos> apps = new List<Aplicativos>();
 
                 string qry = "";
-                qry += "SELECT * FROM Aplicativos";
+                qry += "SELECT * FROM Aplicativos ORDER BY txaplicativo";
 
                 Connection session = new Connection();                
                 Query query = session.CreateQuery(qry);
@@ -253,12 +253,28 @@ namespace Sistema.Assets.DB
                 // Filtro de resultados
                 if (form != null)
                 {
+                    // Aplicativo
                     if (form.AllKeys.Contains("filter_txaplicativo"))
                     {
-                        string filter_txaplicativo = Utils.ClearText(form["filter_txaplicativo"], 50);
+                        string filter_txaplicativo = Utils.ClearText(form["filter_txaplicativo"], 20);
                         if (filter_txaplicativo.Length > 0) { filter += "AND A.txaplicativo LIKE '%" + filter_txaplicativo.Replace(" ", "%") + "%' "; }
                     }
 
+                    // Action
+                    if (form.AllKeys.Contains("filter_txaction"))
+                    {
+                        string filter_txaction = Utils.ClearText(form["filter_txaction"], 20);
+                        if (filter_txaction.Length > 0) { filter += "AND A.txaction LIKE '%" + filter_txaction.Replace(" ", "%") + "%' "; }
+                    }
+
+                    // Controller
+                    if (form.AllKeys.Contains("filter_txcontroller"))
+                    {
+                        string filter_txcontroller = Utils.ClearText(form["filter_txcontroller"], 20);
+                        if (filter_txcontroller.Length > 0) { filter += "AND A.txcontroller LIKE '%" + filter_txcontroller.Replace(" ", "%") + "%' "; }
+                    }
+
+                    // Variáveis de controle
                     if (form.AllKeys.Contains("widget_temp_page")) { page = Convert.ToInt32(form["widget_temp_page"]); }
                     if (form.AllKeys.Contains("widget_temp_registers")) { registers = Convert.ToInt32(form["widget_temp_registers"]); }
                     if (form.AllKeys.Contains("widget_temp_order")) { order = form["widget_temp_order"]; } 

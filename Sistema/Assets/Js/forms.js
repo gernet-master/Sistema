@@ -250,7 +250,20 @@ var FORMS = {};
                 $('#form-erro-id-' + fields[p]).remove();
                 $('#' + fields[p]).removeClass('form-error');
             }
-        }
+        },
+
+        // Controle de caixas de switch
+        switchAll: function (o, i) {
+
+            // Verifica se botão já foi clicado
+            if ($(o).hasClass('bg-dark_green')) {
+                $(o).removeClass('bg-dark_green');
+                $('#' + i).attr('disabled', false);
+            } else {
+                $(o).addClass('bg-dark_green');
+                $('#' + i).attr('disabled', true);
+            }
+        },
     }
 
 })(jQuery);
